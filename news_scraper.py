@@ -112,10 +112,15 @@ def parse_rss_feed(url, source_info):
         source_icon = source_info.get('icon', '📰')
         
         for entry in feed.entries[:10]:  # Get top 10 articles per source
+            # Get the URL and ensure it has https://
+            article_url = entry.get('link', '')
+            if article_url and not article_url.startswith('http'):
+                article_url = 'https://' + article_url.lstrip('/')
+            
             article = {
                 'title': entry.get('title', 'No title'),
                 'description': entry.get('summary', entry.get('description', 'No description available')),
-                'url': entry.get('link', ''),
+                'url': article_url,
                 'author': entry.get('author', source_name),
                 'published': entry.get('published', datetime.now().strftime('%Y-%m-%d %H:%M:%S')),
                 'source': source_name,
@@ -131,28 +136,35 @@ def parse_rss_feed(url, source_info):
 
 def extract_image_from_entry(entry):
     """Extract image URL from RSS entry"""
+    image_url = None
+    
     # Try media content
     if hasattr(entry, 'media_content') and entry.media_content:
-        return entry.media_content[0].get('url', '')
+        image_url = entry.media_content[0].get('url', '')
     
     # Try media thumbnail
-    if hasattr(entry, 'media_thumbnail') and entry.media_thumbnail:
-        return entry.media_thumbnail[0].get('url', '')
+    elif hasattr(entry, 'media_thumbnail') and entry.media_thumbnail:
+        image_url = entry.media_thumbnail[0].get('url', '')
     
     # Try enclosures
-    if hasattr(entry, 'enclosures') and entry.enclosures:
+    elif hasattr(entry, 'enclosures') and entry.enclosures:
         for enclosure in entry.enclosures:
             if 'image' in enclosure.get('type', ''):
-                return enclosure.get('href', '')
+                image_url = enclosure.get('href', '')
+                break
     
     # Try to extract from summary/content
-    if hasattr(entry, 'summary'):
+    elif hasattr(entry, 'summary'):
         soup = BeautifulSoup(entry.summary, 'html.parser')
         img = soup.find('img')
         if img and img.get('src'):
-            return img.get('src')
+            image_url = img.get('src')
     
-    return None
+    # Ensure image URL has https:// protocol
+    if image_url and not image_url.startswith('http'):
+        image_url = 'https://' + image_url.lstrip('/')
+    
+    return image_url
 
 def extract_category(entry):
     """Extract category/tags from entry"""

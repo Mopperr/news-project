@@ -1,0 +1,129 @@
+{
+  "timeline": {
+    "1994_joseph_vision": {
+      "description": "Joseph's prophetic vision and preparation",
+      "images": [
+        {
+          "url": "https://placehold.co/800x600/1e3a8a/06b6d4?text=Joseph%27s%20prophetic%20vision%20and%20preparation",
+          "description": "Joseph's prophetic vision and preparation",
+          "source": "Placeholder"
+        }
+      ],
+      "selected": "https://placehold.co/800x600/1e3a8a/06b6d4?text=Joseph%27s%20prophetic%20vision%20and%20preparation"
+    },
+    "2000s_storehouse": {
+      "description": "The Joseph Storehouse - organized compassion",
+      "images": [
+        {
+          "url": "https://placehold.co/800x600/1e3a8a/06b6d4?text=The%20Joseph%20Storehouse%20-%20organized%20compassion",
+          "description": "The Joseph Storehouse - organized compassion",
+          "source": "Placeholder"
+        }
+      ],
+      "selected": "https://placehold.co/800x600/1e3a8a/06b6d4?text=The%20Joseph%20Storehouse%20-%20organized%20compassion"
+    },
+    "2010s_temple": {
+      "description": "The Millennium Center - God's house built",
+      "images": [
+        {
+          "url": "https://placehold.co/800x600/1e3a8a/06b6d4?text=The%20Millennium%20Center%20-%20God%27s%20house%20built",
+          "description": "The Millennium Center - God's house built",
+          "source": "Placeholder"
+        }
+      ],
+      "selected": "https://placehold.co/800x600/1e3a8a/06b6d4?text=The%20Millennium%20Center%20-%20God%27s%20house%20built"
+    },
+    "today_impact": {
+      "description": "Today - One million lives transformed",
+      "images": [
+        {
+          "url": "https://placehold.co/800x600/1e3a8a/06b6d4?text=Today%20-%20One%20million%20lives%20transformed",
+          "description": "Today - One million lives transformed",
+          "source": "Placeholder"
+        }
+      ],
+      "selected": "https://placehold.co/800x600/1e3a8a/06b6d4?text=Today%20-%20One%20million%20lives%20transformed"
+    }
+  },
+  "values": {
+    "integrity_daniel": {
+      "description": "Daniel's unwavering integrity",
+      "images": [
+        {
+          "url": "https://placehold.co/800x600/1e3a8a/06b6d4?text=Daniel%27s%20unwavering%20integrity",
+          "description": "Daniel's unwavering integrity",
+          "source": "Placeholder"
+        }
+      ],
+      "selected": "https://placehold.co/800x600/1e3a8a/06b6d4?text=Daniel%27s%20unwavering%20integrity"
+    },
+    "unity_church": {
+      "description": "Early church unity and fellowship",
+      "images": [
+        {
+          "url": "https://placehold.co/800x600/1e3a8a/06b6d4?text=Early%20church%20unity%20and%20fellowship",
+          "description": "Early church unity and fellowship",
+          "source": "Placeholder"
+        }
+      ],
+      "selected": "https://placehold.co/800x600/1e3a8a/06b6d4?text=Early%20church%20unity%20and%20fellowship"
+    },
+    "excellence_bezalel": {
+      "description": "Bezalel's God-given excellence",
+      "images": [
+        {
+          "url": "https://placehold.co/800x600/1e3a8a/06b6d4?text=Bezalel%27s%20God-given%20excellence",
+          "description": "Bezalel's God-given excellence",
+          "source": "Placeholder"
+        }
+      ],
+      "selected": "https://placehold.co/800x600/1e3a8a/06b6d4?text=Bezalel%27s%20God-given%20excellence"
+    },
+    "impact_widow": {
+      "description": "Widow's oil - multiplied impact",
+      "images": [
+        {
+          "url": "https://placehold.co/800x600/1e3a8a/06b6d4?text=Widow%27s%20oil%20-%20multiplied%20impact",
+          "description": "Widow's oil - multiplied impact",
+          "source": "Placeholder"
+        }
+      ],
+      "selected": "https://placehold.co/800x600/1e3a8a/06b6d4?text=Widow%27s%20oil%20-%20multiplied%20impact"
+    }
+  },
+  "warriors": {
+    "david": {
+      "description": "David - warrior king of faith",
+      "images": [
+        {
+          "url": "https://placehold.co/800x600/1e3a8a/06b6d4?text=David%20-%20warrior%20king%20of%20faith",
+          "description": "David - warrior king of faith",
+          "source": "Placeholder"
+        }
+      ],
+      "selected": "https://placehold.co/800x600/1e3a8a/06b6d4?text=David%20-%20warrior%20king%20of%20faith"
+    },
+    "joshua": {
+      "description": "Joshua - courageous conqueror",
+      "images": [
+        {
+          "url": "https://placehold.co/800x600/1e3a8a/06b6d4?text=Joshua%20-%20courageous%20conqueror",
+          "description": "Joshua - courageous conqueror",
+          "source": "Placeholder"
+        }
+      ],
+      "selected": "https://placehold.co/800x600/1e3a8a/06b6d4?text=Joshua%20-%20courageous%20conqueror"
+    },
+    "esther": {
+      "description": "Esther - courageous queen",
+      "images": [
+        {
+          "url": "https://placehold.co/800x600/1e3a8a/06b6d4?text=Esther%20-%20courageous%20queen",
+          "description": "Esther - courageous queen",
+          "source": "Placeholder"
+        }
+      ],
+      "selected": "https://placehold.co/800x600/1e3a8a/06b6d4?text=Esther%20-%20courageous%20queen"
+    }
+  }
+}

@@ -17,11 +17,11 @@
 @keyframes pulse {
     0%, 100% {
         transform: scale(1);
-        box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
+        box-shadow: 0 10px 40px rgba(6, 182, 212, 0.4);
     }
     50% {
         transform: scale(1.02);
-        box-shadow: 0 15px 50px rgba(255, 215, 0, 0.6);
+        box-shadow: 0 15px 50px rgba(6, 182, 212, 0.6);
     }
 }
 
@@ -70,7 +70,7 @@
 :root {
     --primary-color: #0038b8;
     --secondary-color: #0055cc;
-    --accent-color: #ffd700;
+    --accent-color: #06b6d4;
     --text-dark: #1f2937;
     --text-light: #6b7280;
     --bg-light: #f0f4f8;
@@ -241,7 +241,7 @@ body::before {
     font-size: 1.2rem;
     letter-spacing: 3px;
     border-radius: 4px;
-    box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+    box-shadow: 0 2px 10px rgba(6, 182, 212, 0.3);
 }
 
 /* Live Feed Section */
@@ -340,7 +340,7 @@ body::before {
     font-size: 2rem;
     font-weight: 700;
     color: white;
-    text-shadow: 0 2px 10px rgba(255, 215, 0, 0.5);
+    text-shadow: 0 2px 10px rgba(6, 182, 212, 0.5);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -392,8 +392,6 @@ body::before {
 .nav-bar {
     background: linear-gradient(135deg, rgba(0, 56, 184, 0.95) 0%, rgba(0, 85, 204, 0.95) 100%);
     border-bottom: 2px solid rgba(255,215,0,0.3);
-    position: sticky;
-    top: 0;
     z-index: 100;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
@@ -404,7 +402,7 @@ body::before {
     justify-content: space-around;
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    background: linear-gradient(135deg, #06b6d4, #22d3ee);
     border: 3px solid rgba(0, 56, 184, 0.3);
     border-radius: 10px;
     cursor: pointer;
@@ -414,13 +412,13 @@ body::before {
     right: 20px;
     top: 96px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.5);
 }
 
 .hamburger-menu:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 25px rgba(255, 215, 0, 0.7);
-    background: linear-gradient(135deg, #ffed4e, #ffd700);
+    box-shadow: 0 6px 25px rgba(6, 182, 212, 0.7);
+    background: linear-gradient(135deg, #22d3ee, #06b6d4);
 }
 
 .hamburger-menu span {
@@ -786,7 +784,7 @@ body::before {
 }
 
 .cta-btn-primary:hover {
-    background: #ffed4e;
+    background: #22d3ee;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(255,215,0,0.4);
 }
@@ -866,11 +864,11 @@ body::before {
         width: 100%;
         justify-content: center;
         padding: 15px 20px;
-        border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        border-bottom: 1px solid rgba(6, 182, 212, 0.2);
     }
     
     .nav-link:hover {
-        background: rgba(255, 215, 0, 0.15);
+        background: rgba(6, 182, 212, 0.15);
     }
 }
 
@@ -894,8 +892,6 @@ body::before {
 .header {
     background: var(--white);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
     z-index: 100;
 }
 
@@ -961,20 +957,23 @@ body::before {
 /* Secondary Page Header Grid */
 .header-grid-secondary {
     display: grid;
-    grid-template-columns: 350px 1fr;
-    gap: 2rem;
+    grid-template-columns: 400px 1fr;
+    gap: 3rem;
     align-items: center;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .logo-section-secondary {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .logo-banner-secondary {
     width: 100%;
-    max-width: 350px;
+    max-width: 380px;
     height: auto;
     object-fit: contain;
     filter: brightness(1.1) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
@@ -987,27 +986,69 @@ body::before {
 
 .bible-verse-section {
     display: flex;
-    align-items: center;
-    gap: 0.75rem;
+    flex-direction: column;
+    gap: 0.8rem;
     color: white;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    border-left: 4px solid var(--accent-color);
+    padding: 1.8rem 2.2rem;
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(8, 145, 178, 0.1));
+    border-radius: 16px;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 8px 32px rgba(6, 182, 212, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.bible-verse-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+    animation: bubble-glow 4s ease-in-out infinite;
+}
+
+@keyframes bubble-glow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+.bible-verse-section i {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.6));
+    align-self: center;
+    animation: heart-beat 2s ease-in-out infinite;
+}
+
+@keyframes heart-beat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    50% { transform: scale(1); }
 }
 
 .verse-text {
-    font-size: 1rem;
+    font-size: 1.35rem;
     font-style: italic;
-    line-height: 1.5;
-    flex: 1;
+    line-height: 1.7;
+    font-weight: 500;
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
 }
 
 .verse-reference {
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 700;
     color: var(--accent-color);
-    white-space: nowrap;
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+    position: relative;
+    z-index: 1;
 }
 
 @media (max-width: 992px) {
@@ -1076,7 +1117,7 @@ body::before {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+    border-bottom: 1px solid rgba(6, 182, 212, 0.3);
     box-shadow: 0 4px 20px rgba(0, 56, 184, 0.15);
 }
 
@@ -1128,7 +1169,7 @@ body::before {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 2px solid rgba(255, 215, 0, 0.3);
+    border: 2px solid rgba(6, 182, 212, 0.3);
     color: var(--text-dark);
     padding: 0.6rem 1.5rem;
     border-radius: 8px;
@@ -1163,7 +1204,7 @@ body::before {
 }
 
 .nav-btn.donate-btn:hover {
-    background: #ffed4e;
+    background: #22d3ee;
     transform: translateY(-2px) scale(1.05);
 }
 
@@ -1173,8 +1214,6 @@ body::before {
     padding: 1.5rem 0;
     border-bottom: 2px solid rgba(0, 85, 204, 0.1);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    position: sticky;
-    top: 0;
     z-index: 50;
     backdrop-filter: blur(10px);
 }
@@ -1323,7 +1362,7 @@ body::before {
 }
 
 .spinner {
-    border: 4px solid rgba(255, 215, 0, 0.2);
+    border: 4px solid rgba(6, 182, 212, 0.2);
     border-top: 4px solid var(--accent-color);
     border-radius: 50%;
     width: 50px;
@@ -2312,12 +2351,12 @@ body::before {
     font-weight: 700;
     font-size: 1.1rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
 }
 
 .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
 }
 
 /* Footer */
@@ -2453,9 +2492,9 @@ body::before {
 
 .pillar i {
     font-size: 3rem;
-    color: #ffd700;
+    color: #06b6d4;
     margin-bottom: 1rem;
-    text-shadow: 0 2px 10px rgba(255, 215, 0, 0.4);
+    text-shadow: 0 2px 10px rgba(6, 182, 212, 0.4);
 }
 
 .pillar h3 {
@@ -2944,7 +2983,7 @@ body::before {
 
 .transparency-item p {
     font-size: 1.1rem;
-    color: #ffd700;
+    color: #06b6d4;
     font-weight: 600;
 }
 
@@ -3422,12 +3461,12 @@ body::before {
     font-weight: 700;
     font-size: 1.1rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
 }
 
 .newsletter-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
 }
 
 .visit-section {
@@ -4057,4 +4096,5 @@ body::before {
         height: 300px;
     }
 }
+
 

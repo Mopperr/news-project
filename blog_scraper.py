@@ -47,6 +47,10 @@ def clean_text(text):
 def scrape_article_details(article_url):
     """Scrape full article content from individual article page"""
     try:
+        # Ensure URL has https:// protocol
+        if not article_url.startswith('http'):
+            article_url = 'https://' + article_url.lstrip('/')
+        
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         }
@@ -131,13 +135,13 @@ def scrape_article_details(article_url):
         }
         
     except Exception as e:
-        print(f"  ✗ Error scraping article: {e}")
+        print(f"  [ERROR] Error scraping article: {e}")
         return None
 
 def scrape_vfi_blog():
     """Scrape articles from VFI blog URLs"""
     print("=" * 70)
-    print("📰 VFI Blog Scraper")
+    print("VFI Blog Scraper")
     print("=" * 70)
     print(f"Articles to scrape: {len(ARTICLE_URLS)}")
     print("=" * 70)
@@ -313,7 +317,7 @@ def create_fallback_catalog():
     for article in fallback_articles:
         article['scraped_at'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     
-    print(f"✓ Created catalog with {len(fallback_articles)} VFI blog articles")
+    print(f"[OK] Created catalog with {len(fallback_articles)} VFI blog articles")
     return fallback_articles
 
 def save_blog_catalog(articles):
@@ -331,10 +335,10 @@ def save_blog_catalog(articles):
         with open(CATALOG_FILE, 'w', encoding='utf-8') as f:
             json.dump(catalog_data, f, indent=2, ensure_ascii=False)
         
-        print(f"✓ Catalog saved to {CATALOG_FILE}")
+        print(f"[OK] Catalog saved to {CATALOG_FILE}")
         return True
     except Exception as e:
-        print(f"✗ Error saving catalog: {e}")
+        print(f"[ERROR] Error saving catalog: {e}")
         return False
 
 def run_blog_scraper():
@@ -363,9 +367,9 @@ def run_blog_scraper():
             
             # Save catalog
             if save_blog_catalog(articles):
-                print(f"\n✓ Successfully updated catalog with {len(articles)} articles")
+                print(f"\n[OK] Successfully updated catalog with {len(articles)} articles")
             else:
-                print("\n✗ Failed to save catalog")
+                print("\n[ERROR] Failed to save catalog")
             
             print(f"\nNext update in {UPDATE_INTERVAL // 60} minutes...")
             print("=" * 70)
@@ -374,7 +378,7 @@ def run_blog_scraper():
             time.sleep(UPDATE_INTERVAL)
             
     except KeyboardInterrupt:
-        print("\n\n🛑 Blog scraper stopped by user")
+        print("\n\nBlog scraper stopped by user")
         print(f"Total updates: {update_count}")
         print()
 
