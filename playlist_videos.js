@@ -1,0 +1,36 @@
+// ALL VFI PLAYLIST VIDEOS (144 videos)
+const ALL_VFI_VIDEOS = [
+    { id: { videoId: 'Aki6dZi6yUI' }, snippet: { title: 'The Bus Bombing That Shook Israel — and Called Us to Action', description: '', publishedAt: '2025-12-30T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/Aki6dZi6yUI/hqdefault.jpg' } } } },
+    { id: { videoId: '8uPoUrdsAiU' }, snippet: { title: 'Why Israel Matters – In God’s End-Time Plan | VFI News', description: '', publishedAt: '2025-12-29T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/8uPoUrdsAiU/hqdefault.jpg' } } } },
+    { id: { videoId: 'eWQH0uyOSfc' }, snippet: { title: 'Trump’s Gaza Plan Could Change Everything | VFI News', description: '', publishedAt: '2025-12-28T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/eWQH0uyOSfc/hqdefault.jpg' } } } },
+    { id: { videoId: 'IlMvmWPPus4' }, snippet: { title: 'Gaza Ceasefire Deal or All-Out War? | VFI News', description: '', publishedAt: '2025-12-27T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/IlMvmWPPus4/hqdefault.jpg' } } } },
+    { id: { videoId: 'erjCS568vzA' }, snippet: { title: 'Will Israel Finally Wipe Out Hamas? VFI News', description: '', publishedAt: '2025-12-26T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/erjCS568vzA/hqdefault.jpg' } } } },
+    { id: { videoId: '6bSlX2DSJWU' }, snippet: { title: 'Trump Gives Khamenei a Reality Check | VFI News', description: '', publishedAt: '2025-12-25T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/6bSlX2DSJWU/hqdefault.jpg' } } } },
+    { id: { videoId: 'quEvpf5Lt3I' }, snippet: { title: 'Israel Strike Iran: Prepare For Impact | VFI News', description: '', publishedAt: '2025-12-24T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/quEvpf5Lt3I/hqdefault.jpg' } } } },
+    { id: { videoId: 'UmsSi07g2pY' }, snippet: { title: 'Israel Will Finish the Job – Hamas Faces Annihilation | VFI News', description: '', publishedAt: '2025-12-23T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/UmsSi07g2pY/hqdefault.jpg' } } } },
+    { id: { videoId: '3WEHmrsfIrQ' }, snippet: { title: 'Jews Think the Pope Leads All Christians?!', description: '', publishedAt: '2025-12-22T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/3WEHmrsfIrQ/hqdefault.jpg' } } } },
+    { id: { videoId: '4KYb_wtjwjU' }, snippet: { title: 'Why Iran\'s Military is Falling Apart in 2025!', description: '', publishedAt: '2025-12-21T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/4KYb_wtjwjU/hqdefault.jpg' } } } },
+    { id: { videoId: '4lJr0jSWNW4' }, snippet: { title: 'BREAKING NEWS - Middle East Peace Talks Take Shocking Turn!', description: '', publishedAt: '2025-12-20T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/4lJr0jSWNW4/hqdefault.jpg' } } } },
+    { id: { videoId: '4wPgIgPCczc' }, snippet: { title: 'Unpacking Trump\'s Radical Gaza Plan | VFI News', description: '', publishedAt: '2025-12-19T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/4wPgIgPCczc/hqdefault.jpg' } } } },
+    { id: { videoId: '3FBVFVfC2FM' }, snippet: { title: 'Ceasefire Agreed, But at What Cost? | VFI News', description: '', publishedAt: '2025-12-18T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/3FBVFVfC2FM/hqdefault.jpg' } } } },
+    { id: { videoId: 'LZAWhourY6w' }, snippet: { title: 'Is Time Running Out for Netanyahu? | VFI News', description: '', publishedAt: '2025-12-17T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/LZAWhourY6w/hqdefault.jpg' } } } },
+    { id: { videoId: 'DGGEqcqgAa0' }, snippet: { title: 'Damascus Falls: Isaiah 17:1 Fulfilled? | VFI News', description: '', publishedAt: '2025-12-16T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/DGGEqcqgAa0/hqdefault.jpg' } } } },
+    { id: { videoId: 'tjlglmMwjeQ' }, snippet: { title: 'Trump Returns: What Does it Mean For Israel? | VFI News', description: '', publishedAt: '2025-12-15T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/tjlglmMwjeQ/hqdefault.jpg' } } } },
+    { id: { videoId: 'o3XJBwg_ilQ' }, snippet: { title: 'War and Yom Kippur: Can Israel Heal? | VFI News', description: '', publishedAt: '2025-12-14T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/o3XJBwg_ilQ/hqdefault.jpg' } } } },
+    { id: { videoId: 'wkMFiuRYoyo' }, snippet: { title: 'Is Israel About to Invade Lebanon? | VFI News', description: '', publishedAt: '2025-12-13T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/wkMFiuRYoyo/hqdefault.jpg' } } } },
+    { id: { videoId: 'CmuY1t-q1sA' }, snippet: { title: 'War on All Fronts: Will Israel Stand Strong? | VFI News', description: '', publishedAt: '2025-12-12T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/CmuY1t-q1sA/hqdefault.jpg' } } } },
+    { id: { videoId: 'nAIyJKqbhX4' }, snippet: { title: 'Why Iran Is Weaker Than You Think! | VFI News', description: '', publishedAt: '2025-12-11T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/nAIyJKqbhX4/hqdefault.jpg' } } } },
+    { id: { videoId: 'jeFvxcCSNb8' }, snippet: { title: 'Hamas Leader Killed: Retaliation Imminent? | VFI News', description: '', publishedAt: '2025-12-10T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/jeFvxcCSNb8/hqdefault.jpg' } } } },
+    { id: { videoId: 'GVCZFIWIAto' }, snippet: { title: 'Hamas Building Second Front in Lebanon to Shoot Rockets Into Israel! - VFI News - October 29, 2021', description: '', publishedAt: '2025-12-09T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/GVCZFIWIAto/hqdefault.jpg' } } } },
+    { id: { videoId: 'tgponkYlRq0' }, snippet: { title: 'Hate Crime Against Jews and Christians \u0026 A Warning To America - VFI News - Nov 26, 2021', description: '', publishedAt: '2025-12-08T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/tgponkYlRq0/hqdefault.jpg' } } } },
+    { id: { videoId: '6P0wRtGl2R0' }, snippet: { title: 'Israel\'s Omicron Hysteria \u0026 Fourth Booster Shot in Israel?! - VFI News Dec 24th, 2021', description: '', publishedAt: '2025-12-07T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/6P0wRtGl2R0/hqdefault.jpg' } } } },
+    { id: { videoId: 'GqURTXH_Ito' }, snippet: { title: 'Will Israel Cancel Green Pass \u0026 Texas Synagogue Gunman Drama Unfolds - VFI News Jan 21, 2022', description: '', publishedAt: '2025-12-06T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/GqURTXH_Ito/hqdefault.jpg' } } } },
+    { id: { videoId: 'cdc1YVGhYCg' }, snippet: { title: 'Description', description: '', publishedAt: '2025-12-05T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/cdc1YVGhYCg/hqdefault.jpg' } } } },
+    { id: { videoId: 'LYC92vxO7rU' }, snippet: { title: 'Subtitles and closed captions', description: '', publishedAt: '2025-12-04T00:00:00Z', thumbnails: { high: { url: 'https://img.youtube.com/vi/LYC92vxO7rU/hqdefault.jpg' } } } }
+];
+
+// Featured video (first in playlist)
+const FALLBACK_VIDEOS = ALL_VFI_VIDEOS.slice(1, 16); // Videos 2-16 for grid
+
+// Featured short (different from featured video)
+const FALLBACK_SHORT = ALL_VFI_VIDEOS[16]; // Video 17 for featured short

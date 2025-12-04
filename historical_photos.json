@@ -1,0 +1,26 @@
+{
+  "vision": {
+    "url": "https://placehold.co/800x600/2c3e50/f8f9fa?text=Prophetic%20Vision",
+    "thumb": "https://placehold.co/400x300/2c3e50/f8f9fa?text=Prophetic%20Vision",
+    "description": "Prophetic Vision",
+    "source": "Placeholder"
+  },
+  "ministry": {
+    "url": "https://placehold.co/800x600/2c3e50/f8f9fa?text=Ministry%20Beginning",
+    "thumb": "https://placehold.co/400x300/2c3e50/f8f9fa?text=Ministry%20Beginning",
+    "description": "Ministry Beginning",
+    "source": "Placeholder"
+  },
+  "tragedy": {
+    "url": "https://placehold.co/800x600/2c3e50/f8f9fa?text=Tragedy%20and%20Loss",
+    "thumb": "https://placehold.co/400x300/2c3e50/f8f9fa?text=Tragedy%20and%20Loss",
+    "description": "Tragedy and Loss",
+    "source": "Placeholder"
+  },
+  "response": {
+    "url": "https://placehold.co/800x600/2c3e50/f8f9fa?text=Compassionate%20Response",
+    "thumb": "https://placehold.co/400x300/2c3e50/f8f9fa?text=Compassionate%20Response",
+    "description": "Compassionate Response",
+    "source": "Placeholder"
+  }
+}

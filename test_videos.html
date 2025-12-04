@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test VFI Videos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .video-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #0038b8;
+        }
+        img {
+            width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        img:hover {
+            opacity: 0.8;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .error {
+            background: #ffebee;
+            color: #c62828;
+        }
+        .success {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <h1>VFI Videos Test</h1>
+    <div id="status"></div>
+    <div id="videoContainer"></div>
+
+    <script>
+        const YOUTUBE_API_KEY = 'AIzaSyBelWh3h-9xBSHXKN8oKMY3ieWpM6WaB0M';
+        const YOUTUBE_CHANNEL_ID = 'UCgbcHAR6wp5mtxZltb3xVZQ';
+
+        const FALLBACK_VIDEOS = [
+            { id: 'gjSpbJDkFKc', title: 'The Prophecy That Launched Vision for Israel' },
+            { id: 'WEStUv35fRE', title: 'Israel Update: IDF Strikes Hamas Commanders' },
+            { id: 'Aki6dZi6yUI', title: 'The Bus Bombing That Shook Israel' },
+            { id: 'JfxEqM4sMPw', title: 'Vision for Israel: 30 Years of Impact' },
+            { id: '2f5H5xGpWIM', title: 'A Shelter Named in Her Memory' }
+        ];
+
+        async function testYouTubeAPI() {
+            const statusDiv = document.getElementById('status');
+            const container = document.getElementById('videoContainer');
+
+            try {
+                const url = `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${YOUTUBE_CHANNEL_ID}&part=snippet,id&order=date&maxResults=1&type=video`;
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.error) {
+                    statusDiv.innerHTML = `<div class="status error">YouTube API Error: ${data.error.message}. Using fallback videos.</div>`;
+                    displayFallbackVideos();
+                } else {
+                    statusDiv.innerHTML = `<div class="status success">YouTube API working! Found ${data.items.length} videos.</div>`;
+                    displayVideos(data.items);
+                }
+            } catch (error) {
+                statusDiv.innerHTML = `<div class="status error">Network Error: ${error.message}. Using fallback videos.</div>`;
+                displayFallbackVideos();
+            }
+        }
+
+        function displayFallbackVideos() {
+            const container = document.getElementById('videoContainer');
+            FALLBACK_VIDEOS.forEach(video => {
+                const div = document.createElement('div');
+                div.className = 'video-container';
+                div.innerHTML = `
+                    <h2>${video.title}</h2>
+                    <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" 
+                         alt="${video.title}"
+                         onclick="window.open('https://www.youtube.com/watch?v=${video.id}', '_blank')">
+                    <p>Click thumbnail to watch on YouTube</p>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function displayVideos(videos) {
+            const container = document.getElementById('videoContainer');
+            videos.forEach(video => {
+                const div = document.createElement('div');
+                div.className = 'video-container';
+                div.innerHTML = `
+                    <h2>${video.snippet.title}</h2>
+                    <img src="${video.snippet.thumbnails.high.url}" 
+                         alt="${video.snippet.title}"
+                         onclick="window.open('https://www.youtube.com/watch?v=${video.id.videoId}', '_blank')">
+                    <p>Click thumbnail to watch on YouTube</p>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        testYouTubeAPI();
+    </script>
+</body>
+</html>

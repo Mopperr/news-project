@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VFI News - Vision For Israel News Network</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Breaking News Ticker -->
+    <div class="breaking-news-bar">
+        <div class="breaking-label">
+            <i class="fas fa-bolt"></i> BREAKING
+        </div>
+        <div class="breaking-content">
+            <span id="breakingNewsText">Latest updates from Israel and the Middle East • Stay informed with real-time coverage</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header-news">
+        <div class="header-main">
+            <div class="container-fluid">
+                <div class="header-grid">
+                    <!-- Logo Section -->
+                    <div class="logo-section">
+                        <img src="vfi-news-banner.png" 
+                             alt="VFI NEWS" 
+                             class="vfi-news-banner"
+                             onerror="this.src='vfi-news.png';">
+                    </div>
+
+                    <!-- Live Feed Section -->
+                    <div class="live-feed-section">
+                        <div class="live-indicator-main">
+                            <span class="live-pulse"></span>
+                            <span class="live-text">LIVE FROM JERUSALEM</span>
+                        </div>
+                        <div class="jerusalem-feed">
+                            <iframe 
+                                src="https://www.youtube.com/embed/0-dRT-2_hUk"
+                                title="Jerusalem Live Stream"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Weather & Info Section -->
+                    <div class="info-section">
+                        <div class="weather-widget" id="weatherWidget">
+                            <div class="weather-location">
+                                <i class="fas fa-map-marker-alt"></i> Jerusalem, Israel
+                            </div>
+                            <div class="weather-display">
+                                <div class="weather-temp" id="weatherTemp">--°C</div>
+                                <div class="weather-desc" id="weatherDesc">Loading...</div>
+                                <div class="weather-feels-like" id="weatherFeelsLike"></div>
+                            </div>
+                        </div>
+                        <div class="header-date-time">
+                            <div class="current-time" id="currentTime"></div>
+                            <div class="current-date" id="currentDate"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <div class="container-fluid">
+                <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav-main" id="navMain">
+                    <a href="index.html" class="nav-link active">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a href="#worship" class="nav-link" id="worshipLink">
+                        <i class="fas fa-music"></i> Worship Music
+                    </a>
+                    <a href="projects.html" class="nav-link">
+                        <i class="fas fa-hands-helping"></i> Projects
+                    </a>
+                    <a href="about.html" class="nav-link">
+                        <i class="fas fa-info-circle"></i> About
+                    </a>
+                    <a href="testimonials.html" class="nav-link">
+                        <i class="fas fa-heart"></i> Testimonials
+                    </a>
+                    <a href="contact.html" class="nav-link">
+                        <i class="fas fa-envelope"></i> Contact
+                    </a>
+                    <a href="https://www.visionforisrael.com/en/give" class="nav-link donate-link" target="_blank">
+                        <i class="fas fa-donate"></i> DONATE NOW
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Worship Music Section -->
+    <section class="worship-section" id="worship" style="display: none;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-music"></i> Worship with Barry & Batya Segal
+                </h2>
+                <p class="section-subtitle">Messianic praise & worship from the heart of Jerusalem</p>
+            </div>
+
+            <!-- Spotify Integration -->
+            <div class="spotify-section">
+                <div class="spotify-header">
+                    <i class="fab fa-spotify"></i>
+                    <h3>Listen on Spotify</h3>
+                    <p>Stream their complete album collection • 18,808+ monthly listeners</p>
+                </div>
+                <div class="spotify-embed">
+                    <iframe data-testid="embed-iframe" 
+                            style="border-radius:12px" 
+                            src="https://open.spotify.com/embed/artist/26wd7poZI6XycIuZRUSOCq?utm_source=generator" 
+                            width="100%" 
+                            height="352" 
+                            frameBorder="0" 
+                            allowfullscreen="" 
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                            loading="lazy">
+                    </iframe>
+                </div>
+                <div class="spotify-info">
+                    <h4>Popular Songs:</h4>
+                    <ul>
+                        <li>🎵 Sh'ma Yisrael - 1M+ plays</li>
+                        <li>🎵 Kadosh (Holy) - 549K+ plays</li>
+                        <li>🎵 Baruch Haba (Blessed Is He) - 498K+ plays</li>
+                        <li>🎵 Hallelu Et Adonai - 432K+ plays</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- YouTube Video Section -->
+            <div class="youtube-section">
+                <div class="youtube-header">
+                    <i class="fab fa-youtube"></i>
+                    <h3>Watch on YouTube</h3>
+                    <p>Free worship videos from their ministry</p>
+                </div>
+                <div class="worship-grid" id="worshipGrid">
+                    <!-- Worship videos will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Barry & Batya Website CTA -->
+            <div class="worship-cta">
+                <div class="cta-content">
+                    <div class="cta-text">
+                        <h3><i class="fas fa-globe"></i> Discover More Authentic Hebraic Worship</h3>
+                        <p>Visit Barry & Batya Segal's official website to explore their complete music catalog, purchase albums, and learn about their ministry bringing authentic Israeli praise & worship from Jerusalem.</p>
+                        <div class="cta-features">
+                            <div class="cta-feature">
+                                <i class="fas fa-music"></i>
+                                <span>4 Studio Albums</span>
+                            </div>
+                            <div class="cta-feature">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>Purchase Music</span>
+                            </div>
+                            <div class="cta-feature">
+                                <i class="fas fa-book"></i>
+                                <span>Lyrics & Chords</span>
+                            </div>
+                            <div class="cta-feature">
+                                <i class="fas fa-heart"></i>
+                                <span>Ministry Updates</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cta-actions">
+                        <a href="https://www.barryandbatyasegal.com/" target="_blank" class="cta-btn cta-btn-primary">
+                            <i class="fas fa-external-link-alt"></i> Visit Their Website
+                        </a>
+                        <a href="https://www.barryandbatyasegal.com/shop" target="_blank" class="cta-btn cta-btn-secondary">
+                            <i class="fas fa-shopping-bag"></i> Shop Music
+                        </a>
+                        <a href="https://www.barryandbatyasegal.com/music" target="_blank" class="cta-btn cta-btn-secondary">
+                            <i class="fas fa-compact-disc"></i> View All Albums
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Container -->
+    <main class="container">
+        <!-- Featured Section -->
+        <section class="featured-section">
+            <h2 class="section-title">
+                <i class="fas fa-star"></i> Featured Content
+            </h2>
+            <div class="featured-grid">
+                <div class="featured-item" id="featuredVideo">
+                    <!-- Latest video will be inserted here -->
+                </div>
+                <div class="featured-item" id="featuredArticle">
+                    <!-- Latest VFI blog article will be inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Videos Section -->
+        <section class="videos-section">
+            <h2 class="section-title">
+                <i class="fab fa-youtube"></i> Latest Videos
+            </h2>
+            <div class="videos-grid" id="videosGrid">
+                <!-- Videos will be inserted here -->
+            </div>
+        </section>
+
+        <!-- Category Filter -->
+        <section class="category-filter">
+            <div class="container">
+                <div class="filter-label"><i class="fas fa-filter"></i> Filter News:</div>
+                <div class="category-buttons">
+                    <button class="category-btn active" data-category="all"><i class="fas fa-globe"></i> All News</button>
+                    <button class="category-btn" data-category="business"><i class="fas fa-briefcase"></i> Business</button>
+                    <button class="category-btn" data-category="technology"><i class="fas fa-microchip"></i> Technology</button>
+                    <button class="category-btn" data-category="politics"><i class="fas fa-landmark"></i> Politics</button>
+                    <button class="category-btn" data-category="world"><i class="fas fa-earth-americas"></i> World</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Spinner -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Loading articles...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-message" id="errorMessage">Loading articles failed - try again</div>
+
+        <!-- News Section -->
+        <section class="news-section">
+            <h2 class="section-title">
+                <i class="fas fa-newspaper"></i> Latest News Articles
+            </h2>
+            <div class="news-grid" id="newsGrid">
+                <!-- News articles will be inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="https://www.visionforisrael.com/en/give" target="_blank">Donate</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="https://www.visionforisrael.com/en/newsletter" target="_blank">Newsletter</a></li>
+                        <li><a href="https://www.visionforisrael.com/en/volunteer" target="_blank">Volunteer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/visionforisrael" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/vision4israel" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/visionforisrael" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/visionforisrael" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>VFI News</h3>
+                    <p>Stay informed with the latest news and updates from Israel.</p>
+                    <p><strong>Vision For Israel</strong><br>Operating since 1994</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vision For Israel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div id="modalBody" class="modal-body">
+                <!-- Content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="bible_verses.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

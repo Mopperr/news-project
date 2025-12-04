@@ -1,0 +1,12 @@
+{
+  "status": "ok",
+  "location": "Jerusalem, Israel",
+  "temperature": 17,
+  "feels_like": 17,
+  "description": "Partly cloudy",
+  "humidity": 59,
+  "wind_speed": 5,
+  "pressure": 1015,
+  "updated": "2025-12-03 20:12:34",
+  "timestamp": 1764810754.6427689
+}
