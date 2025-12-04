@@ -1,10 +1,22 @@
-// Currents News API Configuration (backup)
+// API Configuration - Auto-detects local vs production
+// For production: Set RENDER_API_URL to your Render backend URL after deployment
+// Example: https://vfi-news-api.onrender.com/api
+const RENDER_API_URL = 'YOUR_RENDER_URL_HERE/api'; // Replace after deploying to Render
+const LOCAL_API_URL = 'http://127.0.0.1:5500/api';
+
+// Auto-detect if running locally or in production
+const isLocalhost = window.location.hostname === 'localhost' || 
+                    window.location.hostname === '127.0.0.1' ||
+                    window.location.hostname === '';
+
+// Use local API if running locally AND it starts with http://127.0.0.1
+// Otherwise use Render API
+const USE_LOCAL_API = isLocalhost && LOCAL_API_URL.includes('127.0.0.1');
+const API_URL = USE_LOCAL_API ? LOCAL_API_URL : RENDER_API_URL;
+
+// Currents News API Configuration (backup - not used)
 const API_BASE_URL = 'https://api.currentsapi.services/v1';
 const API_KEY = 'HkolZBL3rdntWFxAKNgTCIk5tNjeEMqyck_u4L-44nRaEyIJ';
-
-// Local Python API Configuration (primary)
-const LOCAL_API_URL = 'http://127.0.0.1:5500/api';
-const USE_LOCAL_API = true; // Set to false to use Currents API instead
 
 // YouTube Configuration
 const YOUTUBE_API_KEY = 'AIzaSyBelWh3h-9xBSHXKN8oKMY3ieWpM6WaB0M';
@@ -15,8 +27,6 @@ const USE_YOUTUBE_LOCAL = false; // Use RSS feed fetcher (no quota limits) - DIS
 // Weather API Configuration
 const WEATHER_API_KEY = 'ba2a50681ffed31ce97da2d5cf03e17f'; // OpenWeatherMap API key
 const JERUSALEM_COORDS = { lat: 31.7683, lon: 35.2137 };
-const WEATHER_LOCAL_API = 'http://127.0.0.1:8082/api/weather/jerusalem';
-const USE_WEATHER_LOCAL = true; // Use local weather API for fresh data
 
 // DOM Elements - will be initialized after DOM loads
 let newsGrid;
@@ -187,17 +197,38 @@ function updateHeaderTime() {
     }
 }
 
-// Fetch Jerusalem Weather from local JSON file
+// Fetch Jerusalem Weather from API or local JSON file
 async function fetchJerusalemWeather() {
     try {
-        // Read from local weather_data.json file
-        const response = await fetch('weather_data.json?t=' + new Date().getTime());
+        let weatherData;
         
-        if (!response.ok) {
-            throw new Error('Weather file not found');
+        // Try API first (works in both local and production)
+        try {
+            const apiResponse = await fetch(`${API_URL}/weather/jerusalem`);
+            if (apiResponse.ok) {
+                const apiData = await apiResponse.json();
+                if (apiData.status === 'ok' && apiData.weather) {
+                    weatherData = {
+                        status: 'ok',
+                        temperature: Math.round(apiData.weather.temp),
+                        feels_like: Math.round(apiData.weather.feels_like),
+                        description: apiData.weather.description,
+                        updated: apiData.weather.updated
+                    };
+                }
+            }
+        } catch (apiError) {
+            console.log('API weather not available, falling back to local file');
         }
         
-        const weatherData = await response.json();
+        // Fallback to local weather_data.json file if API fails
+        if (!weatherData) {
+            const response = await fetch('weather_data.json?t=' + new Date().getTime());
+            if (!response.ok) {
+                throw new Error('Weather file not found');
+            }
+            weatherData = await response.json();
+        }
         
         if (weatherData.status !== 'ok') {
             throw new Error('Weather data error');
@@ -633,18 +664,10 @@ async function fetchLatestNews() {
     try {
         let url;
         
-        if (USE_LOCAL_API) {
-            // Use local Python scraper
-            url = `${LOCAL_API_URL}/news`;
-            if (currentCategory !== 'all') {
-                url += `?category=${currentCategory}`;
-            }
-        } else {
-            // Use Currents API
-            url = `${API_BASE_URL}/search?apiKey=${API_KEY}&keywords=Israel&language=en`;
-            if (currentCategory !== 'all') {
-                url += `&category=${currentCategory}`;
-            }
+        // Use unified API endpoint
+        url = `${API_URL}/news`;
+        if (currentCategory !== 'all') {
+            url += `?category=${currentCategory}`;
         }
 
         console.log('Fetching news from:', url);
@@ -690,18 +713,10 @@ async function handleSearch() {
     try {
         let url;
         
-        if (USE_LOCAL_API) {
-            // Use local Python scraper
-            url = `${LOCAL_API_URL}/news/search?q=${encodeURIComponent(query)}`;
-            if (currentCategory !== 'all') {
-                url += `&category=${currentCategory}`;
-            }
-        } else {
-            // Use Currents API
-            url = `${API_BASE_URL}/search?apiKey=${API_KEY}&keywords=${encodeURIComponent(query)}&language=en`;
-            if (currentCategory !== 'all') {
-                url += `&category=${currentCategory}`;
-            }
+        // Use unified API endpoint
+        url = `${API_URL}/news/search?q=${encodeURIComponent(query)}`;
+        if (currentCategory !== 'all') {
+            url += `&category=${currentCategory}`;
         }
 
         const response = await fetch(url);
