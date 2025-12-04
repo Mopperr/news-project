@@ -1,7 +1,7 @@
 // API Configuration - Auto-detects local vs production
 // For production: Set RENDER_API_URL to your Render backend URL after deployment
 // Example: https://vfi-news-api.onrender.com/api
-const RENDER_API_URL = 'YOUR_RENDER_URL_HERE/api'; // Replace after deploying to Render
+const RENDER_API_URL = 'https://news-project-hqfh.onrender.com/api';
 const LOCAL_API_URL = 'http://127.0.0.1:5500/api';
 
 // Auto-detect if running locally or in production
