@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roots & Reflections - Biblical Teachings | VFI News</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Remove duplicate Bible verse banner and integrate into header */
+        .bible-verse-banner {
+            display: none;
+        }
+
+        /* Side Text Decoration */
+        .videos-section {
+            position: relative;
+        }
+
+        .side-text {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            color: rgba(6, 182, 212, 0.15);
+            z-index: 1;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .left-text {
+            left: -80px;
+            transform-origin: center;
+        }
+
+        .right-text {
+            right: -80px;
+            transform-origin: center;
+            letter-spacing: 6px;
+        }
+
+        @media (max-width: 1200px) {
+            .side-text {
+                display: none;
+            }
+        }
+
+        /* Roots & Reflections Section */
+        .roots-section {
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .roots-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(30, 58, 138, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .roots-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .roots-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .roots-header h2 {
+            font-size: 3rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
+        }
+
+        .roots-header h2 i {
+            color: #06b6d4;
+            margin-right: 1rem;
+            filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.8));
+        }
+
+        .roots-header .subtitle {
+            font-size: 1.4rem;
+            color: #06b6d4;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .roots-header .description {
+            font-size: 1.3rem;
+            color: #e2e8f0;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 2;
+            font-weight: 400;
+        }
+
+        .roots-header .description strong {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .channel-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(30, 58, 138, 0.2) 100%);
+            padding: 2rem 3rem;
+            border-radius: 15px;
+            border: 2px solid rgba(6, 182, 212, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(6, 182, 212, 0.6);
+            box-shadow: 0 12px 35px rgba(6, 182, 212, 0.2);
+        }
+
+        .stat-box .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #06b6d4;
+            display: block;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 15px rgba(6, 182, 212, 0.5);
+        }
+
+        .stat-box .stat-label {
+            font-size: 1.1rem;
+            color: #ffffff;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .filters-section {
+            background: transparent;
+            padding: 2rem;
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        .filters-container {
+            display: inline-flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(30, 58, 138, 0.2));
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            border: 2px solid rgba(6, 182, 212, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-label {
+            font-size: 0.95rem;
+            color: #ffffff;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sort-select {
+            padding: 0.6rem 1.2rem;
+            border: 2px solid rgba(6, 182, 212, 0.5);
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            background: rgba(15, 23, 42, 0.8);
+            color: #06b6d4;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .sort-select:hover {
+            border-color: #06b6d4;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .sort-select:focus {
+            border-color: #06b6d4;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+        }
+
+        .sort-select option {
+            background: #0f172a;
+            color: #ffffff;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 3rem 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        @media (max-width: 768px) {
+            .videos-grid {
+                padding: 2rem 1rem;
+                gap: 2.5rem 1.5rem;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        .video-card {
+            background: transparent;
+            border-radius: 12px;
+            overflow: visible;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-card:hover {
+            transform: scale(1.02);
+        }
+
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+            overflow: hidden;
+            background: #000;
+            border-radius: 12px;
+        }
+
+        .video-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 68px;
+            height: 48px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            opacity: 0;
+        }
+
+        .video-card:hover .play-overlay {
+            opacity: 1;
+            background: rgba(255, 0, 0, 0.9);
+        }
+
+        .play-overlay i {
+            color: white;
+            font-size: 1.2rem;
+            margin-left: 2px;
+        }
+
+        .video-info {
+            padding: 1.2rem 0;
+            background: transparent;
+            min-height: 160px;
+        }
+
+        .video-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.6rem;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 3rem;
+        }
+
+        .video-description {
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            line-height: 1.5;
+            margin-bottom: 0.6rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .video-meta {
+            display: flex;
+            gap: 0.5rem;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .video-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .episode-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(250, 204, 21, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #1e293b;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 2px solid rgba(250, 204, 21, 0.4);
+            box-shadow: 0 4px 12px rgba(250, 204, 21, 0.3);
+            z-index: 10;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .loading-spinner i {
+            font-size: 3rem;
+            color: #06b6d4;
+            animation: spin 1s linear infinite;
+            filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.8));
+        }
+
+        .loading-spinner p {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-top: 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #94a3b8;
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .no-results i {
+            font-size: 4rem;
+            color: #06b6d4;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .no-results p {
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+
+        /* Video Modal */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .video-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1e3a8a;
+            border-radius: 20px;
+            max-width: 1200px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .modal-content::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .modal-content::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 10px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb {
+            background: rgba(6, 182, 212, 0.5);
+            border-radius: 10px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(6, 182, 212, 0.8);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(6, 182, 212, 0.2);
+            border: 2px solid #06b6d4;
+            color: #06b6d4;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: rgba(6, 182, 212, 0.4);
+            transform: rotate(90deg);
+        }
+
+        .modal-video-container {
+            position: relative;
+            padding-top: 56.25%;
+            background: #000;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .modal-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .modal-info {
+            padding: 2rem;
+            color: white;
+        }
+
+        .modal-info h2 {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .modal-info .description {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #e2e8f0;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .bible-verse-banner .verse-text {
+                font-size: 1.2rem;
+            }
+
+            .bible-verse-banner .verse-reference {
+                font-size: 1rem;
+            }
+
+            .roots-header h2 {
+                font-size: 2rem;
+            }
+
+            .roots-header .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .roots-header .description {
+                font-size: 1rem;
+            }
+
+            .channel-stats {
+                gap: 2rem;
+            }
+
+            .stat-box {
+                padding: 1.5rem 2rem;
+            }
+
+            .filters-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body style="background: #0f172a;">
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container-fluid">
+                <div class="header-grid-secondary">
+                    <div class="logo-section-secondary">
+                        <img src="vfi-news-banner.png" alt="VFI News" class="logo-banner-secondary" onerror="this.src='vfi-news.png';">
+                    </div>
+                    <div class="bible-verse-section">
+                        <i class="fas fa-seedling"></i>
+                        <span class="verse-text">"So then, just as you received Christ Jesus as Lord, continue to live your lives in him, rooted and built up in him, strengthened in the faith as you were taught, and overflowing with thankfulness."</span>
+                        <span class="verse-reference">Colossians 2:6-7</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <div class="container-fluid">
+                <nav class="nav-main">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a href="index.html#worship" class="nav-link">
+                        <i class="fas fa-music"></i> Worship Music
+                    </a>
+                    <a href="roots-reflections.html" class="nav-link active">
+                        <i class="fas fa-book-open"></i> Roots & Reflections
+                    </a>
+                    <a href="projects.html" class="nav-link">
+                        <i class="fas fa-hands-helping"></i> Projects
+                    </a>
+                    <a href="about.html" class="nav-link">
+                        <i class="fas fa-info-circle"></i> About
+                    </a>
+                    <a href="testimonials.html" class="nav-link">
+                        <i class="fas fa-heart"></i> Testimonials
+                    </a>
+                    <a href="shop.html" class="nav-link">
+                        <i class="fas fa-shopping-bag"></i> Shop
+                    </a>
+                    <a href="contact.html" class="nav-link">
+                        <i class="fas fa-envelope"></i> Contact
+                    </a>
+                    <a href="https://www.visionforisrael.com/en/give" class="nav-link donate-link" target="_blank">
+                        <i class="fas fa-donate"></i> DONATE NOW
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bible Verse Banner -->
+    <section class="bible-verse-banner">
+        <div class="verse-icon">
+            <i class="fas fa-seedling"></i>
+        </div>
+        <p class="verse-text">
+            "So then, just as you received Christ Jesus as Lord, continue to live your lives in him, rooted and built up in him, strengthened in the faith as you were taught, and overflowing with thankfulness."
+        </p>
+        <p class="verse-reference">Colossians 2:6-7</p>
+    </section>
+
+    <!-- Roots & Reflections Section -->
+    <section class="roots-section">
+        <div class="roots-content">
+            <div class="roots-header">
+                <h2><i class="fas fa-book-open"></i> ROOTS & REFLECTIONS</h2>
+                <p class="subtitle">Biblical Teachings with Barry Segal</p>
+                <p class="description">
+                    Join <strong>VFI founder Barry Segal</strong> as he explores the rich tapestry of <strong>Biblical history</strong>, 
+                    <strong>Jewish traditions</strong>, and <strong>spiritual insights</strong>. Discover the roots of your faith and 
+                    deepen your understanding of <strong>God's Word</strong> through engaging teachings and reflections.
+                </p>
+            </div>
+            
+            <div class="channel-stats">
+                <div class="stat-box">
+                    <span class="stat-number" id="totalVideos">0</span>
+                    <span class="stat-label">Episodes</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number" id="channelAge">4+</span>
+                    <span class="stat-label">Years Active</span>
+                </div>
+        </div>
+    </header>
+
+    <!-- Bible Verse Banner -->
+    <section class="bible-verse-banner" style="display: none;">
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+        <div class="filters-container">
+            <span class="filter-label">SORT EPISODES:</span>
+            <select class="sort-select" id="sortSelect">
+                <option value="oldest" selected>Oldest First (Episode 1+)</option>
+                <option value="newest">Newest First</option>
+                <option value="title">Title (A-Z)</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section class="videos-section">
+        <div class="side-text left-text">ROOTS & REFLECTIONS</div>
+        <div class="side-text right-text">שורשים והשתקפויות</div>
+        <div class="container">
+            <div id="loadingSpinner" class="loading-spinner">
+                <i class="fas fa-circle-notch"></i>
+                <p>Loading episodes...</p>
+            </div>
+
+            <div id="noResults" class="no-results" style="display: none;">
+                <i class="fas fa-video-slash"></i>
+                <h3>No episodes found</h3>
+                <p>Try adjusting your search or filters</p>
+            </div>
+
+            <div id="videosGrid" class="videos-grid"></div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeVideoModal()">×</button>
+            <div class="modal-video-container" id="modalVideoContainer"></div>
+            <div class="modal-info" id="modalInfo"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="roots-reflections.html">Roots & Reflections</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="https://www.visionforisrael.com/en/give" target="_blank">Donate</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="https://www.visionforisrael.com/en/newsletter" target="_blank">Newsletter</a></li>
+                        <li><a href="https://www.visionforisrael.com/en/volunteer" target="_blank">Volunteer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/visionforisrael" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/vision4israel" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/visionforisrael" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@VisionforIsrael" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Roots & Reflections</h3>
+                    <p>Biblical teachings and spiritual insights from Barry Segal.</p>
+                    <p><a href="https://www.youtube.com/@RootsReflections" target="_blank" style="color: #06b6d4; text-decoration: none;"><i class="fab fa-youtube"></i> Subscribe on YouTube</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vision For Israel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="roots-reflections.js"></script>
+</body>
+</html>

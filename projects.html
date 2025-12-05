@@ -35,6 +35,9 @@
                     <a href="index.html#worship" class="nav-link">
                         <i class="fas fa-music"></i> Worship Music
                     </a>
+                    <a href="roots-reflections.html" class="nav-link">
+                        <i class="fas fa-book-open"></i> Roots & Reflections
+                    </a>
                     <a href="projects.html" class="nav-link active">
                         <i class="fas fa-hands-helping"></i> Projects
                     </a>
@@ -43,6 +46,9 @@
                     </a>
                     <a href="testimonials.html" class="nav-link">
                         <i class="fas fa-heart"></i> Testimonials
+                    </a>
+                    <a href="shop.html" class="nav-link">
+                        <i class="fas fa-shopping-bag"></i> Shop
                     </a>
                     <a href="contact.html" class="nav-link">
                         <i class="fas fa-envelope"></i> Contact
@@ -67,187 +73,148 @@
     <section class="projects-section">
         <div class="container">
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card" data-project="shelter">
                     <div class="project-image">
                         <img src="https://images.prismic.io/vfi-website/5d98747f-6b48-4fe2-ade3-de89cd7f2cc5_Givolim+4.jpg?auto=compress,format" alt="Shelter From Rocket Attacks" onerror="this.src='https://via.placeholder.com/480x320/0038b8/ffffff?text=VFI+Project';">
-                    </div>
-                    <div class="project-icon">
-                        <i class="fas fa-shield-alt"></i>
                     </div>
                     <h2>Shelter From Rocket Attacks</h2>
                     <p>Providing bomb shelters for Israeli communities under threat</p>
                     <div class="project-features">
-                        <li><i class="fas fa-check-circle"></i> Medical & Emergency</li>
+                        <li>Medical & Emergency</li>
                     </div>
-                    <a href="https://www.visionforisrael.com/en/project/shelter-from-rocket-attacks" target="_blank" class="project-link">Learn More & Donate <i class="fas fa-arrow-right"></i></a>
+                    <div class="project-btn-row"><button onclick="openProjectModal('shelter')" class="project-link">View Details <i class="fas fa-info-circle"></i></button></div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-project="holocaust">
                     <div class="project-image">
                         <img src="https://images.prismic.io/vfi-website/1e47bc9e-ae95-446a-8dd7-adb8f6307bce_39c3bd57-ab5a-426a-a00b-fbe5c1185505_Holocaust%2BSurvivors%2B-%2B2.jpg?auto=compress,format" alt="Helping Holocaust Survivors in Israel" onerror="this.src='https://via.placeholder.com/480x320/0038b8/ffffff?text=VFI+Project';">
-                    </div>
-                    <div class="project-icon">
-                        <i class="fas fa-hands-helping"></i>
                     </div>
                     <h2>Helping Holocaust Survivors in Israel</h2>
                     <p>Supporting elderly Holocaust survivors with essential needs</p>
                     <div class="project-features">
-                        <li><i class="fas fa-check-circle"></i> Aid to the Poor in Israel</li>
+                        <li>Aid to the Poor in Israel</li>
                     </div>
-                    <a href="https://www.visionforisrael.com/en/project/helping-holocaust-survivors" target="_blank" class="project-link">Learn More & Donate <i class="fas fa-arrow-right"></i></a>
+                    <div class="project-btn-row"><button onclick="openProjectModal('holocaust')" class="project-link">View Details <i class="fas fa-info-circle"></i></button></div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-project="terror">
                     <div class="project-image">
                         <img src="https://images.prismic.io/vfi-website/05a2c668-3d7d-43c1-b31c-afe930c0b8ea_7925ac98-48c4-42f4-97f8-18a1a12f0cfb_WaterparkTV040.jpg?auto=compress,format" alt="Blessing Survivors of Terror" onerror="this.src='https://via.placeholder.com/480x320/0038b8/ffffff?text=VFI+Project';">
-                    </div>
-                    <div class="project-icon">
-                        <i class="fas fa-heart"></i>
                     </div>
                     <h2>Blessing Survivors of Terror</h2>
                     <p>Providing support and comfort to victims of terrorism</p>
                     <div class="project-features">
-                        <li><i class="fas fa-check-circle"></i> Aid to the Poor in Israel</li>
+                        <li>Aid to the Poor in Israel</li>
                     </div>
-                    <a href="https://www.visionforisrael.com/en/project/survivors-of-terror" target="_blank" class="project-link">Learn More & Donate <i class="fas fa-arrow-right"></i></a>
+                    <div class="project-btn-row"><button onclick="openProjectModal('terror')" class="project-link">View Details <i class="fas fa-info-circle"></i></button></div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-project="school">
                     <div class="project-image">
                         <img src="https://images.prismic.io/vfi-website/b0e2e609-24ed-4fc2-8254-56658a17fed1_0X3A7085+copy.jpg?auto=compress,format" alt="Pack to School Project" onerror="this.src='https://via.placeholder.com/480x320/0038b8/ffffff?text=VFI+Project';">
-                    </div>
-                    <div class="project-icon">
-                        <i class="fas fa-school"></i>
                     </div>
                     <h2>Pack to School Project</h2>
                     <p>Providing school supplies to children in need</p>
                     <div class="project-features">
-                        <li><i class="fas fa-check-circle"></i> Educational Advancement</li>
+                        <li>Educational Advancement</li>
                     </div>
-                    <a href="https://www.visionforisrael.com/en/project/pack-to-school-project" target="_blank" class="project-link">Learn More & Donate <i class="fas fa-arrow-right"></i></a>
+                    <div class="project-btn-row"><button onclick="openProjectModal('school')" class="project-link">View Details <i class="fas fa-info-circle"></i></button></div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-project="soldiers">
                     <div class="project-image">
                         <img src="https://images.prismic.io/vfi-website/1c73eea6-d6cd-4b68-8aa7-6143a85849ec_6f62454c-7d55-4318-bafd-2a186aa86909_Lone_soldiers_StudioCalau_041.jpg?auto=compress,format" alt="Helping Lone Soldiers Feel at Home" onerror="this.src='https://via.placeholder.com/480x320/0038b8/ffffff?text=VFI+Project';">
-                    </div>
-                    <div class="project-icon">
-                        <i class="fas fa-user-shield"></i>
                     </div>
                     <h2>Helping Lone Soldiers Feel at Home</h2>
                     <p>Supporting soldiers who serve without family in Israel</p>
                     <div class="project-features">
-                        <li><i class="fas fa-check-circle"></i> Aid to the Poor in Israel</li>
+                        <li>Aid to the Poor in Israel</li>
                     </div>
-                    <a href="https://www.visionforisrael.com/en/project/helping-lone-soldiers" target="_blank" class="project-link">Learn More & Donate <i class="fas fa-arrow-right"></i></a>
+                    <div class="project-btn-row"><button onclick="openProjectModal('soldiers')" class="project-link">View Details <i class="fas fa-info-circle"></i></button></div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-project="families">
                     <div class="project-image">
                         <img src="https://images.prismic.io/vfi-website/42cf5968-2be5-4f92-88fb-34714f13057f_MV014.jpg?auto=compress,format" alt="Aid for Families in Need" onerror="this.src='https://via.placeholder.com/480x320/0038b8/ffffff?text=VFI+Project';">
-                    </div>
-                    <div class="project-icon">
-                        <i class="fas fa-home"></i>
                     </div>
                     <h2>Aid for Families in Need</h2>
                     <p>Providing basic essentials to struggling families</p>
                     <div class="project-features">
-                        <li><i class="fas fa-check-circle"></i> Aid to the Poor in Israel</li>
+                        <li>Aid to the Poor in Israel</li>
                     </div>
-                    <a href="https://www.visionforisrael.com/en/project/aid-for-families-in-need" target="_blank" class="project-link">Learn More & Donate <i class="fas fa-arrow-right"></i></a>
+                    <div class="project-btn-row"><button onclick="openProjectModal('families')" class="project-link">View Details <i class="fas fa-info-circle"></i></button></div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-project="millennium">
                     <div class="project-image">
                         <img src="https://images.prismic.io/vfi-website/2b3b57a1-3e32-4619-ad71-c5aa41a566ed_MC_night.jpg?auto=compress,format" alt="The Millennium Center—Center of Hope" onerror="this.src='https://via.placeholder.com/480x320/0038b8/ffffff?text=VFI+Project';">
-                    </div>
-                    <div class="project-icon">
-                        <i class="fas fa-building"></i>
                     </div>
                     <h2>The Millennium Center—Center of Hope</h2>
                     <p>Community center providing vital services</p>
                     <div class="project-features">
-                        <li><i class="fas fa-check-circle"></i> Building & Development</li>
+                        <li>Building & Development</li>
                     </div>
-                    <a href="https://www.visionforisrael.com/en/project/the-millennium-centercenter-of-hope" target="_blank" class="project-link">Learn More & Donate <i class="fas fa-arrow-right"></i></a>
+                    <div class="project-btn-row"><button onclick="openProjectModal('millennium')" class="project-link">View Details <i class="fas fa-info-circle"></i></button></div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-project="ambulances">
                     <div class="project-image">
                         <img src="https://images.prismic.io/vfi-website/5db7c365-f9da-4157-901f-e7a44556621d_0X3A8973.jpg?auto=compress,format" alt="Ambulances, Medi-cycles, & Bloodmobiles" onerror="this.src='https://via.placeholder.com/480x320/0038b8/ffffff?text=VFI+Project';">
-                    </div>
-                    <div class="project-icon">
-                        <i class="fas fa-ambulance"></i>
                     </div>
                     <h2>Ambulances, Medi-cycles, & Bloodmobiles</h2>
                     <p>Lifelines of hope providing emergency medical services</p>
                     <div class="project-features">
-                        <li><i class="fas fa-check-circle"></i> Medical & Emergency</li>
+                        <li>Medical & Emergency</li>
                     </div>
-                    <a href="https://www.visionforisrael.com/en/project/ambulances-medi-cycles--bloodmobiles-lifelines-of-hope" target="_blank" class="project-link">Learn More & Donate <i class="fas fa-arrow-right"></i></a>
+                    <div class="project-btn-row"><button onclick="openProjectModal('ambulances')" class="project-link">View Details <i class="fas fa-info-circle"></i></button></div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-project="immigrants">
                     <div class="project-image">
                         <img src="https://images.prismic.io/vfi-website/ff23a513-9869-426a-9f37-c0b5ea98fe8e_VFI_Fans009.jpg?auto=compress,format" alt="Assisting New Immigrants" onerror="this.src='https://via.placeholder.com/480x320/0038b8/ffffff?text=VFI+Project';">
-                    </div>
-                    <div class="project-icon">
-                        <i class="fas fa-plane-arrival"></i>
                     </div>
                     <h2>Assisting New Immigrants</h2>
                     <p>Helping new arrivals settle into their new home</p>
                     <div class="project-features">
-                        <li><i class="fas fa-check-circle"></i> Aid to the Poor in Israel</li>
+                        <li>Aid to the Poor in Israel</li>
                     </div>
-                    <a href="https://www.visionforisrael.com/en/project/assisting-new-immigrants" target="_blank" class="project-link">Learn More & Donate <i class="fas fa-arrow-right"></i></a>
+                    <div class="project-btn-row"><button onclick="openProjectModal('immigrants')" class="project-link">View Details <i class="fas fa-info-circle"></i></button></div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-project="firstresponse">
                     <div class="project-image">
                         <img src="https://images.prismic.io/vfi-website/3764ddac-d570-4263-89f4-87e8307cd81a_DSCF1283.JPG?auto=compress,format" alt="First Response & Disaster Relief" onerror="this.src='https://via.placeholder.com/480x320/0038b8/ffffff?text=VFI+Project';">
-                    </div>
-                    <div class="project-icon">
-                        <i class="fas fa-hands-helping"></i>
                     </div>
                     <h2>First Response & Disaster Relief</h2>
                     <p>Rapid response to emergencies and disasters</p>
                     <div class="project-features">
-                        <li><i class="fas fa-check-circle"></i> Medical & Emergency</li>
+                        <li>Medical & Emergency</li>
                     </div>
-                    <a href="https://www.visionforisrael.com/en/project/first-response--disaster-relief" target="_blank" class="project-link">Learn More & Donate <i class="fas fa-arrow-right"></i></a>
+                    <div class="project-btn-row"><button onclick="openProjectModal('firstresponse')" class="project-link">View Details <i class="fas fa-info-circle"></i></button></div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-project="renovations">
                     <div class="project-image">
                         <img src="https://images.prismic.io/vfi-website/e11c0a64-d099-4340-a2b0-cd6312ff3a57_LauraSiegal_010.jpg?auto=compress,format" alt="Renovations Fund—Rebuilding Broken Lives" onerror="this.src='https://via.placeholder.com/480x320/0038b8/ffffff?text=VFI+Project';">
-                    </div>
-                    <div class="project-icon">
-                        <i class="fas fa-hammer"></i>
                     </div>
                     <h2>Renovations Fund—Rebuilding Broken Lives</h2>
                     <p>Restoring homes and hope for families in crisis</p>
                     <div class="project-features">
-                        <li><i class="fas fa-check-circle"></i> Building & Development</li>
+                        <li>Building & Development</li>
                     </div>
-                    <a href="https://www.visionforisrael.com/en/project/renovations-fundrebuilding-broken-lives" target="_blank" class="project-link">Learn More & Donate <i class="fas fa-arrow-right"></i></a>
+                    <div class="project-btn-row"><button onclick="openProjectModal('renovations')" class="project-link">View Details <i class="fas fa-info-circle"></i></button></div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-project="feeding">
                     <div class="project-image">
                         <img src="https://images.prismic.io/vfi-website/bc4de475-138a-41c2-880e-62b63305a9d6_IMG_0180.jpg?auto=compress,format" alt="Feeding Programs for Schools" onerror="this.src='https://via.placeholder.com/480x320/0038b8/ffffff?text=VFI+Project';">
-                    </div>
-                    <div class="project-icon">
-                        <i class="fas fa-utensils"></i>
                     </div>
                     <h2>Feeding Programs for Schools</h2>
                     <p>Nutritious meals for children with special needs</p>
                     <div class="project-features">
-                        <li><i class="fas fa-check-circle"></i> Educational Advancement</li>
+                        <li>Educational Advancement</li>
                     </div>
-                    <a href="https://www.visionforisrael.com/en/project/feeding-programs-for-schools--children-with-special-needs" target="_blank" class="project-link">Learn More & Donate <i class="fas fa-arrow-right"></i></a>
+                    <div class="project-btn-row"><button onclick="openProjectModal('feeding')" class="project-link">View Details <i class="fas fa-info-circle"></i></button></div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-project="atrisk">
                     <div class="project-image">
                         <img src="https://images.prismic.io/vfi-website/7d6e509a-5f4f-4913-a8c6-6b491c8e95bf_da56b815-2ae8-4ab9-9469-6fbda6612668_Education%2B%281%29.jpg?auto=compress,format" alt="Providing for At-Risk Children" onerror="this.src='https://via.placeholder.com/480x320/0038b8/ffffff?text=VFI+Project';">
-                    </div>
-                    <div class="project-icon">
-                        <i class="fas fa-child"></i>
                     </div>
                     <h2>Providing for At-Risk Children</h2>
                     <p>Support and resources for vulnerable youth</p>
                     <div class="project-features">
-                        <li><i class="fas fa-check-circle"></i> Educational Advancement</li>
+                        <li>Educational Advancement</li>
                     </div>
-                    <a href="https://www.visionforisrael.com/en/project/providing-for-at-risk-children" target="_blank" class="project-link">Learn More & Donate <i class="fas fa-arrow-right"></i></a>
+                    <div class="project-btn-row"><button onclick="openProjectModal('atrisk')" class="project-link">View Details <i class="fas fa-info-circle"></i></button></div>
                 </div>
             </div>
         </div>
@@ -298,6 +265,7 @@
                         <li><a href="projects.html">Projects</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="shop.html">Shop</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -329,5 +297,595 @@
             </div>
         </div>
     </footer>
+
+    <!-- Project Modals -->
+    
+    <!-- Shelter From Rocket Attacks Modal -->
+    <div id="shelterModal" class="modal">
+        <button class="modal-close" onclick="document.getElementById('shelterModal').style.display='none'; document.getElementById('shelterModal').classList.remove('active'); document.body.style.overflow='auto';" style="position: fixed; top: 20px; right: 30px; background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.3); font-size: 32px; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10003; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(239,68,68,0.9)'; this.style.borderColor='rgba(239,68,68,1)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.3)';">&times;</button>
+        <div class="modal-content" style="max-width: 900px; background: linear-gradient(145deg, #1a2744 0%, #223554 100%); border-radius: 20px; padding: 40px; max-height: 90vh; overflow-y: auto;">
+            <h2 style="color: #60a5fa; font-size: 2.5em; margin-bottom: 20px;">Shelter From Rocket Attacks</h2>
+            <img src="https://images.prismic.io/vfi-website/0ba12f65-5e95-4d02-b5f0-b0fe28ac50e3_Untitled+design+-+2023-10-22T195756.700.png?auto=compress,format" alt="Shelter From Rocket Attacks" style="width: 100%; border-radius: 15px; margin-bottom: 30px;" onerror="this.style.display='none';">
+            
+            <div style="color: #e5e7eb; line-height: 1.8; margin-bottom: 30px;">
+                <p style="margin-bottom: 20px;">Living in southern Israel means facing the constant threat of rocket attacks. Residents have anywhere from 5 to 20 seconds to reach a protected area when the "Red Alert" warning sounds. For many families living in mobile homes and temporary housing, there is no safe place to run.</p>
+                
+                <p style="margin-bottom: 20px;">These families—including young children, elderly residents, and people with disabilities—are left completely vulnerable during attacks. The psychological trauma of living under constant threat, combined with the real danger to life and limb, creates an unbearable situation for thousands of Israelis.</p>
+                
+                <p style="margin-bottom: 20px;">Vision For Israel has been providing life-saving portable bomb shelters to families and communities throughout southern Israel since 2014. Each shelter is a fortified steel structure that can withstand direct rocket hits and shrapnel, providing complete protection in those critical seconds when every moment counts.</p>
+                
+                <p style="margin-bottom: 20px;">The shelters are installed right next to families' homes, ensuring they can reach safety in time. Many communities, especially kibbutzim near the Gaza border, have received multiple shelters to protect their most vulnerable residents. Following the October 7th attacks, the need for these shelters has become more urgent than ever.</p>
+            </div>
+
+            <div style="background: rgba(96, 165, 250, 0.1); border-left: 4px solid #60a5fa; padding: 20px; margin-bottom: 30px; border-radius: 10px;">
+                <p style="color: #e5e7eb; font-style: italic; margin-bottom: 10px;">"On behalf of Kibbutz Gonen, we would like to thank you for the assistance you gave us and continue to give us. We are grateful for the 20 mobile shelters you gave the kibbutz for the elderly members as well as families with small children."</p>
+                <p style="color: #60a5fa; font-weight: bold; text-align: right;">— Yaal Levi, Head of Gonen Security</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">200+</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Shelters Provided</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">$14,000</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Cost Per Shelter</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">5-20</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Seconds to Safety</div>
+                </div>
+            </div>
+
+            <a href="https://www.visionforisrael.com/en/project/shelter-from-rocket-attacks" target="_blank" style="display: block; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; text-align: center; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(59, 130, 246, 0.3)';">
+                Donate to Save Lives <i class="fas fa-heart"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Holocaust Survivors Modal -->
+    <div id="holocaustModal" class="modal">
+        <button class="modal-close" onclick="document.getElementById('holocaustModal').style.display='none'; document.getElementById('holocaustModal').classList.remove('active'); document.body.style.overflow='auto';" style="position: fixed; top: 20px; right: 30px; background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.3); font-size: 32px; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10003; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(239,68,68,0.9)'; this.style.borderColor='rgba(239,68,68,1)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.3)';">&times;</button>
+        <div class="modal-content" style="max-width: 900px; background: linear-gradient(145deg, #1a2744 0%, #223554 100%); border-radius: 20px; padding: 40px; max-height: 90vh; overflow-y: auto;">
+            <h2 style="color: #60a5fa; font-size: 2.5em; margin-bottom: 20px;">Helping Holocaust Survivors</h2>
+            <img src="https://images.prismic.io/vfi-website/df165a64-a90f-46e9-b6a5-2d08fc046bd1_VFI_May2015_1125.jpg?auto=compress,format" alt="Holocaust Survivors" style="width: 100%; border-radius: 15px; margin-bottom: 30px;" onerror="this.style.display='none';">
+            
+            <div style="color: #e5e7eb; line-height: 1.8; margin-bottom: 30px;">
+                <p style="margin-bottom: 20px;">Israel is home to approximately 165,000 Holocaust survivors, many of whom live in dire poverty. These elderly heroes who survived the darkest chapter in human history now struggle to afford basic necessities like food, medicine, and heating. More than 45% of Holocaust survivors in Israel live below the poverty line.</p>
+                
+                <p style="margin-bottom: 20px;">Many survivors live alone, isolated and forgotten, unable to afford proper healthcare or even a warm meal. The trauma they endured continues to affect their mental and physical health, yet they lack the resources to get the care they desperately need. Some survivors must choose between buying food or purchasing their medications.</p>
+                
+                <p style="margin-bottom: 20px;">Vision For Israel is committed to honoring these heroes by providing them with practical assistance and showing them they are not forgotten. Our Holocaust Survivor program delivers food packages, heating assistance, medical supplies, home repairs, and personal care items directly to survivors throughout Israel.</p>
+                
+                <p style="margin-bottom: 20px;">Beyond material assistance, our volunteers spend time with survivors, listening to their stories and providing the human connection that many desperately need. We believe these precious individuals deserve to live their final years in dignity, comfort, and peace—it's the very least we can do for those who endured so much.</p>
+            </div>
+
+            <div style="background: rgba(96, 165, 250, 0.1); border-left: 4px solid #60a5fa; padding: 20px; margin-bottom: 30px; border-radius: 10px;">
+                <p style="color: #e5e7eb; font-style: italic; margin-bottom: 10px;">"When I received the food package, I cried. Not because I was sad, but because someone remembered me. After everything I survived, I thought I would die alone and forgotten. But you showed me that I still matter."</p>
+                <p style="color: #60a5fa; font-weight: bold; text-align: right;">— Rachel, 89, Auschwitz survivor</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">165,000</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Survivors in Israel</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">45%</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Live in Poverty</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">Monthly</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Food Deliveries</div>
+                </div>
+            </div>
+
+            <a href="https://www.visionforisrael.com/en/project/helping-holocaust-survivors" target="_blank" style="display: block; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; text-align: center; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(59, 130, 246, 0.3)';">
+                Honor Our Heroes <i class="fas fa-heart"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Terror Survivors Modal -->
+    <div id="terrorModal" class="modal">
+        <button class="modal-close" onclick="document.getElementById('terrorModal').style.display='none'; document.getElementById('terrorModal').classList.remove('active'); document.body.style.overflow='auto';" style="position: fixed; top: 20px; right: 30px; background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.3); font-size: 32px; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10003; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(239,68,68,0.9)'; this.style.borderColor='rgba(239,68,68,1)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.3)';">&times;</button>
+        <div class="modal-content" style="max-width: 900px; background: linear-gradient(145deg, #1a2744 0%, #223554 100%); border-radius: 20px; padding: 40px; max-height: 90vh; overflow-y: auto;">
+            <h2 style="color: #60a5fa; font-size: 2.5em; margin-bottom: 20px;">Survivors of Terror</h2>
+            <img src="https://images.prismic.io/vfi-website/dc3ffe87-32e5-476f-82d3-c1cbdb6c2f4f_SurvivorsofTerror.jpg?auto=compress,format" alt="Terror Survivors" style="width: 100%; border-radius: 15px; margin-bottom: 30px;" onerror="this.style.display='none';">
+            
+            <div style="color: #e5e7eb; line-height: 1.8; margin-bottom: 30px;">
+                <p style="margin-bottom: 20px;">The physical wounds from terrorist attacks eventually heal, but the emotional and psychological scars can last a lifetime. Thousands of Israelis have survived terror attacks, many left with permanent disabilities, chronic pain, and deep trauma that affects every aspect of their daily lives.</p>
+                
+                <p style="margin-bottom: 20px;">These survivors often face overwhelming medical bills, loss of income due to disabilities, and the need for extensive rehabilitation and psychological counseling. Many are unable to return to their previous employment and struggle to provide for their families. The emotional toll extends to their entire family, creating ripple effects of trauma and financial hardship.</p>
+                
+                <p style="margin-bottom: 20px;">Vision For Israel stands with terror survivors in their journey toward recovery and healing. We provide financial assistance for medical treatments, rehabilitation services, psychological counseling, and essential daily needs. Our support helps survivors regain their independence and dignity while showing them they are not alone in their struggle.</p>
+                
+                <p style="margin-bottom: 20px;">Following the October 7th attacks, the number of terror survivors has dramatically increased. We are committed to providing long-term support to help these brave individuals rebuild their lives, find hope again, and move forward despite the trauma they have endured.</p>
+            </div>
+
+            <div style="background: rgba(96, 165, 250, 0.1); border-left: 4px solid #60a5fa; padding: 20px; margin-bottom: 30px; border-radius: 10px;">
+                <p style="color: #e5e7eb; font-style: italic; margin-bottom: 10px;">"I lost my leg in a bus bombing, but Vision For Israel helped me find my strength again. They provided not just financial support, but hope. They showed me I could still live a meaningful life."</p>
+                <p style="color: #60a5fa; font-weight: bold; text-align: right;">— David, Jerusalem terror attack survivor</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">1000s</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Survivors Assisted</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">Medical</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">& Psychological Care</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">Long-term</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Support Programs</div>
+                </div>
+            </div>
+
+            <a href="https://www.visionforisrael.com/en/project/survivors-of-terror" target="_blank" style="display: block; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; text-align: center; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(59, 130, 246, 0.3)';">
+                Support Survivors <i class="fas fa-heart"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Pack to School Modal -->
+    <div id="schoolModal" class="modal">
+        <button class="modal-close" onclick="document.getElementById('schoolModal').style.display='none'; document.getElementById('schoolModal').classList.remove('active'); document.body.style.overflow='auto';" style="position: fixed; top: 20px; right: 30px; background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.3); font-size: 32px; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10003; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(239,68,68,0.9)'; this.style.borderColor='rgba(239,68,68,1)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.3)';">&times;</button>
+        <div class="modal-content" style="max-width: 900px; background: linear-gradient(145deg, #1a2744 0%, #223554 100%); border-radius: 20px; padding: 40px; max-height: 90vh; overflow-y: auto;">
+            <h2 style="color: #60a5fa; font-size: 2.5em; margin-bottom: 20px;">Pack to School</h2>
+            <img src="https://images.prismic.io/vfi-website/ZvlrCCMTzAJOBvA-_VFI_Packtoschool_003.jpg?auto=compress,format" alt="Pack to School" style="width: 100%; border-radius: 15px; margin-bottom: 30px;" onerror="this.style.display='none';">
+            
+            <div style="color: #e5e7eb; line-height: 1.8; margin-bottom: 30px;">
+                <p style="margin-bottom: 20px;">Education is the key to breaking the cycle of poverty, but for thousands of Israeli children from underprivileged families, even basic school supplies are beyond reach. These children often start the school year without notebooks, pencils, backpacks, or other essential items that their classmates take for granted.</p>
+                
+                <p style="margin-bottom: 20px;">The embarrassment and shame of not having proper school supplies can deeply affect a child's self-esteem and academic performance. Many children from struggling families fall behind simply because they lack the basic tools needed to learn. Some even drop out of school entirely due to the stigma and frustration.</p>
+                
+                <p style="margin-bottom: 20px;">Vision For Israel's Pack to School program ensures that every child starts the school year with confidence and dignity. Each year, we provide thousands of children with fully-stocked backpacks containing notebooks, pens, pencils, erasers, rulers, and other essential supplies. We also provide school clothes and shoes for children whose families cannot afford them.</p>
+                
+                <p style="margin-bottom: 20px;">The joy on a child's face when receiving their school pack is priceless. These supplies not only enable them to participate fully in their education but also send a powerful message that they matter and that their future is worth investing in. Education today means opportunity tomorrow.</p>
+            </div>
+
+            <div style="background: rgba(96, 165, 250, 0.1); border-left: 4px solid #60a5fa; padding: 20px; margin-bottom: 30px; border-radius: 10px;">
+                <p style="color: #e5e7eb; font-style: italic; margin-bottom: 10px;">"My daughter was so excited to get her new backpack and supplies. She had been worried about starting school without them. Thank you for making her feel special and giving her the tools she needs to succeed."</p>
+                <p style="color: #60a5fa; font-weight: bold; text-align: right;">— Sarah, single mother of three</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">10,000+</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Children Helped Annually</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">$35</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Per Child Impact</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">Every</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">School Year</div>
+                </div>
+            </div>
+
+            <a href="https://www.visionforisrael.com/en/project/pack-to-school" target="_blank" style="display: block; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; text-align: center; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(59, 130, 246, 0.3)';">
+                Empower a Child <i class="fas fa-heart"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Lone Soldiers Modal -->
+    <div id="soldiersModal" class="modal">
+        <button class="modal-close" onclick="document.getElementById('soldiersModal').style.display='none'; document.getElementById('soldiersModal').classList.remove('active'); document.body.style.overflow='auto';" style="position: fixed; top: 20px; right: 30px; background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.3); font-size: 32px; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10003; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(239,68,68,0.9)'; this.style.borderColor='rgba(239,68,68,1)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.3)';">&times;</button>
+        <div class="modal-content" style="max-width: 900px; background: linear-gradient(145deg, #1a2744 0%, #223554 100%); border-radius: 20px; padding: 40px; max-height: 90vh; overflow-y: auto;">
+            <h2 style="color: #60a5fa; font-size: 2.5em; margin-bottom: 20px;">Helping Lone Soldiers</h2>
+            <img src="https://images.prismic.io/vfi-website/52a78668-a9a5-4577-b33a-1ab1c6cf5e7e_Lone+Soldier.jpg?auto=compress,format" alt="Lone Soldiers" style="width: 100%; border-radius: 15px; margin-bottom: 30px;" onerror="this.style.display='none';">
+            
+            <div style="color: #e5e7eb; line-height: 1.8; margin-bottom: 30px;">
+                <p style="margin-bottom: 20px;">Lone soldiers are young men and women who serve in the Israel Defense Forces without immediate family support in Israel. They come from all over the world, leaving behind everything familiar to defend the Jewish homeland. While Israeli soldiers can go home for Shabbat dinners and holidays, lone soldiers often have nowhere to go and no one to turn to.</p>
+                
+                <p style="margin-bottom: 20px;">These brave young people face unique challenges beyond the normal hardships of military service. They must navigate army bureaucracy in a foreign language, find housing during leave, and cover expenses that Israeli families typically provide. Many struggle financially, as military stipends barely cover basic needs. They miss important family moments and holidays, often spending them alone.</p>
+                
+                <p style="margin-bottom: 20px;">Vision For Israel provides comprehensive support to lone soldiers throughout their service. We offer financial assistance for rent, food, and essential expenses. We host holiday meals and Shabbat dinners, creating a family atmosphere for these young heroes. We provide care packages, winter clothing, and practical items that make military life more bearable.</p>
+                
+                <p style="margin-bottom: 20px;">Most importantly, we show these soldiers that they're not alone. Our volunteer families "adopt" lone soldiers, inviting them for meals and treating them like their own children. We help them navigate Israeli bureaucracy and connect them with resources they need. These young people have sacrificed everything to serve Israel—we're honored to stand with them.</p>
+            </div>
+
+            <div style="background: rgba(96, 165, 250, 0.1); border-left: 4px solid #60a5fa; padding: 20px; margin-bottom: 30px; border-radius: 10px;">
+                <p style="color: #e5e7eb; font-style: italic; margin-bottom: 10px;">"Leaving America to join the IDF was the hardest decision of my life. Vision For Israel became my family here. They made sure I had food for Shabbat, a place to go for holidays, and people who actually cared about me. I don't know what I would have done without them."</p>
+                <p style="color: #60a5fa; font-weight: bold; text-align: right;">— Josh, 21, Lone Soldier from New York</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">6,000+</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Lone Soldiers in IDF</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">70+</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Countries Represented</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">Year-round</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Support Services</div>
+                </div>
+            </div>
+
+            <a href="https://www.visionforisrael.com/en/project/helping-lone-soldiers" target="_blank" style="display: block; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; text-align: center; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(59, 130, 246, 0.3)';">
+                Support Our Soldiers <i class="fas fa-heart"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Aid for Families Modal -->
+    <div id="familiesModal" class="modal">
+        <button class="modal-close" onclick="document.getElementById('familiesModal').style.display='none'; document.getElementById('familiesModal').classList.remove('active'); document.body.style.overflow='auto';" style="position: fixed; top: 20px; right: 30px; background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.3); font-size: 32px; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10003; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(239,68,68,0.9)'; this.style.borderColor='rgba(239,68,68,1)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.3)';">&times;</button>
+        <div class="modal-content" style="max-width: 900px; background: linear-gradient(145deg, #1a2744 0%, #223554 100%); border-radius: 20px; padding: 40px; max-height: 90vh; overflow-y: auto;">
+            <h2 style="color: #60a5fa; font-size: 2.5em; margin-bottom: 20px;">Aid for Families in Need</h2>
+            <img src="https://images.prismic.io/vfi-website/2fb61fc2-1d47-4056-b53b-74b52bfb6e7d_Evacuated+Families_010.JPG?auto=compress,format" alt="Aid for Families" style="width: 100%; border-radius: 15px; margin-bottom: 30px;" onerror="this.style.display='none';">
+            
+            <div style="color: #e5e7eb; line-height: 1.8; margin-bottom: 30px;">
+                <p style="margin-bottom: 20px;">Thousands of Israeli families struggle daily to provide basic necessities for their children. Single parents, families with disabled members, recent immigrants, and those affected by war and terrorism often find themselves in desperate financial situations. The rising cost of living in Israel makes it even harder for these families to make ends meet.</p>
+                
+                <p style="margin-bottom: 20px;">Many of these families must choose between paying rent or buying food, between heating their homes or purchasing medicine. Children go to bed hungry, wear worn-out clothes and shoes, and miss out on educational opportunities that could help break the cycle of poverty. The stress of poverty affects every aspect of family life, from physical health to emotional wellbeing.</p>
+                
+                <p style="margin-bottom: 20px;">Vision For Israel provides comprehensive assistance to struggling families throughout Israel. We deliver monthly food packages containing essential staples and fresh produce. We provide financial assistance for rent, utilities, and medical expenses. We supply clothing, shoes, and household items. We help cover costs for children's education, including tutoring and extracurricular activities.</p>
+                
+                <p style="margin-bottom: 20px;">Following October 7th, thousands of families from southern communities were evacuated to hotels across Israel, losing their homes, possessions, and livelihoods. We've dramatically increased our support, providing these families with food, clothing, toiletries, toys for traumatized children, and financial assistance to help them rebuild their lives. We're committed to walking with these families through their darkest times and helping them find hope and stability again.</p>
+            </div>
+
+            <div style="background: rgba(96, 165, 250, 0.1); border-left: 4px solid #60a5fa; padding: 20px; margin-bottom: 30px; border-radius: 10px;">
+                <p style="color: #e5e7eb; font-style: italic; margin-bottom: 10px;">"I'm a widow with four children, and I was at the end of my rope. We had no food, and I didn't know how I would feed my kids. When Vision For Israel brought us groceries and helped with our rent, I cried with relief. You saved my family."</p>
+                <p style="color: #60a5fa; font-weight: bold; text-align: right;">— Miriam, single mother in Jerusalem</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">5,000+</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Families Assisted</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">Monthly</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Food Packages</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">Ongoing</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Emergency Support</div>
+                </div>
+            </div>
+
+            <a href="https://www.visionforisrael.com/en/project/aid-for-families-in-need" target="_blank" style="display: block; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; text-align: center; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(59, 130, 246, 0.3)';">
+                Help Families Thrive <i class="fas fa-heart"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Millennium Center Modal -->
+    <div id="millenniumModal" class="modal">
+        <button class="modal-close" onclick="document.getElementById('millenniumModal').style.display='none'; document.getElementById('millenniumModal').classList.remove('active'); document.body.style.overflow='auto';" style="position: fixed; top: 20px; right: 30px; background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.3); font-size: 32px; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10003; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(239,68,68,0.9)'; this.style.borderColor='rgba(239,68,68,1)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.3)';">&times;</button>
+        <div class="modal-content" style="max-width: 900px; background: linear-gradient(145deg, #1a2744 0%, #223554 100%); border-radius: 20px; padding: 40px; max-height: 90vh; overflow-y: auto;">
+            <h2 style="color: #60a5fa; font-size: 2.5em; margin-bottom: 20px;">The Millennium Center—Center of Hope</h2>
+            <img src="https://images.prismic.io/vfi-website/2b3b57a1-3e32-4619-ad71-c5aa41a566ed_MC_night.jpg?auto=compress,format" alt="Millennium Center" style="width: 100%; border-radius: 15px; margin-bottom: 30px;" onerror="this.style.display='none';">
+            
+            <div style="color: #e5e7eb; line-height: 1.8; margin-bottom: 30px;">
+                <p style="margin-bottom: 20px;">The Millennium Center stands as a beacon of hope in one of Israel's most challenged neighborhoods. Located in south Tel Aviv, this 40,000 square foot facility serves thousands of underprivileged children, at-risk youth, new immigrants, and struggling families each year. It's a place where lives are transformed, hope is restored, and futures are changed.</p>
+                
+                <p style="margin-bottom: 20px;">The center provides comprehensive services that address the whole person. Educational programs include after-school tutoring, computer training, and vocational courses that equip people with marketable skills. Social services connect families with resources for housing, employment, healthcare, and legal assistance. Counseling services help individuals heal from trauma and addiction.</p>
+                
+                <p style="margin-bottom: 20px;">For children and youth, the Millennium Center offers a safe haven from the challenges of their neighborhoods. Sports programs, arts classes, and summer camps provide positive activities that keep kids off the streets. Mentorship programs connect young people with caring adults who believe in their potential. Educational support helps students stay in school and pursue higher education.</p>
+                
+                <p style="margin-bottom: 20px;">The center also serves as a gathering place for the community, hosting holiday celebrations, cultural events, and support groups that combat isolation and build connections. During times of crisis, such as the current war, the center becomes an emergency distribution hub, providing food, supplies, and comfort to thousands. The Millennium Center doesn't just provide services—it offers hope, dignity, and the promise of a better future.</p>
+            </div>
+
+            <div style="background: rgba(96, 165, 250, 0.1); border-left: 4px solid #60a5fa; padding: 20px; margin-bottom: 30px; border-radius: 10px;">
+                <p style="color: #e5e7eb; font-style: italic; margin-bottom: 10px;">"The Millennium Center changed my life. I came to Israel alone, with nothing. They helped me learn Hebrew, find a job, and become part of a community. Now I'm helping others the way they helped me."</p>
+                <p style="color: #60a5fa; font-weight: bold; text-align: right;">— Elena, immigrant from Ukraine</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">40,000</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Square Feet Facility</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">1000s</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Served Annually</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">Multiple</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Programs & Services</div>
+                </div>
+            </div>
+
+            <a href="https://www.visionforisrael.com/en/project/the-millennium-centercenter-of-hope" target="_blank" style="display: block; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; text-align: center; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(59, 130, 246, 0.3)';">
+                Support This Vision <i class="fas fa-heart"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Ambulances Modal -->
+    <div id="ambulancesModal" class="modal">
+        <button class="modal-close" onclick="document.getElementById('ambulancesModal').style.display='none'; document.getElementById('ambulancesModal').classList.remove('active'); document.body.style.overflow='auto';" style="position: fixed; top: 20px; right: 30px; background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.3); font-size: 32px; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10003; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(239,68,68,0.9)'; this.style.borderColor='rgba(239,68,68,1)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.3)';">&times;</button>
+        <div class="modal-content" style="max-width: 900px; background: linear-gradient(145deg, #1a2744 0%, #223554 100%); border-radius: 20px; padding: 40px; max-height: 90vh; overflow-y: auto;">
+            <h2 style="color: #60a5fa; font-size: 2.5em; margin-bottom: 20px;">Ambulances, Medi-cycles, & Bloodmobiles</h2>
+            <img src="https://images.prismic.io/vfi-website/5db7c365-f9da-4157-901f-e7a44556621d_0X3A8973.jpg?auto=compress,format" alt="Ambulances" style="width: 100%; border-radius: 15px; margin-bottom: 30px;" onerror="this.style.display='none';">
+            
+            <div style="color: #e5e7eb; line-height: 1.8; margin-bottom: 30px;">
+                <p style="margin-bottom: 20px;">In emergencies, every second counts. Israel's volunteer emergency medical services (EMS) provide life-saving care and rapid response to medical emergencies, terrorist attacks, and disasters. These brave volunteers work alongside professional emergency services, often being first on the scene in critical situations. However, they desperately need proper equipment to do their work effectively.</p>
+                
+                <p style="margin-bottom: 20px;">Vision For Israel has donated dozens of fully-equipped ambulances to Magen David Adom (Israel's Red Cross) and other emergency services throughout Israel. Each ambulance is outfitted with state-of-the-art medical equipment, life-support systems, and communication devices. These mobile emergency rooms have saved countless lives by providing critical care during transport to hospitals.</p>
+                
+                <p style="margin-bottom: 20px;">We've also provided medi-cycles—motorcycles equipped with advanced medical gear that can navigate through traffic and reach victims faster than ambulances. In crowded urban areas or during terror attacks, medi-cycles are often the difference between life and death, as trained medics can arrive within minutes and begin treatment immediately.</p>
+                
+                <p style="margin-bottom: 20px;">Our bloodmobiles travel throughout Israel, especially to remote areas, making it convenient for people to donate blood. This ensures a steady supply of blood for emergencies, surgeries, and treatments. During wartime, the demand for blood increases dramatically, and our bloodmobiles help meet this critical need. Each vehicle we provide becomes a lifeline of hope for the entire nation.</p>
+            </div>
+
+            <div style="background: rgba(96, 165, 250, 0.1); border-left: 4px solid #60a5fa; padding: 20px; margin-bottom: 30px; border-radius: 10px;">
+                <p style="color: #e5e7eb; font-style: italic; margin-bottom: 10px;">"The ambulance VFI provided to our station has already saved 47 lives in its first year. Without it, we couldn't have reached these people in time. You didn't just give us a vehicle—you gave us the ability to save lives every single day."</p>
+                <p style="color: #60a5fa; font-weight: bold; text-align: right;">— Yossi, Magen David Adom volunteer paramedic</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">Dozens</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Vehicles Donated</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">1000s</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Lives Saved</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">24/7</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Emergency Response</div>
+                </div>
+            </div>
+
+            <a href="https://www.visionforisrael.com/en/project/ambulances-medi-cycles--bloodmobiles-lifelines-of-hope" target="_blank" style="display: block; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; text-align: center; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(59, 130, 246, 0.3)';">
+                Save Lives Today <i class="fas fa-heart"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- New Immigrants Modal -->
+    <div id="immigrantsModal" class="modal">
+        <button class="modal-close" onclick="document.getElementById('immigrantsModal').style.display='none'; document.getElementById('immigrantsModal').classList.remove('active'); document.body.style.overflow='auto';" style="position: fixed; top: 20px; right: 30px; background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.3); font-size: 32px; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10003; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(239,68,68,0.9)'; this.style.borderColor='rgba(239,68,68,1)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.3)';">&times;</button>
+        <div class="modal-content" style="max-width: 900px; background: linear-gradient(145deg, #1a2744 0%, #223554 100%); border-radius: 20px; padding: 40px; max-height: 90vh; overflow-y: auto;">
+            <h2 style="color: #60a5fa; font-size: 2.5em; margin-bottom: 20px;">Assisting New Immigrants</h2>
+            <img src="https://images.prismic.io/vfi-website/ff23a513-9869-426a-9f37-c0b5ea98fe8e_VFI_Fans009.jpg?auto=compress,format" alt="New Immigrants" style="width: 100%; border-radius: 15px; margin-bottom: 30px;" onerror="this.style.display='none';">
+            
+            <div style="color: #e5e7eb; line-height: 1.8; margin-bottom: 30px;">
+                <p style="margin-bottom: 20px;">Making aliyah (immigrating to Israel) is one of the most significant decisions a Jewish person can make. New immigrants arrive with dreams of building a life in the Jewish homeland, but the reality is often overwhelming. They face language barriers, cultural differences, unemployment, housing challenges, and the high cost of living in Israel. Many arrive with little more than a suitcase and hope.</p>
+                
+                <p style="margin-bottom: 20px;">The first months and years are especially difficult. While government absorption centers provide basic temporary housing, immigrants must quickly find permanent housing, employment, and navigate complex Israeli bureaucracy—all in a language they're still learning. Many professionals find their credentials aren't recognized and must start over in new careers. Families struggle to help their children adjust to new schools and make friends.</p>
+                
+                <p style="margin-bottom: 20px;">Vision For Israel walks alongside new immigrants from their first days in Israel. We provide essential household items, furniture, and appliances to help them set up their new homes. We offer Hebrew tutoring and employment assistance to help them integrate into Israeli society. We provide food packages and financial aid to bridge the gap until they can support themselves.</p>
+                
+                <p style="margin-bottom: 20px;">Beyond material assistance, we help immigrants navigate Israeli systems, connect them with community resources, and provide the emotional support they need during this challenging transition. We celebrate their courage in choosing to build their lives in Israel and do everything we can to help them succeed. Every new immigrant strengthens Israel, and we're honored to welcome them home.</p>
+            </div>
+
+            <div style="background: rgba(96, 165, 250, 0.1); border-left: 4px solid #60a5fa; padding: 20px; margin-bottom: 30px; border-radius: 10px;">
+                <p style="color: #e5e7eb; font-style: italic; margin-bottom: 10px;">"When we arrived from France with our three children, we had nothing. Vision For Israel furnished our entire apartment and helped my husband find work. They made us feel welcome when we felt so lost and alone in a new country."</p>
+                <p style="color: #60a5fa; font-weight: bold; text-align: right;">— Sophie, new immigrant from France</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">25,000+</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Annual Immigrants</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">100+</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Countries of Origin</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">Complete</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Integration Support</div>
+                </div>
+            </div>
+
+            <a href="https://www.visionforisrael.com/en/project/assisting-new-immigrants" target="_blank" style="display: block; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; text-align: center; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(59, 130, 246, 0.3)';">
+                Welcome Them Home <i class="fas fa-heart"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- First Response Modal -->
+    <div id="firstresponseModal" class="modal">
+        <button class="modal-close" onclick="document.getElementById('firstresponseModal').style.display='none'; document.getElementById('firstresponseModal').classList.remove('active'); document.body.style.overflow='auto';" style="position: fixed; top: 20px; right: 30px; background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.3); font-size: 32px; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10003; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(239,68,68,0.9)'; this.style.borderColor='rgba(239,68,68,1)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.3)';">&times;</button>
+        <div class="modal-content" style="max-width: 900px; background: linear-gradient(145deg, #1a2744 0%, #223554 100%); border-radius: 20px; padding: 40px; max-height: 90vh; overflow-y: auto;">
+            <h2 style="color: #60a5fa; font-size: 2.5em; margin-bottom: 20px;">First Response & Disaster Relief</h2>
+            <img src="https://images.prismic.io/vfi-website/3764ddac-d570-4263-89f4-87e8307cd81a_DSCF1283.JPG?auto=compress,format" alt="First Response" style="width: 100%; border-radius: 15px; margin-bottom: 30px;" onerror="this.style.display='none';">
+            
+            <div style="color: #e5e7eb; line-height: 1.8; margin-bottom: 30px;">
+                <p style="margin-bottom: 20px;">When disaster strikes, Vision For Israel is there. Whether responding to terrorist attacks, rocket barrages, military operations, or natural disasters, we provide immediate, comprehensive assistance to affected communities. Our first response teams work around the clock to deliver emergency supplies, comfort, and hope to those in crisis.</p>
+                
+                <p style="margin-bottom: 20px;">In the aftermath of October 7th, 2023, we mobilized an unprecedented emergency response. We provided food, water, clothing, and essential supplies to thousands of evacuated families forced from their homes. We delivered medical equipment, protective gear, and supplies to soldiers on the front lines. We supported first responders who were working beyond exhaustion to save lives and provide security.</p>
+                
+                <p style="margin-bottom: 20px;">Our disaster relief efforts extend beyond immediate needs. We help families rebuild their homes and lives, replace possessions lost in attacks or evacuations, and access psychological counseling to process trauma. We support communities in returning to normalcy by repairing damaged infrastructure, restoring schools, and rebuilding what was destroyed.</p>
+                
+                <p style="margin-bottom: 20px;">We maintain emergency stockpiles of essential supplies and have established networks throughout Israel that allow us to respond quickly wherever help is needed. Our teams include volunteers, professional social workers, and mental health counselors who provide comprehensive care. When Israel faces crisis, Vision For Israel stands ready to respond with compassion, efficiency, and unwavering support.</p>
+            </div>
+
+            <div style="background: rgba(96, 165, 250, 0.1); border-left: 4px solid #60a5fa; padding: 20px; margin-bottom: 30px; border-radius: 10px;">
+                <p style="color: #e5e7eb; font-style: italic; margin-bottom: 10px;">"When we were evacuated on October 7th, we left with nothing but the clothes on our backs. Vision For Israel met us at the hotel with everything we needed—food, clothes, toys for the kids, toiletries. They showed up when we needed help most."</p>
+                <p style="color: #60a5fa; font-weight: bold; text-align: right;">— Tal, evacuated from kibbutz near Gaza</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">Immediate</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Emergency Response</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">Nationwide</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Coverage Network</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">Long-term</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Rebuilding Support</div>
+                </div>
+            </div>
+
+            <a href="https://www.visionforisrael.com/en/project/first-response--disaster-relief" target="_blank" style="display: block; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; text-align: center; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(59, 130, 246, 0.3)';">
+                Support Emergency Relief <i class="fas fa-heart"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Renovations Fund Modal -->
+    <div id="renovationsModal" class="modal">
+        <button class="modal-close" onclick="document.getElementById('renovationsModal').style.display='none'; document.getElementById('renovationsModal').classList.remove('active'); document.body.style.overflow='auto';" style="position: fixed; top: 20px; right: 30px; background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.3); font-size: 32px; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10003; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(239,68,68,0.9)'; this.style.borderColor='rgba(239,68,68,1)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.3)';">&times;</button>
+        <div class="modal-content" style="max-width: 900px; background: linear-gradient(145deg, #1a2744 0%, #223554 100%); border-radius: 20px; padding: 40px; max-height: 90vh; overflow-y: auto;">
+            <h2 style="color: #60a5fa; font-size: 2.5em; margin-bottom: 20px;">Renovations Fund—Rebuilding Broken Lives</h2>
+            <img src="https://images.prismic.io/vfi-website/e11c0a64-d099-4340-a2b0-cd6312ff3a57_LauraSiegal_010.jpg?auto=compress,format" alt="Renovations Fund" style="width: 100%; border-radius: 15px; margin-bottom: 30px;" onerror="this.style.display='none';">
+            
+            <div style="color: #e5e7eb; line-height: 1.8; margin-bottom: 30px;">
+                <p style="margin-bottom: 20px;">A home should be a place of safety, comfort, and dignity. But for many struggling families in Israel, home means living in deteriorating, unsafe conditions—leaking roofs, broken windows, malfunctioning plumbing, dangerous electrical wiring, and walls covered in mold. These conditions threaten health, safety, and basic human dignity, yet families lack the resources to make repairs.</p>
+                
+                <p style="margin-bottom: 20px;">Elderly Holocaust survivors live in apartments with crumbling infrastructure. Single mothers raise children in homes with no heat in winter. Disabled individuals struggle in houses not equipped to meet their mobility needs. The stress of living in such conditions compounds the hardships these families already face, creating a cycle of despair that's difficult to escape.</p>
+                
+                <p style="margin-bottom: 20px;">Vision For Israel's Renovations Fund transforms lives by transforming homes. We repair roofs, replace broken windows, fix plumbing and electrical systems, install heating and cooling units, remove mold, and make homes accessible for people with disabilities. We renovate kitchens and bathrooms, repair damaged walls and floors, and provide new furniture and appliances when needed.</p>
+                
+                <p style="margin-bottom: 20px;">More than just physical repairs, these renovations restore hope and dignity. Families can once again feel proud of their homes. Children can invite friends over without embarrassment. Elderly residents can live safely and comfortably. Each renovation project rebuilds not just a house, but also the lives and spirits of those who live there. We believe everyone deserves a home that provides safety, comfort, and hope for a better tomorrow.</p>
+            </div>
+
+            <div style="background: rgba(96, 165, 250, 0.1); border-left: 4px solid #60a5fa; padding: 20px; margin-bottom: 30px; border-radius: 10px;">
+                <p style="color: #e5e7eb; font-style: italic; margin-bottom: 10px;">"I'm 85 years old and I was living with a leaking roof and no heat. I thought I would die in those conditions. Vision For Israel fixed everything. Now my apartment is warm, dry, and safe. I can live my final years with dignity. Thank you for giving me back my home."</p>
+                <p style="color: #60a5fa; font-weight: bold; text-align: right;">— Moshe, Holocaust survivor in Jerusalem</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">100s</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Homes Renovated</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">Complete</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Renovation Services</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">Dignity</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Restored</div>
+                </div>
+            </div>
+
+            <a href="https://www.visionforisrael.com/en/project/renovations-fundrebuilding-broken-lives" target="_blank" style="display: block; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; text-align: center; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(59, 130, 246, 0.3)';">
+                Rebuild Lives <i class="fas fa-heart"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Feeding Programs Modal -->
+    <div id="feedingModal" class="modal">
+        <button class="modal-close" onclick="document.getElementById('feedingModal').style.display='none'; document.getElementById('feedingModal').classList.remove('active'); document.body.style.overflow='auto';" style="position: fixed; top: 20px; right: 30px; background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.3); font-size: 32px; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10003; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(239,68,68,0.9)'; this.style.borderColor='rgba(239,68,68,1)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.3)';">&times;</button>
+        <div class="modal-content" style="max-width: 900px; background: linear-gradient(145deg, #1a2744 0%, #223554 100%); border-radius: 20px; padding: 40px; max-height: 90vh; overflow-y: auto;">
+            <h2 style="color: #60a5fa; font-size: 2.5em; margin-bottom: 20px;">Feeding Programs for Schools</h2>
+            <img src="https://images.prismic.io/vfi-website/bc4de475-138a-41c2-880e-62b63305a9d6_IMG_0180.jpg?auto=compress,format" alt="Feeding Programs" style="width: 100%; border-radius: 15px; margin-bottom: 30px;" onerror="this.style.display='none';">
+            
+            <div style="color: #e5e7eb; line-height: 1.8; margin-bottom: 30px;">
+                <p style="margin-bottom: 20px;">Proper nutrition is essential for children's development, learning, and well-being. Yet thousands of Israeli children attend school hungry every day. Children from low-income families often skip breakfast and arrive at school unable to concentrate or participate fully. Children with special needs require specialized nutrition that their families can't always afford. No child should have to learn on an empty stomach.</p>
+                
+                <p style="margin-bottom: 20px;">Vision For Israel provides comprehensive feeding programs for schools serving disadvantaged communities and children with special needs. We deliver daily breakfast and lunch programs that ensure every child receives nutritious, balanced meals. Our programs accommodate dietary restrictions and special nutritional needs, working with nutritionists to provide optimal nutrition for growing children.</p>
+                
+                <p style="margin-bottom: 20px;">For schools serving children with autism, developmental disabilities, and other special needs, we provide specialized feeding programs tailored to each child's unique requirements. These children often require specific foods, textures, and feeding schedules. Our programs work closely with therapists and parents to ensure each child receives proper nutrition that supports their development and health.</p>
+                
+                <p style="margin-bottom: 20px;">The impact goes far beyond full bellies. Teachers report dramatic improvements in children's ability to focus, participate, and learn when they're properly nourished. Children who once struggled academically begin to thrive. Behavioral problems decrease. Self-esteem improves. By providing consistent, nutritious meals, we're giving these children the fuel they need to reach their full potential and succeed in school and life.</p>
+            </div>
+
+            <div style="background: rgba(96, 165, 250, 0.1); border-left: 4px solid #60a5fa; padding: 20px; margin-bottom: 30px; border-radius: 10px;">
+                <p style="color: #e5e7eb; font-style: italic; margin-bottom: 10px;">"Before VFI started providing meals at our school, many children came hungry and couldn't focus on learning. Now they eat nutritious breakfast and lunch every day. The difference is remarkable—grades are up, behavior problems are down, and the children are happy and engaged. You've changed their lives."</p>
+                <p style="color: #60a5fa; font-weight: bold; text-align: right;">— Rachel, principal of special needs school in Tel Aviv</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">1000s</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Children Fed Daily</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">Multiple</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Schools Supported</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">Specialized</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Nutrition Programs</div>
+                </div>
+            </div>
+
+            <a href="https://www.visionforisrael.com/en/project/feeding-programs-for-schools--children-with-special-needs" target="_blank" style="display: block; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; text-align: center; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(59, 130, 246, 0.3)';">
+                Feed a Child <i class="fas fa-heart"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- At-Risk Children Modal -->
+    <div id="atriskModal" class="modal">
+        <button class="modal-close" onclick="document.getElementById('atriskModal').style.display='none'; document.getElementById('atriskModal').classList.remove('active'); document.body.style.overflow='auto';" style="position: fixed; top: 20px; right: 30px; background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.3); font-size: 32px; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10003; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(239,68,68,0.9)'; this.style.borderColor='rgba(239,68,68,1)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.3)';">&times;</button>
+        <div class="modal-content" style="max-width: 900px; background: linear-gradient(145deg, #1a2744 0%, #223554 100%); border-radius: 20px; padding: 40px; max-height: 90vh; overflow-y: auto;">
+            <h2 style="color: #60a5fa; font-size: 2.5em; margin-bottom: 20px;">Providing for At-Risk Children</h2>
+            <img src="https://images.prismic.io/vfi-website/7d6e509a-5f4f-4913-a8c6-6b491c8e95bf_da56b815-2ae8-4ab9-9469-6fbda6612668_Education%2B%281%29.jpg?auto=compress,format" alt="At-Risk Children" style="width: 100%; border-radius: 15px; margin-bottom: 30px;" onerror="this.style.display='none';">
+            
+            <div style="color: #e5e7eb; line-height: 1.8; margin-bottom: 30px;">
+                <p style="margin-bottom: 20px;">At-risk children in Israel face overwhelming challenges that threaten their future—poverty, family dysfunction, abuse, neglect, violence in their communities, and lack of positive role models. Without intervention, these children are at high risk of dropping out of school, falling into substance abuse, joining criminal networks, or remaining trapped in cycles of poverty. They desperately need support, guidance, and opportunities to break free from these destructive patterns.</p>
+                
+                <p style="margin-bottom: 20px;">Many at-risk youth come from broken homes where parents struggle with addiction, mental illness, or simply lack the resources to provide adequate care. Some have witnessed domestic violence or experienced trauma from terrorism. Others are children of new immigrants struggling to adapt, or Ethiopian-Israeli youth facing discrimination. These children often feel invisible, worthless, and without hope for their futures.</p>
+                
+                <p style="margin-bottom: 20px;">Vision For Israel provides comprehensive programs that address the whole child—physical, emotional, educational, and spiritual needs. We offer after-school programs that provide safe spaces, nutritious meals, homework help, and enrichment activities. We provide mentorship programs that connect at-risk youth with caring adults who invest in their lives and believe in their potential.</p>
+                
+                <p style="margin-bottom: 20px;">We support therapeutic programs that help children heal from trauma, develop life skills, and build self-esteem. We provide vocational training that gives older youth marketable skills and pathways to employment. We offer summer camps, sports programs, and cultural activities that expose these children to positive experiences they would never otherwise have. Most importantly, we show these precious children that they matter, that someone cares, and that their lives have value and purpose. We invest in their future because we believe every child deserves a chance to succeed.</p>
+            </div>
+
+            <div style="background: rgba(96, 165, 250, 0.1); border-left: 4px solid #60a5fa; padding: 20px; margin-bottom: 30px; border-radius: 10px;">
+                <p style="color: #e5e7eb; font-style: italic; margin-bottom: 10px;">"I was heading down a bad path—skipping school, hanging with the wrong crowd, getting into trouble. The youth center changed everything. They gave me a mentor who actually cared about me, helped me get back in school, and showed me I could have a different future. Now I'm in university studying to be a social worker so I can help kids like me."</p>
+                <p style="color: #60a5fa; font-weight: bold; text-align: right;">— Daniel, 19, former at-risk youth</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">1000s</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Youth Served</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">Holistic</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Support Programs</div>
+                </div>
+                <div style="background: rgba(96, 165, 250, 0.15); padding: 20px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 2.5em; color: #60a5fa; font-weight: bold;">Breaking</div>
+                    <div style="color: #e5e7eb; margin-top: 10px;">Poverty Cycles</div>
+                </div>
+            </div>
+
+            <a href="https://www.visionforisrael.com/en/project/providing-for-at-risk-children" target="_blank" style="display: block; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; text-align: center; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(59, 130, 246, 0.3)';">
+                Transform a Life <i class="fas fa-heart"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function openProjectModal(projectId) {
+            const modal = document.getElementById(projectId + 'Modal');
+            if (modal) {
+                modal.classList.add('active');
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeProjectModal(projectId) {
+            const modal = document.getElementById(projectId + 'Modal');
+            if (modal) {
+                modal.classList.remove('active');
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
 </body>
 </html>

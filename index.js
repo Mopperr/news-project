@@ -278,49 +278,84 @@ async function fetchJerusalemWeather() {
     }
 }
 
+// Helper function to escape HTML
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 // Load Worship Music Videos
 async function loadWorshipMusic() {
-    // Barry & Batya Segal - Verified videos from their Sh'ma Yisrael album playlist
-    const worshipVideos = [
-        { id: 'sdNJ6djL1c4', title: 'You Are Holy - Barry & Batya Segal' },
-        { id: 'd2ILnGedg2g', title: 'Kadosh (Holy) - Barry & Batya Segal' },
-        { id: 'HeTDyo2FwKk', title: 'Baruch Haba (Blessed Is He) - Barry & Batya Segal' },
-        { id: 'klDrARxA8io', title: 'Hallelu Et Adonai - Barry & Batya Segal' },
-        { id: '9yDt8B170N4', title: 'Shalom Jerusalem - Barry & Batya Segal' },
-        { id: 'iTbXjRZANDo', title: 'Hodu L\'adonai - Barry & Batya Segal' }
-    ];
-    
     const worshipGrid = document.getElementById('worshipGrid');
     if (!worshipGrid) return;
     
-    worshipGrid.innerHTML = '';
-    
-    worshipVideos.forEach(video => {
-        const card = document.createElement('div');
-        card.className = 'worship-card';
+    try {
+        // Load Barry & Batya Segal music catalog
+        const response = await fetch('barry_batya_music_catalog.json');
         
-        // Use sddefault for videos that don't have maxresdefault
-        const thumbnailQuality = (video.id === 'HeTDyo2FwKk') ? 'sddefault' : 'maxresdefault';
-        const fallbackQuality = 'hqdefault';
+        if (!response.ok) {
+            throw new Error('Could not load music catalog');
+        }
         
-        card.innerHTML = `
-            <div class="worship-thumbnail">
-                <img src="https://img.youtube.com/vi/${video.id}/${thumbnailQuality}.jpg" 
-                     alt="${video.title}"
-                     onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${video.id}/${fallbackQuality}.jpg'">
-                <div class="play-button">
-                    <i class="fas fa-play"></i>
+        const catalog = await response.json();
+        const videos = catalog.videos || [];
+        
+        // Display first 12 videos
+        const displayVideos = videos.slice(0, 12);
+        
+        worshipGrid.innerHTML = displayVideos.map(video => {
+            const safeTitle = escapeHtml(video.title);
+            const pubDate = new Date(video.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+            
+            return `
+                <div class="worship-card" onclick="openVideoModal('${video.videoId}', '${escapeHtml(video.title).replace(/'/g, "&#39;")}')">
+                    <div class="worship-thumbnail">
+                        <img src="${video.thumbnails.high.url}" 
+                             alt="${safeTitle}"
+                             onerror="this.src='${video.thumbnails.medium.url}'">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="worship-info">
+                        <h3 class="worship-title">${safeTitle}</h3>
+                        <p class="worship-date">${pubDate}</p>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        
+        console.log('Loaded Barry & Batya Segal worship videos:', displayVideos.length);
+        
+    } catch (error) {
+        console.error('Error loading worship videos:', error);
+        // Fallback to hardcoded videos if catalog fails
+        const fallbackVideos = [
+            { id: 'sdNJ6djL1c4', title: 'You Are Holy - Barry & Batya Segal' },
+            { id: 'd2ILnGedg2g', title: 'Kadosh (Holy) - Barry & Batya Segal' },
+            { id: 'HeTDyo2FwKk', title: 'Baruch Haba (Blessed Is He) - Barry & Batya Segal' },
+            { id: 'klDrARxA8io', title: 'Hallelu Et Adonai - Barry & Batya Segal' },
+            { id: '9yDt8B170N4', title: 'Shalom Jerusalem - Barry & Batya Segal' },
+            { id: 'iTbXjRZANDo', title: 'Hodu L\'adonai - Barry & Batya Segal' }
+        ];
+        
+        worshipGrid.innerHTML = fallbackVideos.map(video => `
+            <div class="worship-card" onclick="openVideoModal('${video.id}', '${video.title}')">
+                <div class="worship-thumbnail">
+                    <img src="https://img.youtube.com/vi/${video.id}/maxresdefault.jpg" 
+                         alt="${video.title}"
+                         onerror="this.src='https://img.youtube.com/vi/${video.id}/hqdefault.jpg'">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="worship-info">
+                    <h3 class="worship-title">${video.title}</h3>
                 </div>
             </div>
-            <div class="worship-info">
-                <h3 class="worship-title">${video.title}</h3>
-            </div>
-        `;
-        card.addEventListener('click', () => openVideoModal(video.id, video.title));
-        worshipGrid.appendChild(card);
-    });
-    
-    console.log('Loaded worship music videos:', worshipVideos.length);
+        `).join('');
+    }
 }
 
 // Auto-generated VFI News videos - Last updated: 2025-12-03

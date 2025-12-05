@@ -17,23 +17,31 @@
                         <img src="vfi-news-banner.png" alt="VFI News" class="logo-banner-secondary" onerror="this.src='vfi-news.png';">
                     </div>
                     <div class="bible-verse-section">
-                        <i class="fas fa-quote-left"></i>
-                        <span class="verse-text">"Give thanks to the Lord, for he is good; his love endures forever."</span>
-                        <span class="verse-reference">Psalm 107:1</span>
+                        <i class="fas fa-hands-helping"></i>
+                        <span class="verse-text">"Carry each other's burdens, and in this way you will fulfill the law of Christ."</span>
+                        <span class="verse-reference">Galatians 6:2</span>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <!-- Navigation Bar -->
         <div class="nav-bar">
             <div class="container-fluid">
-                <nav class="nav-main">
+                <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav-main" id="navMain">
                     <a href="index.html" class="nav-link">
                         <i class="fas fa-home"></i> Home
                     </a>
                     <a href="index.html#worship" class="nav-link">
                         <i class="fas fa-music"></i> Worship Music
+                    </a>
+                    <a href="roots-reflections.html" class="nav-link">
+                        <i class="fas fa-book-open"></i> Roots & Reflections
                     </a>
                     <a href="projects.html" class="nav-link">
                         <i class="fas fa-hands-helping"></i> Projects
@@ -43,6 +51,9 @@
                     </a>
                     <a href="testimonials.html" class="nav-link active">
                         <i class="fas fa-heart"></i> Testimonials
+                    </a>
+                    <a href="shop.html" class="nav-link">
+                        <i class="fas fa-shopping-bag"></i> Shop
                     </a>
                     <a href="contact.html" class="nav-link">
                         <i class="fas fa-envelope"></i> Contact
@@ -64,8 +75,15 @@
     </section>
 
     <!-- Featured Testimonial -->
-    <section class="featured-testimonial">
-        <div class="container">
+    <section class="featured-testimonial" style="position: relative; overflow: hidden;">
+        <!-- Background Image: Karmiel -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; min-height: 420px; z-index: 0; pointer-events: none;">
+            <img src="https://images.unsplash.com/photo-1544376798-89aa6b82c6cd?q=80&w=2070" 
+                 alt="City of Karmiel" 
+                 style="width: 100%; height: 100%; min-height: 420px; object-fit: cover; opacity: 0.22; filter: brightness(0.7) contrast(1.1); display: block;">
+        </div>
+
+        <div class="container" style="position: relative; z-index: 1; min-height: 420px; background: none;">
             <div class="featured-content">
                 <div class="quote-icon">
                     <i class="fas fa-quote-left"></i>
@@ -274,6 +292,30 @@
         </div>
     </section>
 
+    <!-- Stories Section -->
+    <section class="stories-section">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-book-open"></i> Stories of Hope & Transformation</h2>
+                <p class="section-subtitle">Real stories of how your support is changing lives across Israel</p>
+            </div>
+            
+            <div class="stories-grid" id="storiesGrid">
+                <!-- Stories will be loaded here by JavaScript -->
+                <div class="loading-spinner">
+                    <i class="fas fa-circle-notch fa-spin"></i>
+                    <p>Loading stories...</p>
+                </div>
+            </div>
+            
+            <div class="stories-cta">
+                <a href="https://www.visionforisrael.com/en/blog/topic/stories" target="_blank" class="stories-link">
+                    <i class="fas fa-external-link-alt"></i> Read More Stories on VFI Website
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Call to Action -->
     <section class="cta-section">
         <div class="container">
@@ -282,6 +324,16 @@
             <a href="https://www.visionforisrael.com/en/give" target="_blank" class="cta-button">Change a Life Today</a>
         </div>
     </section>
+
+    <!-- Story Modal -->
+    <div id="storyModal" class="story-modal">
+        <div class="story-modal-content">
+            <span class="story-modal-close">&times;</span>
+            <div id="storyModalBody" class="story-modal-body">
+                <!-- Story content will be loaded here -->
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -294,6 +346,7 @@
                         <li><a href="projects.html">Projects</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="shop.html">Shop</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -325,5 +378,158 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Load VFI Stories
+        async function loadStories() {
+            try {
+                const response = await fetch('vfi_stories_catalog.json');
+                const data = await response.json();
+                const stories = data.stories || [];
+                
+                const storiesGrid = document.getElementById('storiesGrid');
+                storiesGrid.innerHTML = '';
+                
+                stories.forEach(story => {
+                    // Clean up title - remove "Stories" prefix and date suffix
+                    let cleanTitle = story.title.replace(/^Stories/, '').trim();
+                    const dateMatch = cleanTitle.match(/(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday),.*$/);
+                    if (dateMatch) {
+                        cleanTitle = cleanTitle.replace(dateMatch[0], '').trim();
+                    }
+                    
+                    const card = document.createElement('div');
+                    card.className = 'story-card';
+                    card.onclick = () => openStoryModal(story, cleanTitle);
+                    
+                    card.innerHTML = `
+                        <div class="story-image">
+                            ${story.image ? `<img src="${story.image}" alt="${cleanTitle}" onerror="this.src='https://via.placeholder.com/400x240/0038b8/ffffff?text=VFI+Story'">` : ''}
+                            <span class="story-category">${story.category || 'Story'}</span>
+                        </div>
+                        <div class="story-content">
+                            <h3 class="story-title">${cleanTitle}</h3>
+                            ${story.description ? `<p class="story-description">${story.description}</p>` : ''}
+                            <a href="#" class="story-link" onclick="event.preventDefault(); event.stopPropagation(); openStoryModal(this.closest('.story-card').story, this.closest('.story-card').cleanTitle);">
+                                Read Full Story <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    `;
+                    
+                    // Store story data on card element for easy access
+                    card.story = story;
+                    card.cleanTitle = cleanTitle;
+                    
+                    storiesGrid.appendChild(card);
+                });
+                
+            } catch (error) {
+                console.error('Error loading stories:', error);
+                document.getElementById('storiesGrid').innerHTML = `
+                    <div style="text-align: center; padding: 2rem; color: #0369a1;">
+                        <p>Stories will be available soon. Visit <a href="https://www.visionforisrael.com/en/blog/topic/stories" target="_blank">VFI Website</a> to read them now.</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Open story modal
+        function openStoryModal(story, cleanTitle) {
+            const modal = document.getElementById('storyModal');
+            const modalBody = document.getElementById('storyModalBody');
+            
+            // Build the modal content
+            let contentHTML = '';
+            
+            // Add story image if available
+            if (story.image) {
+                contentHTML += `<img src="${story.image}" class="story-modal-image" alt="${cleanTitle}">`;
+            }
+            
+            contentHTML += `
+                <span class="story-modal-category">${story.category || 'Story'}</span>
+                <h2 class="story-modal-title">${cleanTitle}</h2>
+            `;
+            
+            // Add full content if available, otherwise just description
+            if (story.full_content) {
+                // Split by various paragraph separators
+                const paragraphs = story.full_content
+                    .split(/\n\n+/)
+                    .map(p => p.replace(/\n/g, ' ').trim())
+                    .filter(p => p.length > 0);
+                
+                contentHTML += '<div class="story-modal-description">';
+                paragraphs.forEach(para => {
+                    contentHTML += `<p>${para}</p>`;
+                });
+                contentHTML += '</div>';
+            } else if (story.description) {
+                contentHTML += `<div class="story-modal-description"><p>${story.description}</p></div>`;
+            }
+            
+            // Add Donate Now button
+            contentHTML += `
+                <div style="margin: 30px 0; padding: 25px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(29, 78, 216, 0.1) 100%); border-radius: 15px; border: 2px solid rgba(59, 130, 246, 0.3); text-align: center;">
+                    <p style="color: #e5e7eb; font-size: 1.1em; margin-bottom: 20px; line-height: 1.6;">
+                        <i class="fas fa-heart" style="color: #ef4444; margin-right: 8px;"></i>
+                        Stories like this are made possible through your generous support. Help us continue bringing hope and transformation to more lives in Israel.
+                    </p>
+                    <a href="https://www.visionforisrael.com/en/give" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(59, 130, 246, 0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(59, 130, 246, 0.4)';">
+                        <i class="fas fa-donate"></i> Donate Now
+                    </a>
+                </div>
+            `;
+            
+            contentHTML += `
+                <a href="${story.link}" target="_blank" class="story-modal-link">
+                    <i class="fas fa-external-link-alt"></i> Read Full Story on VFI Website
+                </a>
+            `;
+            
+            modalBody.innerHTML = contentHTML;
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close story modal
+        function closeStoryModal() {
+            const modal = document.getElementById('storyModal');
+            
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+        
+        // Setup modal close handlers
+        document.addEventListener('DOMContentLoaded', () => {
+            loadStories();
+            
+            // Close button
+            const closeBtn = document.querySelector('.story-modal-close');
+            if (closeBtn) {
+                closeBtn.onclick = closeStoryModal;
+            }
+            
+            // Click outside modal
+            const modal = document.getElementById('storyModal');
+            if (modal) {
+                modal.onclick = (e) => {
+                    if (e.target === modal) {
+                        closeStoryModal();
+                    }
+                };
+            }
+            
+            // ESC key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeStoryModal();
+                }
+            });
+        });
+    </script>
+    
+    <!-- Header Functionality Script -->
+    <script src="index.js"></script>
 </body>
 </html>

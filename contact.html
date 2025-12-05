@@ -35,6 +35,9 @@
                     <a href="index.html#worship" class="nav-link">
                         <i class="fas fa-music"></i> Worship Music
                     </a>
+                    <a href="roots-reflections.html" class="nav-link">
+                        <i class="fas fa-book-open"></i> Roots & Reflections
+                    </a>
                     <a href="projects.html" class="nav-link">
                         <i class="fas fa-hands-helping"></i> Projects
                     </a>
@@ -43,6 +46,9 @@
                     </a>
                     <a href="testimonials.html" class="nav-link">
                         <i class="fas fa-heart"></i> Testimonials
+                    </a>
+                    <a href="shop.html" class="nav-link">
+                        <i class="fas fa-shopping-bag"></i> Shop
                     </a>
                     <a href="contact.html" class="nav-link active">
                         <i class="fas fa-envelope"></i> Contact
@@ -56,10 +62,13 @@
     </header>
 
     <!-- Contact Hero Section -->
-    <section class="page-hero">
+    <section class="page-hero" style="padding: 6rem 2rem;">
         <div class="hero-content">
-            <h1>Get In Touch</h1>
-            <p>We'd love to hear from you</p>
+            <h1 style="font-size: 3.5em; margin-bottom: 1rem;">Get In Touch</h1>
+            <p style="font-size: 1.3em; margin-bottom: 2rem; color: #e5e7eb;">We'd love to hear from you</p>
+            <button onclick="openContactModal()" class="cta-contact-btn" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; padding: 18px 50px; font-size: 1.2em; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; display: inline-flex; align-items: center; gap: 12px; box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 30px rgba(59, 130, 246, 0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 25px rgba(59, 130, 246, 0.4)';">
+                <i class="fas fa-paper-plane"></i> Send Us a Message
+            </button>
         </div>
     </section>
 
@@ -137,72 +146,82 @@
         </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section class="contact-form-section">
-        <div class="container">
-            <div class="form-container">
-                <h2>Send Us a Message</h2>
-                <p class="form-description">Have a question or want to learn more? Fill out the form below and we'll get back to you as soon as possible.</p>
-                
-                <form class="contact-form" id="contactForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName">First Name *</label>
-                            <input type="text" id="firstName" name="firstName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name *</label>
-                            <input type="text" id="lastName" name="lastName" required>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject">Subject *</label>
-                        <select id="subject" name="subject" required>
-                            <option value="">Select a topic...</option>
-                            <option value="general">General Inquiry</option>
-                            <option value="donation">Donation Information</option>
-                            <option value="volunteer">Volunteer Opportunities</option>
-                            <option value="partnership">Partnership Inquiry</option>
-                            <option value="media">Media Request</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Message *</label>
-                        <textarea id="message" name="message" rows="6" required></textarea>
-                    </div>
-
-                    <div class="form-checkbox">
-                        <input type="checkbox" id="newsletter" name="newsletter">
-                        <label for="newsletter">I would like to receive the VFI newsletter and updates</label>
-                    </div>
-
-                    <button type="submit" class="form-submit-btn">
-                        <i class="fas fa-paper-plane"></i> Send Message
-                    </button>
-                </form>
-
-                <div class="form-success" id="formSuccess" style="display: none;">
-                    <i class="fas fa-check-circle"></i>
-                    <h3>Thank You!</h3>
-                    <p>Your message has been received. We'll get back to you shortly.</p>
+    <!-- Contact Form Modal -->
+    <div id="contactFormModal" class="modal" style="display: none;">
+        <button class="modal-close" onclick="closeContactModal()" style="position: fixed; top: 20px; right: 30px; background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.3); font-size: 32px; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10003; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(239,68,68,0.9)'; this.style.borderColor='rgba(239,68,68,1)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.3)';">&times;</button>
+        
+        <div class="modal-content" style="max-width: 700px; background: linear-gradient(145deg, #1e3a5f 0%, #2d4a6f 100%); border-radius: 20px; padding: 50px; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);">
+                    <i class="fas fa-envelope" style="font-size: 2.5em; color: white;"></i>
                 </div>
+                <h2 style="color: #60a5fa; font-size: 2.5em; margin-bottom: 10px;">Send Us a Message</h2>
+                <p style="color: #e5e7eb; font-size: 1.1em;">Have a question or want to learn more? We'll get back to you as soon as possible.</p>
+            </div>
+            
+            <form class="contact-form-modal" id="contactForm" style="display: flex; flex-direction: column; gap: 20px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div style="display: flex; flex-direction: column;">
+                        <label for="firstName" style="color: #60a5fa; font-weight: 600; margin-bottom: 8px; font-size: 0.95em;">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required style="padding: 14px 18px; border: 2px solid rgba(96, 165, 250, 0.3); border-radius: 12px; background: rgba(255, 255, 255, 0.05); color: white; font-size: 1em; transition: all 0.3s ease;" onfocus="this.style.borderColor='#60a5fa'; this.style.background='rgba(96, 165, 250, 0.1)';" onblur="this.style.borderColor='rgba(96, 165, 250, 0.3)'; this.style.background='rgba(255, 255, 255, 0.05)';">
+                    </div>
+                    <div style="display: flex; flex-direction: column;">
+                        <label for="lastName" style="color: #60a5fa; font-weight: 600; margin-bottom: 8px; font-size: 0.95em;">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required style="padding: 14px 18px; border: 2px solid rgba(96, 165, 250, 0.3); border-radius: 12px; background: rgba(255, 255, 255, 0.05); color: white; font-size: 1em; transition: all 0.3s ease;" onfocus="this.style.borderColor='#60a5fa'; this.style.background='rgba(96, 165, 250, 0.1)';" onblur="this.style.borderColor='rgba(96, 165, 250, 0.3)'; this.style.background='rgba(255, 255, 255, 0.05)';">
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div style="display: flex; flex-direction: column;">
+                        <label for="email" style="color: #60a5fa; font-weight: 600; margin-bottom: 8px; font-size: 0.95em;">Email Address *</label>
+                        <input type="email" id="email" name="email" required style="padding: 14px 18px; border: 2px solid rgba(96, 165, 250, 0.3); border-radius: 12px; background: rgba(255, 255, 255, 0.05); color: white; font-size: 1em; transition: all 0.3s ease;" onfocus="this.style.borderColor='#60a5fa'; this.style.background='rgba(96, 165, 250, 0.1)';" onblur="this.style.borderColor='rgba(96, 165, 250, 0.3)'; this.style.background='rgba(255, 255, 255, 0.05)';">
+                    </div>
+                    <div style="display: flex; flex-direction: column;">
+                        <label for="phone" style="color: #60a5fa; font-weight: 600; margin-bottom: 8px; font-size: 0.95em;">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" style="padding: 14px 18px; border: 2px solid rgba(96, 165, 250, 0.3); border-radius: 12px; background: rgba(255, 255, 255, 0.05); color: white; font-size: 1em; transition: all 0.3s ease;" onfocus="this.style.borderColor='#60a5fa'; this.style.background='rgba(96, 165, 250, 0.1)';" onblur="this.style.borderColor='rgba(96, 165, 250, 0.3)'; this.style.background='rgba(255, 255, 255, 0.05)';">
+                    </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column;">
+                    <label for="subject" style="color: #60a5fa; font-weight: 600; margin-bottom: 8px; font-size: 0.95em;">Subject *</label>
+                    <select id="subject" name="subject" required style="padding: 14px 18px; border: 2px solid rgba(96, 165, 250, 0.3); border-radius: 12px; background: rgba(255, 255, 255, 0.05); color: white; font-size: 1em; transition: all 0.3s ease; cursor: pointer;" onfocus="this.style.borderColor='#60a5fa'; this.style.background='rgba(96, 165, 250, 0.1)';" onblur="this.style.borderColor='rgba(96, 165, 250, 0.3)'; this.style.background='rgba(255, 255, 255, 0.05)';">
+                        <option value="" style="background: #1e3a5f; color: white;">Select a topic...</option>
+                        <option value="general" style="background: #1e3a5f; color: white;">General Inquiry</option>
+                        <option value="donation" style="background: #1e3a5f; color: white;">Donation Information</option>
+                        <option value="volunteer" style="background: #1e3a5f; color: white;">Volunteer Opportunities</option>
+                        <option value="partnership" style="background: #1e3a5f; color: white;">Partnership Inquiry</option>
+                        <option value="media" style="background: #1e3a5f; color: white;">Media Request</option>
+                        <option value="other" style="background: #1e3a5f; color: white;">Other</option>
+                    </select>
+                </div>
+
+                <div style="display: flex; flex-direction: column;">
+                    <label for="message" style="color: #60a5fa; font-weight: 600; margin-bottom: 8px; font-size: 0.95em;">Message *</label>
+                    <textarea id="message" name="message" rows="5" required style="padding: 14px 18px; border: 2px solid rgba(96, 165, 250, 0.3); border-radius: 12px; background: rgba(255, 255, 255, 0.05); color: white; font-size: 1em; resize: vertical; font-family: inherit; transition: all 0.3s ease;" onfocus="this.style.borderColor='#60a5fa'; this.style.background='rgba(96, 165, 250, 0.1)';" onblur="this.style.borderColor='rgba(96, 165, 250, 0.3)'; this.style.background='rgba(255, 255, 255, 0.05)';"></textarea>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 10px; padding: 15px; background: rgba(96, 165, 250, 0.05); border-radius: 12px; border: 1px solid rgba(96, 165, 250, 0.2);">
+                    <input type="checkbox" id="newsletter" name="newsletter" style="width: 20px; height: 20px; cursor: pointer; accent-color: #3b82f6;">
+                    <label for="newsletter" style="color: #e5e7eb; cursor: pointer; font-size: 0.95em; margin: 0;">I would like to receive the VFI newsletter and updates</label>
+                </div>
+
+                <button type="submit" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; padding: 16px 40px; border: none; border-radius: 50px; font-size: 1.1em; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 10px; box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 30px rgba(59, 130, 246, 0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 25px rgba(59, 130, 246, 0.4)';">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+
+            <div id="formSuccess" style="display: none; text-align: center; padding: 40px 20px;">
+                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);">
+                    <i class="fas fa-check-circle" style="font-size: 2.5em; color: white;"></i>
+                </div>
+                <h3 style="color: #60a5fa; font-size: 2em; margin-bottom: 15px;">Thank You!</h3>
+                <p style="color: #e5e7eb; font-size: 1.1em; line-height: 1.6;">Your message has been received. We'll get back to you shortly.</p>
+                <button onclick="closeContactModal()" style="background: rgba(96, 165, 250, 0.2); color: #60a5fa; padding: 12px 30px; border: 2px solid #60a5fa; border-radius: 50px; font-size: 1em; font-weight: bold; cursor: pointer; margin-top: 25px; transition: all 0.3s ease;" onmouseover="this.style.background='#60a5fa'; this.style.color='white';" onmouseout="this.style.background='rgba(96, 165, 250, 0.2)'; this.style.color='#60a5fa';">
+                    Close
+                </button>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Newsletter Section -->
     <section class="newsletter-section">
@@ -252,6 +271,7 @@
                         <li><a href="projects.html">Projects</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="shop.html">Shop</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -285,12 +305,48 @@
     </footer>
 
     <script>
+        // Modal Functions
+        function openContactModal() {
+            const modal = document.getElementById('contactFormModal');
+            if (modal) {
+                modal.classList.add('active');
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeContactModal() {
+            const modal = document.getElementById('contactFormModal');
+            if (modal) {
+                modal.classList.remove('active');
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                
+                // Reset form if success message is showing
+                const form = document.querySelector('.contact-form-modal');
+                const success = document.getElementById('formSuccess');
+                if (success.style.display !== 'none') {
+                    form.style.display = 'flex';
+                    success.style.display = 'none';
+                    document.getElementById('contactForm').reset();
+                }
+            }
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('contactFormModal');
+            if (event.target === modal) {
+                closeContactModal();
+            }
+        }
+
         // Contact Form Handler
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Show success message
-            document.querySelector('.contact-form').style.display = 'none';
+            document.querySelector('.contact-form-modal').style.display = 'none';
             document.getElementById('formSuccess').style.display = 'block';
             
             // In a real application, you would send the form data to a server here
@@ -303,13 +359,6 @@
                 message: document.getElementById('message').value,
                 newsletter: document.getElementById('newsletter').checked
             });
-            
-            // Reset form after 3 seconds and show it again
-            setTimeout(() => {
-                this.reset();
-                document.querySelector('.contact-form').style.display = 'block';
-                document.getElementById('formSuccess').style.display = 'none';
-            }, 3000);
         });
     </script>
 </body>

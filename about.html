@@ -168,23 +168,31 @@
                         <img src="vfi-news-banner.png" alt="VFI News" class="logo-banner-secondary" onerror="this.src='vfi-news.png';">
                     </div>
                     <div class="bible-verse-section">
-                        <i class="fas fa-heart"></i>
-                        <span class="verse-text">"I will bless those who bless you, and whoever curses you I will curse; and all peoples on earth will be blessed through you."</span>
-                        <span class="verse-reference">Genesis 12:3</span>
+                        <i class="fas fa-leaf"></i>
+                        <span class="verse-text">"For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future."</span>
+                        <span class="verse-reference">Jeremiah 29:11</span>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <!-- Navigation Bar -->
         <div class="nav-bar">
             <div class="container-fluid">
-                <nav class="nav-main">
+                <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav-main" id="navMain">
                     <a href="index.html" class="nav-link">
                         <i class="fas fa-home"></i> Home
                     </a>
                     <a href="index.html#worship" class="nav-link">
                         <i class="fas fa-music"></i> Worship Music
+                    </a>
+                    <a href="roots-reflections.html" class="nav-link">
+                        <i class="fas fa-book-open"></i> Roots & Reflections
                     </a>
                     <a href="projects.html" class="nav-link">
                         <i class="fas fa-hands-helping"></i> Projects
@@ -194,6 +202,9 @@
                     </a>
                     <a href="testimonials.html" class="nav-link">
                         <i class="fas fa-heart"></i> Testimonials
+                    </a>
+                    <a href="shop.html" class="nav-link">
+                        <i class="fas fa-shopping-bag"></i> Shop
                     </a>
                     <a href="contact.html" class="nav-link">
                         <i class="fas fa-envelope"></i> Contact
@@ -568,55 +579,56 @@
     
     <!-- Vision/Timeline Modal - Dual Panel Style -->
     <div id="visionModal" class="modal">
-        <div style="display: flex; gap: 2rem; max-width: 1300px; margin: 2rem auto; position: relative; z-index: 10001;">
-            <!-- Left Panel: Image & Year -->
-            <div style="background: linear-gradient(135deg, #3d5a6c 0%, #2c4a5c 100%); padding: 2.5rem; border-radius: 16px; flex: 1; min-width: 300px; max-width: 500px; box-shadow: 0 20px 60px rgba(0,0,0,0.7); border: 3px solid #8b7355; position: relative;">
-                <button class="modal-close" onclick="closeModal('visionModal')" style="position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(139, 115, 85, 0.2); border: 2px solid #8b7355; color: #d4a574; font-size: 2rem; cursor: pointer; transition: all 0.2s; width: 50px; height: 50px; line-height: 1; z-index: 10; border-radius: 50%; font-weight: bold;" onmouseover="this.style.background='rgba(139, 115, 85, 0.4)'; this.style.transform='rotate(90deg)';" onmouseout="this.style.background='rgba(139, 115, 85, 0.2)'; this.style.transform='rotate(0deg)';">&times;</button>
+        <!-- Close Button - Direct child of modal for reliability -->
+        <button class="modal-close" onclick="document.getElementById('visionModal').style.display='none'; document.getElementById('visionModal').classList.remove('active'); document.body.style.overflow='auto';" style="position: fixed; top: 2rem; right: 2rem; background: rgba(0, 0, 0, 0.9); border: 2px solid rgba(255,255,255,0.8); color: white; font-size: 2.5rem; cursor: pointer; transition: all 0.2s; width: 60px; height: 60px; line-height: 1; z-index: 10003; border-radius: 50%; font-weight: bold; backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.5);" onmouseover="this.style.background='rgba(220, 38, 38, 0.9)'; this.style.transform='rotate(90deg) scale(1.1)'; this.style.borderColor='#fff';" onmouseout="this.style.background='rgba(0, 0, 0, 0.9)'; this.style.transform='rotate(0deg) scale(1)'; this.style.borderColor='rgba(255,255,255,0.8)';">&times;</button>
+        
+        <div class="modal-wrapper" style="display: flex; gap: 0; max-width: 1400px; margin: 2rem auto; position: relative; z-index: 10001; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 70px rgba(0,0,0,0.8);">
+            <!-- Left Panel: Image -->
+            <div id="visionLeftPanel" style="flex: 1; min-width: 450px; max-width: 550px; position: relative; display: flex; flex-direction: column;">
                 
-                <div id="visionModalImage" style="width: 100%; height: 350px; border-radius: 12px; border: 3px solid #8b7355; margin-bottom: 1.5rem; background: #2c4a5c; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                <div style="width: 100%; height: 500px; overflow: hidden; position: relative;">
                     <img id="timelineImg" src="" alt="Timeline image" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                </div>
-                
-                <div style="text-align: center;">
-                    <div id="timelineYear" style="font-size: 2.5rem; color: #d4a574; font-weight: 700; margin-bottom: 0.5rem; font-family: Georgia, serif; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">2024</div>
-                    <div id="timelineTitle" style="font-size: 1.4rem; color: white; font-family: Georgia, serif; line-height: 1.4;"></div>
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2.5rem 2rem 2rem; text-align: center;">
+                        <div id="timelineYear" style="font-size: 3.5rem; color: white; font-weight: 900; margin-bottom: 0.5rem; font-family: 'Arial Black', sans-serif; text-shadow: 0 4px 15px rgba(0,0,0,0.8);">2024</div>
+                        <div id="timelineTitle" style="font-size: 1.6rem; color: white; font-family: 'Georgia', serif; line-height: 1.4; font-weight: 600; text-shadow: 0 2px 10px rgba(0,0,0,0.8);"></div>
+                    </div>
                 </div>
             </div>
             
             <!-- Right Panel: Content -->
-            <div style="background: linear-gradient(135deg, #6b3d2e 0%, #7d4a3a 100%); padding: 2.5rem; border-radius: 16px; flex: 1; min-width: 300px; max-width: 600px; box-shadow: 0 20px 60px rgba(0,0,0,0.7); border: 3px solid #8b7355; position: relative; max-height: 600px; overflow-y: auto;">
+            <div id="visionRightPanel" style="flex: 1; min-width: 450px; max-width: 700px; padding: 3rem; position: relative; max-height: 600px; overflow-y: auto;">
                 
-                <div style="background: #f5f1e8; padding: 1.8rem; border-radius: 12px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);">
-                    <!-- Scripture -->
-                    <div style="background: linear-gradient(135deg, #fff8dc, #faebd7); padding: 1.3rem; border-radius: 10px; margin-bottom: 1.5rem; border-left: 4px solid #8b7355;">
-                        <p id="timelineVerse" style="font-size: 1rem; color: #4a5568; font-style: italic; line-height: 1.8; margin-bottom: 0.5rem;"></p>
-                        <p id="timelineRef" style="font-size: 0.9rem; color: #8b7355; font-weight: 700; text-align: right; margin: 0;"></p>
-                    </div>
-                    
-                    <!-- Story -->
-                    <h4 style="font-size: 1.2rem; color: #6b3d2e; margin-bottom: 1rem; font-weight: 700; font-family: Georgia, serif; display: flex; align-items: center;">
-                        <i class="fas fa-book-open" style="margin-right: 0.6rem; color: #8b7355; font-size: 1rem;"></i>
-                        The Biblical Story
-                    </h4>
-                    <p id="timelineStory" style="font-size: 0.95rem; color: #4a5568; line-height: 1.8; margin-bottom: 1.5rem;"></p>
-                    
-                    <!-- Lesson -->
-                    <h4 style="font-size: 1.2rem; color: #6b3d2e; margin-bottom: 1rem; font-weight: 700; font-family: Georgia, serif; display: flex; align-items: center;">
-                        <i class="fas fa-heart" style="margin-right: 0.6rem; color: #8b7355; font-size: 1rem;"></i>
-                        VFI's Impact
-                    </h4>
-                    <p id="timelineLesson" style="font-size: 0.95rem; color: #4a5568; line-height: 1.8; margin: 0;"></p>
+                <!-- Scripture -->
+                <div style="background: rgba(255,255,255,0.15); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+                    <p id="timelineVerse" style="font-size: 1.1rem; color: white; font-style: italic; line-height: 1.9; margin-bottom: 0.8rem; font-family: 'Georgia', serif;"></p>
+                    <p id="timelineRef" style="font-size: 1rem; color: rgba(255,255,255,0.9); font-weight: 700; text-align: right; margin: 0;"></p>
                 </div>
+                
+                <!-- Story -->
+                <h4 style="font-size: 1.4rem; color: white; margin-bottom: 1.2rem; font-weight: 700; font-family: 'Georgia', serif; display: flex; align-items: center;">
+                    <i class="fas fa-book-open" style="margin-right: 0.8rem; font-size: 1.2rem;"></i>
+                    The Biblical Story
+                </h4>
+                <div id="timelineStory" style="font-size: 1.05rem; color: rgba(255,255,255,0.95); line-height: 1.9; margin-bottom: 2rem; font-family: 'Georgia', serif;"></div>
+                
+                <!-- Lesson -->
+                <h4 style="font-size: 1.4rem; color: white; margin-bottom: 1.2rem; font-weight: 700; font-family: 'Georgia', serif; display: flex; align-items: center;">
+                    <i class="fas fa-heart" style="margin-right: 0.8rem; font-size: 1.2rem;"></i>
+                    VFI's Impact
+                </h4>
+                <div id="timelineLesson" style="font-size: 1.05rem; color: rgba(255,255,255,0.95); line-height: 1.9; margin: 0; font-family: 'Georgia', serif;"></div>
             </div>
         </div>
     </div>
 
     <!-- Values Modal - Dual Panel Style -->
     <div id="valuesModal" class="modal">
+        <!-- Close Button - Direct child of modal -->
+        <button class="modal-close" onclick="document.getElementById('valuesModal').style.display='none'; document.getElementById('valuesModal').classList.remove('active'); document.body.style.overflow='auto';" style="position: fixed; top: 2rem; right: 2rem; background: rgba(0, 0, 0, 0.9); border: 2px solid rgba(255,255,255,0.8); color: white; font-size: 2.5rem; cursor: pointer; transition: all 0.2s; width: 60px; height: 60px; line-height: 1; z-index: 10003; border-radius: 50%; font-weight: bold; box-shadow: 0 4px 20px rgba(0,0,0,0.5);" onmouseover="this.style.background='rgba(220, 38, 38, 0.9)'; this.style.transform='rotate(90deg) scale(1.1)';" onmouseout="this.style.background='rgba(0, 0, 0, 0.9)'; this.style.transform='rotate(0deg) scale(1)';">&times;</button>
+        
         <div style="display: flex; gap: 2rem; max-width: 1300px; margin: 2rem auto; position: relative; z-index: 10001;">
             <!-- Left Panel: Image -->
             <div style="background: linear-gradient(135deg, #3d5a6c 0%, #2c4a5c 100%); padding: 2.5rem; border-radius: 16px; flex: 1; min-width: 300px; max-width: 500px; box-shadow: 0 20px 60px rgba(0,0,0,0.7); border: 3px solid #8b7355; position: relative;">
-                <button class="modal-close" onclick="closeModal('valuesModal')" style="position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(139, 115, 85, 0.2); border: 2px solid #8b7355; color: #d4a574; font-size: 2rem; cursor: pointer; transition: all 0.2s; width: 50px; height: 50px; line-height: 1; z-index: 10; border-radius: 50%; font-weight: bold;" onmouseover="this.style.background='rgba(139, 115, 85, 0.4)'; this.style.transform='rotate(90deg)';" onmouseout="this.style.background='rgba(139, 115, 85, 0.2)'; this.style.transform='rotate(0deg)';">&times;</button>
                 
                 <div id="valuesModalImage" style="width: 100%; height: 350px; border-radius: 12px; border: 3px solid #8b7355; margin-bottom: 1.5rem; background: #2c4a5c; display: flex; align-items: center; justify-content: center; overflow: hidden;">
                     <img id="valueImg" src="" alt="Value image" style="width: 100%; height: 100%; object-fit: cover; display: block;">
@@ -657,76 +669,112 @@
 
     <!-- Founding Story Modal -->
     <div id="foundingModal" class="modal">
-        <div class="modal-content" style="max-width: 1000px;">
-            <button class="modal-close" onclick="closeModal('foundingModal')">&times;</button>
-            <div style="text-align: center; margin-bottom: 3rem;">
-                <h2 style="font-size: 2.5rem; color: #06b6d4; margin-bottom: 0.5rem; text-shadow: 0 4px 20px rgba(6, 182, 212, 0.6); font-family: Georgia, serif;">The Founding Story</h2>
-                <p style="font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-bottom: 2rem;">How Vision for Israel was born from prophecy and forged through tragedy</p>
+        <!-- Close Button - Direct child of modal -->
+        <button class="modal-close" onclick="document.getElementById('foundingModal').style.display='none'; document.getElementById('foundingModal').classList.remove('active'); document.body.style.overflow='auto';" style="position: fixed; top: 2rem; right: 2rem; background: rgba(0, 0, 0, 0.9); border: 2px solid rgba(255,255,255,0.8); color: white; font-size: 2.5rem; cursor: pointer; transition: all 0.2s; width: 60px; height: 60px; line-height: 1; z-index: 10003; border-radius: 50%; font-weight: bold; box-shadow: 0 4px 20px rgba(0,0,0,0.5);" onmouseover="this.style.background='rgba(220, 38, 38, 0.9)'; this.style.transform='rotate(90deg) scale(1.1)';" onmouseout="this.style.background='rgba(0, 0, 0, 0.9)'; this.style.transform='rotate(0deg) scale(1)';">&times;</button>
+        
+        <div class="modal-content" style="max-width: 1100px; background: linear-gradient(135deg, #0f2847 0%, #1a3a5c 50%, #0f2847 100%); max-height: 90vh; overflow-y: auto; overflow-x: hidden; position: relative;">
+            <div style="padding: 0 1rem;">
+            <div style="text-align: center; margin-bottom: 4rem; padding-top: 1rem;">
+                <h2 style="font-size: 2.8rem; color: #ffffff; margin-bottom: 1rem; font-family: 'Georgia', serif; font-weight: 600; letter-spacing: 0.5px;">The Founding Story</h2>
+                <div style="width: 80px; height: 3px; background: linear-gradient(90deg, transparent, #60a5fa, transparent); margin: 0 auto 1.5rem;"></div>
+                <p style="font-size: 1.15rem; color: rgba(255,255,255,0.85); max-width: 700px; margin: 0 auto; line-height: 1.6; font-style: italic;">How Vision for Israel was born from prophecy and forged through tragedy</p>
             </div>
             
             <!-- Story Section 1: The Vision -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding: 2rem; background: linear-gradient(135deg, rgba(6,182,212,0.15), rgba(8,145,178,0.15)); margin: 0 0 2rem; border-radius: 12px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; padding: 2.5rem; background: rgba(30, 58, 95, 0.4); margin: 0 0 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); border: 1px solid rgba(96, 165, 250, 0.2);">
                 <div style="order: 1;">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" alt="Getting Ready - Barry Segal planning for Israel's future" style="width: 100%; height: 350px; object-fit: cover; border-radius: 12px; border: 3px solid #06b6d4; box-shadow: 0 8px 25px rgba(6, 182, 212, 0.4);" onerror="this.src='https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop'">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" alt="Getting Ready - Barry Segal planning for Israel's future" style="width: 100%; height: 380px; object-fit: cover; border-radius: 12px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);" onerror="this.src='https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop'">
                 </div>
-                <div style="order: 2; display: flex; flex-direction: column; justify-content: center; padding: 1rem;">
-                    <div style="background: linear-gradient(135deg, #06b6d4, #0891b2); color: white; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; margin-bottom: 1rem; font-weight: 700; font-size: 0.9rem; letter-spacing: 1px;">1993 - THE VISION</div>
-                    <h3 style="font-size: 1.6rem; color: #06b6d4; margin-bottom: 1rem; font-family: Georgia, serif; text-shadow: 0 2px 8px rgba(6,182,212,0.3);">A Prophetic Warning</h3>
-                    <p style="font-size: 1rem; color: white; line-height: 1.8;">Barry Segal received a powerful vision. He saw that Israel would experience a time of <strong style="color: #22c55e;">great plenty</strong>—followed by a period of <strong style="color: #ef4444;">great struggle</strong>. Like Joseph interpreting Pharaoh's dreams, Barry understood that something had to be done to prepare—to provide for the <strong style="color: #06b6d4;">poor and needy</strong>, who would be hit hardest by the instability.</p>
+                <div style="order: 2; display: flex; flex-direction: column; justify-content: center; padding: 0.5rem;">
+                    <div style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; padding: 0.6rem 1.3rem; border-radius: 25px; display: inline-block; margin-bottom: 1.5rem; font-weight: 700; font-size: 0.85rem; letter-spacing: 1.5px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); width: fit-content;">1993 - THE VISION</div>
+                    <h3 style="font-size: 1.8rem; color: #60a5fa; margin-bottom: 1.5rem; font-family: 'Georgia', serif; font-weight: 600; line-height: 1.3;">A Prophetic Warning</h3>
+                    <div style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.95); line-height: 1.9; font-family: 'Georgia', serif;">
+                        <p style="margin-bottom: 1.3rem; text-indent: 2.5em;">Barry Segal received a powerful vision. He saw that Israel would experience a time of <span style="color: #86efac; font-weight: 600;">great plenty</span>—followed by a period of <span style="color: #fca5a5; font-weight: 600;">great struggle</span>.</p>
+                        <p style="margin-bottom: 0; text-indent: 2.5em;">Like Joseph interpreting Pharaoh's dreams, Barry understood that something had to be done to prepare—to provide for the <span style="color: #60a5fa; font-weight: 600;">poor and needy</span>, who would be hit hardest by the instability.</p>
+                    </div>
                 </div>
             </div>
             
             <!-- Story Section 2: The Ministry Begins -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding: 2rem; background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(22,163,74,0.12)); margin: 0 0 2rem; border-radius: 12px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; padding: 2.5rem; background: rgba(30, 58, 95, 0.4); margin: 0 0 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); border: 1px solid rgba(96, 165, 250, 0.2);">
                 <div style="order: 2;">
-                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&h=400&fit=crop" alt="Helping hands - ministry work" style="width: 100%; height: 350px; object-fit: cover; border-radius: 12px; border: 3px solid #22c55e; box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);" onerror="this.src='https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&h=400&fit=crop'">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&h=400&fit=crop" alt="Helping hands - ministry work" style="width: 100%; height: 380px; object-fit: cover; border-radius: 12px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);" onerror="this.src='https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&h=400&fit=crop'">
                 </div>
-                <div style="order: 1; display: flex; flex-direction: column; justify-content: center; padding: 1rem;">
-                    <div style="background: linear-gradient(135deg, #22c55e, #16a34a); color: white; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; margin-bottom: 1rem; font-weight: 700; font-size: 0.9rem; letter-spacing: 1px;">1994 - FOUNDATION</div>
-                    <h3 style="font-size: 1.6rem; color: #22c55e; margin-bottom: 1rem; font-family: Georgia, serif; text-shadow: 0 2px 8px rgba(34,197,94,0.3);">Vision for Israel is Born</h3>
-                    <p style="font-size: 1rem; color: white; line-height: 1.8;">Along with his wife <strong style="color: #06b6d4;">Batya</strong>, Barry founded Vision for Israel with this lofty mission in mind. This young ministry began reaching out and offering <strong style="color: #06b6d4;">financial aid</strong> to poor and needy families around Israel. It was a grassroots movement driven by faith and a divine mandate to serve.</p>
+                <div style="order: 1; display: flex; flex-direction: column; justify-content: center; padding: 0.5rem;">
+                    <div style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 0.6rem 1.3rem; border-radius: 25px; display: inline-block; margin-bottom: 1.5rem; font-weight: 700; font-size: 0.85rem; letter-spacing: 1.5px; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4); width: fit-content;">1994 - FOUNDATION</div>
+                    <h3 style="font-size: 1.8rem; color: #34d399; margin-bottom: 1.5rem; font-family: 'Georgia', serif; font-weight: 600; line-height: 1.3;">Vision for Israel is Born</h3>
+                    <div style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.95); line-height: 1.9; font-family: 'Georgia', serif;">
+                        <p style="margin-bottom: 1.3rem; text-indent: 2.5em;">Along with his wife <span style="color: #60a5fa; font-weight: 600;">Batya</span>, Barry founded Vision for Israel with this lofty mission in mind.</p>
+                        <p style="margin-bottom: 0; text-indent: 2.5em;">This young ministry began reaching out and offering <span style="color: #60a5fa; font-weight: 600;">financial aid</span> to poor and needy families around Israel. It was a grassroots movement driven by faith and a divine mandate to serve.</p>
+                    </div>
                 </div>
             </div>
             
             <!-- Story Section 3: The Tragedy -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding: 2rem; background: linear-gradient(135deg, rgba(239,68,68,0.12), rgba(220,38,38,0.12)); margin: 0 0 2rem; border-radius: 12px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; padding: 2.5rem; background: rgba(30, 58, 95, 0.4); margin: 0 0 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); border: 1px solid rgba(96, 165, 250, 0.2);">
                 <div style="order: 1;">
-                    <img src="https://images.unsplash.com/photo-1518305696623-2d4f0a34d4a8?w=600&h=400&fit=crop" alt="Memorial candles" style="width: 100%; height: 350px; object-fit: cover; border-radius: 12px; border: 3px solid #ef4444; box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);" onerror="this.src='https://images.unsplash.com/photo-1518305696623-2d4f0a34d4a8?w=600&h=400&fit=crop'">
+                    <img src="https://images.unsplash.com/photo-1494621930069-4fd4b2e24a11?w=600&h=400&fit=crop" alt="Memorial candles" style="width: 100%; height: 380px; object-fit: cover; border-radius: 12px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);" onerror="this.src='https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=600&h=400&fit=crop'">
                 </div>
-                <div style="order: 2; display: flex; flex-direction: column; justify-content: center; padding: 1rem;">
-                    <div style="background: linear-gradient(135deg, #ef4444, #dc2626); color: white; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; margin-bottom: 1rem; font-weight: 700; font-size: 0.9rem; letter-spacing: 1px;">1996 - TRAGEDY STRIKES</div>
-                    <h3 style="font-size: 1.6rem; color: #fca5a5; margin-bottom: 1rem; font-family: Georgia, serif; text-shadow: 0 2px 8px rgba(239,68,68,0.3);">Personal Loss</h3>
-                    <p style="font-size: 1rem; color: white; line-height: 1.8;">A couple of short years later, the story took a tragic turn. The Segal family was touched by the pain that affected many Israelis. Barry and Batya's daughter lost <strong style="color: #fca5a5;">three teenage friends</strong> in a bus attacked by a Hamas suicide bomber. Another girl who served in one of the platoons she instructed was also killed in a separate attack on the same bus route—buses she had ridden each week.</p>
+                <div style="order: 2; display: flex; flex-direction: column; justify-content: center; padding: 0.5rem;">
+                    <div style="background: linear-gradient(135deg, #ef4444, #dc2626); color: white; padding: 0.6rem 1.3rem; border-radius: 25px; display: inline-block; margin-bottom: 1.5rem; font-weight: 700; font-size: 0.85rem; letter-spacing: 1.5px; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4); width: fit-content;">1996 - TRAGEDY STRIKES</div>
+                    <h3 style="font-size: 1.8rem; color: #fca5a5; margin-bottom: 1.5rem; font-family: 'Georgia', serif; font-weight: 600; line-height: 1.3;">Personal Loss</h3>
+                    <div style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.95); line-height: 1.9; font-family: 'Georgia', serif;">
+                        <p style="margin-bottom: 1.3rem; text-indent: 2.5em;">A couple of short years later, the story took a tragic turn. The Segal family was touched by the pain that affected many Israelis.</p>
+                        <p style="margin-bottom: 0; text-indent: 2.5em;">Barry and Batya's daughter lost <span style="color: #fca5a5; font-weight: 600;">three teenage friends</span> in a bus attacked by a Hamas suicide bomber. Another girl who served in one of the platoons she instructed was also killed in a separate attack on the same bus route—buses she had ridden each week.</p>
+                    </div>
                 </div>
             </div>
             
             <!-- Story Section 4: The Response -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding: 2rem; background: linear-gradient(135deg, rgba(6,182,212,0.15), rgba(8,145,178,0.15)); margin: 0 0 2rem; border-radius: 12px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; padding: 2.5rem; background: rgba(30, 58, 95, 0.4); margin: 0 0 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); border: 1px solid rgba(96, 165, 250, 0.2);">
                 <div style="order: 2;">
-                    <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&h=400&fit=crop" alt="Community support and volunteers" style="width: 100%; height: 350px; object-fit: cover; border-radius: 12px; border: 3px solid #06b6d4; box-shadow: 0 8px 25px rgba(6, 182, 212, 0.4);" onerror="this.src='https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&h=400&fit=crop'">
+                    <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&h=400&fit=crop" alt="Community support and volunteers" style="width: 100%; height: 380px; object-fit: cover; border-radius: 12px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);" onerror="this.src='https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&h=400&fit=crop'">
                 </div>
-                <div style="order: 1; display: flex; flex-direction: column; justify-content: center; padding: 1rem;">
-                    <div style="background: linear-gradient(135deg, #06b6d4, #0891b2); color: white; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; margin-bottom: 1rem; font-weight: 700; font-size: 0.9rem; letter-spacing: 1px;">PASSOVER SEASON</div>
-                    <h3 style="font-size: 1.6rem; color: #06b6d4; margin-bottom: 1rem; font-family: Georgia, serif; text-shadow: 0 2px 8px rgba(6,182,212,0.3);">Turning Pain into Purpose</h3>
-                    <p style="font-size: 1rem; color: white; line-height: 1.8;">During Passover season, Barry and Batya responded not with bitterness, but with <strong style="color: #22c55e;">compassion</strong>. They began <strong style="color: #06b6d4;">assisting the families torn apart by terrorism</strong>, embodying their commitment to serve Israel in its darkest hours. This tragedy deepened VFI's mission—transforming personal loss into a legacy of hope and restoration for thousands of families affected by violence.</p>
+                <div style="order: 1; display: flex; flex-direction: column; justify-content: center; padding: 0.5rem;">
+                    <div style="background: linear-gradient(135deg, #f59e0b, #d97706); color: white; padding: 0.6rem 1.3rem; border-radius: 25px; display: inline-block; margin-bottom: 1.5rem; font-weight: 700; font-size: 0.85rem; letter-spacing: 1.5px; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4); width: fit-content;">PASSOVER SEASON</div>
+                    <h3 style="font-size: 1.8rem; color: #fbbf24; margin-bottom: 1.5rem; font-family: 'Georgia', serif; font-weight: 600; line-height: 1.3;">Turning Pain into Purpose</h3>
+                    <div style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.95); line-height: 1.9; font-family: 'Georgia', serif;">
+                        <p style="margin-bottom: 1.3rem; text-indent: 2.5em;">During Passover season, Barry and Batya responded not with bitterness, but with <span style="color: #34d399; font-weight: 600;">compassion</span>. They began <span style="color: #60a5fa; font-weight: 600;">assisting the families torn apart by terrorism</span>, embodying their commitment to serve Israel in its darkest hours.</p>
+                        <p style="margin-bottom: 0; text-indent: 2.5em;">This tragedy deepened VFI's mission—transforming personal loss into a legacy of hope and restoration for thousands of families affected by violence.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Story Section 5: The Expansion -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; padding: 2.5rem; background: rgba(30, 58, 95, 0.4); margin: 0 0 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); border: 1px solid rgba(96, 165, 250, 0.2);">
+                <div style="order: 1;">
+                    <img src="./vision for israel expanding mission.jpg" alt="Growing ministry serving many" style="width: 100%; height: 380px; object-fit: cover; border-radius: 12px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);" onerror="this.src='https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=600&h=400&fit=crop'">
+                </div>
+                <div style="order: 2; display: flex; flex-direction: column; justify-content: center; padding: 0.5rem;">
+                    <div style="background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; padding: 0.6rem 1.3rem; border-radius: 25px; display: inline-block; margin-bottom: 1.5rem; font-weight: 700; font-size: 0.85rem; letter-spacing: 1.5px; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4); width: fit-content;">FOLLOWING YEARS</div>
+                    <h3 style="font-size: 1.8rem; color: #a78bfa; margin-bottom: 1.5rem; font-family: 'Georgia', serif; font-weight: 600; line-height: 1.3;">Expanding the Mission</h3>
+                    <div style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.95); line-height: 1.9; font-family: 'Georgia', serif;">
+                        <p style="margin-bottom: 1.3rem; text-indent: 2.5em;">In the following years, Vision for Israel expanded to include other desperately needed <span style="color: #60a5fa; font-weight: 600;">humanitarian services</span>.</p>
+                        <p style="margin-bottom: 0; text-indent: 2.5em;">The ministry now serves <span style="color: #fbbf24; font-weight: 600;">Holocaust survivors</span>, <span style="color: #34d399; font-weight: 600;">at-risk kids</span>, and many others in need of help throughout Israel—continuing the prophetic vision that started it all.</p>
+                    </div>
                 </div>
             </div>
             
             <!-- Final Message -->
-            <div style="background: linear-gradient(135deg, rgba(6,182,212,0.2), rgba(34,197,94,0.2)); padding: 2.5rem; margin: 0 0 2rem; border-radius: 12px; border: 2px solid #06b6d4; text-align: center;">
-                <i class="fas fa-heart" style="font-size: 3rem; color: #06b6d4; margin-bottom: 1rem;"></i>
-                <h3 style="font-size: 1.8rem; color: #06b6d4; margin-bottom: 1rem; font-family: Georgia, serif;">From Prophecy to Purpose</h3>
-                <p style="font-size: 1.1rem; color: white; line-height: 1.9; max-width: 800px; margin: 0 auto;">What began as a prophetic vision in 1993 and was tested by tragedy in 1996 has become a 30-year legacy of faithfulness. Vision for Israel stands today as proof that <strong style="color: #22c55e;">even in our darkest moments</strong>, God can use our pain to bring <strong style="color: #06b6d4;">light and hope</strong> to an entire nation.</p>
+            <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(16, 185, 129, 0.15)); padding: 3rem 2.5rem; margin: 0 0 1rem; border-radius: 16px; border: 2px solid rgba(96, 165, 250, 0.3); text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+                <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #3b82f6, #2563eb); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);">
+                    <i class="fas fa-heart" style="font-size: 2rem; color: white;"></i>
+                </div>
+                <h3 style="font-size: 2rem; color: #60a5fa; margin-bottom: 1.5rem; font-family: 'Georgia', serif; font-weight: 600; letter-spacing: 0.5px;">From Prophecy to Purpose</h3>
+                <p style="font-size: 1.1rem; color: rgba(255, 255, 255, 0.95); line-height: 2; max-width: 850px; margin: 0 auto; font-family: 'Georgia', serif;">What began as a prophetic vision in 1993 and was tested by tragedy in 1996 has become a 30-year legacy of faithfulness. Vision for Israel stands today as proof that <span style="color: #86efac; font-weight: 600;">even in our darkest moments</span>, God can use our pain to bring <span style="color: #60a5fa; font-weight: 600;">light and hope</span> to an entire nation.</p>
+            </div>
             </div>
         </div>
     </div>
 
     <!-- History/Photo Modal - Historical Style -->
     <div id="historyModal" class="modal">
+        <!-- Close Button - Direct child of modal -->
+        <button class="modal-close" onclick="document.getElementById('historyModal').style.display='none'; document.getElementById('historyModal').classList.remove('active'); document.body.style.overflow='auto';" style="position: fixed; top: 2rem; right: 2rem; background: rgba(0, 0, 0, 0.9); border: 2px solid rgba(255,255,255,0.8); color: white; font-size: 2.5rem; cursor: pointer; transition: all 0.2s; width: 60px; height: 60px; line-height: 1; z-index: 10003; border-radius: 50%; font-weight: bold; box-shadow: 0 4px 20px rgba(0,0,0,0.5);" onmouseover="this.style.background='rgba(220, 38, 38, 0.9)'; this.style.transform='rotate(90deg) scale(1.1)';" onmouseout="this.style.background='rgba(0, 0, 0, 0.9)'; this.style.transform='rotate(0deg) scale(1)';">&times;</button>
+        
         <div style="display: flex; gap: 2rem; max-width: 1300px; margin: 2rem auto; position: relative; z-index: 10001;">
             <!-- Left Panel: Photo Story -->
             <div style="background: linear-gradient(135deg, #3d5a6c 0%, #2c4a5c 100%); padding: 2.5rem; border-radius: 16px; flex: 1; min-width: 300px; max-width: 550px; box-shadow: 0 20px 60px rgba(0,0,0,0.7); border: 3px solid #8b7355; position: relative;">
-                <button class="modal-close" onclick="closeModal('historyModal')" style="position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(139, 115, 85, 0.2); border: 2px solid #8b7355; color: #d4a574; font-size: 2rem; cursor: pointer; transition: all 0.2s; width: 50px; height: 50px; line-height: 1; z-index: 10; border-radius: 50%; font-weight: bold;" onmouseover="this.style.background='rgba(139, 115, 85, 0.4)'; this.style.transform='rotate(90deg)';" onmouseout="this.style.background='rgba(139, 115, 85, 0.2)'; this.style.transform='rotate(0deg)';">&times;</button>
                 
                 <div style="text-align: center; margin-bottom: 2rem;">
                     <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #d4a574, #c19a6b); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(212, 165, 116, 0.5); border: 3px solid #8b7355;">
@@ -942,31 +990,36 @@
         // Modal Functions
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            if (modal) {
+                modal.classList.add('active');
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
         }
 
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
+            if (modal) {
+                modal.classList.remove('active');
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
         }
-
-        // Close modal when clicking backdrop
-        document.querySelectorAll('.modal').forEach(modal => {
-            modal.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeModal(this.id);
-                }
-            });
-        });
 
         // Close modals with ESC key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                document.querySelectorAll('.modal.active').forEach(modal => {
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                const activeModals = document.querySelectorAll('.modal.active');
+                activeModals.forEach(modal => {
                     closeModal(modal.id);
                 });
+            }
+        });
+
+        // Close modal when clicking backdrop
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                closeModal(e.target.id);
             }
         });
 
@@ -977,6 +1030,15 @@
                 const title = this.getAttribute('data-title');
                 const data = timelineData[year];
                 
+                // Set dynamic background color for right panel
+                const rightPanel = document.getElementById('visionRightPanel');
+                let bgColor = '#22c55e'; // default green
+                if (year === '1994') bgColor = 'linear-gradient(135deg, #16a34a 0%, #15803d 100%)';
+                else if (year === '2000s') bgColor = 'linear-gradient(135deg, #2563eb 0%, #1e40af 100%)';
+                else if (year === '2010s') bgColor = 'linear-gradient(135deg, #9333ea 0%, #7e22ce 100%)';
+                else if (year === 'Today') bgColor = 'linear-gradient(135deg, #0891b2 0%, #0e7490 100%)';
+                rightPanel.style.background = bgColor;
+                
                 // Update left panel image and year
                 document.getElementById('timelineImg').src = data.image;
                 document.getElementById('timelineImg').onerror = function() {
@@ -985,11 +1047,37 @@
                 document.getElementById('timelineYear').textContent = year;
                 document.getElementById('timelineTitle').textContent = title;
                 
-                // Update right panel content
+                // Update right panel content with proper paragraph formatting
                 document.getElementById('timelineVerse').textContent = data.verse;
                 document.getElementById('timelineRef').textContent = '— ' + data.reference;
-                document.getElementById('timelineStory').textContent = data.story;
-                document.getElementById('timelineLesson').textContent = data.lesson;
+                
+                // Format story text with paragraphs
+                const storyDiv = document.getElementById('timelineStory');
+                const storyParagraphs = data.story.split('. ').filter(p => p.trim().length > 0);
+                let storyHTML = '';
+                storyParagraphs.forEach((para, index) => {
+                    const paraText = para.trim() + (para.endsWith('.') ? '' : '.');
+                    if (index === 0) {
+                        storyHTML += `<p style="margin-bottom: 1.3rem;">${paraText}</p>`;
+                    } else {
+                        storyHTML += `<p style="margin-bottom: 1.3rem; text-indent: 2.5em;">${paraText}</p>`;
+                    }
+                });
+                storyDiv.innerHTML = storyHTML;
+                
+                // Format lesson text with paragraphs
+                const lessonDiv = document.getElementById('timelineLesson');
+                const lessonParagraphs = data.lesson.split('. ').filter(p => p.trim().length > 0);
+                let lessonHTML = '';
+                lessonParagraphs.forEach((para, index) => {
+                    const paraText = para.trim() + (para.endsWith('.') ? '' : '.');
+                    if (index === 0) {
+                        lessonHTML += `<p style="margin-bottom: 1.3rem;">${paraText}</p>`;
+                    } else {
+                        lessonHTML += `<p style="margin-bottom: 1.3rem; text-indent: 2.5em;">${paraText}</p>`;
+                    }
+                });
+                lessonDiv.innerHTML = lessonHTML;
                 
                 openModal('visionModal');
             });
@@ -1005,7 +1093,7 @@
                 let valueImage = 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=500&fit=crop';
                 if (valueKey === 'integrity') valueImage = 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=500&fit=crop';
                 else if (valueKey === 'unity') valueImage = 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=500&fit=crop';
-                else if (valueKey === 'excellence') valueImage = 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&h=500&fit=crop';
+                else if (valueKey === 'excellence') valueImage = './excellence in giving.jpg';
                 else if (valueKey === 'impact') valueImage = 'https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?w=800&h=500&fit=crop';
                 
                 document.getElementById('valueImg').src = valueImage;
@@ -1044,5 +1132,8 @@
             });
         });
     </script>
+    
+    <!-- Header Functionality Script -->
+    <script src="index.js"></script>
 </body>
 </html>
