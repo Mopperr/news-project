@@ -123,41 +123,50 @@
         .channel-stats {
             display: flex;
             justify-content: center;
-            gap: 4rem;
-            margin-top: 3rem;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 2rem;
             flex-wrap: wrap;
         }
 
         .stat-box {
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(30, 58, 138, 0.2) 100%);
-            padding: 2rem 3rem;
-            border-radius: 15px;
-            border: 2px solid rgba(6, 182, 212, 0.3);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.18) 0%, rgba(30, 58, 138, 0.22) 100%);
+            padding: 1.2rem 1.8rem;
+            min-width: 120px;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            border: 2px solid rgba(6, 182, 212, 0.32);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
             transition: all 0.3s ease;
         }
 
         .stat-box:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px) scale(1.03);
             border-color: rgba(6, 182, 212, 0.6);
-            box-shadow: 0 12px 35px rgba(6, 182, 212, 0.2);
+            box-shadow: 0 10px 28px rgba(6, 182, 212, 0.18);
         }
 
         .stat-box .stat-number {
-            font-size: 3rem;
+            font-size: 2.6rem;
             font-weight: 900;
             color: #06b6d4;
             display: block;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 2px 15px rgba(6, 182, 212, 0.5);
+            margin-bottom: 0.3rem;
+            text-shadow: 0 2px 12px rgba(6, 182, 212, 0.45);
+            text-align: center;
         }
 
         .stat-box .stat-label {
-            font-size: 1.1rem;
-            color: #ffffff;
+            font-size: 1rem;
+            color: #e0f2fe;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.2px;
+            text-align: center;
         }
 
         .filters-section {
@@ -579,7 +588,12 @@
         <!-- Navigation Bar -->
         <div class="nav-bar">
             <div class="container-fluid">
-                <nav class="nav-main">
+                <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav-main" id="navMain">
                     <a href="index.html" class="nav-link">
                         <i class="fas fa-home"></i> Home
                     </a>
