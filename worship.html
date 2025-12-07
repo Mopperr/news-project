@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worship Music - Barry & Batya Segal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header-news">
+        <div class="header-main">
+            <div class="container-fluid">
+                <div class="header-grid">
+                    <div class="logo-section">
+                        <img src="vfi-news-banner.png" alt="VFI NEWS" class="vfi-news-banner" onerror="this.src='vfi-news.png';">
+                    </div>
+                    <div class="live-feed-section">
+                        <div class="live-indicator-main">
+                            <span class="live-pulse"></span>
+                            <span class="live-text">LIVE FROM JERUSALEM</span>
+                        </div>
+                        <div class="jerusalem-feed">
+                            <iframe src="https://www.youtube.com/embed/0-dRT-2_hUk" title="Jerusalem Live Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="info-section">
+                        <div class="weather-widget" id="weatherWidget">
+                            <div class="weather-location">
+                                <i class="fas fa-map-marker-alt"></i> Jerusalem, Israel
+                            </div>
+                            <div class="weather-display">
+                                <div class="weather-temp" id="weatherTemp">--°C</div>
+                                <div class="weather-desc" id="weatherDesc">Loading...</div>
+                                <div class="weather-feels-like" id="weatherFeelsLike"></div>
+                            </div>
+                        </div>
+                        <div class="header-date-time">
+                            <div class="current-time" id="currentTime"></div>
+                            <div class="current-date" id="currentDate"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-bar">
+            <div class="container-fluid">
+                <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav-main" id="navMain">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a href="worship.html" class="nav-link active">
+                        <i class="fas fa-music"></i> Worship Music
+                    </a>
+                    <a href="roots-reflections.html" class="nav-link">
+                        <i class="fas fa-book-open"></i> Roots & Reflections
+                    </a>
+                    <a href="projects.html" class="nav-link">
+                        <i class="fas fa-hands-helping"></i> Projects
+                    </a>
+                    <a href="blog-posts.html" class="nav-link">
+                        <i class="fas fa-blog"></i> Blog
+                    </a>
+                    <a href="about.html" class="nav-link">
+                        <i class="fas fa-info-circle"></i> About
+                    </a>
+                    <a href="testimonials.html" class="nav-link">
+                        <i class="fas fa-heart"></i> Testimonials
+                    </a>
+                    <a href="shop.html" class="nav-link">
+                        <i class="fas fa-shopping-bag"></i> Shop
+                    </a>
+                    <a href="contact.html" class="nav-link">
+                        <i class="fas fa-envelope"></i> Contact
+                    </a>
+                    <a href="https://www.visionforisrael.com/en/give" class="nav-link donate-link" target="_blank">
+                        <i class="fas fa-donate"></i> DONATE NOW
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <section class="worship-section" id="worship">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-music"></i> Worship with Barry & Batya Segal
+                    </h2>
+                    <p class="section-subtitle">Messianic praise & worship from the heart of Jerusalem</p>
+                </div>
+                <!-- Spotify Integration -->
+                <div class="spotify-section">
+                    <div class="spotify-header">
+                        <i class="fab fa-spotify"></i>
+                        <h3>Listen on Spotify</h3>
+                        <p>Stream their complete album collection • 18,808+ monthly listeners</p>
+                    </div>
+                    <div class="spotify-embed">
+                        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/artist/26wd7poZI6XycIuZRUSOCq?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    </div>
+                    <div class="spotify-info">
+                        <h4>Popular Songs:</h4>
+                        <ul>
+                            <li>🎵 Sh'ma Yisrael - 1M+ plays</li>
+                            <li>🎵 Kadosh (Holy) - 549K+ plays</li>
+                            <li>🎵 Baruch Haba (Blessed Is He) - 498K+ plays</li>
+                            <li>🎵 Hallelu Et Adonai - 432K+ plays</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- YouTube Video Section -->
+                <div class="youtube-section">
+                    <div class="youtube-header">
+                        <i class="fab fa-youtube"></i>
+                        <h3>Watch on YouTube</h3>
+                        <p>Free worship videos from Barry & Batya Segal</p>
+                        <a href="https://www.youtube.com/@BarryBatyaSegal" target="_blank" 
+                           style="display: inline-block; margin-top: 1rem; color: #06b6d4; font-weight: 600; text-decoration: none; transition: all 0.3s ease;"
+                           onmouseover="this.style.color='#0891b2'"
+                           onmouseout="this.style.color='#06b6d4'">
+                            <i class="fab fa-youtube"></i> Visit @BarryBatyaSegal Channel
+                        </a>
+                    </div>
+                    <div class="worship-grid" id="worshipGrid">
+                        <!-- Worship videos will be loaded here -->
+                    </div>
+                </div>
+                <!-- Barry & Batya Website CTA -->
+                <div class="worship-cta">
+                    <div class="cta-content">
+                        <div class="cta-text">
+                            <h3><i class="fas fa-globe"></i> Discover More Authentic Hebraic Worship</h3>
+                            <p>Visit Barry & Batya Segal's official website to explore their complete music catalog, purchase albums, and learn about their ministry bringing authentic Israeli praise & worship from Jerusalem.</p>
+                            <div class="cta-features">
+                                <div class="cta-feature">
+                                    <i class="fas fa-music"></i>
+                                    <span>4 Studio Albums</span>
+                                </div>
+                                <div class="cta-feature">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <span>Purchase Music</span>
+                                </div>
+                                <div class="cta-feature">
+                                    <i class="fas fa-book"></i>
+                                    <span>Lyrics & Chords</span>
+                                </div>
+                                <div class="cta-feature">
+                                    <i class="fas fa-heart"></i>
+                                    <span>Ministry Updates</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cta-actions">
+                            <a href="https://www.barryandbatyasegal.com/" target="_blank" class="cta-btn cta-btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Visit Their Website
+                            </a>
+                            <a href="https://www.barryandbatyasegal.com/shop" target="_blank" class="cta-btn cta-btn-secondary">
+                                <i class="fas fa-shopping-bag"></i> Shop Music
+                            </a>
+                            <a href="https://www.barryandbatyasegal.com/music" target="_blank" class="cta-btn cta-btn-secondary">
+                                <i class="fas fa-compact-disc"></i> View All Albums
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="https://www.visionforisrael.com/en/give" target="_blank">Donate</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="https://www.visionforisrael.com/en/newsletter" target="_blank">Newsletter</a></li>
+                        <li><a href="https://www.visionforisrael.com/en/volunteer" target="_blank">Volunteer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/visionforisrael" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/vision4israel" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/visionforisrael" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/visionforisrael" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>VFI News</h3>
+                    <p>Stay informed with the latest news and updates from Israel.</p>
+                    <p><strong>Vision For Israel</strong><br>Operating since 1994</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vision For Israel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for YouTube video playback (updated for details) -->
+    <div id="worshipModal" class="worship-modal" style="display:none;">
+        <div class="worship-modal-content">
+            <span id="worshipModalClose" class="worship-modal-close">&times;</span>
+            <div class="worship-modal-video">
+                <iframe id="worshipModalIframe" width="100%" height="360" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="worship-modal-details">
+                <h2 id="worshipModalTitle" class="worship-modal-title"></h2>
+                <div class="worship-modal-meta">
+                    <span id="worshipModalChannel" class="worship-modal-channel"></span>
+                    <span id="worshipModalDate" class="worship-modal-date"></span>
+                </div>
+                <a id="worshipModalYoutubeBtn" class="worship-modal-youtube-btn" href="#" target="_blank">
+                    <i class="fab fa-youtube"></i> Watch on YouTube
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="bible_verses.js"></script>
+    <script src="worship.js"></script>
+    <script>
+    // Helper function to escape HTML
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    // Load Worship Music Videos
+    async function loadWorshipMusic() {
+        const worshipGrid = document.getElementById('worshipGrid');
+        if (!worshipGrid) return;
+        try {
+            const response = await fetch('barry_batya_music_catalog.json');
+            if (!response.ok) throw new Error('Could not load music catalog: ' + response.status);
+            const catalog = await response.json();
+            const videos = catalog.videos || [];
+            window._worshipVideos = videos;
+            if (!Array.isArray(videos) || videos.length === 0) {
+                worshipGrid.innerHTML = '<p style="color:#e11d48">No worship videos found in catalog.</p>';
+                return;
+            }
+            worshipGrid.innerHTML = videos.map(video => {
+                const safeTitle = escapeHtml(video.title);
+                const pubDate = new Date(video.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+                return `
+                    <div class="worship-card" onclick="openVideoModal('${video.videoId}', \`${safeTitle}\`)">
+                        <div class="worship-thumbnail">
+                            <img src="${video.thumbnails.high.url}" 
+                                 alt="${safeTitle}"
+                                 onerror="this.src='${video.thumbnails.medium.url}'">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="worship-info">
+                            <h3 class="worship-title">${safeTitle}</h3>
+                            <p class="worship-date">${pubDate}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        } catch (error) {
+            worshipGrid.innerHTML = `<p style='color:#e11d48'>Could not load worship videos.<br>${escapeHtml(error.message)}</p>`;
+            console.error('Worship video JSON fetch error:', error);
+        }
+    }
+    function openVideoModal(videoId, title) {
+        const modal = document.getElementById('worshipModal');
+        const modalTitle = document.getElementById('worshipModalTitle');
+        const modalIframe = document.getElementById('worshipModalIframe');
+        const modalChannel = document.getElementById('worshipModalChannel');
+        const modalDate = document.getElementById('worshipModalDate');
+        const modalYoutubeBtn = document.getElementById('worshipModalYoutubeBtn');
+        let videoData = null;
+        if (window._worshipVideos && Array.isArray(window._worshipVideos)) {
+            videoData = window._worshipVideos.find(v => v.videoId === videoId);
+        }
+        modalTitle.textContent = title;
+        modalIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        modalChannel.textContent = videoData && videoData.channelTitle ? videoData.channelTitle : 'Barry & Batya Segal';
+        modalDate.textContent = videoData && videoData.publishedAt ? new Date(videoData.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+        modalYoutubeBtn.href = videoData && videoData.videoUrl ? videoData.videoUrl : `https://www.youtube.com/watch?v=${videoId}`;
+        modal.style.display = 'flex';
+    }
+    function closeVideoModal() {
+        const modal = document.getElementById('worshipModal');
+        const modalIframe = document.getElementById('worshipModalIframe');
+        modal.style.display = 'none';
+        modalIframe.src = '';
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        loadWorshipMusic();
+        document.getElementById('worshipModalClose').onclick = closeVideoModal;
+        window.onclick = function(event) {
+            const modal = document.getElementById('worshipModal');
+            if (event.target === modal) closeVideoModal();
+        };
+    });
+    </script>
+    <style>
+    .worship-modal {
+        position: fixed;
+        z-index: 1000;
+        left: 0; top: 0;
+        width: 100vw; height: 100vh;
+        background: rgba(0,0,0,0.85);
+        display: flex; align-items: center; justify-content: center;
+        padding: 0;
+    }
+    .worship-modal-content {
+        background: transparent;
+        border-radius: 0;
+        max-width: 1100px;
+        width: 100vw;
+        min-height: 70vh;
+        padding: 0;
+        position: relative;
+        box-shadow: none;
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .worship-modal-close {
+        position: fixed;
+        top: 24px;
+        right: 32px;
+        width: 48px;
+        height: 48px;
+        background: rgba(255,255,255,0.18);
+        backdrop-filter: blur(8px);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.2rem;
+        color: #e11d48;
+        cursor: pointer;
+        font-weight: bold;
+        z-index: 2000;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+        border: 1.5px solid rgba(255,255,255,0.32);
+        transition: background 0.2s, color 0.2s, border 0.2s;
+    }
+    .worship-modal-close:hover {
+        background: rgba(225,29,72,0.18);
+        color: #fff;
+        border: 1.5px solid #e11d48;
+    }
+    .worship-modal-video {
+        background: transparent;
+        padding: 0;
+        border-radius: 0;
+        text-align: center;
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        max-width: 1100px;
+    }
+    .worship-modal-video iframe {
+        border-radius: 0;
+        background: #000;
+        box-shadow: none;
+        width: 100vw;
+        max-width: 1100px;
+        height: 56vh;
+        min-height: 340px;
+        margin: 0 auto;
+        display: block;
+    }
+    .worship-modal-details {
+        background: #1e293b;
+        color: #fff;
+        padding: 40px 48px 32px 48px;
+        border-radius: 0 0 24px 24px;
+        text-align: left;
+        width: 100vw;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .worship-modal-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 18px;
+        color: #fff;
+    }
+    .worship-modal-meta {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        font-size: 1.15rem;
+        margin-bottom: 24px;
+    }
+    .worship-modal-channel {
+        color: #f43f5e;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .worship-modal-date {
+        color: #cbd5e1;
+        font-size: 1.08rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .worship-modal-youtube-btn {
+        display: inline-block;
+        background: #2563eb;
+        color: #fff;
+        font-weight: 600;
+        padding: 16px 32px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 1.25rem;
+        margin-top: 12px;
+        transition: background 0.2s;
+    }
+    .worship-modal-youtube-btn:hover {
+        background: #1d4ed8;
+        color: #fff;
+    }
+    @media (max-width: 900px) {
+        .worship-modal-content {
+            max-width: 99vw;
+            border-radius: 0;
+        }
+        .worship-modal-video, .worship-modal-details {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .worship-modal-close {
+            right: 8px;
+            top: 8px;
+        }
+    }
+    </style>
+</body>
+</html>

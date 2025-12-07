@@ -1,0 +1,412 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision for Israel Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 32px;
+        }
+        .blog-card {
+            background: #1e293b;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+            color: #fff;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.15s, box-shadow 0.15s;
+            min-height: 320px;
+        }
+        .blog-card:hover {
+            transform: translateY(-6px) scale(1.025);
+            box-shadow: 0 8px 32px rgba(6,182,212,0.18);
+        }
+        .blog-card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            background: #0f172a;
+        }
+        .blog-card-content {
+            padding: 24px 20px 20px 20px;
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #38bdf8;
+        }
+        .blog-card-meta {
+            font-size: 0.98rem;
+            color: #cbd5e1;
+            margin-bottom: 10px;
+        }
+        .blog-card-excerpt {
+            font-size: 1.05rem;
+            color: #e0e7ef;
+            flex: 1 1 auto;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 32px;
+        }
+        .blog-card {
+            background: #1e293b;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+            color: #fff;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.15s, box-shadow 0.15s;
+            min-height: 320px;
+        }
+        .blog-card:hover {
+            transform: translateY(-6px) scale(1.025);
+            box-shadow: 0 8px 32px rgba(6,182,212,0.18);
+        }
+        .blog-card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            background: #0f172a;
+        }
+        .blog-card-content {
+            padding: 24px 20px 20px 20px;
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #38bdf8;
+        }
+        .blog-card-meta {
+            font-size: 0.98rem;
+            color: #cbd5e1;
+            margin-bottom: 10px;
+        }
+        .blog-card-excerpt {
+            font-size: 1.05rem;
+            color: #e0e7ef;
+            flex: 1 1 auto;
+        }
+        .blog-modal {
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.85);
+            display: flex; align-items: center; justify-content: center;
+            padding: 0;
+        }
+        .blog-modal-content {
+            background: #fff;
+            border-radius: 20px;
+            max-width: 700px;
+            width: 95vw;
+            padding: 0;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        .blog-modal-close {
+            position: absolute;
+            top: 16px; right: 24px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(8px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #e11d48;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            border: 1.5px solid rgba(255,255,255,0.32);
+            transition: background 0.2s, color 0.2s, border 0.2s;
+        }
+        .blog-modal-close:hover {
+            background: rgba(225,29,72,0.18);
+            color: #fff;
+            border: 1.5px solid #e11d48;
+        }
+        .blog-modal-body {
+            padding: 36px 32px 32px 32px;
+            color: #1e293b;
+        }
+        .blog-modal-image {
+            width: 100%;
+            max-height: 260px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 18px;
+        }
+        .blog-modal-meta {
+            color: #64748b;
+            font-size: 1rem;
+        }
+        /* Modal styles */
+        .blog-modal {
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.85);
+            display: flex; align-items: center; justify-content: center;
+            padding: 0;
+        }
+        .blog-modal-content {
+            background: #fff;
+            border-radius: 20px;
+            max-width: 700px;
+            width: 95vw;
+            padding: 0;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        .blog-modal-close {
+            position: absolute;
+            top: 16px; right: 24px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(8px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #e11d48;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            border: 1.5px solid rgba(255,255,255,0.32);
+            transition: background 0.2s, color 0.2s, border 0.2s;
+        }
+        .blog-modal-close:hover {
+            background: rgba(225,29,72,0.18);
+            color: #fff;
+            border: 1.5px solid #e11d48;
+        }
+        .blog-modal-body {
+            padding: 36px 32px 32px 32px;
+            color: #1e293b;
+        }
+        .blog-modal-image {
+            width: 100%;
+            max-height: 260px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 18px;
+        }
+        .blog-modal-meta {
+            color: #64748b;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body style="background: #16213e;">
+    <!-- Header (secondary style) -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container-fluid">
+                <div class="header-grid-secondary">
+                    <div class="logo-section-secondary">
+                        <img src="vfi-news-banner.png" alt="VFI News" class="logo-banner-secondary" onerror="this.src='vfi-news.png';">
+                    </div>
+                    <div class="bible-verse-section">
+                        <i class="fas fa-blog"></i>
+                        <span class="verse-text">"Let the wise listen and add to their learning, and let the discerning get guidance."</span>
+                        <span class="verse-reference">Proverbs 1:5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <div class="container-fluid">
+                <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav-main" id="navMain">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a href="worship.html" class="nav-link">
+                        <i class="fas fa-music"></i> Worship Music
+                    </a>
+                    <a href="roots-reflections.html" class="nav-link">
+                        <i class="fas fa-book-open"></i> Roots & Reflections
+                    </a>
+                    <a href="projects.html" class="nav-link">
+                        <i class="fas fa-hands-helping"></i> Projects
+                    </a>
+                    <a href="blog-posts.html" class="nav-link active">
+                        <i class="fas fa-blog"></i> Blog
+                    </a>
+                    <a href="about.html" class="nav-link">
+                        <i class="fas fa-info-circle"></i> About
+                    </a>
+                    <a href="testimonials.html" class="nav-link">
+                        <i class="fas fa-heart"></i> Testimonials
+                    </a>
+                    <a href="shop.html" class="nav-link">
+                        <i class="fas fa-shopping-bag"></i> Shop
+                    </a>
+                    <a href="contact.html" class="nav-link">
+                        <i class="fas fa-envelope"></i> Contact
+                    </a>
+                    <a href="https://www.visionforisrael.com/en/give" class="nav-link donate-link" target="_blank">
+                        <i class="fas fa-donate"></i> DONATE NOW
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+          
+    </style>
+</head>
+<body>
+    <header class="header-news">
+        <!-- Add your navigation here if needed -->
+    </header>
+    <main class="container"></main>
+     <!-- VFI News Info Banner (moved below nav bar) -->
+        <!-- VFI News Info Banner (moved below nav bar) -->
+        <section style="margin: 2.5rem auto 2.5rem auto; text-align: center; max-width: 900px;">
+            <div style="display: inline-block; background: linear-gradient(90deg, #1e293b 0%, #0ea5e9 100%); border-radius: 14px; box-shadow: 0 2px 16px rgba(14,165,233,0.10); padding: 1.5rem 2.5rem;">
+                <h3 style="color: #38bdf8; font-size: 1.35rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.5px;">VFI News</h3>
+                <p style="color: #e0e7ef; font-size: 1.08rem; margin-bottom: 0.2rem;">Stay informed with the latest news and updates from Israel.</p>
+                <p style="color: #bae6fd; font-size: 1.01rem; font-weight: 600; margin-bottom: 0.2rem;"><strong>Vision For Israel</strong></p>
+                <p style="color: #bae6fd; font-size: 0.98rem;">Operating since 1994</p>
+            </div>
+        </section>
+        <!-- Blog Title and Description -->
+        <section style="margin-bottom: 2.5rem; text-align: center;">
+            <h1 style="font-size:2.7rem; color:#38bdf8; font-weight:900; letter-spacing:-1.5px; margin-bottom:0.7rem; text-shadow:0 2px 16px rgba(14,165,233,0.10); display:inline-block;">
+                <i class="fas fa-blog" style="margin-right:0.5rem;"></i> Vision for Israel Blog
+            </h1>
+            <p style="max-width: 700px; margin: 0 auto; color: #e0e7ef; font-size: 1.18rem; font-weight: 500; line-height: 1.7;">
+                Explore inspiring stories, news, and updates from Vision for Israel. Our blog features real-life impact, faith journeys, humanitarian projects, and biblical insights. Stay connected with the heart of Israel and discover how your support brings hope and transformation to lives across the nation.
+            </p>
+        </section>
+        <section class="blog-section" style="background: #1e293b; border-radius: 18px; box-shadow: 0 8px 32px rgba(6,182,212,0.10); padding: 2.5rem 2rem 2rem 2rem; margin-bottom: 2.5rem;">
+            <div class="section-header" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+                <div style="display:flex;align-items:center;gap:0.7rem;">
+                    <i class="fas fa-blog" style="font-size:2rem;color:#38bdf8;"></i>
+                    <h2 class="section-title" style="font-size:2rem;color:#38bdf8;font-weight:800;margin:0;letter-spacing:-1px;">Latest Blog Articles</h2>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.7rem;">
+                    <label for="blogSortSelect" style="font-weight:600;color:#38bdf8;">Sort by:</label>
+                    <select id="blogSortSelect" onchange="setSortOrder(this.value)" style="padding:6px 12px;border-radius:8px;font-size:1rem;">
+                        <option value="newest">Newest to Oldest</option>
+                        <option value="oldest">Oldest to Newest</option>
+                    </select>
+                </div>
+            </div>
+            <div id="blogGrid" class="blog-grid" style="margin-top:2.5rem;"></div>
+        </section>
+    </main>
+    <!-- Blog Modal -->
+    <div id="blogModal" class="blog-modal" style="display:none;">
+        <div class="blog-modal-content">
+            <span id="blogModalClose" class="blog-modal-close">&times;</span>
+            <div class="blog-modal-body">
+                <img id="blogModalImage" class="blog-modal-image" src="" alt="Blog Image" style="display:none;" />
+                <h2 id="blogModalTitle"></h2>
+                <div id="blogModalMeta" class="blog-modal-meta"></div>
+                <div id="blogModalContent" class="blog-modal-content-scroll"></div>
+            </div>
+        </div>
+    </div>        <section class="blog-section">
+            <div class="section-header">
+               
+            <div style="margin-bottom:24px;display:flex;align-items:center;gap:16px;">
+
+            </div>
+            <div id="blogGrid" class="blog-grid"></div>
+        </section>
+    </main>
+
+        </div>
+    </div>
+    <script src="blog-posts.js"></script>
+</body>
+
+       <!-- Bible Verse Banner -->
+        <section class="bible-verse-banner" style="margin-top: 2.5rem; margin-bottom: 2.5rem; background: linear-gradient(90deg, #0ea5e9 0%, #38bdf8 100%); border-radius: 18px; box-shadow: 0 4px 24px rgba(14,165,233,0.08); padding: 2.2rem 2rem 1.5rem 2rem; text-align: center;">
+            <div class="verse-icon" style="font-size:2.2rem; color:#fff; margin-bottom:0.5rem;"><i class="fas fa-feather-alt"></i></div>
+            <p class="verse-text" style="font-size:1.35rem; color:#fff; font-weight:600; margin-bottom:0.2rem;">"How beautiful on the mountains are the feet of those who bring good news, who proclaim peace, who bring good tidings, who proclaim salvation, who say to Zion, 'Your God reigns!'"</p>
+            <p class="verse-reference" style="color:#bae6fd; font-size:1.1rem; font-weight:500;">Isaiah 52:7</p>
+        </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="roots-reflections.html">Roots & Reflections</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="blog-posts.html">Blog</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="https://www.visionforisrael.com/en/give" target="_blank">Donate</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="https://www.visionforisrael.com/en/newsletter" target="_blank">Newsletter</a></li>
+                        <li><a href="https://www.visionforisrael.com/en/volunteer" target="_blank">Volunteer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/visionforisrael" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/vision4israel" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/visionforisrael" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@VisionforIsrael" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vision For Israel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</html>

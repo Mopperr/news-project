@@ -389,10 +389,9 @@ let featuredArticleIndex = 0;
 let blogArticles = [];
 
 // Featured video (rotates through first 3 videos)
-const FEATURED_VIDEO = ALL_VFI_VIDEOS[0];
 
-// Video grid (videos 3-17 from playlist) - 15 videos for the grid
-const FALLBACK_VIDEOS = ALL_VFI_VIDEOS.slice(2, 17);
+let FEATURED_VIDEO = null;
+let FALLBACK_VIDEOS = [];
 
 // Auto-rotation function for video only
 function rotateVideos() {
@@ -418,27 +417,51 @@ function rotateArticles() {
 // Fetch YouTube Videos
 async function fetchYouTubeVideos() {
     console.log('=== Starting fetchYouTubeVideos ===');
-    console.log('Total VFI videos available:', ALL_VFI_VIDEOS.length);
-    
     try {
-        console.log('Loading VFI YouTube videos from playlist...');
-        
+        // Load from dynamic catalog
+        const response = await fetch('vfi_news_videos_catalog.json?t=' + new Date().getTime());
+        if (!response.ok) {
+            throw new Error('Could not load VFI News video catalog');
+        }
+        const catalog = await response.json();
+        const videos = catalog.videos || [];
+        if (videos.length === 0) throw new Error('No videos found in catalog');
+
+        // Use latest video as featured
+        FEATURED_VIDEO = {
+            id: { videoId: videos[0].videoId },
+            snippet: {
+                title: videos[0].title,
+                description: videos[0].description,
+                publishedAt: videos[0].publishedAt,
+                thumbnails: { high: { url: videos[0].thumbnails.high.url } }
+            }
+        };
+        // Next 15 videos for grid
+        FALLBACK_VIDEOS = videos.slice(1, 16).map(v => ({
+            id: { videoId: v.videoId },
+            snippet: {
+                title: v.title,
+                description: v.description,
+                publishedAt: v.publishedAt,
+                thumbnails: { high: { url: v.thumbnails.high.url } }
+            }
+        }));
+
         // Display videos
-        displayFeaturedVideo(FEATURED_VIDEO);  // Video #1
-        displayVideos(FALLBACK_VIDEOS);         // Videos #3-17 (15 videos)
-        
+        displayFeaturedVideo(FEATURED_VIDEO);
+        displayVideos(FALLBACK_VIDEOS);
+
         console.log(`✓ Featured Video: ${FEATURED_VIDEO.snippet.title}`);
         console.log(`✓ Grid Videos: ${FALLBACK_VIDEOS.length} videos displayed`);
         console.log('All videos loaded successfully!');
         console.log('💫 Auto-rotation enabled: Featured video will cycle every 10 seconds');
-        
+
         // Start auto-rotation after 10 seconds
         setTimeout(() => {
             rotateVideos();
-            // Then rotate every 10 seconds
             setInterval(rotateVideos, 10000);
         }, 10000);
-        
     } catch (error) {
         console.error('Error in fetchYouTubeVideos:', error);
     }

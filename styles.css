@@ -1,3 +1,68 @@
+/* Blog Card Styles */
+.blog-card {
+    background: #1e293b;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+    color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.15s, box-shadow 0.15s;
+    min-height: 320px;
+}
+.blog-card:hover {
+    transform: translateY(-6px) scale(1.025);
+    box-shadow: 0 8px 32px rgba(6,182,212,0.18);
+}
+.blog-card-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    background: #0f172a;
+    min-height: 180px;
+    display: block;
+}
+.blog-card-content {
+    padding: 24px 20px 20px 20px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+.blog-card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #38bdf8;
+}
+.blog-card-excerpt {
+    font-size: 1.05rem;
+    color: #e0e7ef;
+    flex: 1 1 auto;
+}
+.blog-card-date-badge {
+    background: #38bdf8;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 0 0 16px 16px;
+    padding: 8px 0;
+    text-align: center;
+    margin-top: auto;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(56,189,248,0.08);
+}
+/* Modal content scroll area */
+.blog-modal-content-scroll {
+    max-height: 340px;
+    overflow-y: auto;
+    padding: 12px 0 0 0;
+    color: #222;
+    font-size: 1.08rem;
+    line-height: 1.7;
+}
 /* Center the View Details button at the bottom of the card */
 .project-btn-row {
     display: flex;
