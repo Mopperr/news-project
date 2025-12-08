@@ -1,6 +1,32 @@
 // blog-posts.js
 // Load and display Vision for Israel blog articles as cards with modal view
 
+// Modal logic: ensure both button and image link to full article
+function openBlogModal(idx) {
+    const modal = document.getElementById('blogModal');
+    const modalImage = document.getElementById('blogModalImage');
+    const modalTitle = document.getElementById('blogModalTitle');
+    const modalMeta = document.getElementById('blogModalMeta');
+    const modalContent = document.getElementById('blogModalContent');
+    const modalReadFull = document.getElementById('blogModalReadFull');
+
+    const articles = sortArticles(_blogArticles, _sortOrder);
+    const article = articles[idx];
+    if (!article) return;
+
+    // Set modal content
+    modalImage.src = article.image && article.image.startsWith('http') ? article.image : 'https://via.placeholder.com/400x180?text=No+Image';
+    modalImage.style.display = article.image ? 'block' : 'none';
+    modalTitle.textContent = article.title || '';
+    modalMeta.innerHTML = article.published ? `<i class='far fa-calendar-alt'></i> ${formatDate(article.published)}` : '';
+    modalContent.innerHTML = article.content_html ? `<div class='blog-modal-content-scroll'>${article.content_html}</div>` : `<div class='blog-modal-content-scroll'><em>No article text available.</em></div>`;
+
+    // Remove Read Full Article button and image click logic
+
+    // Show modal
+    modal.style.display = 'flex';
+}
+
 
 let _blogArticles = [];
 let _sortOrder = 'newest'; // newest or oldest

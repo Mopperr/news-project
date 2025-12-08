@@ -28,6 +28,11 @@
         <!-- Navigation Bar -->
         <div class="nav-bar">
             <div class="container-fluid">
+                <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <nav class="nav-main" id="navMain">
                     <a href="index.html" class="nav-link">
                         <i class="fas fa-home"></i> Home
@@ -277,7 +282,7 @@
                     <ul>
                         <li><a href="https://www.visionforisrael.com/en/give" target="_blank">Donate</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="https://www.visionforisrael.com/en/newsletter" target="_blank">Newsletter</a></li>
+                        <li><a href="blog-posts.html">Blog</a></li>
                         <li><a href="https://www.visionforisrael.com/en/volunteer" target="_blank">Volunteer</a></li>
                     </ul>
                 </div>
@@ -890,6 +895,32 @@
                 document.body.style.overflow = 'auto';
             }
         }
+    </script>
+    <script>
+    // Hamburger menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const navMain = document.getElementById('navMain');
+        if (hamburgerMenu && navMain) {
+            hamburgerMenu.addEventListener('click', function() {
+                hamburgerMenu.classList.toggle('active');
+                navMain.classList.toggle('active');
+            });
+            document.addEventListener('click', function(e) {
+                if (!hamburgerMenu.contains(e.target) && !navMain.contains(e.target)) {
+                    hamburgerMenu.classList.remove('active');
+                    navMain.classList.remove('active');
+                }
+            });
+            var navLinks = navMain.querySelectorAll('.nav-link');
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    hamburgerMenu.classList.remove('active');
+                    navMain.classList.remove('active');
+                });
+            });
+        }
+    });
     </script>
 </body>
 </html>
