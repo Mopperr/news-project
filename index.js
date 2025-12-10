@@ -109,11 +109,19 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 ============================================');
     console.log('🚀 Initialization complete!');
     console.log('🚀 ============================================');
+
+    // Initialize weather and Israel time widgets
+    updateHeaderTime();
+    updateHeaderDate();
+    fetchJerusalemWeather();
+    setInterval(updateHeaderTime, 1000);                // refresh time every second
+    setInterval(updateHeaderDate, 60 * 1000);           // refresh date every minute
+    setInterval(fetchJerusalemWeather, 10 * 60 * 1000); // refresh weather every 10 minutes
 });
 
-// Update Header Date
+// Update Header Date (Asia/Jerusalem)
 function updateHeaderDate() {
-    const dateElement = document.getElementById('headerDate');
+    const dateElement = document.getElementById('currentDate');
     if (dateElement) {
         const options = { 
             weekday: 'long', 

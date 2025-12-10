@@ -2339,7 +2339,7 @@ body::before {
 /* Bible Verse Sidebars - Seamless Staggered Design */
 .bible-sidebar {
     position: absolute;
-    width: 220px;
+    width: 240px;
     padding: 0;
     background: none;
     border: none;
@@ -2363,16 +2363,18 @@ body::before {
 .bible-verse-card {
     background: linear-gradient(135deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.35) 100%);
     border-radius: 10px;
-    padding: 14px;
+    padding: 18px 12px;
     margin-bottom: 0;
     border-left: 2px solid rgba(59, 130, 246, 0.3);
     transition: all 0.4s ease;
     position: relative;
-    width: 260px;
+    width: 230px;
     backdrop-filter: blur(8px);
-    opacity: 0.75;
+    opacity: 0.92;
     height: auto;
     overflow: visible;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 .bible-verse-card:hover {
@@ -2385,15 +2387,17 @@ body::before {
 
 .bible-verse-text {
     color: rgba(226, 232, 240, 0.85);
-    font-size: 0.82rem;
-    line-height: 1.5;
+    font-size: 1.18rem;
+    line-height: 1.75;
     font-style: italic;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 .bible-verse-reference {
     color: rgba(96, 165, 250, 0.8);
-    font-size: 0.75rem;
+    font-size: 1rem;
     font-weight: 600;
     text-align: right;
     display: block;
@@ -2410,7 +2414,7 @@ body::before {
 
 .sermon-header {
     color: rgba(251, 191, 36, 0.9);
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -2430,7 +2434,7 @@ body::before {
 
 .sermon-label {
     color: rgba(96, 165, 250, 0.8);
-    font-size: 0.65rem;
+    font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.3px;
@@ -2440,8 +2444,8 @@ body::before {
 
 .sermon-text {
     color: rgba(203, 213, 225, 0.8);
-    font-size: 0.72rem;
-    line-height: 1.4;
+    font-size: 0.95rem;
+    line-height: 1.55;
     margin-bottom: 8px;
 }
 
@@ -4075,17 +4079,26 @@ body::before {
     height: 40px;
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(8px);
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
     opacity: 0.75;
-    overflow: visible;
+    display: flex;
     align-items: center;
     justify-content: center;
     z-index: 10;
     transition: all 0.3s ease;
+    line-height: 1;
 }
 
 .story-modal-close:hover {
-    background: rgba(239, 68, 68, 0.9);
-    transform: rotate(90deg);
+    background: rgba(239, 68, 68, 0.95);
+    opacity: 1;
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.5);
 }
 
 .story-modal-body {
