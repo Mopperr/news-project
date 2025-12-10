@@ -48,121 +48,67 @@ let currentSearchQuery = '';
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('🚀 ============================================');
+    console.log('🚀 INDEX.HTML - DOM Content Loaded');
+    console.log('🚀 ============================================');
+    
     // Initialize DOM elements
     newsGrid = document.getElementById('newsGrid');
     videosGrid = document.getElementById('videosGrid');
-    featuredVideo = document.getElementById('featuredVideo');
-    featuredArticle = document.getElementById('featuredArticle');
     loading = document.getElementById('loading');
     errorMessage = document.getElementById('errorMessage');
     searchInput = document.getElementById('searchInput');
     searchBtn = document.getElementById('searchBtn');
     navButtons = document.querySelectorAll('.nav-btn');
-    const categoryButtons = document.querySelectorAll('.category-btn');
-    modal = document.getElementById('modal');
-    modalBody = document.getElementById('modalBody');
-    modalClose = document.querySelector('.modal-close');
     
-    console.log('DOM Elements initialized:', {
-        newsGrid, videosGrid, featuredVideo, featuredArticle
-    });
+    // Video modal elements
+    const videoModal = document.getElementById('videoModal');
+    const videoModalClose = document.getElementById('videoModalClose');
+    const articleModal = document.getElementById('articleModal');
+    const articleModalClose = document.getElementById('articleModalClose');
     
-    // Setup event listeners for category filter buttons
-    if (categoryButtons) {
-        categoryButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                categoryButtons.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentCategory = btn.dataset.category;
-                currentSearchQuery = '';
-                if (searchInput) searchInput.value = '';
-                fetchLatestNews();
-            });
-        });
-    }
-    
-    // Setup event listeners
-    if (searchBtn) {
-        searchBtn.addEventListener('click', handleSearch);
-    }
-    if (searchInput) {
-        searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') handleSearch();
-        });
-    }
+    console.log('📋 DOM Elements initialized');
     
     // Modal Event Listeners
-    if (modalClose) {
-        modalClose.addEventListener('click', closeModal);
+    if (videoModalClose) {
+        videoModalClose.addEventListener('click', closeVideoModal);
     }
-    if (modal) {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
+    if (articleModalClose) {
+        articleModalClose.addEventListener('click', closeArticleModal);
     }
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-    });
-    
-    // Worship Music Navigation
-    const worshipLink = document.getElementById('worshipLink');
-    if (worshipLink) {
-        worshipLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            const worshipSection = document.querySelector('.worship-section');
-            if (worshipSection) {
-                worshipSection.style.display = 'block';
-                worshipSection.scrollIntoView({ behavior: 'smooth' });
-            }
+    if (videoModal) {
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) closeVideoModal();
         });
     }
-    
-    // Update header date
-    updateHeaderDate();
-    
-    // Update time every second
-    updateHeaderTime();
-    setInterval(updateHeaderTime, 1000);
-    
-    // Fetch weather
-    fetchJerusalemWeather();
-    setInterval(fetchJerusalemWeather, 60000); // Update every minute (reads from JSON file)
-    
-    // Hamburger menu functionality
-    const hamburgerMenu = document.getElementById('hamburgerMenu');
-    const navMain = document.getElementById('navMain');
-    
-    if (hamburgerMenu && navMain) {
-        hamburgerMenu.addEventListener('click', () => {
-            hamburgerMenu.classList.toggle('active');
-            navMain.classList.toggle('active');
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!hamburgerMenu.contains(e.target) && !navMain.contains(e.target)) {
-                hamburgerMenu.classList.remove('active');
-                navMain.classList.remove('active');
-            }
-        });
-        
-        // Close menu when clicking a link
-        const navLinks = navMain.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburgerMenu.classList.remove('active');
-                navMain.classList.remove('active');
-            });
+    if (articleModal) {
+        articleModal.addEventListener('click', (e) => {
+            if (e.target === articleModal) closeArticleModal();
         });
     }
+
+    // Load all content
+    console.log('📡 Loading featured content...');
+    loadFeaturedContent();
     
-    // Load worship music videos
-    loadWorshipMusic();
-    
-    // Fetch content
+    console.log('📡 Loading VFI videos...');
     fetchYouTubeVideos();
-    fetchVFIBlogArticles();
+    
+    console.log('📡 Loading news articles...');
     fetchLatestNews();
+    
+    console.log('📖 Loading Bible verses...');
+    loadBibleVerses();
+    
+    // Setup Show All Articles button
+    const showAllNewsBtn = document.getElementById('showAllNewsBtn');
+    if (showAllNewsBtn) {
+        showAllNewsBtn.addEventListener('click', toggleShowAllArticles);
+    }
+    
+    console.log('🚀 ============================================');
+    console.log('🚀 Initialization complete!');
+    console.log('🚀 ============================================');
 });
 
 // Update Header Date
@@ -287,19 +233,39 @@ function escapeHtml(text) {
 
 // Load Worship Music Videos
 async function loadWorshipMusic() {
+    console.log('🎵 === Starting loadWorshipMusic ===');
+    
     const worshipGrid = document.getElementById('worshipGrid');
-    if (!worshipGrid) return;
+    
+    if (!worshipGrid) {
+        console.log('ℹ️ worshipGrid element not found (this is OK if not on worship section)');
+        return;
+    }
+    
+    console.log('✅ worshipGrid element found');
     
     try {
+        console.log('📂 Attempting to load: barry_batya_music_catalog.json');
+        
         // Load Barry & Batya Segal music catalog
         const response = await fetch('barry_batya_music_catalog.json');
         
+        console.log('📡 Fetch response:', {
+            ok: response.ok,
+            status: response.status,
+            statusText: response.statusText
+        });
+        
         if (!response.ok) {
-            throw new Error('Could not load music catalog');
+            throw new Error(`Could not load music catalog (Status: ${response.status})`);
         }
         
         const catalog = await response.json();
         const videos = catalog.videos || [];
+        
+        console.log('📦 Music catalog loaded:', {
+            totalVideos: videos.length
+        });
         
         // Display first 12 videos
         const displayVideos = videos.slice(0, 12);
@@ -326,11 +292,18 @@ async function loadWorshipMusic() {
             `;
         }).join('');
         
-        console.log('Loaded Barry & Batya Segal worship videos:', displayVideos.length);
+        console.log(`✅ Loaded ${displayVideos.length} Barry & Batya Segal worship videos`);
         
     } catch (error) {
-        console.error('Error loading worship videos:', error);
+        console.error('❌ Error loading worship videos:', error);
+        console.error('❌ Error details:', {
+            message: error.message,
+            stack: error.stack
+        });
+        
         // Fallback to hardcoded videos if catalog fails
+        console.log('⚠️ Using fallback worship videos');
+        
         const fallbackVideos = [
             { id: 'sdNJ6djL1c4', title: 'You Are Holy - Barry & Batya Segal' },
             { id: 'd2ILnGedg2g', title: 'Kadosh (Holy) - Barry & Batya Segal' },
@@ -383,6 +356,162 @@ const ALL_VFI_VIDEOS = [
     { id: { videoId: 'F0HbW9vYDNM' }, snippet: { title: 'Trump Warns Hamas: Disarm or Be Destroyed!', description: 'In a groundbreaking development, President-elect Donald Trump has issued a forceful ultimatum to Hamas...', publishedAt: '2025-10-30T18:00:04Z', thumbnails: { high: { url: 'https://i.ytimg.com/vi/F0HbW9vYDNM/hqdefault.jpg' } } } }
 ];
 
+// Load All Featured Content
+async function loadFeaturedContent() {
+    await Promise.all([
+        loadFeaturedVFIVideo(),
+        loadFeaturedRoots()
+    ]);
+}
+
+// Load Featured VFI Video
+async function loadFeaturedVFIVideo() {
+    try {
+        const response = await fetch('vfi_news_videos_catalog.json');
+        const catalog = await response.json();
+        const video = catalog.videos[0];
+        
+        const container = document.getElementById('featuredVFIVideo');
+        if (!container) return;
+        
+        const date = new Date(video.publishedAt);
+        const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        const thumbnail = video.thumbnails.maxres?.url || video.thumbnails.high?.url;
+        
+        container.innerHTML = `
+            <div class="featured-thumbnail-wrapper" onclick="openVideoModal('${video.videoId}', '${video.title.replace(/'/g, "\\'")}', '${dateStr}', '${video.videoUrl}')">
+                <img src="${thumbnail}" alt="${video.title}">
+                <div class="featured-play-icon">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="featured-info-box">
+                <h3 class="featured-title">${video.title}</h3>
+                <div class="featured-meta">
+                    <i class="far fa-calendar"></i> ${dateStr}
+                </div>
+            </div>
+        `;
+    } catch (error) {
+        console.error('Error loading featured VFI video:', error);
+    }
+}
+
+// Load Featured Roots & Reflections
+async function loadFeaturedRoots() {
+    try {
+        const response = await fetch('roots_reflections_videos_catalog.json');
+        const catalog = await response.json();
+        const video = catalog.videos[0];
+        
+        const container = document.getElementById('featuredRoots');
+        if (!container) return;
+        
+        const date = new Date(video.publishedAt);
+        const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        const thumbnail = video.thumbnails.maxres?.url || video.thumbnails.high?.url;
+        
+        container.innerHTML = `
+            <div class="featured-thumbnail-wrapper" onclick="openVideoModal('${video.videoId}', '${video.title.replace(/'/g, "\\'")}', '${dateStr}', '${video.videoUrl}')">
+                <img src="${thumbnail}" alt="${video.title}">
+                <div class="featured-play-icon">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="featured-info-box">
+                <h3 class="featured-title">${video.title}</h3>
+                <div class="featured-meta">
+                    <i class="far fa-calendar"></i> ${dateStr}
+                </div>
+            </div>
+        `;
+    } catch (error) {
+        console.error('Error loading featured Roots video:', error);
+    }
+}
+
+// Load Featured Blog
+async function loadFeaturedBlog() {
+    try {
+        const response = await fetch('vfi_blog_catalog.json');
+        const catalog = await response.json();
+        const article = catalog.articles[0];
+        
+        const container = document.getElementById('featuredBlog');
+        if (!container) return;
+        
+        const date = new Date(article.published);
+        const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        
+        container.innerHTML = `
+            <div class="featured-thumbnail-wrapper" onclick="window.open('${article.link}', '_blank')">
+                <img src="${article.image || 'https://via.placeholder.com/800x450/0055cc/ffffff?text=Blog'}" alt="${article.title}">
+            </div>
+            <div class="featured-info-box">
+                <h3 class="featured-title">${article.title}</h3>
+                <div class="featured-meta">
+                    <i class="far fa-calendar"></i> ${dateStr}
+                </div>
+            </div>
+        `;
+    } catch (error) {
+        console.error('Error loading featured blog:', error);
+    }
+}
+
+// Load Featured Testimony
+async function loadFeaturedTestimony() {
+    const container = document.getElementById('featuredTestimony');
+    if (!container) return;
+    
+    // Sample testimony - you can replace with actual data
+    container.innerHTML = `
+        <div class="featured-thumbnail-wrapper" onclick="window.location.href='testimonials.html'">
+            <img src="https://via.placeholder.com/800x450/0055cc/ffffff?text=Testimonies" alt="Testimonies">
+        </div>
+        <div class="featured-info-box">
+            <h3 class="featured-title">Lives Transformed Through VFI</h3>
+            <div class="featured-meta">
+                <i class="fas fa-heart"></i> Read More Stories
+            </div>
+        </div>
+    `;
+}
+
+// Load Featured Shop Items
+async function loadFeaturedShop() {
+    const container = document.getElementById('featuredShop');
+    if (!container) return;
+    
+    // Sample shop items - replace with actual shop data
+    const shopItems = [
+        {
+            name: 'Support Israel T-Shirt',
+            price: '$24.99',
+            image: 'https://via.placeholder.com/400x400/0055cc/ffffff?text=T-Shirt',
+            link: 'shop.html'
+        },
+        {
+            name: 'Pray for Peace Mug',
+            price: '$14.99',
+            image: 'https://via.placeholder.com/400x400/0055cc/ffffff?text=Mug',
+            link: 'shop.html'
+        }
+    ];
+    
+    container.innerHTML = shopItems.map(item => `
+        <div class="shop-item-mini" onclick="window.location.href='${item.link}'">
+            <div class="shop-item-image">
+                <img src="${item.image}" alt="${item.name}">
+            </div>
+            <div class="shop-item-info">
+                <h4 class="shop-item-name">${item.name}</h4>
+                <div class="shop-item-price">${item.price}</div>
+            </div>
+        </div>
+    `).join('');
+}
+
 // Auto-rotate featured content indices
 let featuredVideoIndex = 0;
 let featuredArticleIndex = 0;
@@ -414,83 +543,208 @@ function rotateArticles() {
     }
 }
 
+// Video pagination variables
+let allVideos = [];
+let displayedVideoCount = 20;
+const videosPerLoad = 15;
+let loadMoreClickCount = 0;
+
 // Fetch YouTube Videos
 async function fetchYouTubeVideos() {
-    console.log('=== Starting fetchYouTubeVideos ===');
+    console.log('🎥 === Starting fetchYouTubeVideos ===');
+    
+    const videosGrid = document.getElementById('videosGrid');
+    
+    if (!videosGrid) {
+        console.error('❌ videosGrid element not found!');
+        return;
+    }
+    
+    console.log('✅ videosGrid element found');
+    
     try {
-        // Load from dynamic catalog
+        console.log('📂 Loading VFI News videos catalog...');
+        
         const response = await fetch('vfi_news_videos_catalog.json?t=' + new Date().getTime());
+        
         if (!response.ok) {
-            throw new Error('Could not load VFI News video catalog');
+            throw new Error(`Could not load video catalog (Status: ${response.status})`);
         }
+        
         const catalog = await response.json();
         const videos = catalog.videos || [];
-        if (videos.length === 0) throw new Error('No videos found in catalog');
+        
+        if (videos.length === 0) throw new Error('No videos found');
+        
+        console.log(`📦 Loaded ${videos.length} videos from catalog`);
 
-        // Use latest video as featured
-        FEATURED_VIDEO = {
-            id: { videoId: videos[0].videoId },
-            snippet: {
-                title: videos[0].title,
-                description: videos[0].description,
-                publishedAt: videos[0].publishedAt,
-                thumbnails: { high: { url: videos[0].thumbnails.high.url } }
-            }
-        };
-        // Next 15 videos for grid
-        FALLBACK_VIDEOS = videos.slice(1, 16).map(v => ({
-            id: { videoId: v.videoId },
-            snippet: {
-                title: v.title,
-                description: v.description,
-                publishedAt: v.publishedAt,
-                thumbnails: { high: { url: v.thumbnails.high.url } }
-            }
-        }));
+        // Store all videos (skip first one since it's featured)
+        allVideos = videos.slice(1);
+        
+        // Display initial 20 videos
+        displayVideos(allVideos.slice(0, displayedVideoCount), videosGrid);
+        
+        // Setup pagination buttons
+        setupVideoPagination();
 
-        // Display videos
-        displayFeaturedVideo(FEATURED_VIDEO);
-        displayVideos(FALLBACK_VIDEOS);
+        console.log(`✅ Initial Videos Grid: ${Math.min(displayedVideoCount, allVideos.length)} videos displayed`);
 
-        console.log(`✓ Featured Video: ${FEATURED_VIDEO.snippet.title}`);
-        console.log(`✓ Grid Videos: ${FALLBACK_VIDEOS.length} videos displayed`);
-        console.log('All videos loaded successfully!');
-        console.log('💫 Auto-rotation enabled: Featured video will cycle every 10 seconds');
-
-        // Start auto-rotation after 10 seconds
-        setTimeout(() => {
-            rotateVideos();
-            setInterval(rotateVideos, 10000);
-        }, 10000);
     } catch (error) {
-        console.error('Error in fetchYouTubeVideos:', error);
+        console.error('❌ Error loading videos:', error);
+        if (videosGrid) {
+            videosGrid.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #ef4444;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 48px;"></i>
+                    <p style="margin-top: 20px;">Error loading videos</p>
+                    <p style="font-size: 14px; color: #666;">${error.message}</p>
+                </div>
+            `;
+        }
     }
+}
+
+// Display Videos (for pagination)
+function displayVideos(videos, container) {
+    container.innerHTML = videos.map(video => {
+        const thumbnail = video.thumbnails.high?.url || video.thumbnails.medium?.url;
+        
+        return `
+            <div class="video-card-clean" onclick="openVideoModal('${video.videoId}', '${video.title.replace(/'/g, "\\'")}', '', '${video.videoUrl}')">
+                <div class="video-thumbnail-clean">
+                    <img src="${thumbnail}" alt="${video.title}" loading="lazy">
+                    <div class="video-play-overlay-clean">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="video-info-clean">
+                    <h4 class="video-title-clean">${video.title}</h4>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+// Setup Video Pagination
+function setupVideoPagination() {
+    const showMoreBtn = document.getElementById('showMoreVideos');
+    const showAllBtn = document.getElementById('showAllVideos');
+    const container = document.getElementById('videoLoadMoreContainer');
+    const videosGrid = document.getElementById('videosGrid');
+    
+    if (!showMoreBtn || !showAllBtn || !container || !videosGrid) return;
+    
+    // Show buttons if there are more videos to display
+    if (allVideos.length > displayedVideoCount) {
+        container.style.display = 'block';
+        showMoreBtn.style.display = 'inline-flex';
+    }
+    
+    // Show More button click handler
+    showMoreBtn.addEventListener('click', () => {
+        loadMoreClickCount++;
+        displayedVideoCount += videosPerLoad;
+        
+        // Display more videos
+        displayVideos(allVideos.slice(0, displayedVideoCount), videosGrid);
+        
+        // After 3 clicks, show "Show All" button
+        if (loadMoreClickCount >= 3) {
+            showMoreBtn.style.display = 'none';
+            showAllBtn.style.display = 'inline-flex';
+        }
+        
+        // Hide buttons if all videos are displayed
+        if (displayedVideoCount >= allVideos.length) {
+            container.style.display = 'none';
+        }
+        
+        // Smooth scroll to new content
+        setTimeout(() => {
+            const lastVisibleCard = videosGrid.children[displayedVideoCount - videosPerLoad];
+            if (lastVisibleCard) {
+                lastVisibleCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }, 100);
+    });
+    
+    // Show All button click handler
+    showAllBtn.addEventListener('click', () => {
+        displayedVideoCount = allVideos.length;
+        displayVideos(allVideos, videosGrid);
+        container.style.display = 'none';
+    });
+}
+
+// Display All Videos (kept for backwards compatibility)
+function displayAllVideos(videos, container) {
+    container.innerHTML = videos.map(video => {
+        const date = new Date(video.publishedAt);
+        const dateStr = date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+        const thumbnail = video.thumbnails.high?.url || video.thumbnails.medium?.url;
+        
+        return `
+            <div class="video-card-clean" onclick="openVideoModal('${video.videoId}', '${video.title.replace(/'/g, "\\'")}', '${dateStr}', '${video.videoUrl}')">
+                <div class="video-thumbnail-clean">
+                    <img src="${thumbnail}" alt="${video.title}" loading="lazy">
+                    <div class="video-play-overlay-clean">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="video-info-clean">
+                    <h4 class="video-title-clean">${video.title}</h4>
+                    <div class="video-meta-clean">${dateStr}</div>
+                </div>
+            </div>
+        `;
+    }).join('');
 }
 
 // Fetch VFI Blog Articles
 async function fetchVFIBlogArticles() {
-    console.log('=== Starting fetchVFIBlogArticles ===');
+    console.log('📰 === Starting fetchVFIBlogArticles ===');
+    
+    // Check if required DOM element exists
+    if (!featuredArticle) {
+        console.error('❌ featuredArticle element not found!');
+        return;
+    }
+    
+    console.log('✅ DOM element found: featuredArticle');
     
     try {
+        console.log('📂 Attempting to load: vfi_blog_catalog.json');
+        
         // Load from blog catalog
         const response = await fetch('vfi_blog_catalog.json?t=' + new Date().getTime());
         
+        console.log('📡 Fetch response:', {
+            ok: response.ok,
+            status: response.status,
+            statusText: response.statusText
+        });
+        
         if (!response.ok) {
-            throw new Error('Blog catalog not found');
+            throw new Error(`Blog catalog not found (Status: ${response.status})`);
         }
         
         const blogData = await response.json();
+        
+        console.log('📦 Blog data loaded:', {
+            status: blogData.status,
+            hasArticles: !!blogData.articles,
+            articleCount: blogData.articles?.length || 0
+        });
         
         if (blogData.status !== 'ok' || !blogData.articles || blogData.articles.length === 0) {
             throw new Error('No articles in catalog');
         }
         
         blogArticles = blogData.articles;
-        console.log(`✓ Loaded ${blogArticles.length} blog articles`);
+        console.log(`✅ Loaded ${blogArticles.length} blog articles`);
         
         // Display first article
         displayFeaturedArticle(blogArticles[0]);
-        console.log(`✓ Featured Article: ${blogArticles[0].title}`);
+        console.log(`✅ Featured Article: ${blogArticles[0].title}`);
         console.log('💫 Article rotation enabled: Articles will cycle every 8 seconds');
         
         // Start auto-rotation after 8 seconds
@@ -501,7 +755,12 @@ async function fetchVFIBlogArticles() {
         }, 8000);
         
     } catch (error) {
-        console.error('Error loading blog articles:', error);
+        console.error('❌ Error loading blog articles:', error);
+        console.error('❌ Error details:', {
+            message: error.message,
+            stack: error.stack
+        });
+        
         // Create fallback article
         blogArticles = [{
             id: 'fallback-1',
@@ -513,6 +772,25 @@ async function fetchVFIBlogArticles() {
             published: new Date().toLocaleDateString()
         }];
         displayFeaturedArticle(blogArticles[0]);
+        
+        // Show error in UI
+        if (featuredArticle) {
+            const errorOverlay = document.createElement('div');
+            errorOverlay.style.cssText = `
+                position: absolute; 
+                top: 10px; 
+                right: 10px; 
+                background: rgba(239, 68, 68, 0.9); 
+                color: white; 
+                padding: 8px 12px; 
+                border-radius: 6px; 
+                font-size: 12px;
+                z-index: 10;
+            `;
+            errorOverlay.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Blog load error`;
+            featuredArticle.style.position = 'relative';
+            featuredArticle.appendChild(errorOverlay);
+        }
     }
 }
 
@@ -554,158 +832,7 @@ function displayFeaturedArticle(article) {
     });
 }
 
-// Display Videos
-function displayVideos(videos) {
-    console.log('displayVideos called with:', videos);
-    
-    if (!videosGrid) {
-        console.error('videosGrid element not found!');
-        return;
-    }
-    
-    videosGrid.innerHTML = '';
-
-    videos.forEach((video, index) => {
-        console.log(`Creating card for video ${index + 1}:`, video.snippet.title);
-        const videoCard = createVideoCard(video);
-        videosGrid.appendChild(videoCard);
-    });
-    
-    console.log(`Displayed ${videos.length} videos in grid`);
-}
-
-// Create Video Card
-function createVideoCard(video) {
-    const card = document.createElement('div');
-    card.className = 'video-card';
-    
-    const videoId = video.id.videoId;
-    // Try different thumbnail qualities with fallback
-    const thumbnail = video.snippet.thumbnails.high?.url || 
-                     video.snippet.thumbnails.medium?.url || 
-                     video.snippet.thumbnails.default?.url ||
-                     `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-    const title = video.snippet.title;
-
-    card.innerHTML = `
-        <div class="video-thumbnail-container">
-            <img src="${thumbnail}" 
-                 alt="${title}" 
-                 class="video-thumbnail"
-                 onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${videoId}/maxresdefault.jpg';">
-            <div class="video-play-overlay">
-                <i class="fas fa-play"></i>
-            </div>
-        </div>
-        <div class="video-card-content">
-            <h3 class="video-card-title">${title}</h3>
-            <div class="video-card-meta">
-                <i class="fab fa-youtube" style="color: #ff0000; font-size: 1.2rem;"></i>
-            </div>
-        </div>
-    `;
-
-    card.addEventListener('click', () => {
-        openVideoModal(video);
-    });
-
-    return card;
-}
-
-// Display Featured Video
-function displayFeaturedVideo(video) {
-    console.log('displayFeaturedVideo called with:', video);
-    
-    if (!featuredVideo) {
-        console.error('featuredVideo element not found!');
-        return;
-    }
-    
-    try {
-        const videoId = video.id.videoId;
-        // Try different thumbnail qualities with fallback
-        const thumbnail = video.snippet.thumbnails.high?.url || 
-                         video.snippet.thumbnails.medium?.url || 
-                         video.snippet.thumbnails.default?.url ||
-                         `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-        const title = video.snippet.title;
-
-        featuredVideo.innerHTML = `
-            <div class="featured-badge">
-                <i class="fas fa-star"></i> Latest Video
-            </div>
-            <div class="featured-thumbnail-container">
-                <img src="${thumbnail}" 
-                     alt="${title}" 
-                     class="featured-thumbnail"
-                     onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${videoId}/maxresdefault.jpg';">
-                <div class="featured-play-overlay">
-                    <i class="fas fa-play"></i>
-                </div>
-            </div>
-            <div class="featured-content">
-                <h3 class="featured-title">${title}</h3>
-                <div class="featured-meta">
-                    <span class="featured-type">
-                        <i class="fab fa-youtube" style="color: #ff0000;"></i>
-                        Full Video
-                    </span>
-                </div>
-            </div>
-        `;
-
-        featuredVideo.addEventListener('click', () => {
-            openVideoModal(video);
-        });
-        
-        console.log('Featured video displayed successfully');
-    } catch (error) {
-        console.error('Error in displayFeaturedVideo:', error);
-    }
-}
-
 // Open Article Modal
-function openArticleModal(article) {
-    if (!modal || !modalBody) {
-        console.error('Modal elements not found');
-        return;
-    }
-    
-    const imageUrl = article.image || 'https://via.placeholder.com/800x450/0038b8/ffffff?text=VFI+Article';
-    
-    modalBody.innerHTML = `
-        <div class="modal-article-container">
-            <img src="${imageUrl}" 
-                 alt="${article.title}" 
-                 class="modal-article-image"
-                 onerror="this.onerror=null; this.src='https://via.placeholder.com/800x450/0038b8/ffffff?text=VFI+Article';">
-            <div class="modal-article-content">
-                <div class="modal-article-meta">
-                    <span class="modal-article-category">VFI Blog</span>
-                    <span class="modal-article-date">
-                        <i class="fas fa-calendar"></i> ${article.published}
-                    </span>
-                </div>
-                <h2 class="modal-article-title">${article.title}</h2>
-                <div class="modal-article-description">
-                    ${article.content || article.excerpt}
-                </div>
-                <div class="modal-article-actions">
-                    <a href="${article.link}" target="_blank" class="modal-btn modal-btn-primary">
-                        <i class="fas fa-external-link-alt"></i> Read Full Article on VFI
-                    </a>
-                    <button onclick="closeModal()" class="modal-btn modal-btn-secondary">
-                        <i class="fas fa-times"></i> Close
-                    </button>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    modal.classList.add('show');
-    document.body.style.overflow = 'hidden';
-}
-
 // Update short index in catalog for rotation
 function updateShortIndex(currentIndex, totalShorts) {
     // This would ideally update the server-side catalog
@@ -720,38 +847,114 @@ async function fetchLatestNews() {
     hideError();
 
     try {
-        let url;
+        console.log('📰 Fetching pro-Israel news...');
         
-        // Use unified API endpoint
-        url = `${API_URL}/news`;
-        if (currentCategory !== 'all') {
-            url += `?category=${currentCategory}`;
-        }
-
-        console.log('Fetching news from:', url);
-        const response = await fetch(url);
+        // Fetch from local JSON file generated by pro_israel_news_scraper.py
+        const response = await fetch('pro_israel_news.json');
         const data = await response.json();
-        console.log('News response:', data);
+        
+        console.log('📰 News response:', {
+            status: data.status,
+            totalArticles: data.totalArticles,
+            sources: data.sources,
+            currentFilter: currentCategory
+        });
 
         hideLoading();
 
-        if (data.status === 'ok' && data.news) {
-            displayNews(data.news);
-        } else if (data.status === '429') {
-            showError('Daily API quota exceeded. Please wait 24 hours or upgrade your plan at currentsapi.services');
-            console.error('API Quota Exceeded:', data);
+        if (data.status === 'ok' && data.articles) {
+            // Filter articles: must have image and be 0-6 weeks old
+            const sixWeeksAgo = new Date();
+            sixWeeksAgo.setDate(sixWeeksAgo.getDate() - 42); // 6 weeks = 42 days
+            
+            let filteredArticles = data.articles.filter(article => {
+                // Check if has image
+                const hasImage = article.image || article.urlToImage;
+                if (!hasImage || hasImage === 'None' || hasImage === 'null') return false;
+                
+                // Check if within 6 weeks
+                const articleDate = new Date(article.published || article.publishedAt);
+                if (articleDate < sixWeeksAgo) return false;
+                
+                return true;
+            });
+            
+            // Filter by source if needed
+            if (currentCategory !== 'all') {
+                filteredArticles = filteredArticles.filter(article => {
+                    // Match source name with filter
+                    const sourceSlug = article.source ? article.source.toLowerCase().replace(/\s+/g, '_') : '';
+                    return sourceSlug === currentCategory || 
+                           (article.category && article.category.includes(currentCategory));
+                });
+                console.log(`📰 Filtered to ${filteredArticles.length} articles from source: ${currentCategory}`);
+            }
+            
+            // Store all articles and filtered articles
+            window.allNewsArticles = data.articles;
+            window.filteredNewsArticles = filteredArticles;
+            window.showingAllArticles = false;
+            
+            console.log(`📰 Showing ${filteredArticles.length} recent articles with images (from ${data.articles.length} total)`);
+            displayNews(filteredArticles);
+            updateShowAllButton();
         } else {
-            showError(data.message || 'Failed to fetch news');
-            console.error('API Error:', data);
+            showError('No news articles available. Please run pro_israel_news_scraper.py to fetch latest news.');
+            console.error('❌ No articles in JSON:', data);
         }
     } catch (error) {
         hideLoading();
-        if (USE_LOCAL_API) {
-            showError('Could not connect to local news server. Make sure to run start_server.bat first!');
+        showError('Could not load news. Please make sure pro_israel_news.json exists (run pro_israel_news_scraper.py)');
+        console.error('❌ Fetch Error:', error);
+    }
+}
+
+// Update Show All Button visibility and text
+function updateShowAllButton() {
+    const container = document.getElementById('showAllNewsContainer');
+    const btn = document.getElementById('showAllNewsBtn');
+    
+    if (!container || !btn) return;
+    
+    // Only show button if there are hidden articles
+    const totalArticles = window.allNewsArticles ? window.allNewsArticles.length : 0;
+    const filteredCount = window.filteredNewsArticles ? window.filteredNewsArticles.length : 0;
+    
+    if (totalArticles > filteredCount) {
+        container.style.display = 'block';
+        
+        if (window.showingAllArticles) {
+            btn.innerHTML = '<i class="fas fa-filter"></i> Show Recent Only';
+            btn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
         } else {
-            showError('Error fetching news. Please check your connection and try again.');
+            btn.innerHTML = `<i class="fas fa-th"></i> Show All Articles (${totalArticles} total)`;
+            btn.style.background = 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)';
         }
-        console.error('Fetch Error:', error);
+    } else {
+        container.style.display = 'none';
+    }
+}
+
+// Toggle between filtered and all articles
+function toggleShowAllArticles() {
+    if (!window.allNewsArticles || !window.filteredNewsArticles) return;
+    
+    window.showingAllArticles = !window.showingAllArticles;
+    
+    if (window.showingAllArticles) {
+        console.log(`📰 Showing all ${window.allNewsArticles.length} articles`);
+        displayNews(window.allNewsArticles);
+    } else {
+        console.log(`📰 Showing ${window.filteredNewsArticles.length} recent articles with images`);
+        displayNews(window.filteredNewsArticles);
+    }
+    
+    updateShowAllButton();
+    
+    // Scroll to news section
+    const newsSection = document.querySelector('.news-section');
+    if (newsSection) {
+        newsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
 
@@ -818,54 +1021,49 @@ function displayNews(articles) {
     });
 }
 
-// Create News Card
+// Create News Card - Clean Version
 function createNewsCard(article) {
     const card = document.createElement('div');
-    card.className = 'news-card';
+    card.className = 'news-card-clean';
 
-    const imageUrl = article.image && article.image !== 'None' && article.image !== 'null' 
-        ? article.image 
-        : 'https://via.placeholder.com/400x200/2563eb/ffffff?text=No+Image';
+    // Image handling
+    let imageUrl = article.image || article.urlToImage;
+    if (!imageUrl || imageUrl === 'None' || imageUrl === 'null') {
+        imageUrl = 'https://via.placeholder.com/800x450/0055cc/ffffff?text=' + encodeURIComponent(article.source || 'News');
+    }
 
-    const categories = article.category && article.category.length > 0 
-        ? article.category 
-        : ['general'];
+    // Date formatting
+    const date = new Date(article.published || article.publishedAt);
+    const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
-    const author = article.author && article.author !== 'None' 
-        ? article.author 
-        : 'Unknown Author';
+    // Source name
+    const sourceName = article.source || 'News Source';
 
-    const description = article.description || 'No description available';
-    const truncatedDescription = description.length > 150 
-        ? description.substring(0, 150) + '...' 
-        : description;
+    // Description
+    const description = article.description || article.content || '';
+    const shortDescription = description.substring(0, 150) + (description.length > 150 ? '...' : '');
 
     card.innerHTML = `
-        <img src="${imageUrl}" alt="${article.title}" class="news-card-image" 
-             onerror="this.src='https://via.placeholder.com/400x200/2563eb/ffffff?text=No+Image'">
-        <div class="news-card-content">
-            <div class="news-card-meta">
-                <span class="news-category">${categories[0]}</span>
-            </div>
-            <h3 class="news-card-title">${article.title}</h3>
-            <p class="news-card-description">${truncatedDescription}</p>
-            <div class="news-card-footer">
-                <span class="news-author">
-                    <i class="fas fa-user"></i> ${author}
+        <div class="news-image-clean">
+            <img src="${imageUrl}" alt="${article.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/800x450/0055cc/ffffff?text=News'">
+        </div>
+        <div class="news-content-clean">
+            <span class="news-source-clean">${sourceName}</span>
+            <h3 class="news-title-clean">${article.title}</h3>
+            <p class="news-description-clean">${shortDescription}</p>
+            <div class="news-footer-clean">
+                <span class="news-date-clean">
+                    <i class="far fa-calendar"></i>
+                    ${dateStr}
                 </span>
-                <a href="#" class="read-more" data-article='${JSON.stringify(article).replace(/'/g, "&apos;")}'>
+                <button class="read-more-btn">
                     Read More <i class="fas fa-arrow-right"></i>
-                </a>
+                </button>
             </div>
         </div>
     `;
 
-    // Add click event to read more button
-    const readMoreBtn = card.querySelector('.read-more');
-    readMoreBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openArticleModal(article);
-    });
+    card.addEventListener('click', () => openArticleModal(article));
 
     return card;
 }
@@ -948,143 +1146,190 @@ document.head.appendChild(style);
 
 // Modal Functions
 function openVideoModal(video) {
+    console.log('🎬 Opening video modal:', video);
+    
+    const videoModal = document.getElementById('videoModal');
+    const videoModalIframe = document.getElementById('videoModalIframe');
+    const videoModalTitle = document.getElementById('videoModalTitle');
+    const videoModalChannel = document.getElementById('videoModalChannel');
+    const videoModalDate = document.getElementById('videoModalDate');
+    const videoModalYoutubeBtn = document.getElementById('videoModalYoutubeBtn');
+    
+    if (!videoModal || !videoModalIframe) {
+        console.error('❌ Video modal elements not found!');
+        return;
+    }
+    
     // Handle both formats: worship videos (simple object) and VFI videos (nested object)
-    let videoId, title, publishedDate;
+    let videoId, title, publishedDate, channelName;
     
     if (typeof video === 'string') {
         // Direct video ID passed (from worship section)
         videoId = video;
-        title = arguments[1] || 'Video'; // Get title from second argument
+        title = arguments[1] || 'Video';
         publishedDate = new Date();
+        channelName = 'Barry & Batya Segal';
     } else if (video.id && video.id.videoId) {
         // VFI video format
         videoId = video.id.videoId;
         title = video.snippet.title;
         publishedDate = new Date(video.snippet.publishedAt);
-    } else if (video.id && typeof video.id === 'string') {
-        // Simple format with id as string
-        videoId = video.id;
+        channelName = video.snippet.channelTitle || 'Vision For Israel';
+    } else if (video.videoId) {
+        // Direct video object
+        videoId = video.videoId;
         title = video.title || 'Video';
-        publishedDate = new Date();
+        publishedDate = new Date(video.publishedAt || Date.now());
+        channelName = video.channelTitle || 'Vision For Israel';
     } else {
-        console.error('Invalid video format:', video);
+        console.error('❌ Invalid video format:', video);
         return;
     }
     
-    const formattedDate = publishedDate.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
+    // Set iframe source
+    videoModalIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
     
-    // Determine channel name
-    const channelName = title.includes('Barry & Batya Segal') ? 'Barry & Batya Segal' : 'Vision For Israel';
-
-    modalBody.innerHTML = `
-        <div class="modal-video-container">
-            <iframe 
-                width="100%"
-                height="100%"
-                src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
-                title="${title}"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-        </div>
-        <div class="modal-video-info">
-            <h2 class="modal-video-title">${title}</h2>
-            <div class="modal-video-meta">
-                <span class="modal-video-channel">
-                    <i class="fab fa-youtube" style="color: #ff0000;"></i>
-                    ${channelName}
-                </span>
-                <span class="modal-video-date">
-                    <i class="far fa-calendar"></i>
-                    ${formattedDate}
-                </span>
-            </div>
-            <div class="modal-article-actions">
-                <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="modal-btn modal-btn-primary">
-                    <i class="fab fa-youtube"></i> Watch on YouTube
-                </a>
-            </div>
-        </div>
-    `;
-
-    modal.classList.add('show');
+    // Set title
+    if (videoModalTitle) {
+        videoModalTitle.textContent = title;
+    }
+    
+    // Set channel
+    if (videoModalChannel) {
+        videoModalChannel.innerHTML = `<i class="fab fa-youtube" style="color: #ff0000;"></i> ${channelName}`;
+    }
+    
+    // Set date
+    if (videoModalDate) {
+        const formattedDate = publishedDate.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        videoModalDate.innerHTML = `<i class="far fa-calendar"></i> ${formattedDate}`;
+    }
+    
+    // Set YouTube button
+    if (videoModalYoutubeBtn) {
+        videoModalYoutubeBtn.href = `https://www.youtube.com/watch?v=${videoId}`;
+    }
+    
+    // Show modal
+    videoModal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
+    
+    console.log('✅ Video modal opened successfully');
 }
 
 function openArticleModal(article) {
-    const imageUrl = article.image && article.image !== 'None' && article.image !== 'null' 
-        ? article.image 
-        : 'https://via.placeholder.com/800x400/0038b8/ffffff?text=No+Image';
+    console.log('📰 Opening article modal:', article.title);
+    
+    const articleModal = document.getElementById('articleModal');
+    const articleModalBody = document.getElementById('articleModalBody');
+    
+    if (!articleModal || !articleModalBody) {
+        console.error('❌ Article modal elements not found!');
+        return;
+    }
+    
+    // Better image handling
+    let imageUrl = '';
+    if (article.image && article.image !== 'None' && article.image !== 'null' && article.image !== '') {
+        imageUrl = article.image;
+    } else if (article.urlToImage && article.urlToImage !== 'None' && article.urlToImage !== 'null') {
+        imageUrl = article.urlToImage;
+    } else if (article.media && article.media.length > 0) {
+        imageUrl = article.media[0].url || article.media[0];
+    } else if (article.enclosure && article.enclosure.url) {
+        imageUrl = article.enclosure.url;
+    }
 
-    const categories = article.category && article.category.length > 0 
-        ? article.category 
-        : ['general'];
-
-    const author = article.author && article.author !== 'None' 
-        ? article.author 
-        : 'Unknown Author';
-
-    const source = article.source || 'News Source';
-
-    const publishedDate = new Date(article.published);
+    const publishedDate = new Date(article.published || article.publishedAt || Date.now());
     const formattedDate = publishedDate.toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
     });
 
-    const description = article.description || 'No description available';
+    // Get full content - try multiple fields
+    const fullContent = article.content || article.description || article.excerpt || article.summary || 'Full article available at source.';
+    
+    // Source name and category
+    const sourceName = article.source || article.author || 'News Source';
+    const category = article.category?.[0] || article.source || 'general';
 
-    modalBody.innerHTML = `
-        <div class="modal-article-container">
-            <img src="${imageUrl}" alt="${article.title}" class="modal-article-image"
-                 onerror="this.src='https://via.placeholder.com/800x400/0038b8/ffffff?text=No+Image'">
-            <div class="modal-article-content">
-                <div class="modal-article-meta">
-                    <span class="modal-article-category">${categories[0]}</span>
-                    <span class="modal-article-date">
+    articleModalBody.innerHTML = `
+        <div class="article-modal-banner">
+            ${imageUrl ? `<img src="${imageUrl}" alt="${article.title}" 
+                 onerror="this.parentElement.style.background='linear-gradient(135deg, #1e3a8a 0%, #1e293b 100%)'">` : ''}
+            <div class="article-modal-banner-overlay">
+                <span class="article-modal-category">
+                    <i class="fas fa-tag"></i> ${category}
+                </span>
+                <h1 class="article-modal-title">${article.title}</h1>
+                <div class="article-modal-meta">
+                    <span class="article-modal-author">
+                        <i class="fas fa-user"></i> ${sourceName}
+                    </span>
+                    <span class="article-modal-date">
                         <i class="far fa-calendar"></i> ${formattedDate}
                     </span>
-                    <span class="modal-article-source">
-                        <i class="fas fa-globe"></i> ${source}
-                    </span>
                 </div>
-                <h2 class="modal-article-title">${article.title}</h2>
-                <p class="modal-article-author">
-                    <i class="fas fa-user"></i> By ${author}
-                </p>
-                <div class="modal-article-description">
-                    ${description}
-                </div>
-                <div class="modal-article-actions">
-                    <a href="${article.link || article.url}" target="_blank" class="modal-btn modal-btn-primary">
-                        <i class="fas fa-external-link-alt"></i> Read Full Article
-                    </a>
-                    <button onclick="shareArticle('${article.title}', '${article.link || article.url}')" class="modal-btn modal-btn-secondary">
-                        <i class="fas fa-share-alt"></i> Share
-                    </button>
-                </div>
+            </div>
+        </div>
+        <div class="article-modal-content-wrapper">
+            <div class="article-modal-description">
+                ${fullContent}
+            </div>
+            <div class="article-modal-actions">
+                <a href="${article.link || article.url}" target="_blank" class="article-modal-btn article-modal-btn-primary">
+                    <i class="fas fa-external-link-alt"></i> Read Full Article
+                </a>
+                <button onclick="navigator.share ? navigator.share({title: '${article.title.replace(/'/g, "\\'").replace(/"/g, '&quot;')}', url: '${article.link || article.url}'}) : null" class="article-modal-btn article-modal-btn-secondary">
+                    <i class="fas fa-share-alt"></i> Share
+                </button>
             </div>
         </div>
     `;
 
-    modal.classList.add('show');
+    articleModal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
+    
+    console.log('✅ Article modal opened successfully');
 }
 
-function closeModal() {
-    modal.classList.remove('show');
-    document.body.style.overflow = 'auto';
+function closeVideoModal() {
+    const videoModal = document.getElementById('videoModal');
+    const videoModalIframe = document.getElementById('videoModalIframe');
     
-    // Stop any playing videos
-    setTimeout(() => {
-        modalBody.innerHTML = '';
-    }, 300);
+    if (videoModal) {
+        videoModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    
+    // Stop video playback
+    if (videoModalIframe) {
+        videoModalIframe.src = '';
+    }
+    
+    console.log('✖️ Video modal closed');
+}
+
+function closeArticleModal() {
+    const articleModal = document.getElementById('articleModal');
+    
+    if (articleModal) {
+        articleModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    
+    console.log('✖️ Article modal closed');
+}
+
+// Legacy function for compatibility
+function closeModal() {
+    closeVideoModal();
+    closeArticleModal();
 }
 
 function shareArticle(title, url) {
@@ -1100,6 +1345,146 @@ function shareArticle(title, url) {
         }).catch(err => {
             console.error('Could not copy text: ', err);
         });
+    }
+}
+
+// Load Bible Verses into Sidebars - Dynamic based on page height with Sermons
+function loadBibleVerses() {
+    const leftSidebar = document.getElementById('bibleSidebarLeft');
+    const rightSidebar = document.getElementById('bibleSidebarRight');
+    
+    if (!leftSidebar || !rightSidebar) {
+        console.log('Bible sidebars not found');
+        return;
+    }
+    
+    if (typeof bibleVerses === 'undefined') {
+        console.error('❌ Bible verses not loaded');
+        return;
+    }
+    
+    try {
+        // Parse verses (they're in "text - reference" format)
+        const parsedVerses = bibleVerses.map(verse => {
+            const parts = verse.split(' - ');
+            const text = parts[0];
+            const reference = parts[1] || 'Scripture';
+            
+            // Get sermon for this verse using the getSermonForVerse function
+            let sermon = null;
+            if (typeof getSermonForVerse !== 'undefined') {
+                sermon = getSermonForVerse(verse, text, reference);
+            }
+            
+            return { text, reference, fullVerse: verse, sermon };
+        });
+        
+        // Shuffle verses for variety
+        const shuffled = parsedVerses.sort(() => 0.5 - Math.random());
+        
+        // Calculate staggered vertical positions
+        // Offset verses so the top card clears the ticker + nav area
+        const startTop = 220;
+        const verticalSpacing = 850; // Increased spacing for sermon content
+        
+        // Calculate how many verses needed based on document height
+        const updateVerses = () => {
+            // Get footer position to stop verses before footer
+            const footer = document.querySelector('.footer') || document.querySelector('footer');
+            const footerTop = footer ? footer.offsetTop : document.body.scrollHeight;
+            
+            const usableHeight = Math.max(0, footerTop - startTop - 160); // stop before footer
+            const pageHeight = Math.min(
+                footerTop - 120,
+                Math.max(
+                    document.body.scrollHeight,
+                    document.documentElement.scrollHeight
+                )
+            );
+
+            const versesNeeded = Math.max(1, Math.ceil(usableHeight / verticalSpacing));
+            const versesPerSide = Math.min(versesNeeded, Math.floor(shuffled.length / 2));
+            
+            // Use alternating pattern for left/right
+            const leftVerses = shuffled.filter((_, i) => i % 2 === 0).slice(0, versesPerSide);
+            const rightVerses = shuffled.filter((_, i) => i % 2 === 1).slice(0, versesPerSide);
+            
+            // Helper function to generate sermon HTML
+            const generateSermonHTML = (sermon) => {
+                if (!sermon) return '';
+                return `
+                    <div class="sermon-teaching">
+                        <div class="sermon-header">
+                            <i class="fas fa-book-open"></i>
+                            <span>Teaching</span>
+                        </div>
+                        <div class="sermon-section">
+                            <span class="sermon-label">Context:</span>
+                            <p class="sermon-text">${sermon.context}</p>
+                        </div>
+                        <div class="sermon-section">
+                            <span class="sermon-label">Meaning:</span>
+                            <p class="sermon-text">${sermon.meaning}</p>
+                        </div>
+                        <div class="sermon-section">
+                            <span class="sermon-label">Application:</span>
+                            <p class="sermon-text">${sermon.application}</p>
+                        </div>
+                        <div class="sermon-prayer">
+                            <span class="sermon-label">Prayer:</span>
+                            <p class="sermon-text">${sermon.prayer}</p>
+                        </div>
+                    </div>
+                `;
+            };
+            
+            leftSidebar.innerHTML = leftVerses.map((verse, index) => {
+                const topPosition = startTop + (index * verticalSpacing);
+                return `
+                <div class="bible-verse-card" style="left: 0; top: ${topPosition}px;">
+                    <p class="bible-verse-text">"${verse.text}"</p>
+                    <span class="bible-verse-reference">${verse.reference}</span>
+                    ${generateSermonHTML(verse.sermon)}
+                </div>
+            `;
+            }).join('');
+            
+            // Stagger right side verses between left side verses
+            rightSidebar.innerHTML = rightVerses.map((verse, index) => {
+                const topPosition = startTop + 425 + (index * verticalSpacing); // Offset by 425px
+                return `
+                <div class="bible-verse-card" style="right: 0; top: ${topPosition}px;">
+                    <p class="bible-verse-text">"${verse.text}"</p>
+                    <span class="bible-verse-reference">${verse.reference}</span>
+                    ${generateSermonHTML(verse.sermon)}
+                </div>
+            `;
+            }).join('');
+            
+            const versesWithSermons = leftVerses.filter(v => v.sermon).length + rightVerses.filter(v => v.sermon).length;
+            console.log(`✅ Loaded ${leftVerses.length + rightVerses.length} Bible verses (${versesWithSermons} with sermons) for page height ${pageHeight}px`);
+        };
+        
+        // Initial load
+        updateVerses();
+        
+        // Update when content changes (videos/articles load)
+        const observer = new MutationObserver(() => {
+            setTimeout(updateVerses, 500); // Delay to let layout settle
+        });
+        
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+        
+        // Also update on window resize
+        window.addEventListener('resize', updateVerses);
+        
+    } catch (error) {
+        console.error('❌ Error loading Bible verses:', error);
+        leftSidebar.innerHTML = '';
+        rightSidebar.innerHTML = '';
     }
 }
 

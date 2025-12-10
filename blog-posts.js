@@ -107,6 +107,7 @@ function openBlogModal(idx) {
     const image = document.getElementById('blogModalImage');
     const meta = document.getElementById('blogModalMeta');
     const content = document.getElementById('blogModalContent');
+    const readBtn = document.getElementById('blogModalReadFull');
     const articles = sortArticles(_blogArticles, _sortOrder);
     const article = articles[idx];
     if (!article) return;
@@ -118,6 +119,14 @@ function openBlogModal(idx) {
     } else {
         image.src = fallbackImg;
         image.style.display = '';
+    }
+    // Make image a link to full article when available
+    if (article.link) {
+        image.style.cursor = 'pointer';
+        image.onclick = () => window.open(article.link, '_blank', 'noopener');
+    } else {
+        image.style.cursor = 'default';
+        image.onclick = null;
     }
     // Title and meta
     title.textContent = article.title || '';
@@ -134,8 +143,14 @@ function openBlogModal(idx) {
     } else {
         content.innerHTML += `<div class='blog-modal-content-scroll'><em>No article text available.</em></div>`;
     }
-    if (article.link) {
-        content.innerHTML += `<a href='${article.link}' class='blog-modal-link-btn' target='_blank'><i class='fas fa-external-link-alt'></i> Read Full Article on VFI</a>`;
+    if (readBtn) {
+        if (article.link) {
+            readBtn.href = article.link;
+            readBtn.style.display = 'inline-flex';
+            readBtn.setAttribute('aria-label', 'Read full article on VFI');
+        } else {
+            readBtn.style.display = 'none';
+        }
     }
     modal.style.display = 'flex';
 }

@@ -25,7 +25,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 import re
 
 # Configuration
@@ -48,6 +48,26 @@ def clean_text(text):
     # Remove extra whitespace
     text = re.sub(r'\s+', ' ', text)
     return text.strip()
+
+
+def absolutize_urls(fragment_html, base=ARTICLE_BASE):
+    """Make img/src/href absolute to keep content usable in modal."""
+    if not fragment_html:
+        return fragment_html
+    soup = BeautifulSoup(fragment_html, 'html.parser')
+    for tag in soup.find_all(['a', 'img']):
+        if tag.name == 'a' and tag.has_attr('href'):
+            href = tag['href']
+            if href and href.startswith('/'):
+                tag['href'] = base + href
+        if tag.name == 'img' and tag.has_attr('src'):
+            src = tag['src']
+            if src and src.startswith('/'):
+                tag['src'] = base + src
+    # strip scripts/styles for safety
+    for bad in soup.find_all(['script', 'style']):
+        bad.decompose()
+    return str(soup)
 
 
 def get_article_links():
@@ -163,28 +183,29 @@ def scrape_article(url):
                 published = (parsed - timedelta(days=1)).strftime('%B %d, %Y')
             except Exception:
                 pass
-        from datetime import datetime, timedelta
-        
         # Extract article content (robust)
         content_area = soup.find('article') or soup.find('div', class_=re.compile(r'post.*content|article.*content|entry.*content|blog.*content', re.I))
         paragraphs = []
         content_html = ''
+
         if content_area:
-            # Get all paragraphs and lists, preserve HTML
+            # Prefer inner HTML of the content area to preserve markup
+            content_html = ''.join(str(child) for child in content_area.children)
             for elem in content_area.find_all(['p', 'ul', 'ol', 'h2', 'h3', 'blockquote'], recursive=True):
-                content_html += str(elem)
                 if elem.name == 'p':
                     txt = clean_text(elem.get_text())
                     if txt:
                         paragraphs.append(txt)
-        # Fallback: If no content found, try to extract from all <p> tags in the page
+
+        # Fallback: grab all paragraphs if needed
         if not paragraphs:
             for elem in soup.find_all('p'):
                 txt = clean_text(elem.get_text())
                 if txt:
                     paragraphs.append(txt)
                     content_html += str(elem)
-        # Fallback: If still empty, try to extract from main text blocks
+
+        # Fallback: broader blocks
         if not paragraphs:
             main_blocks = soup.find_all('div', class_=re.compile(r'(main|body|text|container)', re.I))
             for block in main_blocks:
@@ -193,6 +214,7 @@ def scrape_article(url):
                     if txt:
                         paragraphs.append(txt)
                         content_html += str(elem)
+
         excerpt = paragraphs[0] if paragraphs else ''
         content = '\n\n'.join(paragraphs)
 
@@ -208,6 +230,9 @@ def scrape_article(url):
         ]
         content = remove_footer(content)
         content_html = remove_footer(content_html)
+
+        # Make URLs absolute and strip scripts/styles
+        content_html = absolutize_urls(content_html)
 
         # Explicitly remove the provided unwanted text block
         UNWANTED_BLOCK = '''By proceeding, I agree to the Terms of Use and the Privacy Policy.'''

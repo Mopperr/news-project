@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer Wall | Vision For Israel</title>
+    <meta name="description" content="Submit your prayer requests and pray for others. Join our community in interceding for Israel and believers worldwide.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="nav-scroll.js" defer></script>
+    <style>
+        .page-hero {
+            position: relative;
+            text-align: center;
+            color: #e9f2ff;
+            padding: 110px 20px 90px;
+        }
+
+        .page-hero .hero-body {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .page-hero .hero-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            margin-bottom: 14px;
+            color: #a5f3fc;
+        }
+
+        .page-hero .hero-title {
+            font-size: clamp(2.4rem, 4vw, 3.1rem);
+            margin: 0.35rem 0 0.6rem;
+            letter-spacing: -0.01em;
+        }
+
+        .page-hero .hero-tagline {
+            font-size: 1.15rem;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+            color: #e0f2fe;
+        }
+
+        .page-hero .hero-verse {
+            margin: 1.6rem auto 0;
+            max-width: 860px;
+            padding: 1.1rem 1.4rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 14px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #e9f2ff;
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.26);
+        }
+
+        .page-hero .hero-verse .ref {
+            display: block;
+            margin-top: 0.45rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            color: #7dd3fc;
+        }
+
+        .prayer-hero {
+            background: linear-gradient(135deg, rgba(11, 29, 58, 0.94), rgba(16, 42, 79, 0.94)), 
+                        url('https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1600') center/cover;
+        }
+
+        .prayer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+
+        .prayer-form-section {
+            background: linear-gradient(135deg, rgba(13, 27, 51, 0.96), rgba(18, 38, 70, 0.96));
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.28);
+            border: 1px solid rgba(34, 197, 94, 0.18);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #e9f2ff;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.04);
+            color: #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #22c55e;
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4);
+        }
+
+        .prayers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .prayer-card {
+            background: linear-gradient(135deg, rgba(13, 27, 51, 0.96), rgba(18, 38, 70, 0.96));
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+            transition: all 0.3s;
+            border: 1px solid rgba(34, 197, 94, 0.15);
+            border-top: 4px solid #22c55e;
+            color: #e9f2ff;
+        }
+
+        .prayer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.32);
+        }
+
+        .prayer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .prayer-name {
+            font-weight: 700;
+            color: #d9f99d;
+            font-size: 1.1rem;
+        }
+
+        .prayer-date {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        .prayer-category {
+            display: inline-block;
+            background: rgba(34, 197, 94, 0.12);
+            color: #86efac;
+            padding: 0.25rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(34, 197, 94, 0.35);
+        }
+
+        .prayer-text {
+            line-height: 1.8;
+            color: #e2e8f0;
+            margin-bottom: 1.5rem;
+        }
+
+        .prayer-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .pray-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .pray-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .pray-count {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #cbd5e1;
+            font-weight: 600;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-tab {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 50px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .filter-tab.active {
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+            color: white;
+            border-color: #22c55e;
+        }
+
+        @media (max-width: 768px) {
+            .prayers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .prayer-form-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Breaking News Ticker -->
+    <div class="breaking-news-bar">
+        <div class="breaking-label">
+            <i class="fas fa-bolt"></i> BREAKING
+        </div>
+        <div class="breaking-content">
+            <span id="breakingNewsText">Latest updates from Israel and the Middle East • Stay informed with real-time coverage</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container-fluid">
+                <div class="header-grid-secondary">
+                    <div class="logo-section-secondary">
+                        <img src="vfi-news-banner.png" alt="VFI News" class="logo-banner-secondary" onerror="this.src='vfi-news.png';">
+                    </div>
+                    <div class="bible-verse-section">
+                        <i class="fas fa-praying-hands"></i>
+                        <span class="verse-text">"The prayer of a righteous person is powerful and effective."</span>
+                        <span class="verse-reference">James 5:16</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <div class="container-fluid">
+                <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav-main" id="navMain">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a href="worship.html" class="nav-link">
+                        <i class="fas fa-music"></i> Worship
+                    </a>
+                    <a href="testimonials.html" class="nav-link">
+                        <i class="fas fa-heart"></i> Testimonials
+                    </a>
+                    <a href="about.html" class="nav-link">
+                        <i class="fas fa-info-circle"></i> About
+                    </a>
+                    <a href="roots-reflections.html" class="nav-link">
+                        <i class="fas fa-book-open"></i> Roots & Reflections
+                    </a>
+                    <a href="projects.html" class="nav-link">
+                        <i class="fas fa-hands-helping"></i> Projects
+                    </a>
+                    <a href="blog-posts.html" class="nav-link">
+                        <i class="fas fa-blog"></i> Blog
+                    </a>
+                    <a href="shop.html" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i> Shop
+                    </a>
+                    <a href="contact.html" class="nav-link">
+                        <i class="fas fa-envelope"></i> Contact
+                    </a>
+                    <a href="https://www.visionforisrael.com/en/give" class="nav-link donate-link" target="_blank">
+                        <i class="fas fa-donate"></i> DONATE NOW
+                    </a>
+                    <a href="israel-history.html" class="nav-link">
+                        <i class="fas fa-landmark"></i> Israel History
+                    </a>
+                    <a href="salvation.html" class="nav-link">
+                        <i class="fas fa-cross"></i> Know Yeshua
+                    </a>
+                    <a href="prayer-wall.html" class="nav-link active">
+                        <i class="fas fa-praying-hands"></i> Prayer Wall
+                    </a>
+                    <a href="forum.html" class="nav-link">
+                        <i class="fas fa-comments"></i> Forum
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero prayer-hero">
+        <div class="hero-body">
+            <div class="hero-icon">
+                <i class="fas fa-praying-hands"></i>
+            </div>
+            <h1 class="hero-title">Prayer Wall</h1>
+            <p class="hero-tagline">Lift up requests, stand with others, and believe together for God to move.</p>
+            <div class="hero-verse">
+                "The effective, fervent prayer of a righteous person avails much."
+                <span class="ref">James 5:16</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="prayer-content">
+        
+        <!-- Submit Prayer Form -->
+        <div class="prayer-form-section">
+            <h2 style="color: #38bdf8; margin-bottom: 1.5rem; font-size: 2rem;">
+                <i class="fas fa-paper-plane"></i> Submit a Prayer Request
+            </h2>
+            <form id="prayerForm">
+                <div class="form-group">
+                    <label for="prayerName">Your Name (or "Anonymous")</label>
+                    <input type="text" id="prayerName" placeholder="Enter your name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="prayerCategory">Category</label>
+                    <select id="prayerCategory" required>
+                        <option value="">Select a category</option>
+                        <option value="Israel">🇮🇱 Israel & Jerusalem</option>
+                        <option value="Salvation">✝️ Salvation & Faith</option>
+                        <option value="Healing">💚 Healing & Health</option>
+                        <option value="Family">👨‍👩‍👧‍👦 Family & Relationships</option>
+                        <option value="Provision">💰 Financial Provision</option>
+                        <option value="Protection">🛡️ Protection & Safety</option>
+                        <option value="Thanksgiving">🙌 Thanksgiving & Praise</option>
+                        <option value="Other">📝 Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="prayerRequest">Prayer Request</label>
+                    <textarea id="prayerRequest" placeholder="Share your prayer request..." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Submit Prayer Request
+                </button>
+            </form>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">All Prayers</button>
+            <button class="filter-tab" data-filter="Israel">🇮🇱 Israel</button>
+            <button class="filter-tab" data-filter="Salvation">✝️ Salvation</button>
+            <button class="filter-tab" data-filter="Healing">💚 Healing</button>
+            <button class="filter-tab" data-filter="Family">👨‍👩‍👧‍👦 Family</button>
+            <button class="filter-tab" data-filter="Provision">💰 Provision</button>
+            <button class="filter-tab" data-filter="Protection">🛡️ Protection</button>
+            <button class="filter-tab" data-filter="Thanksgiving">🙌 Thanksgiving</button>
+        </div>
+
+        <!-- Prayers Grid -->
+        <div class="prayers-grid" id="prayersGrid">
+            <!-- Prayer cards will be inserted here -->
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="worship.html">Worship</a></li>
+                        <li><a href="roots-reflections.html">Roots &amp; Reflections</a></li>
+                        <li><a href="israel-history.html">Israel History</a></li>
+                        <li><a href="prayer-wall.html">Prayer Wall</a></li>
+                        <li><a href="forum.html">Forum</a></li>
+                        <li><a href="salvation.html">Salvation</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="blog-posts.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="https://www.visionforisrael.com/en/give" target="_blank">Donate</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="blog-posts.html">Blog</a></li>
+                        <li><a href="https://www.visionforisrael.com/en/volunteer" target="_blank">Volunteer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/visionforisrael" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/vision4israel" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/visionforisrael" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/visionforisrael" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>VFI News</h3>
+                    <p>Stay informed with the latest news and updates from Israel.</p>
+                    <p><strong>Vision For Israel</strong><br>Operating since 1994</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vision For Israel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="bible_verses.js"></script>
+    <script src="hamburger-menu-new.js"></script>
+    <script src="prayer-wall.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Israel History | Vision For Israel</title>
+    <meta name="description" content="A concise, professional overview of Israel's story from ancient covenant to modern statehood.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="nav-scroll.js" defer></script>
+    <style>
+        :root {
+            --ink: #f2f6ff;
+            --muted: #dfe7ff;
+            --line: rgba(255, 255, 255, 0.14);
+            --accent: #fbbf24;
+            --accent-dark: #f59e0b;
+            --pill: rgba(251, 191, 36, 0.18);
+            --surface: #0f1f36;
+            --panel: #122742;
+            --backdrop: #0a1428;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", "Inter", system-ui, -apple-system, sans-serif;
+            background: radial-gradient(circle at 12% 18%, rgba(59,130,246,0.14), transparent 34%),
+                        radial-gradient(circle at 82% 10%, rgba(34,211,238,0.16), transparent 30%),
+                        linear-gradient(125deg, #0a1527, #0f2442 55%, #0a1527);
+            color: var(--ink);
+            line-height: 1.72;
+            font-size: 17px;
+        }
+
+        a { color: var(--accent); }
+
+        .history-hero {
+            background: linear-gradient(135deg, rgba(7, 18, 36, 0.9), rgba(13, 38, 72, 0.95) 55%, rgba(7, 18, 36, 0.9)),
+                        url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1600') center/cover;
+        }
+
+        .page-hero .hero-title { color: #f9fbff; text-shadow: 0 12px 34px rgba(0,0,0,0.45); text-align: center; }
+        .page-hero .hero-tagline { color: #e7efff; font-size: 1.18rem; text-align: center; }
+        .page-hero .hero-verse { 
+            background: rgba(255,255,255,0.1); 
+            border: 1px solid rgba(255,255,255,0.22); 
+            padding: 0.75rem 1rem;
+            max-width: 720px;
+            text-align: center;
+            margin: 0 auto;
+            border-radius: 20px;
+        }
+        .page-hero .hero-verse .ref { color: #9fe0ff; }
+
+        .page-shell {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 22px 88px;
+        }
+
+        .lead-panel {
+            background: var(--panel);
+            margin-top: 26px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 18px 48px rgba(0,0,0,0.45);
+            display: grid;
+            grid-template-columns: 2fr 1.1fr;
+            gap: 24px;
+            border: 1px solid var(--line);
+            color: var(--ink);
+        }
+
+        .lead-panel h2 {
+            margin: 0 0 14px;
+            font-size: 1.55rem;
+            letter-spacing: -0.01em;
+            color: #f9fbff;
+        }
+
+        .lead-panel p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.82;
+            font-size: 1.05rem;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--pill);
+            color: var(--accent-dark);
+            padding: 9px 15px;
+            border-radius: 999px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            letter-spacing: 0.01em;
+        }
+
+        .stats-grid {
+            margin: 32px 0 12px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+        }
+
+        .stat-card {
+            background: #163458;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 16px;
+            color: var(--ink);
+            box-shadow: 0 10px 28px rgba(0,0,0,0.32);
+        }
+
+        .stat-card strong {
+            display: block;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .section-heading {
+            margin: 62px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.01em;
+            color: #f9fbff;
+        }
+
+        .section-heading span {
+            display: inline-flex;
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            align-items: center;
+            justify-content: center;
+            background: var(--pill);
+            color: var(--accent-dark);
+        }
+
+        .section-heading h2 { margin: 0; font-size: 1.6rem; }
+
+        .timeline {
+            background: var(--panel);
+            border-radius: 18px;
+            border: 1px solid var(--line);
+            padding: 24px 20px;
+            box-shadow: 0 10px 32px rgba(0,0,0,0.4);
+        }
+
+        .timeline-list {
+            position: relative;
+            padding-left: 0;
+        }
+
+        .timeline::before { display: none; }
+
+        .event {
+            position: relative;
+            padding: 18px 16px 16px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            margin-bottom: 14px;
+            background: rgba(255,255,255,0.03);
+            box-shadow: 0 10px 26px rgba(0,0,0,0.28);
+        }
+
+        .event:last-child { margin-bottom: 0; }
+
+        .event header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .event h3 {
+            margin: 0;
+            font-size: 1.22rem;
+            color: #f9fbff;
+        }
+
+        .event .date {
+            font-size: 1rem;
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .event p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.78;
+            font-size: 1.05rem;
+        }
+
+        .event ul {
+            margin: 10px 0 0;
+            padding-left: 18px;
+            color: #e3ecff;
+            line-height: 1.68;
+            font-size: 1.02rem;
+        }
+
+        .callout {
+            margin-top: 18px;
+            padding: 16px;
+            border-radius: 12px;
+            background: rgba(59, 130, 246, 0.14);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            color: #e6f0ff;
+            font-size: 1.02rem;
+        }
+
+        .mini-grid {
+            margin-top: 18px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
+        }
+
+        .plain-card {
+            background: #163458;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 8px 22px rgba(0,0,0,0.3);
+            color: var(--ink);
+        }
+
+        .plain-card h4 {
+            margin: 0 0 8px;
+            font-size: 1.05rem;
+            color: #f9fbff;
+        }
+
+        .plain-card p {
+            margin: 0;
+            color: #e2ebff;
+            line-height: 1.72;
+            font-size: 1.01rem;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-bottom: 10px;
+        }
+
+        .rich-card {
+            background: #152c4b;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 18px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.32);
+            color: #e7f0ff;
+            line-height: 1.78;
+            font-size: 1.03rem;
+        }
+
+        .rich-card h3 {
+            margin: 8px 0 10px;
+            color: #fefefe;
+            font-size: 1.18rem;
+        }
+
+        .rich-card ul {
+            margin: 8px 0 0;
+            padding-left: 18px;
+            color: #dfe7ff;
+            line-height: 1.68;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(251,191,36,0.16);
+            color: #fbbf24;
+            font-weight: 800;
+            letter-spacing: 0.01em;
+            font-size: 0.9rem;
+        }
+
+        .badge.soft { background: rgba(99, 179, 237, 0.18); color: #a5f3fc; }
+
+        .cta-block {
+            background: linear-gradient(120deg, #f59e0b, #b45309);
+            color: #0b1220;
+            padding: 36px 24px;
+            border-radius: 18px;
+            text-align: center;
+            margin-top: 52px;
+            box-shadow: 0 14px 42px rgba(0,0,0,0.45);
+        }
+
+        .cta-block a {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 12px 22px;
+            border-radius: 12px;
+            background: #0b1220;
+            color: #fbbf24;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 6px 18px rgba(15,23,42,0.12);
+        }
+
+        @media (max-width: 900px) {
+            .lead-panel { grid-template-columns: 1fr; }
+            .page-shell { padding: 0 18px 72px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="container-fluid">
+                <div class="header-grid-secondary">
+                    <div class="logo-section-secondary">
+                        <img src="vfi-news-banner.png" alt="VFI News" class="logo-banner-secondary" onerror="this.src='vfi-news.png';">
+                    </div>
+                    <div class="bible-verse-section">
+                        <i class="fas fa-scroll"></i>
+                        <span class="verse-text">"He remembers His covenant forever, the word that He commanded, for a thousand generations."</span>
+                        <span class="verse-reference">Psalm 105:8</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-bar">
+            <div class="container-fluid">
+                <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav-main" id="navMain">
+                    <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                    <a href="worship.html" class="nav-link"><i class="fas fa-music"></i> Worship</a>
+                    <a href="testimonials.html" class="nav-link"><i class="fas fa-heart"></i> Testimonials</a>
+                    <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a>
+                    <a href="roots-reflections.html" class="nav-link"><i class="fas fa-book-open"></i> Roots & Reflections</a>
+                    <a href="projects.html" class="nav-link"><i class="fas fa-hands-helping"></i> Projects</a>
+                    <a href="blog-posts.html" class="nav-link"><i class="fas fa-blog"></i> Blog</a>
+                    <a href="shop.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Shop</a>
+                    <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+                    <a href="https://www.visionforisrael.com/en/give" class="nav-link donate-link" target="_blank"><i class="fas fa-donate"></i> DONATE NOW</a>
+                    <a href="israel-history.html" class="nav-link active"><i class="fas fa-landmark"></i> Israel History</a>
+                    <a href="salvation.html" class="nav-link"><i class="fas fa-cross"></i> Know Yeshua</a>
+                    <a href="prayer-wall.html" class="nav-link"><i class="fas fa-praying-hands"></i> Prayer Wall</a>
+                    <a href="forum.html" class="nav-link"><i class="fas fa-comments"></i> Forum</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-hero history-hero">
+        <div class="hero-body">
+            <div class="hero-icon">
+                <i class="fas fa-landmark"></i>
+            </div>
+            <h1 class="hero-title">Israel's Story in Focus</h1>
+            <p class="hero-tagline">From covenant promise to modern statehood, Israel's history is a continuous thread of faith, resilience, and return.</p>
+            <div class="hero-verse">
+                "He remembers His covenant forever, the word that He commanded, for a thousand generations."
+                <span class="ref">Psalm 105:8</span>
+            </div>
+        </div>
+    </section>
+
+    <main class="page-shell">
+        <div class="lead-panel">
+            <div>
+                <div class="pill"><i class="fas fa-landmark"></i> Timeline Overview</div>
+                <h2>What this page covers</h2>
+                <p>A concise sweep of Israel's past: ancient foundations, exile and return, the long diaspora, statehood in 1948, and the challenges and breakthroughs that shape the present.</p>
+            </div>
+            <div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <strong>3,000+ yrs</strong>
+                        Continuous connection to Jerusalem
+                    </div>
+                    <div class="stat-card">
+                        <strong>1948</strong>
+                        State declared in a single day
+                    </div>
+                    <div class="stat-card">
+                        <strong>9.7M</strong>
+                        Citizens building a modern nation
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-heading"><span><i class="fas fa-seedling"></i></span><h2>Ancient roots</h2></div>
+        <div class="timeline">
+            <div class="timeline-list">
+                <div class="event">
+                    <header>
+                        <h3>Covenant with Abraham</h3>
+                        <span class="date">c. 2000 BCE</span>
+                    </header>
+                    <p>A childless nomad hears God's voice: <em>"Leave your country, your people, and go to a land I will show you."</em> Abraham obeys, journeying from Ur of the Chaldeans to Canaan. God promises him descendants as numerous as the stars and grants him the land forever. Years later, when Abraham is 100 and Sarah 90, Isaac is born—proof that God keeps impossible promises.</p>
+                    <ul>
+                        <li><strong>The test:</strong> God asks Abraham to sacrifice Isaac on Mount Moriah (later the Temple Mount). At the last second, an angel stops him and provides a ram—foreshadowing the ultimate sacrifice centuries later.</li>
+                        <li><strong>Three patriarchs:</strong> Abraham, Isaac, and Jacob (renamed Israel after wrestling with God) form the family tree. Jacob's twelve sons become the twelve tribes.</li>
+                        <li><strong>Lasting mark:</strong> This covenant is the title deed. Every return to the land echoes God's oath to Abraham.</li>
+                    </ul>
+                </div>
+                <div class="event">
+                    <header>
+                        <h3>Exodus and Sinai</h3>
+                        <span class="date">c. 1446 BCE</span>
+                    </header>
+                    <p>Four hundred years after Joseph saved Egypt from famine, his descendants are enslaved. A new Pharaoh orders Hebrew baby boys drowned in the Nile. One mother hides her son in a basket among the reeds; Pharaoh's daughter finds him and names him Moses—"drawn out of water."</p>
+                    <p><strong>The showdown:</strong> Moses confronts Pharaoh with ten plagues—water to blood, frogs, lice, flies, livestock death, boils, hail, locusts, darkness, and finally the death of every Egyptian firstborn. Israel marks doorposts with lamb's blood; the angel of death passes over. Pharaoh releases them.</p>
+                    <p><strong>The escape:</strong> At the Red Sea, the Egyptian army traps Israel against the water. God splits the sea; Israel walks through on dry ground. The waters close over Pharaoh's chariots.</p>
+                    <p><strong>Sinai:</strong> Fifty days later at Mount Sinai, the mountain quakes, fire descends, and God speaks the Ten Commandments aloud. Israel receives the Torah—613 laws covering worship, justice, diet, and holiness. A priestly system and the Tabernacle (a portable sanctuary) are established. The covenant is now written in stone and blood.</p>
+                </div>
+                <div class="event">
+                    <header>
+                        <h3>Land and Kingdom</h3>
+                        <span class="date">c. 1400-586 BCE</span>
+                    </header>
+                    <p><strong>Conquest:</strong> Joshua leads Israel across the Jordan River (which parts just like the Red Sea). Jericho's walls fall after seven days of marching and a trumpet blast. Over the next decades, Israel settles the land tribe by tribe.</p>
+                    <p><strong>Judges era:</strong> Before kings, charismatic leaders—judges like Deborah, Gideon, and Samson—deliver Israel from oppressors. The cycle repeats: Israel sins, suffers, cries out, and God sends a rescuer.</p>
+                    <p><strong>David the giant-slayer:</strong> A shepherd boy defeats Goliath with a sling. Later anointed king, David conquers Jerusalem (a Jebusite fortress) and makes it his capital. He brings the Ark of the Covenant into the city, dancing before it with all his might. God promises David's throne will last forever—a royal line leading to Messiah.</p>
+                    <p><strong>Solomon's golden age:</strong> David's son Solomon builds the First Temple on Mount Moriah, overlaying it with gold. At the dedication, God's glory fills the house so thickly the priests cannot stand. Trade routes bring wealth; queens visit from distant lands. But Solomon's many foreign wives lead him into idolatry.</p>
+                    <p><strong>The split:</strong> After Solomon's death, the kingdom divides—Israel (north, ten tribes) and Judah (south, two tribes). The north falls to Assyria in 722 BCE; most of those tribes are scattered and lost. Judah survives longer, but prophets like Isaiah, Jeremiah, and Ezekiel warn that sin will bring exile.</p>
+                </div>
+                <div class="event">
+                    <header>
+                        <h3>Exile and Return</h3>
+                        <span class="date">586-516 BCE</span>
+                    </header>
+                    <p><strong>The catastrophe:</strong> Nebuchadnezzar's Babylonian army besieges Jerusalem. Starvation grips the city; mothers eat their own children (Lamentations 4:10). The walls are breached, the Temple burned, sacred vessels carried off. Judah's king watches his sons executed, then has his eyes put out—the last thing he sees is his dynasty's end. The elite are marched 900 miles to Babylon in chains.</p>
+                    <p><strong>By the rivers of Babylon:</strong> Psalm 137 captures the grief—<em>"We sat and wept when we remembered Zion. How can we sing the Lord's song in a foreign land?"</em> Yet the prophet Jeremiah had promised: <em>"After 70 years I will visit you and bring you back."</em></p>
+                    <p><strong>The return:</strong> Cyrus of Persia conquers Babylon and issues a decree: Jews may go home and rebuild the Temple. Some 50,000 return under Zerubbabel. Older priests weep at the foundation ceremony—the new Temple is smaller, humbler. But the prophet Haggai promises God's glory will fill this house even more than the first. Ezra the scribe restores Torah study; Nehemiah rebuilds Jerusalem's walls in 52 days despite enemy threats.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-heading"><span><i class="fas fa-globe"></i></span><h2>Scattered yet preserved</h2></div>
+        <div class="timeline">
+            <div class="timeline-list">
+                <div class="event">
+                    <header>
+                        <h3>Second Temple era and dispersion</h3>
+                        <span class="date">516 BCE - 70 CE</span>
+                    </header>
+                    <p><strong>Greek rule and the Maccabees:</strong> Alexander the Great conquers the region; after his death, the Seleucid Greeks try to force Hellenization. In 167 BCE, Antiochus Epiphanes sacrifices a pig on the Temple altar. A priest named Mattathias and his sons (the Maccabees) lead a guerrilla revolt. Against all odds, they reclaim Jerusalem and rededicate the Temple—Hanukkah celebrates this miracle.</p>
+                    <p><strong>Roman occupation:</strong> Rome takes control in 63 BCE. Herod the Great, a half-Jewish client king, massively expands the Second Temple into one of the ancient world's wonders—gleaming white stone and gold visible for miles.</p>
+                    <p><strong>Yeshua's time:</strong> During Roman occupation, a Jewish carpenter from Nazareth teaches in synagogues and Temple courts, performs miracles, and proclaims the Kingdom of God. Religious leaders deliver Him to Rome; Pontius Pilate orders crucifixion. Three days later, His followers report He rose from the dead, fulfilling prophecies of a suffering Messiah (Isaiah 53) and inaugurating a new covenant.</p>
+                    <p><strong>The great revolt and destruction:</strong> In 66 CE, Jewish zealots rebel against Rome. Four years later, Titus's legions besiege Jerusalem. Josephus records mass starvation, internal factions, and final slaughter. The Temple is burned on the 9th of Av (the same date Babylon destroyed the first Temple). Over a million die; survivors are sold into slavery or scattered. Only the Western Wall remains.</p>
+                </div>
+                <div class="event">
+                    <header>
+                        <h3>Long diaspora</h3>
+                        <span class="date">70-1800s</span>
+                    </header>
+                    <p><strong>Scattered but unbroken:</strong> Jewish communities flourish in Babylon (modern Iraq), North Africa, Spain (Sephardim), and Europe (Ashkenazim). In Babylon, the Talmud is compiled—rabbinic debates that become the backbone of Jewish law and life. In medieval Spain, Jews serve as scholars, physicians, and diplomats during a golden age of coexistence with Muslims and Christians.</p>
+                    <p><strong>Persecution and resilience:</strong> Crusades in 1096 massacre whole Jewish communities in the Rhineland. The Spanish Inquisition (1478) forces conversions; in 1492, Spain expels all Jews who refuse baptism—the same year Columbus sails. Pogroms sweep Russia in the 1880s; blood libels accuse Jews of using Christian blood in rituals. Yet Torah study never stops. Synagogues, yeshivas, and the Hebrew language survive.</p>
+                    <p><strong>Three times daily:</strong> Every prayer service ends facing Jerusalem: <em>"Next year in Jerusalem."</em> For 1,900 years, this hope sustains a scattered people.</p>
+                </div>
+                <div class="event">
+                    <header>
+                        <h3>Hope rekindled</h3>
+                        <span class="date">1800s-1945</span>
+                    </header>
+                    <p><strong>Zionist awakening:</strong> Theodor Herzl, a Viennese journalist covering the Dreyfus Affair (a Jew falsely accused of treason in France), concludes Jews will never be safe without a homeland. His 1896 pamphlet <em>The Jewish State</em> sparks a movement. The First Zionist Congress (1897) declares: <em>"We aim to create a publicly recognized, legally secured home for the Jewish people in Palestine."</em></p>
+                    <p><strong>Pioneers and revival:</strong> Waves of immigration (aliyah) bring idealistic young Jews to Ottoman and later British Palestine. They drain swamps, plant forests, revive Hebrew as a spoken language (Eliezer Ben-Yehuda coins modern words), and found Tel Aviv in 1909. Kibbutzim (collective farms) combine socialism, Zionism, and hard labor. By the 1930s, Jewish villages, schools, and orchestras dot the land.</p>
+                    <p><strong>The Holocaust:</strong> Hitler's Final Solution murders six million Jews—two-thirds of Europe's Jewish population—in gas chambers and mass shootings. Entire communities that survived Babylon, Rome, Crusades, and pogroms are erased in five years. Survivors emerge from camps tattooed, skeletal, and homeless. The cry <em>"Never again"</em> hardens resolve: Jews need sovereignty.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-heading"><span><i class="fas fa-flag"></i></span><h2>Statehood and security</h2></div>
+        <div class="timeline">
+            <div class="timeline-list">
+                <div class="event">
+                    <header>
+                        <h3>Nation in a day</h3>
+                        <span class="date">May 14, 1948</span>
+                    </header>
+                    <p><strong>The declaration:</strong> As the British Mandate ends, David Ben-Gurion reads Israel's Declaration of Independence in a Tel Aviv museum. The document invokes <em>"the Rock of Israel"</em> (a phrase acceptable to both religious and secular founders) and proclaims a state offering <em>"complete equality to all inhabitants irrespective of religion, race, or sex."</em> Jews dance in the streets; within hours, five Arab armies invade.</p>
+                    <p><strong>The siege:</strong> Egypt, Jordan, Syria, Lebanon, and Iraq coordinate attacks. The new Israel Defense Forces cobble together Holocaust survivors, underground fighters, and immigrant volunteers flying in from abroad. Weapons are scarce—some units have one rifle for every three soldiers. Convoys to Jerusalem are ambushed; the Old City's Jewish Quarter surrenders after desperate fighting.</p>
+                    <p><strong>Against the odds:</strong> Homemade armored buses try to break the siege of Jerusalem. Czech arms arrive at the last moment. Small units pull off daring night raids. Slowly, the tide turns. By 1949, armistice lines grant Israel more territory than the UN partition plan offered—but at a cost: 6,000 dead (1% of the population) and the Old City lost to Jordan for 19 years.</p>
+                    <p><strong>Prophetic echo:</strong> Isaiah 66:8 asks, <em>"Can a nation be born in a day?"</em> On May 14, 1948, the answer was yes.</p>
+                </div>
+                <div class="event">
+                    <header>
+                        <h3>Wars of survival</h3>
+                        <span class="date">1948-1973</span>
+                    </header>
+                    <p>Key conflicts: 1948 War of Independence, 1956 Sinai Campaign, 1967 Six-Day War, 1973 Yom Kippur War. Early shortages, bold preemption, and painful surprise attacks shape Israel's doctrine and diplomacy.</p>
+                    <ul>
+                        <li>Conscription builds a citizen army</li>
+                        <li>Peace with Egypt (1979) follows lessons of 1973</li>
+                    </ul>
+                </div>
+                <div class="event">
+                    <header>
+                        <h3>Peace attempts and setbacks</h3>
+                        <span class="date">1990s-2010s</span>
+                    </header>
+                    <p>Oslo accords aim for two states; violence during intifadas tests public trust. Israel withdraws from Gaza in 2005; rocket fire and conflicts with Hamas follow.</p>
+                </div>
+                <div class="event">
+                    <header>
+                        <h3>Regional openings</h3>
+                        <span class="date">2020 onward</span>
+                    </header>
+                    <p>Abraham Accords normalize ties with UAE, Bahrain, Morocco, and Sudan, creating new channels for trade, travel, and security cooperation.</p>
+                </div>
+                <div class="event">
+                    <header>
+                        <h3>October 7 and its aftermath</h3>
+                        <span class="date">2023-present</span>
+                    </header>
+                    <p>Hamas attacks from Gaza cause mass civilian casualties and hostage-taking. Israel responds to dismantle terror networks and secure its borders while advocating for the release of hostages.</p>
+                    <div class="callout">Current priorities: protect civilians, free hostages, deter regional escalation, and sustain international partnerships.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-heading"><span><i class="fas fa-shield-alt"></i></span><h2>Wars, wins, and lessons</h2></div>
+        <div class="detail-grid">
+            <div class="rich-card">
+                <div class="badge">1948 War of Independence</div>
+                <h3>Survival with few weapons</h3>
+                <p>Five invading armies surrounded the newborn state. Improvised armor, immigrant volunteers, and moments like the stand at Latrun helped keep supply lines open. The war cost one percent of Israel's population, but secured a homeland.</p>
+                <ul>
+                    <li>Hard loss: Jerusalem's Old City fell to Jordan until 1967.</li>
+                    <li>Win: Securing the road to Jerusalem kept the capital supplied.</li>
+                </ul>
+            </div>
+            <div class="rich-card">
+                <div class="badge">1956 Sinai Campaign</div>
+                <h3>Short war, major leverage</h3>
+                <p>After raids from Sinai, Israel struck Egypt in coordination with Britain and France. Military success forced open the Straits of Tiran but ended under US/UN pressure, showing victories still depend on diplomacy.</p>
+            </div>
+            <div class="rich-card">
+                <div class="badge">1967 Six-Day War</div>
+                <h3>Rapid, decisive gains</h3>
+                <p>A preemptive air strike destroyed surrounding air forces in hours. Israel regained Jerusalem, Sinai, the Golan Heights, and the West Bank. The speed felt miraculous to many; the new lines also created long-term stewardship and security dilemmas.</p>
+            </div>
+            <div class="rich-card">
+                <div class="badge">1973 Yom Kippur War</div>
+                <h3>Shock, loss, then recovery</h3>
+                <p>Egypt and Syria attacked on the holiest day. Early losses on the Sinai and Golan were severe; units held ground long enough for reserves to arrive. Israel crossed the Suez and encircled the Egyptian Third Army, but the cost forced soul-searching and peace talks.</p>
+                <ul>
+                    <li>Hard loss: 2,600+ soldiers killed; intelligence warning signs missed.</li>
+                    <li>Lesson: Better early warning and joint command structures.</li>
+                </ul>
+            </div>
+            <div class="rich-card">
+                <div class="badge">1982 Lebanon</div>
+                <h3>Urban war and overreach</h3>
+                <p>Invading to push the PLO away from the border led to a long stay in Lebanon. Early gains gave way to costly urban fighting and a controversial presence that lasted until 2000.</p>
+            </div>
+            <div class="rich-card">
+                <div class="badge">1991 & 2003</div>
+                <h3>Scuds and restraint</h3>
+                <p>Iraqi missiles hit Israeli cities during the Gulf War; Israel held fire to keep the coalition intact. Civil defense and US Patriot batteries highlighted the value of alliances.</p>
+            </div>
+            <div class="rich-card">
+                <div class="badge">2006 Lebanon War</div>
+                <h3>Costly wake-up call</h3>
+                <p>Hezbollah rockets reached deep into Israel; gaps in readiness showed. The war spurred heavy investment in training, home-front shelters, and missile defense.</p>
+            </div>
+            <div class="rich-card">
+                <div class="badge">2008-2023 Gaza rounds</div>
+                <h3>Iron Dome era</h3>
+                <p>Recurring conflicts with Hamas and Islamic Jihad led to blockades, targeted strikes, and the Iron Dome system that intercepts rockets. Operations carry civilian tolls and ongoing debate over strategy and humanitarian relief.</p>
+            </div>
+        </div>
+
+        <div class="section-heading"><span><i class="fas fa-hands-praying"></i></span><h2>When God fought for Israel</h2></div>
+        <div class="detail-grid">
+            <div class="rich-card">
+                <div class="badge soft">Bible</div>
+                <h3>Red Sea escape (Exodus 14)</h3>
+                <p>No weapons could save the former slaves; God split the sea and closed it on Pharaoh's army.</p>
+            </div>
+            <div class="rich-card">
+                <div class="badge soft">Bible</div>
+                <h3>Walls of Jericho (Joshua 6)</h3>
+                <p>Israel circled the city in silence for six days. On the seventh, a shout and trumpet blast brought the walls down—no siege towers needed.</p>
+            </div>
+            <div class="rich-card">
+                <div class="badge soft">Bible</div>
+                <h3>Gideon's 300 (Judges 7)</h3>
+                <p>A tiny force with torches and jars sent the Midianite camp into panic. God made weakness a weapon.</p>
+            </div>
+            <div class="rich-card">
+                <div class="badge soft">Bible</div>
+                <h3>Angel against Assyria (2 Kings 19)</h3>
+                <p>King Hezekiah faced 185,000 Assyrian troops. Isaiah promised deliverance; by morning the enemy camp was dead or fleeing without a single Judean charge.</p>
+            </div>
+            <div class="rich-card">
+                <div class="badge soft">Modern memory</div>
+                <h3>Six-Day War fog and fortune</h3>
+                <p>Pilots flying low beneath radar, unexpected morning fog shielding troops, and misread enemy orders felt providential to many who fought.</p>
+            </div>
+            <div class="rich-card">
+                <div class="badge soft">Modern memory</div>
+                <h3>Yom Kippur stand on the Golan</h3>
+                <p>Small tank crews held the "Valley of Tears" long enough for reserves to arrive. Veterans described a sense of unseen help in the narrowest hours.</p>
+            </div>
+        </div>
+
+        <div class="section-heading"><span><i class="fas fa-lightbulb"></i></span><h2>Themes to notice</h2></div>
+        <div class="mini-grid">
+            <div class="plain-card">
+                <h4>Resilience and return</h4>
+                <p>Across millennia, the Jewish people maintained identity, language, and worship while dispersed, continually orienting life toward Jerusalem.</p>
+            </div>
+            <div class="plain-card">
+                <h4>Faith and responsibility</h4>
+                <p>Ancient covenants inspire modern civic duty: national service, disaster relief, and care for vulnerable communities.</p>
+            </div>
+            <div class="plain-card">
+                <h4>Innovation under pressure</h4>
+                <p>Scarcity and security needs drive advances in agriculture, medicine, water, cyber, and defense that benefit the wider world.</p>
+            </div>
+            <div class="plain-card">
+                <h4>Pursuit of peace</h4>
+                <p>From treaties with Egypt and Jordan to the Abraham Accords, Israel seeks durable partnerships even while confronting persistent threats.</p>
+            </div>
+        </div>
+
+        <div class="section-heading"><span><i class="fas fa-compass"></i></span><h2>Where the story heads</h2></div>
+        <div class="plain-card">
+            <p>Israel today is a diverse democracy balancing security, innovation, and spiritual heritage. Key questions ahead: securing long-term peace with neighbors, safeguarding pluralism inside the country, and supporting Jewish communities worldwide.</p>
+            <div class="mini-grid" style="margin-top: 12px;">
+                <div class="plain-card">
+                    <h4>Security</h4>
+                    <p>Defend against regional threats while minimizing civilian harm and protecting daily life.</p>
+                </div>
+                <div class="plain-card">
+                    <h4>Society</h4>
+                    <p>Strengthen cohesion among religious, secular, Jewish, Arab, and immigrant communities.</p>
+                </div>
+                <div class="plain-card">
+                    <h4>Promise</h4>
+                    <p>Keep faith with biblical covenants and a vision of peace in Jerusalem.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-block">
+            <h3>Partner with Vision For Israel</h3>
+            <p>Support humanitarian aid, community resilience, and educational outreach that strengthen Israel for generations to come.</p>
+            <a href="https://www.visionforisrael.com/en/give" target="_blank"><i class="fas fa-heart"></i> Donate</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="worship.html">Worship</a></li>
+                        <li><a href="roots-reflections.html">Roots &amp; Reflections</a></li>
+                        <li><a href="israel-history.html">Israel History</a></li>
+                        <li><a href="prayer-wall.html">Prayer Wall</a></li>
+                        <li><a href="forum.html">Forum</a></li>
+                        <li><a href="salvation.html">Salvation</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="blog-posts.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="https://www.visionforisrael.com/en/give" target="_blank">Donate</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="blog-posts.html">Blog</a></li>
+                        <li><a href="https://www.visionforisrael.com/en/volunteer" target="_blank">Volunteer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/visionforisrael" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/vision4israel" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/visionforisrael" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/visionforisrael" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>VFI News</h3>
+                    <p>Stay informed with the latest news and updates from Israel.</p>
+                    <p><strong>Vision For Israel</strong><br>Operating since 1994</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vision For Israel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="bible_verses.js"></script>
+    <script src="hamburger-menu-new.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

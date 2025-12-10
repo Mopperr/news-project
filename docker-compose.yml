@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    container_name: vfi_postgres
+    environment:
+      POSTGRES_USER: vfi_user
+      POSTGRES_PASSWORD: vfi_password
+      POSTGRES_DB: vfi_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - vfi_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vfi_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # FastAPI Backend
+  api:
+    build: ./backend
+    container_name: vfi_api
+    environment:
+      DATABASE_URL: postgresql://vfi_user:vfi_password@db:5432/vfi_db
+      SECRET_KEY: ${SECRET_KEY:-your-secret-key-here}
+      CORS_ORIGINS: http://localhost:8000,http://localhost:80,http://localhost
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - vfi_network
+    volumes:
+      - ./backend:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 8080 --reload
+
+  # Nginx Web Server (Optional - for production)
+  nginx:
+    image: nginx:alpine
+    container_name: vfi_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - .:/usr/share/nginx/html:ro
+    depends_on:
+      - api
+    networks:
+      - vfi_network
+
+volumes:
+  postgres_data:
+
+networks:
+  vfi_network:
+    driver: bridge

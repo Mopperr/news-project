@@ -5,6 +5,7 @@
     <title>Vision for Israel Blog</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="nav-scroll.js" defer></script>
     <style>
         .blog-grid {
             display: grid;
@@ -113,23 +114,85 @@
         }
         .blog-modal {
             position: fixed;
+            inset: 0;
             z-index: 1000;
-            left: 0; top: 0;
             width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.85);
+            background: rgba(0,0,0,0.8);
             display: flex; align-items: center; justify-content: center;
-            padding: 4vh 0;
+            padding: 3vh 3vw;
+            overflow: hidden;
         }
         .blog-modal-content {
-            background: #fff;
-            border-radius: 20px;
-            max-width: 900px;
-            width: 98vw;
-            min-height: 300px;
-            padding: 2.5rem 2.5rem 2rem 2.5rem;
+            background: linear-gradient(135deg, #0f172a 0%, #0b1220 100%);
+            border: 1px solid rgba(56,189,248,0.25);
+            border-radius: 18px;
+            max-width: 960px;
+            width: 96vw;
+            max-height: 92vh;
+            padding: 2.2rem 2.4rem 2rem 2.4rem;
             position: relative;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-            overflow: auto;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+            overflow: hidden;
+        }
+        .blog-modal-body {
+            max-height: calc(92vh - 120px);
+            overflow: hidden;
+            padding-right: 6px;
+        }
+        .blog-modal-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.08);
+            color: #e2e8f0;
+            font-size: 1.6rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.18);
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+        .blog-modal-close:hover {
+            background: rgba(56,189,248,0.16);
+            color: #fff;
+            border-color: rgba(56,189,248,0.4);
+        }
+        .blog-modal-content-scroll {
+            max-height: calc(92vh - 320px);
+            overflow-y: auto;
+            padding: 12px 6px 0 0;
+            color: #e2e8f0;
+            font-size: 1.08rem;
+            line-height: 1.7;
+            scrollbar-width: none;
+        }
+        .blog-modal-content-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .blog-modal-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 18px;
+            background: linear-gradient(135deg, #38bdf8 0%, #22d3ee 100%);
+            color: #0b1220;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: 800;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(56,189,248,0.35);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+        }
+        .blog-modal-link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 36px rgba(56,189,248,0.45);
+            filter: brightness(1.05);
         }
         @media (max-width: 1200px) {
             .blog-modal-content {
@@ -197,7 +260,13 @@
                         <i class="fas fa-home"></i> Home
                     </a>
                     <a href="worship.html" class="nav-link">
-                        <i class="fas fa-music"></i> Worship Music
+                        <i class="fas fa-music"></i> Worship
+                    </a>
+                    <a href="testimonials.html" class="nav-link">
+                        <i class="fas fa-heart"></i> Testimonials
+                    </a>
+                    <a href="about.html" class="nav-link">
+                        <i class="fas fa-info-circle"></i> About
                     </a>
                     <a href="roots-reflections.html" class="nav-link">
                         <i class="fas fa-book-open"></i> Roots & Reflections
@@ -208,12 +277,6 @@
                     <a href="blog-posts.html" class="nav-link active">
                         <i class="fas fa-blog"></i> Blog
                     </a>
-                    <a href="about.html" class="nav-link">
-                        <i class="fas fa-info-circle"></i> About
-                    </a>
-                    <a href="testimonials.html" class="nav-link">
-                        <i class="fas fa-heart"></i> Testimonials
-                    </a>
                     <a href="shop.html" class="nav-link">
                         <i class="fas fa-shopping-bag"></i> Shop
                     </a>
@@ -222,6 +285,18 @@
                     </a>
                     <a href="https://www.visionforisrael.com/en/give" class="nav-link donate-link" target="_blank">
                         <i class="fas fa-donate"></i> DONATE NOW
+                    </a>
+                    <a href="israel-history.html" class="nav-link">
+                        <i class="fas fa-landmark"></i> Israel History
+                    </a>
+                    <a href="salvation.html" class="nav-link">
+                        <i class="fas fa-cross"></i> Know Yeshua
+                    </a>
+                    <a href="prayer-wall.html" class="nav-link">
+                        <i class="fas fa-praying-hands"></i> Prayer Wall
+                    </a>
+                    <a href="forum.html" class="nav-link">
+                        <i class="fas fa-comments"></i> Forum
                     </a>
                 </nav>
             </div>
@@ -282,6 +357,7 @@
                 <h2 id="blogModalTitle"></h2>
                 <div id="blogModalMeta" class="blog-modal-meta"></div>
                 <div id="blogModalContent" class="blog-modal-content-scroll"></div>
+                <a id="blogModalReadFull" class="blog-modal-link-btn" href="#" target="_blank" rel="noopener" style="display:none;"><i class='fas fa-external-link-alt'></i> Read Full Article on VFI</a>
             </div>
         </div>
     </div>        <section class="blog-section">
@@ -323,8 +399,9 @@
         }
     });
     </script>
+    <script src="hamburger-menu.js"></script>
 </body>
-
+</html>
        <!-- Bible Verse Banner -->
         <section class="bible-verse-banner" style="margin-top: 2.5rem; margin-bottom: 2.5rem; background: linear-gradient(90deg, #0ea5e9 0%, #38bdf8 100%); border-radius: 18px; box-shadow: 0 4px 24px rgba(14,165,233,0.08); padding: 2.2rem 2rem 1.5rem 2rem; text-align: center;">
             <div class="verse-icon" style="font-size:2.2rem; color:#fff; margin-bottom:0.5rem;"><i class="fas fa-feather-alt"></i></div>
@@ -332,7 +409,7 @@
             <p class="verse-reference" style="color:#bae6fd; font-size:1.1rem; font-weight:500;">Isaiah 52:7</p>
         </section>
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-section">

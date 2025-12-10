@@ -12,24 +12,54 @@ async function loadVideos() {
     const videosGrid = document.getElementById('videosGrid');
     const noResults = document.getElementById('noResults');
     
-    console.log('Starting to load videos...');
+    console.log('🎥 ============================================');
+    console.log('🎥 ROOTS & REFLECTIONS - Starting to load videos...');
+    console.log('🎥 ============================================');
+    
+    // Check DOM elements
+    console.log('📋 DOM Elements:', {
+        loadingSpinner: !!loadingSpinner,
+        videosGrid: !!videosGrid,
+        noResults: !!noResults
+    });
+    
+    if (!videosGrid) {
+        console.error('❌ CRITICAL: videosGrid element NOT FOUND!');
+        return;
+    }
     
     try {
+        console.log('📂 Attempting to load: roots_reflections_videos_catalog.json');
+        
         // Load the Roots & Reflections catalog
         const response = await fetch('roots_reflections_videos_catalog.json');
-        console.log('Fetch response:', response.ok, response.status);
+        
+        console.log('📡 Fetch response:', {
+            ok: response.ok,
+            status: response.status,
+            statusText: response.statusText
+        });
         
         if (!response.ok) {
-            throw new Error('Could not load videos catalog');
+            throw new Error(`Could not load videos catalog (Status: ${response.status})`);
         }
         
         const catalog = await response.json();
         allVideos = catalog.videos || [];
         
-        console.log('Loaded videos:', allVideos.length);
+        console.log('📦 Catalog loaded:', {
+            totalVideos: allVideos.length
+        });
+        
+        if (allVideos.length === 0) {
+            throw new Error('No videos found in catalog');
+        }
         
         // Update stats
-        document.getElementById('totalVideos').textContent = allVideos.length;
+        const totalVideosEl = document.getElementById('totalVideos');
+        if (totalVideosEl) {
+            totalVideosEl.textContent = allVideos.length;
+        }
         
         // Calculate channel age
         if (allVideos.length > 0) {
@@ -37,19 +67,34 @@ async function loadVideos() {
             const publishDate = new Date(oldestVideo.publishedAt);
             const now = new Date();
             const years = Math.floor((now - publishDate) / (1000 * 60 * 60 * 24 * 365));
-            document.getElementById('channelAge').textContent = years + '+';
+            const channelAgeEl = document.getElementById('channelAge');
+            if (channelAgeEl) {
+                channelAgeEl.textContent = years + '+';
+            }
         }
         
         // Initial display
-        console.log('Calling applyFilters...');
+        console.log('✅ Calling applyFilters to display videos...');
         applyFilters();
         
+        console.log('🎥 ============================================');
+        console.log('🎥 Videos loaded successfully!');
+        console.log('🎥 ============================================');
+        
     } catch (error) {
-        console.error('Error loading videos:', error);
-        loadingSpinner.innerHTML = `
-            <i class="fas fa-exclamation-triangle" style="color: #ef4444;"></i>
-            <p style="color: #ef4444;">Error loading videos. Please try again later.</p>
-        `;
+        console.error('❌ Error loading videos:', error);
+        console.error('❌ Error details:', {
+            message: error.message,
+            stack: error.stack
+        });
+        
+        if (loadingSpinner) {
+            loadingSpinner.innerHTML = `
+                <i class="fas fa-exclamation-triangle" style="color: #ef4444;"></i>
+                <p style="color: #ef4444;">Error loading videos. Please try again later.</p>
+                <p style="color: #666; font-size: 14px;">${error.message}</p>
+            `;
+        }
     }
 }
 
@@ -295,31 +340,43 @@ function escapeHtml(text) {
 
 // Hamburger menu functionality for mobile nav
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('🚀 ============================================');
+    console.log('🚀 ROOTS & REFLECTIONS - DOM Content Loaded');
+    console.log('🚀 ============================================');
+    
     // Setup event listeners
     const sortSelect = document.getElementById('sortSelect');
     if (sortSelect) {
         sortSelect.addEventListener('change', handleSortChange);
+        console.log('✅ Sort select event listener attached');
+    } else {
+        console.warn('⚠️ sortSelect element not found');
     }
+    
     // Close modal on ESC key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeVideoModal();
         }
     });
+    
     // Hamburger menu logic
     const hamburgerMenu = document.getElementById('hamburgerMenu');
     const navMain = document.getElementById('navMain');
+    
     if (hamburgerMenu && navMain) {
         hamburgerMenu.addEventListener('click', () => {
             hamburgerMenu.classList.toggle('active');
             navMain.classList.toggle('active');
         });
+        
         document.addEventListener('click', (e) => {
             if (!hamburgerMenu.contains(e.target) && !navMain.contains(e.target)) {
                 hamburgerMenu.classList.remove('active');
                 navMain.classList.remove('active');
             }
         });
+        
         const navLinks = navMain.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -327,7 +384,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 navMain.classList.remove('active');
             });
         });
+        
+        console.log('✅ Hamburger menu initialized');
     }
+    
     // Load videos
+    console.log('📡 Starting video load operation...');
     loadVideos();
 });

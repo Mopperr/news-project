@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Forum | Vision For Israel</title>
+    <meta name="description" content="Join discussions about Israel, faith, prophecy, and biblical truth with believers worldwide.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="nav-scroll.js" defer></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0b1d3a 0%, #102a4f 100%);
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            min-height: 100vh;
+        }
+
+        .page-hero {
+            position: relative;
+            text-align: center;
+            color: #e9f2ff;
+            padding: 110px 20px 90px;
+        }
+
+        .page-hero .hero-body {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .page-hero .hero-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            margin-bottom: 14px;
+            color: #a5f3fc;
+        }
+
+        .page-hero .hero-title {
+            font-size: clamp(2.4rem, 4vw, 3.1rem);
+            margin: 0.35rem 0 0.6rem;
+            letter-spacing: -0.01em;
+        }
+
+        .page-hero .hero-tagline {
+            font-size: 1.15rem;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+            color: #e0f2fe;
+        }
+
+        .page-hero .hero-verse {
+            margin: 1.6rem auto 0;
+            max-width: 860px;
+            padding: 1.1rem 1.4rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 14px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #e9f2ff;
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.26);
+        }
+
+        .page-hero .hero-verse .ref {
+            display: block;
+            margin-top: 0.45rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            color: #7dd3fc;
+        }
+
+        .page-hero .hero-slot {
+            margin-top: 1.5rem;
+        }
+
+        .forum-hero {
+            background: linear-gradient(135deg, rgba(11, 29, 58, 0.94), rgba(16, 42, 79, 0.94)), 
+                        url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1600') center/cover;
+        }
+
+        .forum-content {
+            max-width: 1400px;
+            width: calc(100% - 60px);
+            margin: 0 auto;
+            padding: 2.5rem 1rem 3rem;
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
+            gap: 2rem;
+        }
+
+        /* Reddit-style Posts Feed */
+        .posts-feed {
+            background: transparent;
+            width: 100%;
+        }
+
+        .post-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.7) 100%);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            border-radius: 4px;
+            margin-bottom: 10px;
+            display: flex;
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .post-card:hover {
+            border-color: rgba(96, 165, 250, 0.5);
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
+        }
+
+        .vote-section {
+            background: rgba(96, 165, 250, 0.1);
+            padding: 8px 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            width: 40px;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .vote-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 2px;
+            color: #94a3b8;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+        }
+
+        .vote-btn:hover {
+            background: rgba(96, 165, 250, 0.2);
+            border-radius: 2px;
+        }
+
+        .vote-btn.upvote:hover {
+            color: #fbbf24;
+        }
+
+        .vote-btn.downvote:hover {
+            color: #60a5fa;
+        }
+
+        .vote-count {
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: #cbd5e1;
+        }
+
+        .post-content {
+            flex: 1;
+            padding: 8px;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-bottom: 6px;
+        }
+
+        .subreddit-link {
+            font-weight: 700;
+            color: #e2e8f0;
+            text-decoration: none;
+        }
+
+        .subreddit-link:hover {
+            text-decoration: underline;
+            color: #60a5fa;
+        }
+
+        .post-author {
+            color: #94a3b8;
+        }
+
+        .post-time {
+            color: #94a3b8;
+        }
+
+        .post-title {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #e2e8f0;
+            margin: 0 0 8px 0;
+            line-height: 1.3;
+        }
+
+        .post-title:hover {
+            text-decoration: underline;
+            cursor: pointer;
+            color: #60a5fa;
+        }
+
+        .post-preview {
+            font-size: 0.875rem;
+            color: #cbd5e1;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .post-footer {
+            display: flex;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #94a3b8;
+        }
+
+        .post-action {
+            padding: 4px 8px;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .post-action:hover {
+            background: rgba(96, 165, 250, 0.1);
+        }
+
+        .post-action-active {
+            background: rgba(96, 165, 250, 0.2);
+            color: #60a5fa;
+        }
+
+        .post-action-active i {
+            color: #60a5fa;
+        }
+
+        /* Sidebar */
+        .forum-sidebar {
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        .sidebar-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.7) 100%);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            border-radius: 4px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .sidebar-header {
+            background: linear-gradient(135deg, #0f2d55, #163b6f);
+            color: white;
+            padding: 12px 16px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .sidebar-content {
+            padding: 12px;
+            color: #cbd5e1;
+        }
+
+        .sidebar-content p {
+            color: #cbd5e1;
+        }
+
+        .sidebar-content strong {
+            color: #e2e8f0;
+        }
+
+        .sidebar-content div {
+            color: #cbd5e1;
+        }
+
+        .category-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            color: #cbd5e1;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .category-link:hover {
+            background: rgba(96, 165, 250, 0.2);
+            color: #60a5fa;
+        }
+
+        .category-link i {
+            color: #fbbf24;
+        }
+
+        .create-post-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            border: none;
+            border-radius: 9999px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.25);
+        }
+
+        .create-post-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 36px rgba(59, 130, 246, 0.35);
+        }
+
+        .threads-section {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.7) 100%);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .thread-item {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.1);
+            display: flex;
+            gap: 1rem;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .thread-item:hover {
+            background: rgba(96, 165, 250, 0.1);
+        }
+
+        .thread-item:last-child {
+            border-bottom: none;
+        }
+
+        .thread-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .thread-content {
+            flex: 1;
+        }
+
+        .thread-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.5rem;
+        }
+
+        .thread-title {
+            font-size: 1.2rem;
+            color: #1e40af;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .thread-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: #6b7280;
+            flex-wrap: wrap;
+        }
+
+        .thread-excerpt {
+            color: #4b5563;
+            line-height: 1.6;
+            margin-top: 0.5rem;
+        }
+
+        .thread-stats {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6b7280;
+        }
+
+        .new-thread-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.35);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .new-thread-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.45);
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal.active,
+        .modal[style*="display: flex"] {
+            display: flex !important;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            color: #e2e8f0;
+        }
+
+        .modal-content h2 {
+            color: #60a5fa;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #cbd5e1;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid rgba(96, 165, 250, 0.3);
+            background: rgba(30, 41, 59, 0.5);
+            color: #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #64748b;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #60a5fa;
+            background: rgba(30, 41, 59, 0.8);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: rgba(96, 165, 250, 0.2);
+            color: #cbd5e1;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(96, 165, 250, 0.3);
+            color: #e2e8f0;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        #userProfileCard .btn {
+            padding: 0.5rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 1200px) {
+            .forum-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                width: 100%;
+            }
+            
+            .forum-sidebar {
+                position: static;
+                width: 100%;
+                max-width: 640px;
+                margin: 0 auto;
+            }
+            
+            .posts-feed {
+                width: 100%;
+                max-width: 640px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-hero .hero-title {
+                font-size: 2rem;
+            }
+
+            .forum-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .thread-header {
+                flex-direction: column;
+            }
+            
+            .new-thread-btn {
+                bottom: 1rem;
+                right: 1rem;
+                padding: 0.75rem 1.5rem;
+            }
+            
+            .post-card {
+                padding: 12px;
+            }
+            
+            .vote-section {
+                width: 32px;
+            }
+            
+            .vote-btn {
+                font-size: 1rem;
+                padding: 4px;
+            }
+            
+            .vote-count {
+                font-size: 0.75rem;
+            }
+            
+            .post-title {
+                font-size: 0.95rem;
+            }
+            
+            .post-preview {
+                font-size: 0.8rem;
+            }
+            
+            .create-post-btn {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .posts-feed {
+                width: 100%;
+                padding: 0 8px;
+            }
+            
+            .post-card {
+                flex-direction: column;
+            }
+            
+            .vote-section {
+                width: 100%;
+                flex-direction: row;
+                padding: 8px;
+                justify-content: center;
+                gap: 12px;
+            }
+            
+            .forum-sidebar {
+                padding: 0 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Breaking News Ticker -->
+    <div class="breaking-news-bar">
+        <div class="breaking-label">
+            <i class="fas fa-bolt"></i> BREAKING
+        </div>
+        <div class="breaking-content">
+            <span id="breakingNewsText">Latest updates from Israel and the Middle East • Stay informed with real-time coverage</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container-fluid">
+                <div class="header-grid-secondary">
+                    <div class="logo-section-secondary">
+                        <img src="vfi-news-banner.png" alt="VFI News" class="logo-banner-secondary" onerror="this.src='vfi-news.png';">
+                    </div>
+                    <div class="bible-verse-section">
+                        <i class="fas fa-comments"></i>
+                        <span class="verse-text">"Let us consider one another in order to stir up love and good works."</span>
+                        <span class="verse-reference">Hebrews 10:24</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <div class="container-fluid">
+                <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav-main" id="navMain">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a href="worship.html" class="nav-link">
+                        <i class="fas fa-music"></i> Worship
+                    </a>
+                    <a href="testimonials.html" class="nav-link">
+                        <i class="fas fa-heart"></i> Testimonials
+                    </a>
+                    <a href="about.html" class="nav-link">
+                        <i class="fas fa-info-circle"></i> About
+                    </a>
+                    <a href="roots-reflections.html" class="nav-link">
+                        <i class="fas fa-book-open"></i> Roots & Reflections
+                    </a>
+                    <a href="projects.html" class="nav-link">
+                        <i class="fas fa-hands-helping"></i> Projects
+                    </a>
+                    <a href="blog-posts.html" class="nav-link">
+                        <i class="fas fa-blog"></i> Blog
+                    </a>
+                    <a href="shop.html" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i> Shop
+                    </a>
+                    <a href="contact.html" class="nav-link">
+                        <i class="fas fa-envelope"></i> Contact
+                    </a>
+                    <a href="https://www.visionforisrael.com/en/give" class="nav-link donate-link" target="_blank">
+                        <i class="fas fa-donate"></i> DONATE NOW
+                    </a>
+                    <a href="israel-history.html" class="nav-link">
+                        <i class="fas fa-landmark"></i> Israel History
+                    </a>
+                    <a href="salvation.html" class="nav-link">
+                        <i class="fas fa-cross"></i> Know Yeshua
+                    </a>
+                    <a href="prayer-wall.html" class="nav-link">
+                        <i class="fas fa-praying-hands"></i> Prayer Wall
+                    </a>
+                    <a href="forum.html" class="nav-link active">
+                        <i class="fas fa-comments"></i> Forum
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero forum-hero">
+        <div class="hero-body">
+            <div class="hero-icon">
+                <i class="fas fa-comments"></i>
+            </div>
+            <h1 class="hero-title">Community Forum</h1>
+            <p class="hero-tagline">Join the conversation with believers who love Israel and support God's chosen people.</p>
+            <div class="hero-verse">
+                "Let us consider one another in order to stir up love and good works, not forsaking the assembling of ourselves together." 
+                <span class="ref">Hebrews 10:24-25</span>
+            </div>
+            <div id="userSectionHero" class="hero-slot"></div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="forum-content">
+        
+        <!-- Posts Feed (Left) -->
+        <div class="posts-feed">
+            <button class="create-post-btn" onclick="if (!showGuestPrompt('create a post')) return; openNewThreadModal();">
+                <i class="fas fa-plus"></i> Create Post
+            </button>
+            
+            <div id="threadsContainer"></div>
+        </div>
+
+        <!-- Sidebar (Right) -->
+        <div class="forum-sidebar">
+            <!-- User Section Card -->
+            <div class="sidebar-card">
+                <div class="sidebar-header">
+                    <i class="fas fa-user-circle"></i> User Profile
+                </div>
+                <div class="sidebar-content" id="userProfileCard" style="padding: 16px;">
+                </div>
+            </div>
+
+            <!-- Forum Categories -->
+            <div class="sidebar-card">
+                <div class="sidebar-header">
+                    <i class="fas fa-list"></i> Forum Categories
+                </div>
+                <div class="sidebar-content" style="padding: 8px;">
+                    <a href="#" class="category-link" onclick="selectCategory('Israel & Jerusalem'); return false;">
+                        <i class="fas fa-flag"></i>
+                        <span>r/IsraelJerusalem</span>
+                    </a>
+                    <a href="#" class="category-link" onclick="selectCategory('Faith & Doctrine'); return false;">
+                        <i class="fas fa-bible"></i>
+                        <span>r/FaithDoctrine</span>
+                    </a>
+                    <a href="#" class="category-link" onclick="selectCategory('Prophecy & End Times'); return false;">
+                        <i class="fas fa-scroll"></i>
+                        <span>r/ProphecyEndTimes</span>
+                    </a>
+                    <a href="#" class="category-link" onclick="selectCategory('Testimonies & Miracles'); return false;">
+                        <i class="fas fa-heart"></i>
+                        <span>r/Testimonies</span>
+                    </a>
+                    <a href="#" class="category-link" onclick="selectCategory('Prayer Requests'); return false;">
+                        <i class="fas fa-praying-hands"></i>
+                        <span>r/PrayerRequests</span>
+                    </a>
+                    <a href="#" class="category-link" onclick="selectCategory('Questions & Answers'); return false;">
+                        <i class="fas fa-question-circle"></i>
+                        <span>r/QuestionsAnswers</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- About Community -->
+            <div class="sidebar-card">
+                <div class="sidebar-header">
+                    <i class="fas fa-info-circle"></i> About Community
+                </div>
+                <div class="sidebar-content">
+                    <p style="font-size: 0.875rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 14px;">
+                        Welcome to the VFI Community Forum! Join believers worldwide in discussing Israel, faith, prophecy, and supporting God's chosen people. Build your faith through meaningful conversations and scripture sharing.
+                    </p>
+                    
+                    <div style="background: rgba(251, 191, 36, 0.1); border: 1px solid rgba(251, 191, 36, 0.2); border-radius: 8px; padding: 10px; margin-bottom: 12px;">
+                        <p style="font-size: 0.75rem; color: #fbbf24; font-weight: 600; margin: 0 0 6px 0;">🌱 Leveling System</p>
+                        <p style="font-size: 0.8rem; color: #cbd5e1; margin: 0; line-height: 1.4;">Earn Faithfulness Points through posts and comments. Reach new levels and unlock biblical scriptures to share with the community!</p>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
+                        <div style="background: rgba(96, 165, 250, 0.15); border: 1px solid rgba(96, 165, 250, 0.2); border-radius: 8px; padding: 10px; text-align: center;">
+                            <div style="font-weight: 700; color: #60a5fa; font-size: 1.2rem;" id="memberCount">0</div>
+                            <div style="font-size: 0.75rem; color: #94a3b8;">Members</div>
+                        </div>
+                        <div style="background: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.2); border-radius: 8px; padding: 10px; text-align: center;">
+                            <div style="font-weight: 700; color: #22c55e; font-size: 1.2rem;" id="onlineCount">0</div>
+                            <div style="font-size: 0.75rem; color: #94a3b8;">Online</div>
+                        </div>
+                    </div>
+                    
+                    <div style="font-size: 0.75rem; color: #94a3b8; display: flex; align-items: center; gap: 6px;">
+                        <i class="fas fa-calendar"></i> Created <span id="createdDate">December 9, 2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+        </div>
+    </div>
+
+    <!-- Login/Signup Modal -->
+    <div class="modal" id="authModal" style="display: none;">
+        <div class="modal-content" style="max-width: 450px;">
+            <h2 style="color: #1e40af; margin-bottom: 1.5rem;" id="authModalTitle">🔐 Sign In</h2>
+            
+            <!-- Login Form -->
+            <form id="loginForm" style="display: block;">
+                <div class="form-group">
+                    <label for="loginUsername">Username</label>
+                    <input type="text" id="loginUsername" required placeholder="Enter your username">
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required placeholder="Enter your password">
+                </div>
+                
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary" onclick="closeAuthModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                </div>
+                
+                <p style="text-align: center; margin-top: 1rem; color: #64748b;">
+                    Don't have an account? <a href="#" onclick="showSignupForm(); return false;" style="color: #3b82f6; font-weight: 600;">Sign Up</a>
+                </p>
+            </form>
+            
+            <!-- Signup Form -->
+            <form id="signupForm" style="display: none;">
+                <div class="form-group">
+                    <label for="signupUsername">Username</label>
+                    <input type="text" id="signupUsername" required placeholder="Choose a username" minlength="3">
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required placeholder="Create a password" minlength="6">
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupPasswordConfirm">Confirm Password</label>
+                    <input type="password" id="signupPasswordConfirm" required placeholder="Confirm your password">
+                </div>
+                
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary" onclick="closeAuthModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Account</button>
+                </div>
+                
+                <p style="text-align: center; margin-top: 1rem; color: #64748b;">
+                    Already have an account? <a href="#" onclick="showLoginForm(); return false;" style="color: #3b82f6; font-weight: 600;">Sign In</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- New Thread Modal -->
+    <div class="modal" id="newThreadModal" style="display: none;">
+        <div class="modal-content">
+            <h2 style="color: #1e40af; margin-bottom: 2rem;">Start a New Discussion</h2>
+            <form id="newThreadForm">
+                
+                <div class="form-group">
+                    <label for="threadCategory">Category</label>
+                    <select id="threadCategory" required>
+                        <option value="">Select a category</option>
+                        <option value="Israel & Jerusalem">🇮🇱 Israel & Jerusalem</option>
+                        <option value="Faith & Doctrine">📖 Faith & Doctrine</option>
+                        <option value="Prophecy & End Times">📜 Prophecy & End Times</option>
+                        <option value="Testimonies & Miracles">💫 Testimonies & Miracles</option>
+                        <option value="Prayer Requests">🙏 Prayer Requests</option>
+                        <option value="Questions & Answers">❓ Questions & Answers</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="threadTitle">Discussion Title</label>
+                    <input type="text" id="threadTitle" required placeholder="Enter a descriptive title">
+                </div>
+                
+                <div class="form-group">
+                    <label for="threadContent">Your Message</label>
+                    <textarea id="threadContent" required placeholder="Share your thoughts..."></textarea>
+                </div>
+                
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary" onclick="closeNewThreadModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Post Discussion</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Thread View Modal (Reddit-style) -->
+    <div class="modal" id="threadViewModal" style="display: none;">
+        <div class="modal-content" style="max-width: 900px; max-height: 90vh; overflow-y: auto;">
+            <button onclick="closeThreadView()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #666;">&times;</button>
+            
+            <div id="threadViewContainer">
+                <!-- Thread content will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="worship.html">Worship</a></li>
+                        <li><a href="roots-reflections.html">Roots &amp; Reflections</a></li>
+                        <li><a href="israel-history.html">Israel History</a></li>
+                        <li><a href="prayer-wall.html">Prayer Wall</a></li>
+                        <li><a href="forum.html">Forum</a></li>
+                        <li><a href="salvation.html">Salvation</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="blog-posts.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="https://www.visionforisrael.com/en/give" target="_blank">Donate</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="blog-posts.html">Blog</a></li>
+                        <li><a href="https://www.visionforisrael.com/en/volunteer" target="_blank">Volunteer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/visionforisrael" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/vision4israel" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/visionforisrael" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/visionforisrael" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>VFI News</h3>
+                    <p>Stay informed with the latest news and updates from Israel.</p>
+                    <p><strong>Vision For Israel</strong><br>Operating since 1994</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vision For Israel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="bible_verses.js"></script>
+    <script src="hamburger-menu-new.js"></script>
+    <script src="forum.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

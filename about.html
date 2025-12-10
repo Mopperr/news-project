@@ -6,12 +6,26 @@
     <title>About - VFI News</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="nav-scroll.js" defer></script>
     <style>
         /* Page-specific styles */
+        :root {
+            --navy-900: #0a1a2f;
+            --navy-800: #112544;
+            --navy-700: #1c2f4a;
+            --sand: #f5f7fb;
+            --card: #ffffff;
+            --muted: #4b5563;
+            --accent: #1d9c6f;
+            --accent-2: #22c55e;
+        }
+
         body {
-            background: #0a1128;
+            background: var(--sand);
+            color: #0f172a;
             margin: 0;
             padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         /* Section Dividers - Elegant Line Designs */
@@ -77,11 +91,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(15, 23, 42, 0.75);
             z-index: 10000;
             overflow-y: auto;
-            padding: 2rem;
-            animation: fadeIn 0.3s ease;
+            padding: 1.5rem;
+            animation: fadeIn 0.2s ease;
         }
         
         .modal.active {
@@ -91,41 +105,41 @@
         }
         
         .modal-content {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
-            border-radius: 20px;
-            max-width: 800px;
+            background: var(--card);
+            border-radius: 16px;
+            max-width: 760px;
             width: 100%;
             margin: 2rem auto;
-            padding: 3rem;
+            padding: 2.25rem;
             position: relative;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            border: 3px solid #06b6d4;
-            animation: slideUp 0.4s ease;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+            border: 1px solid #e2e8f0;
+            animation: slideUp 0.25s ease;
         }
         
         .modal-close {
             position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: rgba(6, 182, 212, 0.2);
-            border: 2px solid #06b6d4;
-            color: #06b6d4;
-            font-size: 2rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            top: 1rem;
+            right: 1rem;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #0f172a;
+            font-size: 1.4rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            font-weight: bold;
+            transition: all 0.2s ease;
+            font-weight: 700;
             line-height: 1;
         }
-        
+
         .modal-close:hover {
-            background: rgba(6, 182, 212, 0.4);
-            transform: rotate(90deg);
+            background: #e2e8f0;
+            transform: translateY(-1px);
         }
         
         @keyframes fadeIn {
@@ -148,13 +162,65 @@
         .timeline-item,
         .value-card {
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
         }
-        
+
         .timeline-item:hover,
         .value-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.6) !important;
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.18) !important;
+        }
+
+        /* New About theme */
+        .about-hero {
+            background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-800) 100%);
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero h1 {
+            font-size: clamp(2.6rem, 4vw, 3.4rem);
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+            text-shadow: none;
+        }
+
+        .about-hero p {
+            color: #cbd5e1;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .mission-section,
+        .history-section,
+        .values-shell {
+            background: var(--sand);
+            padding: 4rem 1.5rem;
+        }
+
+        .mission-card,
+        .history-card,
+        .values-card,
+        .impact-card,
+        .donor-card {
+            background: var(--card);
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        .pill-accent {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.9rem;
+            background: rgba(29, 156, 111, 0.12);
+            color: #0f5132;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -189,7 +255,13 @@
                         <i class="fas fa-home"></i> Home
                     </a>
                     <a href="worship.html" class="nav-link">
-                        <i class="fas fa-music"></i> Worship Music
+                        <i class="fas fa-music"></i> Worship
+                    </a>
+                    <a href="testimonials.html" class="nav-link">
+                        <i class="fas fa-heart"></i> Testimonials
+                    </a>
+                    <a href="about.html" class="nav-link active">
+                        <i class="fas fa-info-circle"></i> About
                     </a>
                     <a href="roots-reflections.html" class="nav-link">
                         <i class="fas fa-book-open"></i> Roots & Reflections
@@ -200,14 +272,8 @@
                     <a href="blog-posts.html" class="nav-link">
                         <i class="fas fa-blog"></i> Blog
                     </a>
-                    <a href="about.html" class="nav-link active">
-                        <i class="fas fa-info-circle"></i> About
-                    </a>
-                    <a href="testimonials.html" class="nav-link">
-                        <i class="fas fa-heart"></i> Testimonials
-                    </a>
                     <a href="shop.html" class="nav-link">
-                        <i class="fas fa-shopping-bag"></i> Shop
+                        <i class="fas fa-shopping-cart"></i> Shop
                     </a>
                     <a href="contact.html" class="nav-link">
                         <i class="fas fa-envelope"></i> Contact
@@ -215,41 +281,66 @@
                     <a href="https://www.visionforisrael.com/en/give" class="nav-link donate-link" target="_blank">
                         <i class="fas fa-donate"></i> DONATE NOW
                     </a>
+                    <a href="israel-history.html" class="nav-link">
+                        <i class="fas fa-landmark"></i> Israel History
+                    </a>
+                    <a href="salvation.html" class="nav-link">
+                        <i class="fas fa-cross"></i> Know Yeshua
+                    </a>
+                    <a href="prayer-wall.html" class="nav-link">
+                        <i class="fas fa-praying-hands"></i> Prayer Wall
+                    </a>
+                    <a href="forum.html" class="nav-link">
+                        <i class="fas fa-comments"></i> Forum
+                    </a>
                 </nav>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section style="background: linear-gradient(135deg, #0a1128 0%, #1e40af 100%); padding: 6rem 2rem; text-align: center; position: relative; overflow: hidden;">
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('data:image/svg+xml,%3Csvg width=&quot;100&quot; height=&quot;100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cdefs%3E%3Cpattern id=&quot;grid&quot; width=&quot;100&quot; height=&quot;100&quot; patternUnits=&quot;userSpaceOnUse&quot;%3E%3Ccircle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;1&quot; fill=&quot;%2306b6d4&quot; opacity=&quot;0.1&quot;/%3E%3C/pattern%3E%3C/defs%3E%3Crect width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;url(%23grid)&quot;/%3E%3C/svg%3E'); opacity: 0.3;"></div>
+    <section class="about-hero">
         <div style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
-            <h1 style="font-size: 4rem; color: white; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(6, 182, 212, 0.5);">Your Hands and Feet in Israel</h1>
-            <p style="font-size: 1.5rem; color: #06b6d4; font-weight: 600;">Acts of compassion and practical help since 1994</p>
+            <span class="pill-accent">Humanitarian Impact</span>
+            <h1>Your Hands and Feet in Israel</h1>
+            <p>Compassionate aid, disaster relief, and community support since 1994.</p>
         </div>
     </section>
 
     <!-- Mission Section -->
-    <section style="background: linear-gradient(90deg, #0a1128 0%, #1e40af 100%); padding: 5rem 2rem;">
+    <section class="mission-section">
         <div style="max-width: 1200px; margin: 0 auto;">
-            <div style="background: rgba(255,255,255,0.05); padding: 3rem; border-radius: 30px; border: 3px solid #06b6d4; box-shadow: 0 15px 50px rgba(6, 182, 212, 0.3); backdrop-filter: blur(10px);">
-                <h2 style="font-size: 3rem; color: #06b6d4; text-shadow: 0 3px 15px rgba(6, 182, 212, 0.5); text-align: center; margin-bottom: 2rem;">Inspiring Hope. Restoring Lives.</h2>
-                <p style="font-size: 1.3rem; color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.3); line-height: 2; text-align: center; margin-bottom: 3rem;">Vision for Israel is a <span style="color: #22c55e; font-weight: 700;">non-profit charitable organization</span> that has provided <span style="color: #06b6d4; font-weight: 700;">humanitarian aid</span>, <span style="color: #06b6d4; font-weight: 700;">disaster relief</span>, and <span style="color: #06b6d4; font-weight: 700;">community support</span> since <span style="color: #22c55e; font-weight: 700; font-size: 1.4rem;">1994</span>. We're committed to <span style="color: #22c55e; font-weight: 700;">decreasing poverty in Israel</span>—and spreading <span style="color: #06b6d4; font-weight: 700;">love, truth, and healing</span> to the people who need it the most.</p>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
-                    <div style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 20px; border: 2px solid rgba(6, 182, 212, 0.3);">
-                        <i class="fas fa-heart" style="font-size: 4rem; color: #06b6d4; margin-bottom: 1.5rem;"></i>
-                        <h3 style="font-size: 1.8rem; color: white; margin-bottom: 1rem; font-weight: 700;">Compassion</h3>
-                        <p style="color: rgba(255,255,255,0.9); line-height: 1.8; font-size: 1.05rem;">Meeting urgent needs with care and dignity</p>
+            <div class="mission-card" style="padding: 3rem;">
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <span class="pill-accent">Why We Serve</span>
+                </div>
+                <h2 style="font-size: clamp(2rem, 3vw, 2.6rem); color: #0f172a; text-align: center; margin-bottom: 1.5rem; font-weight: 800;">
+                    Inspiring Hope. Restoring Lives.
+                </h2>
+                <p style="font-size: 1.15rem; color: #334155; line-height: 1.9; text-align: center; margin-bottom: 2.5rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    Vision for Israel is a <strong style="color: var(--accent);">non-profit humanitarian organization</strong> providing practical aid, disaster relief, and community support since <strong style="color: var(--accent);">1994</strong>. Together with generous donors, we decrease poverty in Israel and bring dignity to families in need.
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+                    <div class="value-card" style="text-align: left; padding: 1.8rem; border: 1px solid #e5e7eb;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(29,156,111,0.12); display: grid; place-items: center; color: var(--accent); margin-bottom: 1rem;">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; color: #0f172a; margin-bottom: 0.5rem;">Compassion</h3>
+                        <p style="color: #475569; line-height: 1.6;">Meeting urgent needs with care, dignity, and respect.</p>
                     </div>
-                    <div style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 20px; border: 2px solid rgba(6, 182, 212, 0.3);">
-                        <i class="fas fa-hands-helping" style="font-size: 4rem; color: #06b6d4; margin-bottom: 1.5rem;"></i>
-                        <h3 style="font-size: 1.8rem; color: white; margin-bottom: 1rem; font-weight: 700;">Partnership</h3>
-                        <p style="color: rgba(255,255,255,0.9); line-height: 1.8; font-size: 1.05rem;">Working alongside Israeli communities</p>
+                    <div class="value-card" style="text-align: left; padding: 1.8rem; border: 1px solid #e5e7eb;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(29,156,111,0.12); display: grid; place-items: center; color: var(--accent); margin-bottom: 1rem;">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; color: #0f172a; margin-bottom: 0.5rem;">Partnership</h3>
+                        <p style="color: #475569; line-height: 1.6;">Working alongside Israeli communities and volunteers.</p>
                     </div>
-                    <div style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 20px; border: 2px solid rgba(6, 182, 212, 0.3);">
-                        <i class="fas fa-star-of-david" style="font-size: 4rem; color: #06b6d4; margin-bottom: 1.5rem;"></i>
-                        <h3 style="font-size: 1.8rem; color: white; margin-bottom: 1rem; font-weight: 700;">Faith</h3>
-                        <p style="color: rgba(255,255,255,0.9); line-height: 1.8; font-size: 1.05rem;">Rooted in biblical values and commitment</p>
+                    <div class="value-card" style="text-align: left; padding: 1.8rem; border: 1px solid #e5e7eb;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(29,156,111,0.12); display: grid; place-items: center; color: var(--accent); margin-bottom: 1rem;">
+                            <i class="fas fa-star-of-david"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; color: #0f172a; margin-bottom: 0.5rem;">Faith</h3>
+                        <p style="color: #475569; line-height: 1.6;">Rooted in biblical values and a commitment to serve.</p>
                     </div>
                 </div>
             </div>
@@ -258,27 +349,27 @@
 
     <!-- History Section -->
     
-    <section style="background: linear-gradient(90deg, #1e40af 0%, #0a1128 100%); padding: 4rem 2rem;">
-        <h2 style="font-size: 3.5rem; color: #06b6d4; text-shadow: 0 4px 20px rgba(6, 182, 212, 0.6); margin-bottom: 3rem; font-weight: 800; letter-spacing: 1px; text-align: center;">
-            <i class="fas fa-history"></i> In the Shadow of the First Intifada
-        </h2>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
-            <div style="background: rgba(255,255,255,0.05); padding: 3rem; border-radius: 20px; border: 3px solid #06b6d4; box-shadow: 0 10px 40px rgba(6, 182, 212, 0.3); backdrop-filter: blur(10px); text-align: center;">
-                <p style="font-size: 1.5rem; line-height: 2; color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.4); margin-bottom: 2rem;">
-                    <strong style="color: #06b6d4; font-size: 1.8rem; text-shadow: 0 2px 10px rgba(6, 182, 212, 0.5);">Israel, 1993.</strong> Barry Segal received a <span style="background: linear-gradient(90deg, #22c55e, #16a34a); padding: 2px 8px; border-radius: 4px; font-weight: 700;">powerful vision</span>.
-                </p>
-                
-                <button id="openFoundingStory" style="background: linear-gradient(135deg, #06b6d4, #0891b2); color: white; padding: 1.2rem 3rem; font-size: 1.2rem; font-weight: 700; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px;">
-                    <i class="fas fa-book-open" style="margin-right: 0.5rem;"></i>
-                    Read the Full Story
-                </button>
+    <section class="history-section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <span class="pill-accent"><i class="fas fa-history"></i> Our Beginning</span>
             </div>
-            
-            <div style="position: relative; cursor: pointer; animation: float 3s ease-in-out infinite;" id="openHistoryImage">
-                <img src="https://images.prismic.io/vfi-website/6ec670ed-1d7c-465f-a7ed-f282e7adc6a2_f3a90f82-a7b8-480e-b036-be78f5b2463d_Aid%2Bto%2Bthe%2BPoor%2B%281%29.jpg?auto=compress,format&fit=max&w=800" alt="Helping the Elderly in Israel" style="width: 100%; border-radius: 20px; border: 4px solid #06b6d4; box-shadow: 0 10px 40px rgba(6, 182, 212, 0.4); transition: transform 0.3s ease;" onerror="this.style.display='none';">
-                <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: white; padding: 0.8rem 1.5rem; border-radius: 10px; font-size: 1rem; font-weight: 600; letter-spacing: 1px;">
-                    Click to learn more
+            <h2 style="font-size: clamp(2.1rem, 3.2vw, 2.7rem); color: #0f172a; margin-bottom: 2rem; font-weight: 800; text-align: center;">In the Shadow of the First Intifada</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: center;">
+                <div class="history-card" style="padding: 2.4rem; text-align: left;">
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #334155; margin-bottom: 1.5rem;">
+                        <strong style="color: var(--accent);">Israel, 1993.</strong> Barry Segal received a clear vision to prepare for seasons of plenty and need—much like Joseph storing grain. That call became the foundation for serving vulnerable families across Israel.
+                    </p>
+                    <button id="openFoundingStory" style="background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; padding: 0.95rem 1.6rem; font-size: 1rem; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 10px 25px rgba(29,156,111,0.25); transition: all 0.2s ease;">
+                        <i class="fas fa-book-open" style="margin-right: 0.5rem;"></i>
+                        Read the full story
+                    </button>
+                </div>
+                <div style="position: relative; cursor: pointer; animation: float 3s ease-in-out infinite;" id="openHistoryImage">
+                    <img src="https://images.prismic.io/vfi-website/6ec670ed-1d7c-465f-a7ed-f282e7adc6a2_f3a90f82-a7b8-480e-b036-be78f5b2463d_Aid%2Bto%2Bthe%2BPoor%2B%281%29.jpg?auto=compress,format&fit=max&w=800" alt="Helping the Elderly in Israel" style="width: 100%; border-radius: 18px; border: 1px solid #e2e8f0; box-shadow: 0 14px 32px rgba(15, 23, 42, 0.22); transition: transform 0.3s ease;" onerror="this.style.display='none';">
+                    <div style="position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); background: rgba(15,23,42,0.72); color: white; padding: 0.65rem 1.2rem; border-radius: 999px; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.5px;">
+                        Click to learn more
+                    </div>
                 </div>
             </div>
         </div>
@@ -901,7 +992,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-section">
@@ -1176,5 +1267,6 @@
     
     <!-- Header Functionality Script -->
     <script src="index.js"></script>
+    <script src="hamburger-menu-new.js"></script>
 </body>
 </html>

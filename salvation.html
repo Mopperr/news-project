@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Know Yeshua - Salvation Through Faith | Vision For Israel</title>
+    <meta name="description" content="Learn how to accept Yeshua Ha Mashiach (Jesus Christ) as your Lord and Savior. Discover God's plan of salvation and begin your journey of faith.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="nav-scroll.js" defer></script>
+    <style>
+        .page-hero {
+            position: relative;
+            text-align: center;
+            color: #eef4ff;
+            padding: 110px 20px 90px;
+            text-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+        }
+
+        .page-hero .hero-body {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .page-hero .hero-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            margin-bottom: 14px;
+            color: #b9f3ff;
+        }
+
+        .page-hero .hero-title {
+            font-size: clamp(2.5rem, 4vw, 3.2rem);
+            margin: 0.35rem 0 0.6rem;
+            letter-spacing: -0.01em;
+            color: #f9fbff;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .page-hero .hero-tagline {
+            font-size: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.9;
+            color: #f3f7ff;
+            text-shadow: 0 8px 22px rgba(0, 0, 0, 0.32);
+        }
+
+        .page-hero .hero-verse {
+            margin: 1.6rem auto 0;
+            max-width: 880px;
+            padding: 1.15rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 14px;
+            font-size: 1.07rem;
+            line-height: 1.8;
+            color: #f8fbff;
+            box-shadow: 0 20px 54px rgba(0, 0, 0, 0.34);
+        }
+
+        .page-hero .hero-verse .ref {
+            display: block;
+            margin-top: 0.45rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            color: #9fe0ff;
+        }
+
+        .salvation-hero {
+            background: radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.18), transparent 42%),
+                        radial-gradient(circle at 78% 12%, rgba(59, 130, 246, 0.22), transparent 36%),
+                        linear-gradient(135deg, rgba(7, 22, 45, 0.9), rgba(15, 46, 85, 0.95) 55%, rgba(7, 22, 45, 0.9)),
+                        url('https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1600') center/cover;
+        }
+
+        .salvation-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 1.25rem 4rem;
+        }
+
+        .section-block {
+            background: radial-gradient(circle at 18% 18%, rgba(56, 189, 248, 0.12), transparent 55%),
+                        linear-gradient(150deg, rgba(14, 31, 55, 0.96), rgba(11, 25, 44, 0.98));
+            border-radius: 18px;
+            padding: 2.6rem;
+            margin-bottom: 2.6rem;
+            box-shadow: 0 18px 44px rgba(0,0,0,0.35);
+            border: 1px solid rgba(165, 243, 252, 0.2);
+            color: #eef3ff;
+        }
+
+        .section-block h2 {
+            color: #e0f2ff;
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .section-block h2 i {
+            color: #9fe0ff;
+        }
+
+        .section-block p {
+            color: #e6eefc;
+            font-size: 1.08rem;
+            line-height: 1.82;
+        }
+
+        .scripture-box {
+            background: linear-gradient(135deg, rgba(125, 211, 252, 0.16), rgba(59, 130, 246, 0.18));
+            border-left: 5px solid #a5f3fc;
+            padding: 1.25rem 1.5rem;
+            margin: 1.25rem 0;
+            border-radius: 10px;
+            font-style: italic;
+            line-height: 1.82;
+            color: #f4fbff;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+            font-size: 1.05rem;
+        }
+
+        .scripture-ref {
+            display: block;
+            margin-top: 0.75rem;
+            font-weight: 700;
+            color: #d6ecff;
+            font-style: normal;
+        }
+
+        .steps-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .step-card {
+            background: linear-gradient(155deg, rgba(16, 42, 74, 0.97), rgba(12, 32, 57, 0.97));
+            border: 1px solid rgba(165, 243, 252, 0.18);
+            border-radius: 14px;
+            padding: 1.85rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 16px 36px rgba(0,0,0,0.3);
+            color: #eaf2ff;
+            line-height: 1.75;
+            font-size: 1.02rem;
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 44px rgba(0,0,0,0.32);
+            border-color: #a5f3fc;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #38bdf8, #7dd3fc);
+            color: #06203a;
+            border-radius: 14px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 0.85rem;
+            box-shadow: 0 12px 26px rgba(14,165,233,0.38);
+        }
+
+        .step-card h3 {
+            color: #b9e6ff;
+            margin-bottom: 0.9rem;
+        }
+
+        .prayer-box {
+            background: radial-gradient(circle at 25% 20%, rgba(56,189,248,0.14), transparent 55%),
+                        linear-gradient(150deg, rgba(13, 32, 58, 0.97), rgba(11, 26, 46, 0.98));
+            border: 1px solid rgba(165, 243, 252, 0.2);
+            border-radius: 18px;
+            padding: 2.6rem;
+            margin: 2.6rem 0;
+            text-align: center;
+            color: #edf4ff;
+            box-shadow: 0 20px 46px rgba(0,0,0,0.32);
+        }
+
+        .prayer-box h3 {
+            color: #9fe0ff;
+            font-size: 1.85rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .prayer-text {
+            font-size: 1.18rem;
+            line-height: 2;
+            color: #e3ecff;
+            font-style: italic;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #0ea5e9, #22c55e);
+            color: #0b172a;
+            padding: 3.5rem 2rem;
+            text-align: center;
+            border-radius: 18px;
+            margin: 3rem 0;
+            box-shadow: 0 18px 44px rgba(14,165,233,0.32);
+        }
+
+        .cta-section h2 {
+            font-size: 2.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #0b172a;
+            color: #e6eeff;
+            padding: 1rem 2.6rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 999px;
+            text-decoration: none;
+            margin: 0.75rem 0.5rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 12px 26px rgba(0,0,0,0.22);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.28);
+        }
+
+        .baptism-info {
+            background: linear-gradient(150deg, rgba(17, 36, 64, 0.96), rgba(15, 32, 58, 0.98));
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(165, 243, 252, 0.18);
+            color: #e2ebff;
+            box-shadow: 0 14px 32px rgba(0,0,0,0.26);
+        }
+
+        .baptism-info h3 {
+            color: #d6ecff;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .salvation-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-block {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Breaking News Ticker -->
+    <div class="breaking-news-bar">
+        <div class="breaking-label">
+            <i class="fas fa-bolt"></i> BREAKING
+        </div>
+        <div class="breaking-content">
+            <span id="breakingNewsText">Latest updates from Israel and the Middle East • Stay informed with real-time coverage</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container-fluid">
+                <div class="header-grid-secondary">
+                    <div class="logo-section-secondary">
+                        <img src="vfi-news-banner.png" alt="VFI News" class="logo-banner-secondary" onerror="this.src='vfi-news.png';">
+                    </div>
+                    <div class="bible-verse-section">
+                        <i class="fas fa-cross"></i>
+                        <span class="verse-text">"For the Son of Man has come to seek and to save that which was lost."</span>
+                        <span class="verse-reference">Luke 19:10</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <div class="container-fluid">
+                <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav-main" id="navMain">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a href="worship.html" class="nav-link">
+                        <i class="fas fa-music"></i> Worship
+                    </a>
+                    <a href="testimonials.html" class="nav-link">
+                        <i class="fas fa-heart"></i> Testimonials
+                    </a>
+                    <a href="about.html" class="nav-link">
+                        <i class="fas fa-info-circle"></i> About
+                    </a>
+                    <a href="roots-reflections.html" class="nav-link">
+                        <i class="fas fa-book-open"></i> Roots & Reflections
+                    </a>
+                    <a href="projects.html" class="nav-link">
+                        <i class="fas fa-hands-helping"></i> Projects
+                    </a>
+                    <a href="blog-posts.html" class="nav-link">
+                        <i class="fas fa-blog"></i> Blog
+                    </a>
+                    <a href="shop.html" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i> Shop
+                    </a>
+                    <a href="contact.html" class="nav-link">
+                        <i class="fas fa-envelope"></i> Contact
+                    </a>
+                    <a href="https://www.visionforisrael.com/en/give" class="nav-link donate-link" target="_blank">
+                        <i class="fas fa-donate"></i> DONATE NOW
+                    </a>
+                    <a href="israel-history.html" class="nav-link">
+                        <i class="fas fa-landmark"></i> Israel History
+                    </a>
+                    <a href="salvation.html" class="nav-link active">
+                        <i class="fas fa-cross"></i> Know Yeshua
+                    </a>
+                    <a href="prayer-wall.html" class="nav-link">
+                        <i class="fas fa-praying-hands"></i> Prayer Wall
+                    </a>
+                    <a href="forum.html" class="nav-link">
+                        <i class="fas fa-comments"></i> Forum
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero salvation-hero">
+        <div class="hero-body">
+            <div class="hero-icon">
+                <i class="fas fa-cross"></i>
+            </div>
+            <h1 class="hero-title">Know Yeshua Ha Mashiach</h1>
+            <p class="hero-tagline">Discover God's amazing love for you and how to receive eternal life through faith in Yeshua (Jesus).</p>
+            <div class="hero-verse">
+                "Jesus said to him, 'I am the way, the truth, and the life. No one comes to the Father except through Me.'"
+                <span class="ref">John 14:6</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="salvation-content">
+        
+        <!-- God's Love Section -->
+        <div class="section-block">
+            <h2><i class="fas fa-heart"></i> God Loves You</h2>
+            <p style="font-size: 1.2rem; line-height: 1.8;">
+                The God of Abraham, Isaac, and Jacob—the God of Israel—created you and loves you deeply. 
+                He has a wonderful plan for your life!
+            </p>
+            <div class="scripture-box">
+                "For God so loved the world that He gave His only begotten Son, that whoever believes in Him 
+                should not perish but have everlasting life."
+                <span class="scripture-ref">— John 3:16</span>
+            </div>
+            <div class="scripture-box">
+                "But God demonstrates His own love toward us, in that while we were still sinners, Christ died for us."
+                <span class="scripture-ref">— Romans 5:8</span>
+            </div>
+        </div>
+
+        <!-- The Problem Section -->
+        <div class="section-block">
+            <h2><i class="fas fa-exclamation-triangle"></i> We Have a Problem</h2>
+            <p style="font-size: 1.2rem; line-height: 1.8;">
+                All of us have sinned and fallen short of God's perfect standard. Sin separates us from God 
+                and leads to eternal death.
+            </p>
+            <div class="scripture-box">
+                "For all have sinned and fall short of the glory of God."
+                <span class="scripture-ref">— Romans 3:23</span>
+            </div>
+            <div class="scripture-box">
+                "For the wages of sin is death, but the gift of God is eternal life in Christ Jesus our Lord."
+                <span class="scripture-ref">— Romans 6:23</span>
+            </div>
+        </div>
+
+        <!-- God's Solution Section -->
+        <div class="section-block">
+            <h2><i class="fas fa-cross"></i> God Provided the Solution</h2>
+            <p style="font-size: 1.2rem; line-height: 1.8;">
+                Yeshua Ha Mashiach (Jesus Christ), the Jewish Messiah, came to earth, lived a sinless life, 
+                died on the cross for our sins, and rose from the dead on the third day. He paid the price 
+                we couldn't pay!
+            </p>
+            <div class="scripture-box">
+                "But He was wounded for our transgressions, He was bruised for our iniquities; 
+                The chastisement for our peace was upon Him, and by His stripes we are healed."
+                <span class="scripture-ref">— Isaiah 53:5</span>
+            </div>
+            <div class="scripture-box">
+                "Jesus said to him, 'I am the way, the truth, and the life. No one comes to the Father except through Me.'"
+                <span class="scripture-ref">— John 14:6</span>
+            </div>
+        </div>
+
+        <!-- How to Be Saved Section -->
+        <div class="section-block">
+            <h2><i class="fas fa-hands-praying"></i> How to Receive Salvation</h2>
+            <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem;">
+                Salvation is a free gift from God, received by faith. Here are the steps:
+            </p>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 style="color: #b9e6ff; margin-bottom: 1rem;">Admit You're a Sinner</h3>
+                    <p>Recognize that you have sinned and need God's forgiveness. Be honest with God about your condition.</p>
+                    <div class="scripture-box" style="margin-top: 1rem;">
+                        "If we confess our sins, He is faithful and just to forgive us our sins and to cleanse us from all unrighteousness."
+                        <span class="scripture-ref">— 1 John 1:9</span>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 style="color: #b9e6ff; margin-bottom: 1rem;">Repent of Your Sins</h3>
+                    <p>Turn away from your sinful ways and turn toward God. Repentance means a change of mind and direction.</p>
+                    <div class="scripture-box" style="margin-top: 1rem;">
+                        "Repent therefore and be converted, that your sins may be blotted out."
+                        <span class="scripture-ref">— Acts 3:19</span>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 style="color: #b9e6ff; margin-bottom: 1rem;">Believe in Yeshua</h3>
+                    <p>Believe that Yeshua (Jesus) died for your sins and rose from the dead. Trust Him as your only way to heaven.</p>
+                    <div class="scripture-box" style="margin-top: 1rem;">
+                        "Believe on the Lord Jesus Christ, and you will be saved."
+                        <span class="scripture-ref">— Acts 16:31</span>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3 style="color: #b9e6ff; margin-bottom: 1rem;">Receive Him as Lord</h3>
+                    <p>Invite Yeshua into your heart as your personal Lord and Savior. Surrender your life to Him completely.</p>
+                    <div class="scripture-box" style="margin-top: 1rem;">
+                        "But as many as received Him, to them He gave the right to become children of God, to those who believe in His name."
+                        <span class="scripture-ref">— John 1:12</span>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <h3 style="color: #b9e6ff; margin-bottom: 1rem;">Confess Him Publicly</h3>
+                    <p>Tell others about your decision to follow Yeshua. Public confession confirms your faith.</p>
+                    <div class="scripture-box" style="margin-top: 1rem;">
+                        "If you confess with your mouth the Lord Jesus and believe in your heart that God has raised Him from the dead, you will be saved."
+                        <span class="scripture-ref">— Romans 10:9</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="baptism-info" style="margin-top: 2rem;">
+                <h3 style="margin-bottom: 0.6rem;">The Gospel in 60 Seconds</h3>
+                <p style="line-height: 1.8; color: #e8f3ff;">God is holy and loves you. Sin separates us from Him. Jesus (Yeshua) lived sinlessly, died in our place, and rose again so we could be forgiven and restored. Turning from sin and trusting in Him brings you into God's family forever.</p>
+                <ul style="margin: 1rem 0 0; padding-left: 1.25rem; color: #d6e4ff; line-height: 1.8;">
+                    <li><strong>Admit</strong> your need: all have sinned (Romans 3:23).</li>
+                    <li><strong>Believe</strong> Jesus died and rose for you (1 Corinthians 15:3-4).</li>
+                    <li><strong>Confess</strong> Him as Lord and trust Him fully (Romans 10:9-10).</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Prayer Section -->
+        <div class="prayer-box">
+            <h3>🙏 The Sinner's Prayer</h3>
+            <p style="margin-bottom: 1.5rem;">If you're ready to receive Yeshua, pray this prayer from your heart:</p>
+            <div class="prayer-text">
+                "Dear Heavenly Father, I come to You in the name of Yeshua (Jesus). 
+                I acknowledge that I am a sinner and I need Your forgiveness. 
+                I believe that Yeshua Ha Mashiach died on the cross for my sins and rose from the dead. 
+                I repent of my sins and turn away from them. 
+                Right now, I invite Yeshua into my heart as my Lord and Savior. 
+                I surrender my life to You. Thank You for saving me and giving me eternal life. 
+                In Yeshua's name, Amen."
+            </div>
+        </div>
+
+        <!-- Baptism Section -->
+        <div class="section-block">
+            <h2><i class="fas fa-water"></i> Water Baptism by Full Immersion</h2>
+            <p style="font-size: 1.2rem; line-height: 1.8;">
+                After accepting Yeshua, the next step in your faith journey is water baptism. 
+                Baptism is an outward expression of your inward faith—a public declaration of your 
+                new life in Messiah.
+            </p>
+
+            <div class="baptism-info">
+                <h3>What is Baptism?</h3>
+                <p>Baptism means to be fully immersed in water, symbolizing:</p>
+                <ul style="text-align: left; max-width: 600px; margin: 1rem auto; line-height: 2;">
+                    <li><strong>Death to your old life:</strong> Going under the water represents dying to sin</li>
+                    <li><strong>Burial:</strong> Being submerged represents being buried with Christ</li>
+                    <li><strong>Resurrection:</strong> Coming up from the water represents rising to new life in Yeshua</li>
+                </ul>
+            </div>
+
+            <div class="scripture-box">
+                "Therefore we were buried with Him through baptism into death, that just as Christ was raised 
+                from the dead by the glory of the Father, even so we also should walk in newness of life."
+                <span class="scripture-ref">— Romans 6:4</span>
+            </div>
+
+            <div class="scripture-box">
+                "Go therefore and make disciples of all the nations, baptizing them in the name of the Father 
+                and of the Son and of the Holy Spirit."
+                <span class="scripture-ref">— Matthew 28:19</span>
+            </div>
+
+            <div class="baptism-info">
+                <h3>Why Full Immersion?</h3>
+                <p style="line-height: 1.8;">
+                    The Greek word "baptizo" means to immerse or submerge. Full immersion baptism follows the 
+                    biblical example set by Yeshua Himself when He was baptized in the Jordan River (Matthew 3:16). 
+                    The early church practiced baptism by full immersion, as it best represents the complete 
+                    transformation of becoming a new creation in Christ.
+                </p>
+            </div>
+
+            <div class="scripture-box">
+                "When He had been baptized, Jesus came up immediately from the water; and behold, 
+                the heavens were opened to Him, and He saw the Spirit of God descending like a dove and alighting upon Him."
+                <span class="scripture-ref">— Matthew 3:16</span>
+            </div>
+
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 2rem;">
+                <strong>Ready to be baptized?</strong> Contact a local Bible-believing congregation or 
+                reach out to Vision For Israel to learn about baptism opportunities in your area.
+            </p>
+        </div>
+
+        <!-- Next Steps Section -->
+        <div class="section-block">
+            <h2><i class="fas fa-route"></i> Your Next Steps</h2>
+            <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem;">
+                If you've prayed to receive Yeshua, congratulations! Here's how to grow in your new faith:
+            </p>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <h3><i class="fas fa-bible"></i> Read God's Word Daily</h3>
+                    <p>Start with the Gospel of John. The Bible is your spiritual food and guide.</p>
+                </div>
+
+                <div class="step-card">
+                    <h3><i class="fas fa-praying-hands"></i> Pray Every Day</h3>
+                    <p>Talk to God like a friend. He wants to hear from you!</p>
+                </div>
+
+                <div class="step-card">
+                    <h3><i class="fas fa-church"></i> Join a Bible-Believing Church</h3>
+                    <p>Find a congregation that teaches God's Word and supports Israel.</p>
+                </div>
+
+                <div class="step-card">
+                    <h3><i class="fas fa-users"></i> Fellowship with Believers</h3>
+                    <p>Surround yourself with other followers of Yeshua for encouragement.</p>
+                </div>
+
+                <div class="step-card">
+                    <h3><i class="fas fa-share"></i> Share Your Faith</h3>
+                    <p>Tell others about what God has done in your life!</p>
+                </div>
+
+                <div class="step-card">
+                    <h3><i class="fas fa-heart"></i> Support Israel</h3>
+                    <p>God blesses those who bless Israel (Genesis 12:3).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2>📧 Tell Us About Your Decision!</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                If you prayed to receive Yeshua today, we'd love to hear from you! 
+                We can send you resources to help you grow in your faith.
+            </p>
+            <a href="contact.html" class="cta-button">
+                <i class="fas fa-envelope"></i> Contact Us
+            </a>
+            <a href="prayer-wall.html" class="cta-button">
+                <i class="fas fa-praying-hands"></i> Share Your Testimony
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="worship.html">Worship</a></li>
+                        <li><a href="roots-reflections.html">Roots &amp; Reflections</a></li>
+                        <li><a href="israel-history.html">Israel History</a></li>
+                        <li><a href="prayer-wall.html">Prayer Wall</a></li>
+                        <li><a href="forum.html">Forum</a></li>
+                        <li><a href="salvation.html">Salvation</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="blog-posts.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="https://www.visionforisrael.com/en/give" target="_blank">Donate</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="blog-posts.html">Blog</a></li>
+                        <li><a href="https://www.visionforisrael.com/en/volunteer" target="_blank">Volunteer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/visionforisrael" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/vision4israel" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/visionforisrael" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/visionforisrael" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>VFI News</h3>
+                    <p>Stay informed with the latest news and updates from Israel.</p>
+                    <p><strong>Vision For Israel</strong><br>Operating since 1994</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vision For Israel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="bible_verses.js"></script>
+    <script src="hamburger-menu-new.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
