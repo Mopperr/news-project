@@ -234,6 +234,108 @@
             font-weight: 700;
             font-size: 0.9rem;
         }
+
+        /* ============================================
+           RESPONSIVE DESIGN FOR ABOUT.HTML
+           ============================================ */
+
+        /* Mobile: 320-479px */
+        @media (max-width: 479px) {
+            .about-hero {
+                padding: 3rem 1.5rem;
+            }
+
+            .mission-card {
+                padding: 1.5rem !important;
+            }
+
+            .history-section {
+                padding: 2rem 1rem;
+            }
+
+            /* Timeline: 4 columns → 1 column */
+            section > div > div[style*="display: grid"][style*="repeat(4"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Core Values: 4 columns → 1 column */
+            section > div > div[style*="grid-template-columns: repeat(4"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Endorsements: 3 columns → 1 column */
+            section > div > div[style*="grid-template-columns: repeat(3"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Leadership: 2 columns → 1 column */
+            section > div > div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Transparency metrics: 3 columns → 1 column */
+            div[style*="display: grid"][style*="grid-template-columns: repeat(3, 1fr)"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            h1 {
+                font-size: clamp(1.5rem, 6vw, 2rem) !important;
+            }
+
+            h2 {
+                font-size: clamp(1.3rem, 5vw, 1.8rem) !important;
+            }
+        }
+
+        /* Tablet: 480-767px */
+        @media (max-width: 767px) {
+            .about-hero {
+                padding: 3.5rem 1.5rem;
+            }
+
+            /* Timeline: 4 columns → 2 columns */
+            section > div > div[style*="repeat(4, 1fr)"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            /* Core Values: 4 columns → 2 columns */
+            section > div > div[style*="grid-template-columns: repeat(4"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            /* Endorsements: 3 columns → 1 column */
+            section > div > div[style*="grid-template-columns: repeat(3"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Leadership: 2 columns stays but stack at smaller viewport */
+            section[style*="padding: 5rem 2rem"] > div > div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        /* Tablet landscape: 768-1023px */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            /* Timeline: 4 columns → 2 columns */
+            section > div > div[style*="repeat(4, 1fr)"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            /* Core Values: 4 columns → 2 columns */
+            section > div > div[style*="grid-template-columns: repeat(4"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            /* Endorsements: 3 columns → 2 columns */
+            section > div > div[style*="grid-template-columns: repeat(3"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+
+        /* Desktop: 1024px+ (4 columns preserved) */
+        @media (min-width: 1024px) {
+            /* All grids display as intended */
+        }
     </style>
 </head>
 <body style="background: #0a1128;">
@@ -322,37 +424,37 @@
     <!-- Mission Section -->
     <section class="mission-section">
         <div style="max-width: 1200px; margin: 0 auto;">
-            <div class="mission-card" style="padding: 3rem;">
+            <div class="mission-card" style="padding: 3rem; background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%); border: 2px solid rgba(96, 165, 250, 0.3); border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
                 <div style="text-align: center; margin-bottom: 1.5rem;">
-                    <span class="pill-accent" style="background: rgba(6, 182, 212, 0.12); color: #06b6d4;">Why We Serve</span>
+                    <span class="pill-accent" style="background: rgba(96, 165, 250, 0.15); color: #60a5fa;">Why We Serve</span>
                 </div>
-                <h2 style="font-size: clamp(2rem, 3vw, 2.6rem); color: #0f172a; text-align: center; margin-bottom: 1.5rem; font-weight: 800;">
+                <h2 style="font-size: clamp(1.8rem, 3vw, 2.6rem); color: #60a5fa; text-align: center; margin-bottom: 1.5rem; font-weight: 800;">
                     Inspiring Hope. Restoring Lives.
                 </h2>
-                <p style="font-size: 1.15rem; color: #334155; line-height: 1.9; text-align: center; margin-bottom: 2.5rem; max-width: 900px; margin-left: auto; margin-right: auto;">
-                    Vision for Israel is a <strong style="color: var(--accent);">non-profit humanitarian organization</strong> providing practical aid, disaster relief, and community support since <strong style="color: var(--accent);">1994</strong>. Together with generous donors, we decrease poverty in Israel and bring dignity to families in need.
+                <p style="font-size: 1.15rem; color: #cbd5e1; line-height: 1.9; text-align: center; margin-bottom: 2.5rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    Vision for Israel is a <strong style="color: #60a5fa;">non-profit humanitarian organization</strong> providing practical aid, disaster relief, and community support since <strong style="color: #60a5fa;">1994</strong>. Together with generous donors, we decrease poverty in Israel and bring dignity to families in need.
                 </p>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
-                    <div class="value-card" style="text-align: left; padding: 1.8rem; border: 1px solid #e5e7eb;">
-                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(6, 182, 212, 0.12); display: grid; place-items: center; color: #06b6d4; margin-bottom: 1rem;">
+                    <div class="value-card" style="text-align: left; padding: 1.8rem; border: 2px solid rgba(59, 130, 246, 0.3); border-radius: 12px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.05)); transition: all 0.3s ease;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(96, 165, 250, 0.2); display: grid; place-items: center; color: #60a5fa; margin-bottom: 1rem;">
                             <i class="fas fa-heart"></i>
                         </div>
-                        <h3 style="font-size: 1.3rem; color: #0f172a; margin-bottom: 0.5rem;">Compassion</h3>
-                        <p style="color: #475569; line-height: 1.6;">Meeting urgent needs with care, dignity, and respect.</p>
+                        <h3 style="font-size: 1.3rem; color: #e2e8f0; margin-bottom: 0.5rem;">Compassion</h3>
+                        <p style="color: #cbd5e1; line-height: 1.6;">Meeting urgent needs with care, dignity, and respect.</p>
                     </div>
-                    <div class="value-card" style="text-align: left; padding: 1.8rem; border: 1px solid #e5e7eb;">
-                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(6, 182, 212, 0.12); display: grid; place-items: center; color: #06b6d4; margin-bottom: 1rem;">
+                    <div class="value-card" style="text-align: left; padding: 1.8rem; border: 2px solid rgba(59, 130, 246, 0.3); border-radius: 12px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.05)); transition: all 0.3s ease;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(96, 165, 250, 0.2); display: grid; place-items: center; color: #60a5fa; margin-bottom: 1rem;">
                             <i class="fas fa-hands-helping"></i>
                         </div>
-                        <h3 style="font-size: 1.3rem; color: #0f172a; margin-bottom: 0.5rem;">Partnership</h3>
-                        <p style="color: #475569; line-height: 1.6;">Working alongside Israeli communities and volunteers.</p>
+                        <h3 style="font-size: 1.3rem; color: #e2e8f0; margin-bottom: 0.5rem;">Partnership</h3>
+                        <p style="color: #cbd5e1; line-height: 1.6;">Working alongside Israeli communities and volunteers.</p>
                     </div>
-                    <div class="value-card" style="text-align: left; padding: 1.8rem; border: 1px solid #e5e7eb;">
-                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(6, 182, 212, 0.12); display: grid; place-items: center; color: #06b6d4; margin-bottom: 1rem;">
+                    <div class="value-card" style="text-align: left; padding: 1.8rem; border: 2px solid rgba(59, 130, 246, 0.3); border-radius: 12px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.05)); transition: all 0.3s ease;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(96, 165, 250, 0.2); display: grid; place-items: center; color: #60a5fa; margin-bottom: 1rem;">
                             <i class="fas fa-star-of-david"></i>
                         </div>
-                        <h3 style="font-size: 1.3rem; color: #0f172a; margin-bottom: 0.5rem;">Faith</h3>
-                        <p style="color: #475569; line-height: 1.6;">Rooted in biblical values and a commitment to serve.</p>
+                        <h3 style="font-size: 1.3rem; color: #e2e8f0; margin-bottom: 0.5rem;">Faith</h3>
+                        <p style="color: #cbd5e1; line-height: 1.6;">Rooted in biblical values and a commitment to serve.</p>
                     </div>
                 </div>
             </div>
@@ -364,22 +466,22 @@
     <section class="history-section">
         <div style="max-width: 1200px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 2rem;">
-                <span class="pill-accent" style="background: rgba(6, 182, 212, 0.12); color: #06b6d4;"><i class="fas fa-history"></i> Our Beginning</span>
+                <span class="pill-accent" style="background: rgba(96, 165, 250, 0.15); color: #60a5fa;"><i class="fas fa-history"></i> Our Beginning</span>
             </div>
-            <h2 style="font-size: clamp(2.1rem, 3.2vw, 2.7rem); color: #0f172a; margin-bottom: 2rem; font-weight: 800; text-align: center;">In the Shadow of the First Intifada</h2>
+            <h2 style="font-size: clamp(2rem, 3.2vw, 2.7rem); color: #60a5fa; margin-bottom: 2rem; font-weight: 800; text-align: center;">In the Shadow of the First Intifada</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: center;">
-                <div class="history-card" style="padding: 2.4rem; text-align: left;">
-                    <p style="font-size: 1.1rem; line-height: 1.8; color: #334155; margin-bottom: 1.5rem;">
-                        <strong style="color: var(--accent);">Israel, 1993.</strong> Barry Segal received a clear vision to prepare for seasons of plenty and need—much like Joseph storing grain. That call became the foundation for serving vulnerable families across Israel.
+                <div class="history-card" style="padding: 2.4rem; text-align: left; border: 2px solid rgba(96, 165, 250, 0.3); border-radius: 14px; background: linear-gradient(135deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.6));">
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #cbd5e1; margin-bottom: 1.5rem;">
+                        <strong style="color: #60a5fa;">Israel, 1993.</strong> Barry Segal received a clear vision to prepare for seasons of plenty and need—much like Joseph storing grain. That call became the foundation for serving vulnerable families across Israel.
                     </p>
-                    <button id="openFoundingStory" style="background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; padding: 0.95rem 1.6rem; font-size: 1rem; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 10px 25px rgba(29,156,111,0.25); transition: all 0.2s ease;">
+                    <button id="openFoundingStory" style="background: linear-gradient(135deg, #60a5fa, #3b82f6); color: white; padding: 0.95rem 1.6rem; font-size: 1rem; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 10px 25px rgba(96, 165, 250, 0.3); transition: all 0.2s ease;">
                         <i class="fas fa-book-open" style="margin-right: 0.5rem;"></i>
                         Read the full story
                     </button>
                 </div>
                 <div style="position: relative; cursor: pointer; animation: float 3s ease-in-out infinite;" id="openHistoryImage">
-                    <img src="https://images.prismic.io/vfi-website/6ec670ed-1d7c-465f-a7ed-f282e7adc6a2_f3a90f82-a7b8-480e-b036-be78f5b2463d_Aid%2Bto%2Bthe%2BPoor%2B%281%29.jpg?auto=compress,format&fit=max&w=800" alt="Helping the Elderly in Israel" style="width: 100%; border-radius: 18px; border: 1px solid #e2e8f0; box-shadow: 0 14px 32px rgba(15, 23, 42, 0.22); transition: transform 0.3s ease;" onerror="this.style.display='none';">
-                    <div style="position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); background: rgba(15,23,42,0.72); color: white; padding: 0.65rem 1.2rem; border-radius: 999px; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.5px;">
+                    <img src="https://images.prismic.io/vfi-website/6ec670ed-1d7c-465f-a7ed-f282e7adc6a2_f3a90f82-a7b8-480e-b036-be78f5b2463d_Aid%2Bto%2Bthe%2BPoor%2B%281%29.jpg?auto=compress,format&fit=max&w=800" alt="Helping the Elderly in Israel" style="width: 100%; border-radius: 18px; border: 2px solid rgba(96, 165, 250, 0.3); box-shadow: 0 14px 32px rgba(15, 23, 42, 0.22); transition: transform 0.3s ease;" onerror="this.style.display='none';">
+                    <div style="position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); background: rgba(15,23,42,0.85); border: 1px solid rgba(96, 165, 250, 0.3); color: #60a5fa; padding: 0.65rem 1.2rem; border-radius: 999px; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.5px;">
                         Click to learn more
                     </div>
                 </div>
