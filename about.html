@@ -13,16 +13,16 @@
             --navy-900: #0a1a2f;
             --navy-800: #112544;
             --navy-700: #1c2f4a;
-            --sand: #f5f7fb;
-            --card: #ffffff;
-            --muted: #4b5563;
-            --accent: #1d9c6f;
-            --accent-2: #22c55e;
+            --sand: #0f172a;
+            --card: #1e293b;
+            --muted: #94a3b8;
+            --accent: #60a5fa;
+            --accent-2: #3b82f6;
         }
 
         body {
-            background: var(--sand);
-            color: #0f172a;
+            background: linear-gradient(135deg, #0b1d3a 0%, #102a4f 100%);
+            color: #e2e8f0;
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -105,25 +105,33 @@
         }
         
         .modal-content {
-            background: var(--card);
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid rgba(96, 165, 250, 0.2);
             border-radius: 16px;
             max-width: 760px;
             width: 100%;
             margin: 2rem auto;
             padding: 2.25rem;
             position: relative;
-            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
-            border: 1px solid #e2e8f0;
+            box-shadow: 0 18px 60px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(59, 130, 246, 0.1);
             animation: slideUp 0.25s ease;
+        }
+        
+        .modal-content h2, .modal-content h3 {
+            color: #60a5fa;
+        }
+        
+        .modal-content p, .modal-content div {
+            color: #cbd5e1;
         }
         
         .modal-close {
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            color: #0f172a;
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(96, 165, 250, 0.4);
+            color: #60a5fa;
             font-size: 1.4rem;
             width: 44px;
             height: 44px;
@@ -138,8 +146,9 @@
         }
 
         .modal-close:hover {
-            background: #e2e8f0;
-            transform: translateY(-1px);
+            background: rgba(96, 165, 250, 0.3);
+            border-color: rgba(96, 165, 250, 0.6);
+            transform: translateY(-1px) rotate(90deg);
         }
         
         @keyframes fadeIn {
@@ -196,8 +205,11 @@
         .mission-section,
         .history-section,
         .values-shell {
-            background: var(--sand);
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.5) 100%);
+            border-top: 1px solid rgba(96, 165, 250, 0.1);
+            border-bottom: 1px solid rgba(96, 165, 250, 0.1);
             padding: 4rem 1.5rem;
+            color: #cbd5e1;
         }
 
         .mission-card,
@@ -301,7 +313,7 @@
     <!-- Hero Section -->
     <section class="about-hero">
         <div style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
-            <span class="pill-accent">Humanitarian Impact</span>
+            <span class="pill-accent" style="background: rgba(6, 182, 212, 0.12); color: #06b6d4;">Humanitarian Impact</span>
             <h1>Your Hands and Feet in Israel</h1>
             <p>Compassionate aid, disaster relief, and community support since 1994.</p>
         </div>
@@ -312,7 +324,7 @@
         <div style="max-width: 1200px; margin: 0 auto;">
             <div class="mission-card" style="padding: 3rem;">
                 <div style="text-align: center; margin-bottom: 1.5rem;">
-                    <span class="pill-accent">Why We Serve</span>
+                    <span class="pill-accent" style="background: rgba(6, 182, 212, 0.12); color: #06b6d4;">Why We Serve</span>
                 </div>
                 <h2 style="font-size: clamp(2rem, 3vw, 2.6rem); color: #0f172a; text-align: center; margin-bottom: 1.5rem; font-weight: 800;">
                     Inspiring Hope. Restoring Lives.
@@ -322,21 +334,21 @@
                 </p>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
                     <div class="value-card" style="text-align: left; padding: 1.8rem; border: 1px solid #e5e7eb;">
-                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(29,156,111,0.12); display: grid; place-items: center; color: var(--accent); margin-bottom: 1rem;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(6, 182, 212, 0.12); display: grid; place-items: center; color: #06b6d4; margin-bottom: 1rem;">
                             <i class="fas fa-heart"></i>
                         </div>
                         <h3 style="font-size: 1.3rem; color: #0f172a; margin-bottom: 0.5rem;">Compassion</h3>
                         <p style="color: #475569; line-height: 1.6;">Meeting urgent needs with care, dignity, and respect.</p>
                     </div>
                     <div class="value-card" style="text-align: left; padding: 1.8rem; border: 1px solid #e5e7eb;">
-                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(29,156,111,0.12); display: grid; place-items: center; color: var(--accent); margin-bottom: 1rem;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(6, 182, 212, 0.12); display: grid; place-items: center; color: #06b6d4; margin-bottom: 1rem;">
                             <i class="fas fa-hands-helping"></i>
                         </div>
                         <h3 style="font-size: 1.3rem; color: #0f172a; margin-bottom: 0.5rem;">Partnership</h3>
                         <p style="color: #475569; line-height: 1.6;">Working alongside Israeli communities and volunteers.</p>
                     </div>
                     <div class="value-card" style="text-align: left; padding: 1.8rem; border: 1px solid #e5e7eb;">
-                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(29,156,111,0.12); display: grid; place-items: center; color: var(--accent); margin-bottom: 1rem;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(6, 182, 212, 0.12); display: grid; place-items: center; color: #06b6d4; margin-bottom: 1rem;">
                             <i class="fas fa-star-of-david"></i>
                         </div>
                         <h3 style="font-size: 1.3rem; color: #0f172a; margin-bottom: 0.5rem;">Faith</h3>
@@ -352,7 +364,7 @@
     <section class="history-section">
         <div style="max-width: 1200px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 2rem;">
-                <span class="pill-accent"><i class="fas fa-history"></i> Our Beginning</span>
+                <span class="pill-accent" style="background: rgba(6, 182, 212, 0.12); color: #06b6d4;"><i class="fas fa-history"></i> Our Beginning</span>
             </div>
             <h2 style="font-size: clamp(2.1rem, 3.2vw, 2.7rem); color: #0f172a; margin-bottom: 2rem; font-weight: 800; text-align: center;">In the Shadow of the First Intifada</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: center;">
@@ -468,51 +480,51 @@
 
     <!-- Core Values Section -->
     <section style="padding: 4rem 2rem; max-width: 1200px; margin: 0 auto;">
-        <h2 style="font-size: 3rem; color: #06b6d4; text-align: center; margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(6, 182, 212, 0.5);">
+        <h2 style="font-size: 3rem; color: #60a5fa; text-align: center; margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(96, 165, 250, 0.3);">
             <i class="fas fa-heart"></i> Our Core Values
         </h2>
-        <p style="text-align: center; color: white; font-size: 1.2rem; margin-bottom: 4rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <p style="text-align: center; color: #cbd5e1; font-size: 1.2rem; margin-bottom: 4rem; max-width: 800px; margin-left: auto; margin-right: auto;">
             Biblical principles that guide everything we do
         </p>
         
         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;">
             <!-- Integrity Card -->
-            <div class="value-card" data-value="integrity" style="background: rgba(255,255,255,0.05); padding: 2.5rem 2rem; border-radius: 20px; border: 3px solid #22c55e; box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3); text-align: center; cursor: pointer; transition: all 0.3s ease; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
-                <i class="fas fa-shield-alt" style="font-size: 4rem; color: #22c55e; margin-bottom: 1.5rem;"></i>
-                <h3 style="font-size: 1.8rem; color: white; margin-bottom: 1rem; font-weight: 700;">Integrity</h3>
-                <p style="color: rgba(255,255,255,0.9); line-height: 1.8; font-size: 1.05rem; margin-bottom: 1.5rem;">Operating with complete transparency and accountability in all our programs and financial stewardship.</p>
-                <div style="margin-top: auto; color: #06b6d4; font-weight: 600; font-size: 1rem;">
-                    <i class="fas fa-book-open"></i> Click to explore
+            <div class="value-card" data-value="integrity" style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%); padding: 2.5rem 2rem; border-radius: 16px; border: 2px solid rgba(34, 197, 94, 0.4); box-shadow: 0 8px 25px rgba(34, 197, 94, 0.15); text-align: center; cursor: pointer; transition: all 0.3s ease; min-height: 320px; display: flex; flex-direction: column; justify-content: center;">
+                <i class="fas fa-shield-alt" style="font-size: 3.5rem; color: #22c55e; margin-bottom: 1.5rem;"></i>
+                <h3 style="font-size: 1.8rem; color: #e2e8f0; margin-bottom: 1rem; font-weight: 700;">Integrity</h3>
+                <p style="color: #cbd5e1; line-height: 1.8; font-size: 1rem; margin-bottom: 1.5rem;">Operating with complete transparency and accountability in all our programs and financial stewardship.</p>
+                <div style="margin-top: auto; color: #60a5fa; font-weight: 600; font-size: 0.95rem;">
+                    <i class="fas fa-book-open"></i> Click to learn more
                 </div>
             </div>
 
             <!-- Unity Card -->
-            <div class="value-card" data-value="unity" style="background: rgba(255,255,255,0.05); padding: 2.5rem 2rem; border-radius: 20px; border: 3px solid #3b82f6; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3); text-align: center; cursor: pointer; transition: all 0.3s ease; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
-                <i class="fas fa-users" style="font-size: 4rem; color: #3b82f6; margin-bottom: 1.5rem;"></i>
-                <h3 style="font-size: 1.8rem; color: white; margin-bottom: 1rem; font-weight: 700;">Unity</h3>
-                <p style="color: rgba(255,255,255,0.9); line-height: 1.8; font-size: 1.05rem; margin-bottom: 1.5rem;">Building bridges between communities and bringing people together for the common good of Israel.</p>
-                <div style="margin-top: auto; color: #06b6d4; font-weight: 600; font-size: 1rem;">
-                    <i class="fas fa-book-open"></i> Click to explore
+            <div class="value-card" data-value="unity" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%); padding: 2.5rem 2rem; border-radius: 16px; border: 2px solid rgba(59, 130, 246, 0.4); box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15); text-align: center; cursor: pointer; transition: all 0.3s ease; min-height: 320px; display: flex; flex-direction: column; justify-content: center;">
+                <i class="fas fa-users" style="font-size: 3.5rem; color: #3b82f6; margin-bottom: 1.5rem;"></i>
+                <h3 style="font-size: 1.8rem; color: #e2e8f0; margin-bottom: 1rem; font-weight: 700;">Unity</h3>
+                <p style="color: #cbd5e1; line-height: 1.8; font-size: 1rem; margin-bottom: 1.5rem;">Building bridges between communities and bringing people together for the common good of Israel.</p>
+                <div style="margin-top: auto; color: #60a5fa; font-weight: 600; font-size: 0.95rem;">
+                    <i class="fas fa-book-open"></i> Click to learn more
                 </div>
             </div>
 
             <!-- Excellence Card -->
-            <div class="value-card" data-value="excellence" style="background: rgba(255,255,255,0.05); padding: 2.5rem 2rem; border-radius: 20px; border: 3px solid #a855f7; box-shadow: 0 10px 30px rgba(168, 85, 247, 0.3); text-align: center; cursor: pointer; transition: all 0.3s ease; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
-                <i class="fas fa-bolt" style="font-size: 4rem; color: #a855f7; margin-bottom: 1.5rem;"></i>
-                <h3 style="font-size: 1.8rem; color: white; margin-bottom: 1rem; font-weight: 700;">Excellence</h3>
-                <p style="color: rgba(255,255,255,0.9); line-height: 1.8; font-size: 1.05rem; margin-bottom: 1.5rem;">Delivering high-quality programs that make a measurable difference in people's lives.</p>
-                <div style="margin-top: auto; color: #06b6d4; font-weight: 600; font-size: 1rem;">
-                    <i class="fas fa-book-open"></i> Click to explore
+            <div class="value-card" data-value="excellence" style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(168, 85, 247, 0.05) 100%); padding: 2.5rem 2rem; border-radius: 16px; border: 2px solid rgba(168, 85, 247, 0.4); box-shadow: 0 8px 25px rgba(168, 85, 247, 0.15); text-align: center; cursor: pointer; transition: all 0.3s ease; min-height: 320px; display: flex; flex-direction: column; justify-content: center;">
+                <i class="fas fa-bolt" style="font-size: 3.5rem; color: #a855f7; margin-bottom: 1.5rem;"></i>
+                <h3 style="font-size: 1.8rem; color: #e2e8f0; margin-bottom: 1rem; font-weight: 700;">Excellence</h3>
+                <p style="color: #cbd5e1; line-height: 1.8; font-size: 1rem; margin-bottom: 1.5rem;">Delivering high-quality programs that make a measurable difference in people's lives.</p>
+                <div style="margin-top: auto; color: #60a5fa; font-weight: 600; font-size: 0.95rem;">
+                    <i class="fas fa-book-open"></i> Click to learn more
                 </div>
             </div>
 
             <!-- Impact Card -->
-            <div class="value-card" data-value="impact" style="background: rgba(255,255,255,0.05); padding: 2.5rem 2rem; border-radius: 20px; border: 3px solid #06b6d4; box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3); text-align: center; cursor: pointer; transition: all 0.3s ease; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
-                <i class="fas fa-globe" style="font-size: 4rem; color: #06b6d4; margin-bottom: 1.5rem;"></i>
-                <h3 style="font-size: 1.8rem; color: white; margin-bottom: 1rem; font-weight: 700;">Impact</h3>
-                <p style="color: rgba(255,255,255,0.9); line-height: 1.8; font-size: 1.05rem; margin-bottom: 1.5rem;">Focusing on sustainable solutions that create lasting positive change in Israeli society.</p>
-                <div style="margin-top: auto; color: #06b6d4; font-weight: 600; font-size: 1rem;">
-                    <i class="fas fa-book-open"></i> Click to explore
+            <div class="value-card" data-value="impact" style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%); padding: 2.5rem 2rem; border-radius: 16px; border: 2px solid rgba(6, 182, 212, 0.4); box-shadow: 0 8px 25px rgba(6, 182, 212, 0.15); text-align: center; cursor: pointer; transition: all 0.3s ease; min-height: 320px; display: flex; flex-direction: column; justify-content: center;">
+                <i class="fas fa-globe" style="font-size: 3.5rem; color: #06b6d4; margin-bottom: 1.5rem;"></i>
+                <h3 style="font-size: 1.8rem; color: #e2e8f0; margin-bottom: 1rem; font-weight: 700;">Impact</h3>
+                <p style="color: #cbd5e1; line-height: 1.8; font-size: 1rem; margin-bottom: 1.5rem;">Focusing on sustainable solutions that create lasting positive change in Israeli society.</p>
+                <div style="margin-top: auto; color: #60a5fa; font-weight: 600; font-size: 0.95rem;">
+                    <i class="fas fa-book-open"></i> Click to learn more
                 </div>
             </div>
         </div>
@@ -715,47 +727,49 @@
         </div>
     </div>
 
-    <!-- Values Modal - Dual Panel Style -->
+    <!-- Values Modal - Professional Dark Theme -->
     <div id="valuesModal" class="modal">
-        <!-- Close Button - Direct child of modal -->
-        <button class="modal-close" onclick="document.getElementById('valuesModal').style.display='none'; document.getElementById('valuesModal').classList.remove('active'); document.body.style.overflow='auto';" style="position: fixed; top: 2rem; right: 2rem; background: rgba(0, 0, 0, 0.9); border: 2px solid rgba(255,255,255,0.8); color: white; font-size: 2.5rem; cursor: pointer; transition: all 0.2s; width: 60px; height: 60px; line-height: 1; z-index: 10003; border-radius: 50%; font-weight: bold; box-shadow: 0 4px 20px rgba(0,0,0,0.5);" onmouseover="this.style.background='rgba(220, 38, 38, 0.9)'; this.style.transform='rotate(90deg) scale(1.1)';" onmouseout="this.style.background='rgba(0, 0, 0, 0.9)'; this.style.transform='rotate(0deg) scale(1)';">&times;</button>
+        <!-- Close Button -->
+        <button class="modal-close" onclick="document.getElementById('valuesModal').style.display='none'; document.getElementById('valuesModal').classList.remove('active'); document.body.style.overflow='auto';" style="position: fixed; top: 2rem; right: 2rem; background: rgba(59, 130, 246, 0.1); border: 2px solid rgba(96, 165, 250, 0.4); color: #60a5fa; font-size: 2.5rem; cursor: pointer; transition: all 0.3s; width: 60px; height: 60px; line-height: 1; z-index: 10003; border-radius: 50%; font-weight: bold; box-shadow: 0 4px 20px rgba(96, 165, 250, 0.2);" onmouseover="this.style.background='rgba(59, 130, 246, 0.2)'; this.style.borderColor='rgba(96, 165, 250, 0.6)'; this.style.transform='rotate(90deg) scale(1.1)';" onmouseout="this.style.background='rgba(59, 130, 246, 0.1)'; this.style.borderColor='rgba(96, 165, 250, 0.4)'; this.style.transform='rotate(0deg) scale(1)';">&times;</button>
         
-        <div style="display: flex; gap: 2rem; max-width: 1300px; margin: 2rem auto; position: relative; z-index: 10001;">
+        <div style="display: flex; gap: 3rem; max-width: 1400px; margin: 2rem auto; position: relative; z-index: 10001; padding: 0 2rem;">
             <!-- Left Panel: Image -->
-            <div style="background: linear-gradient(135deg, #3d5a6c 0%, #2c4a5c 100%); padding: 2.5rem; border-radius: 16px; flex: 1; min-width: 300px; max-width: 500px; box-shadow: 0 20px 60px rgba(0,0,0,0.7); border: 3px solid #8b7355; position: relative;">
+            <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9)); padding: 2rem; border-radius: 16px; flex: 1; min-width: 320px; max-width: 450px; box-shadow: 0 20px 60px rgba(0,0,0,0.7); border: 2px solid rgba(96, 165, 250, 0.3); position: relative;">
                 
-                <div id="valuesModalImage" style="width: 100%; height: 350px; border-radius: 12px; border: 3px solid #8b7355; margin-bottom: 1.5rem; background: #2c4a5c; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                <div id="valuesModalImage" style="width: 100%; height: 300px; border-radius: 12px; border: 2px solid rgba(96, 165, 250, 0.3); margin-bottom: 2rem; background: rgba(30, 41, 59, 0.5); display: flex; align-items: center; justify-content: center; overflow: hidden;">
                     <img id="valueImg" src="" alt="Value image" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                 </div>
                 
                 <div style="text-align: center;">
-                    <div id="valueTitle" style="font-size: 2rem; color: #d4a574; font-weight: 700; font-family: Georgia, serif; text-shadow: 0 2px 8px rgba(0,0,0,0.5);"></div>
+                    <div id="valueTitle" style="font-size: 2.2rem; color: #60a5fa; font-weight: 700; font-family: Georgia, serif; text-shadow: 0 2px 8px rgba(0,0,0,0.5); letter-spacing: 0.5px;"></div>
                 </div>
             </div>
             
             <!-- Right Panel: Content -->
-            <div style="background: linear-gradient(135deg, #6b3d2e 0%, #7d4a3a 100%); padding: 2.5rem; border-radius: 16px; flex: 1; min-width: 300px; max-width: 600px; box-shadow: 0 20px 60px rgba(0,0,0,0.7); border: 3px solid #8b7355; position: relative; max-height: 600px; overflow-y: auto;">
+            <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(10, 26, 63, 0.9)); padding: 2.5rem; border-radius: 16px; flex: 1; min-width: 320px; max-width: 700px; box-shadow: 0 20px 60px rgba(0,0,0,0.7); border: 2px solid rgba(96, 165, 250, 0.3); position: relative; max-height: 650px; overflow-y: auto;">
                 
-                <div style="background: #f5f1e8; padding: 1.8rem; border-radius: 12px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);">
-                    <!-- Scripture -->
-                    <div style="background: linear-gradient(135deg, #fff8dc, #faebd7); padding: 1.3rem; border-radius: 10px; margin-bottom: 1.5rem; border-left: 4px solid #8b7355;">
-                        <p id="valueVerse" style="font-size: 1rem; color: #4a5568; font-style: italic; line-height: 1.8; margin-bottom: 0.5rem;"></p>
-                        <p id="valueRef" style="font-size: 0.9rem; color: #8b7355; font-weight: 700; text-align: right; margin: 0;"></p>
-                    </div>
-                    
-                    <!-- Biblical Example -->
-                    <h4 style="font-size: 1.2rem; color: #6b3d2e; margin-bottom: 1rem; font-weight: 700; font-family: Georgia, serif; display: flex; align-items: center;">
-                        <i class="fas fa-book-open" style="margin-right: 0.6rem; color: #8b7355; font-size: 1rem;"></i>
+                <!-- Scripture Section -->
+                <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.1)); padding: 1.8rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid #60a5fa; box-shadow: inset 0 1px 3px rgba(96, 165, 250, 0.1);">
+                    <p id="valueVerse" style="font-size: 1.05rem; color: #e2e8f0; font-style: italic; line-height: 1.8; margin-bottom: 0.8rem;"></p>
+                    <p id="valueRef" style="font-size: 0.95rem; color: #60a5fa; font-weight: 600; text-align: right; margin: 0;"></p>
+                </div>
+                
+                <!-- Biblical Example -->
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="font-size: 1.3rem; color: #60a5fa; margin-bottom: 1rem; font-weight: 700; font-family: Georgia, serif; display: flex; align-items: center;">
+                        <i class="fas fa-book-open" style="margin-right: 0.8rem; color: #60a5fa; font-size: 1.1rem; opacity: 0.9;"></i>
                         Biblical Example
                     </h4>
-                    <p id="valueStory" style="font-size: 0.95rem; color: #4a5568; line-height: 1.8; margin-bottom: 1.5rem;"></p>
-                    
-                    <!-- Application -->
-                    <h4 style="font-size: 1.2rem; color: #6b3d2e; margin-bottom: 1rem; font-weight: 700; font-family: Georgia, serif; display: flex; align-items: center;">
-                        <i class="fas fa-heart" style="margin-right: 0.6rem; color: #8b7355; font-size: 1rem;"></i>
+                    <p id="valueStory" style="font-size: 1rem; color: #cbd5e1; line-height: 1.8; margin: 0;"></p>
+                </div>
+                
+                <!-- Application -->
+                <div>
+                    <h4 style="font-size: 1.3rem; color: #60a5fa; margin-bottom: 1rem; font-weight: 700; font-family: Georgia, serif; display: flex; align-items: center;">
+                        <i class="fas fa-lightbulb" style="margin-right: 0.8rem; color: #60a5fa; font-size: 1.1rem; opacity: 0.9;"></i>
                         How We Live It
                     </h4>
-                    <p id="valueApplication" style="font-size: 0.95rem; color: #4a5568; line-height: 1.8; margin: 0;"></p>
+                    <p id="valueApplication" style="font-size: 1rem; color: #cbd5e1; line-height: 1.8; margin: 0;"></p>
                 </div>
             </div>
         </div>
