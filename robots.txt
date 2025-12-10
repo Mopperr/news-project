@@ -1,0 +1,53 @@
+# robots.txt for VFI News - Vision For Israel
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Disallow crawling of these directories/files
+Disallow: /test_*.html
+Disallow: /*.bat$
+Disallow: /*.py$
+Disallow: /*.json$
+Disallow: /*.md$
+Disallow: /.venv/
+Disallow: /__pycache__/
+Disallow: /node_modules/
+
+# Allow important resources
+Allow: /styles.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+
+# Sitemap location
+Sitemap: https://vfinews.com/sitemap.xml
+
+# Crawl delay (optional - be polite to search engines)
+Crawl-delay: 1
+
+# Specific directives for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
